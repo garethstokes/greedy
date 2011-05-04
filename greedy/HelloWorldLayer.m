@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+#import "AsteroidSprite.h"
 
 enum {
 	kTagBatchNode = 1,
@@ -47,6 +48,15 @@ eachShape(void *ptr, void* unused)
 	
 	// return the scene
 	return scene;
+}
+
+-(void) addNewAsteroidSprite: (float)x y:(float)y
+{
+    CGPoint p = ccp(x, y);
+	
+	CCSprite *sprite = [[AsteroidSprite alloc] initWithSpace:space position:p size:rand() % 10];
+    
+    [self addChild:sprite];
 }
 
 -(void) addNewSpriteX: (float)x y:(float)y
@@ -180,8 +190,9 @@ eachShape(void *ptr, void* unused)
 		
 		location = [[CCDirector sharedDirector] convertToGL: location];
 		
-		[self addNewSpriteX: location.x y:location.y];
-	}
+		//[self addNewSpriteX: location.x y:location.y];
+        [self addNewAsteroidSprite:location.x y:location.y];
+    }
 }
 
 - (void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration

@@ -149,6 +149,10 @@
 		AB045A7713714D3C001253D2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB045A7613714D3C001253D2 /* RootViewController.m */; };
 		AB045A7A13714D3C001253D2 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB045A7913714D3C001253D2 /* HelloWorldLayer.m */; };
 		AB045A7D13714D3C001253D2 /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */; };
+		AB045A9513715AA7001253D2 /* AsteroidSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = AB045A9413715AA7001253D2 /* AsteroidSprite.m */; };
+		AB045A9813715E31001253D2 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = AB045A9713715E31001253D2 /* assets */; };
+		AB045A9A13715E97001253D2 /* Meteor1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB045A9913715E97001253D2 /* Meteor1.png */; };
+		AB045AA513716125001253D2 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = AB045AA413716125001253D2 /* Background.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -447,6 +451,12 @@
 		AB045A7913714D3C001253D2 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		AB045A7B13714D3C001253D2 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
+		AB045A9313715AA7001253D2 /* AsteroidSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidSprite.h; sourceTree = "<group>"; };
+		AB045A9413715AA7001253D2 /* AsteroidSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidSprite.m; sourceTree = "<group>"; };
+		AB045A9713715E31001253D2 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		AB045A9913715E97001253D2 /* Meteor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Meteor1.png; path = assets/meteor/Meteor1.png; sourceTree = "<group>"; };
+		AB045AA313716125001253D2 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		AB045AA413716125001253D2 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +513,8 @@
 		AB0458D113714D3A001253D2 /* greedy */ = {
 			isa = PBXGroup;
 			children = (
+				AB045AA21371604D001253D2 /* layers */,
+				AB045AA113716021001253D2 /* nodes */,
 				AB0459D713714D3B001253D2 /* LICENSE_cocos2d.txt */,
 				AB0459E613714D3B001253D2 /* LICENSE_CocosDenshion.txt */,
 				AB0459F113714D3B001253D2 /* LICENSE_TouchJSON.txt */,
@@ -530,6 +542,8 @@
 		AB0458D213714D3A001253D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AB045A9913715E97001253D2 /* Meteor1.png */,
+				AB045A9713715E31001253D2 /* assets */,
 				AB0458D313714D3A001253D2 /* Default.png */,
 				AB0458D513714D3A001253D2 /* fps_images.png */,
 				AB0458D713714D3A001253D2 /* Icon-72.png */,
@@ -857,6 +871,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AB045AA113716021001253D2 /* nodes */ = {
+			isa = PBXGroup;
+			children = (
+				AB045A9313715AA7001253D2 /* AsteroidSprite.h */,
+				AB045A9413715AA7001253D2 /* AsteroidSprite.m */,
+			);
+			name = nodes;
+			sourceTree = "<group>";
+		};
+		AB045AA21371604D001253D2 /* layers */ = {
+			isa = PBXGroup;
+			children = (
+				AB045AA313716125001253D2 /* Background.h */,
+				AB045AA413716125001253D2 /* Background.m */,
+			);
+			name = layers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -917,6 +949,8 @@
 				AB0458E213714D3A001253D2 /* Icon@2x.png in Resources */,
 				AB0458E513714D3A001253D2 /* iTunesArtwork in Resources */,
 				AB045A7D13714D3C001253D2 /* grossini_dance_atlas.png in Resources */,
+				AB045A9813715E31001253D2 /* assets in Resources */,
+				AB045A9A13715E97001253D2 /* Meteor1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1085,8 @@
 				AB045A7413714D3C001253D2 /* AppDelegate.m in Sources */,
 				AB045A7713714D3C001253D2 /* RootViewController.m in Sources */,
 				AB045A7A13714D3C001253D2 /* HelloWorldLayer.m in Sources */,
+				AB045A9513715AA7001253D2 /* AsteroidSprite.m in Sources */,
+				AB045AA513716125001253D2 /* Background.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,6 +1182,7 @@
 				AB045A8213714D3C001253D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,12 +8,14 @@
 
 #import "cocos2d.h"
 #import "chipmunk.h"
+#import "GreedyGameEnvironment.h"
 
 @interface GreedyGameLayer : CCLayer
 {
-	
+    GreedyGameEnvironment *_environment;
 }
 
-
+-(void) step:(ccTime)dt;
+-(void) addNewAsteroidSprite: (float)x y:(float)y;
 
 @end

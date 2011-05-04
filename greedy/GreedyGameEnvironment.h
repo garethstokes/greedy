@@ -15,4 +15,7 @@
     SpaceManager *_spaceManager;
 }
 
+@property (nonatomic, retain) SpaceManager *manager;
+-(void) step:(ccTime)dt;
+
 @end

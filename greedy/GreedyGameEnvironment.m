@@ -8,8 +8,11 @@
 
 #import "GreedyGameEnvironment.h"
 #import "cocos2d.h"
+#import "chipmunk.h"
 
 @implementation GreedyGameEnvironment
+
+@synthesize manager=_spaceManager;
 
 - (id) init
 {
@@ -17,6 +20,11 @@
         _spaceManager = [[SpaceManager alloc] init];
     }
     return self;
+}
+
+-(void) step:(ccTime)dt
+{
+    [_spaceManager step:dt];
 }
 
 @end

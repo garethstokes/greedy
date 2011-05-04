@@ -145,7 +145,7 @@ eachShape(void *ptr, void* unused)
 		CCSpriteBatchNode *batch = [CCSpriteBatchNode batchNodeWithFile:@"grossini_dance_atlas.png" capacity:100];
 		[self addChild:batch z:0 tag:kTagBatchNode];
 		
-		[self addNewSpriteX: 200 y:200];
+		//[self addNewSpriteX: 200 y:200];
 		
 		[self schedule: @selector(step:)];
 	}

@@ -14,7 +14,7 @@
 - (id) init
 {
     if( (self=[super init])) {
-        
+        _spaceManager = [[SpaceManager alloc] init];
     }
     return self;
 }

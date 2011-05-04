@@ -156,6 +156,19 @@
 		E708BE211371542B00E45FDD /* GreedyGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE201371542B00E45FDD /* GreedyGameLayer.m */; };
 		E708BE28137155F000E45FDD /* GreedyGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE27137155F000E45FDD /* GreedyGameScene.m */; };
 		E708BE2B13715AD800E45FDD /* GreedyGameEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */; };
+		E708BE60137166C000E45FDD /* cpCCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE45137166C000E45FDD /* cpCCNode.m */; };
+		E708BE61137166C000E45FDD /* cpCCNodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE47137166C000E45FDD /* cpCCNodeImpl.m */; };
+		E708BE62137166C000E45FDD /* cpCCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE49137166C000E45FDD /* cpCCSprite.m */; };
+		E708BE63137166C000E45FDD /* cpConstraintNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE4B137166C000E45FDD /* cpConstraintNode.m */; };
+		E708BE64137166C000E45FDD /* cpShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE4D137166C000E45FDD /* cpShapeNode.m */; };
+		E708BE65137166C000E45FDD /* SpaceManagerCocos2d.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE4F137166C000E45FDD /* SpaceManagerCocos2d.m */; };
+		E708BE66137166C000E45FDD /* cpPulleyJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E708BE51137166C000E45FDD /* cpPulleyJoint.c */; };
+		E708BE67137166C000E45FDD /* cpSpaceSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE54137166C000E45FDD /* cpSpaceSerializer.cpp */; };
+		E708BE68137166C000E45FDD /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE58137166C000E45FDD /* tinystr.cpp */; };
+		E708BE69137166C000E45FDD /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5A137166C000E45FDD /* tinyxml.cpp */; };
+		E708BE6A137166C000E45FDD /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5C137166C000E45FDD /* tinyxmlerror.cpp */; };
+		E708BE6B137166C000E45FDD /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5D137166C000E45FDD /* tinyxmlparser.cpp */; };
+		E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5F137166C000E45FDD /* SpaceManager.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -455,6 +468,30 @@
 		E708BE27137155F000E45FDD /* GreedyGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameScene.m; sourceTree = "<group>"; };
 		E708BE2913715AD800E45FDD /* GreedyGameEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyGameEnvironment.h; sourceTree = "<group>"; };
 		E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameEnvironment.m; sourceTree = "<group>"; };
+		E708BE44137166C000E45FDD /* cpCCNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNode.h; sourceTree = "<group>"; };
+		E708BE45137166C000E45FDD /* cpCCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpCCNode.m; sourceTree = "<group>"; };
+		E708BE46137166C000E45FDD /* cpCCNodeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNodeImpl.h; sourceTree = "<group>"; };
+		E708BE47137166C000E45FDD /* cpCCNodeImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpCCNodeImpl.m; sourceTree = "<group>"; };
+		E708BE48137166C000E45FDD /* cpCCSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCSprite.h; sourceTree = "<group>"; };
+		E708BE49137166C000E45FDD /* cpCCSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpCCSprite.m; sourceTree = "<group>"; };
+		E708BE4A137166C000E45FDD /* cpConstraintNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpConstraintNode.h; sourceTree = "<group>"; };
+		E708BE4B137166C000E45FDD /* cpConstraintNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpConstraintNode.m; sourceTree = "<group>"; };
+		E708BE4C137166C000E45FDD /* cpShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpShapeNode.h; sourceTree = "<group>"; };
+		E708BE4D137166C000E45FDD /* cpShapeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpShapeNode.m; sourceTree = "<group>"; };
+		E708BE4E137166C000E45FDD /* SpaceManagerCocos2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceManagerCocos2d.h; sourceTree = "<group>"; };
+		E708BE4F137166C000E45FDD /* SpaceManagerCocos2d.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceManagerCocos2d.m; sourceTree = "<group>"; };
+		E708BE51137166C000E45FDD /* cpPulleyJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPulleyJoint.c; sourceTree = "<group>"; };
+		E708BE52137166C000E45FDD /* cpPulleyJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPulleyJoint.h; sourceTree = "<group>"; };
+		E708BE54137166C000E45FDD /* cpSpaceSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cpSpaceSerializer.cpp; sourceTree = "<group>"; };
+		E708BE55137166C000E45FDD /* cpSpaceSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSpaceSerializer.h; sourceTree = "<group>"; };
+		E708BE58137166C000E45FDD /* tinystr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinystr.cpp; sourceTree = "<group>"; };
+		E708BE59137166C000E45FDD /* tinystr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinystr.h; sourceTree = "<group>"; };
+		E708BE5A137166C000E45FDD /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		E708BE5B137166C000E45FDD /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		E708BE5C137166C000E45FDD /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		E708BE5D137166C000E45FDD /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		E708BE5E137166C000E45FDD /* SpaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceManager.h; sourceTree = "<group>"; };
+		E708BE5F137166C000E45FDD /* SpaceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpaceManager.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -526,6 +563,7 @@
 				AB045A0613714D3B001253D2 /* FontLabel */,
 				AB045A1813714D3B001253D2 /* Chipmunk */,
 				AB045A6E13714D3C001253D2 /* Supporting Files */,
+				E708BE42137166C000E45FDD /* SpaceManager */,
 				E708BE1F1371542B00E45FDD /* GreedyGameLayer.h */,
 				E708BE201371542B00E45FDD /* GreedyGameLayer.m */,
 				E708BE26137155F000E45FDD /* GreedyGameScene.h */,
@@ -886,6 +924,78 @@
 			name = layers;
 			sourceTree = "<group>";
 		};
+		E708BE42137166C000E45FDD /* SpaceManager */ = {
+			isa = PBXGroup;
+			children = (
+				E708BE43137166C000E45FDD /* ccExtras */,
+				E708BE50137166C000E45FDD /* cpExtras */,
+				E708BE53137166C000E45FDD /* cpSpaceSerializer */,
+				E708BE5E137166C000E45FDD /* SpaceManager.h */,
+				E708BE5F137166C000E45FDD /* SpaceManager.mm */,
+			);
+			name = SpaceManager;
+			path = libs/SpaceManager;
+			sourceTree = "<group>";
+		};
+		E708BE43137166C000E45FDD /* ccExtras */ = {
+			isa = PBXGroup;
+			children = (
+				E708BE44137166C000E45FDD /* cpCCNode.h */,
+				E708BE45137166C000E45FDD /* cpCCNode.m */,
+				E708BE46137166C000E45FDD /* cpCCNodeImpl.h */,
+				E708BE47137166C000E45FDD /* cpCCNodeImpl.m */,
+				E708BE48137166C000E45FDD /* cpCCSprite.h */,
+				E708BE49137166C000E45FDD /* cpCCSprite.m */,
+				E708BE4A137166C000E45FDD /* cpConstraintNode.h */,
+				E708BE4B137166C000E45FDD /* cpConstraintNode.m */,
+				E708BE4C137166C000E45FDD /* cpShapeNode.h */,
+				E708BE4D137166C000E45FDD /* cpShapeNode.m */,
+				E708BE4E137166C000E45FDD /* SpaceManagerCocos2d.h */,
+				E708BE4F137166C000E45FDD /* SpaceManagerCocos2d.m */,
+			);
+			path = ccExtras;
+			sourceTree = "<group>";
+		};
+		E708BE50137166C000E45FDD /* cpExtras */ = {
+			isa = PBXGroup;
+			children = (
+				E708BE51137166C000E45FDD /* cpPulleyJoint.c */,
+				E708BE52137166C000E45FDD /* cpPulleyJoint.h */,
+			);
+			path = cpExtras;
+			sourceTree = "<group>";
+		};
+		E708BE53137166C000E45FDD /* cpSpaceSerializer */ = {
+			isa = PBXGroup;
+			children = (
+				E708BE54137166C000E45FDD /* cpSpaceSerializer.cpp */,
+				E708BE55137166C000E45FDD /* cpSpaceSerializer.h */,
+				E708BE56137166C000E45FDD /* tinyxml */,
+			);
+			path = cpSpaceSerializer;
+			sourceTree = "<group>";
+		};
+		E708BE56137166C000E45FDD /* tinyxml */ = {
+			isa = PBXGroup;
+			children = (
+				E708BE57137166C000E45FDD /* docs */,
+				E708BE58137166C000E45FDD /* tinystr.cpp */,
+				E708BE59137166C000E45FDD /* tinystr.h */,
+				E708BE5A137166C000E45FDD /* tinyxml.cpp */,
+				E708BE5B137166C000E45FDD /* tinyxml.h */,
+				E708BE5C137166C000E45FDD /* tinyxmlerror.cpp */,
+				E708BE5D137166C000E45FDD /* tinyxmlparser.cpp */,
+			);
+			path = tinyxml;
+			sourceTree = "<group>";
+		};
+		E708BE57137166C000E45FDD /* docs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1085,6 +1195,19 @@
 				E708BE211371542B00E45FDD /* GreedyGameLayer.m in Sources */,
 				E708BE28137155F000E45FDD /* GreedyGameScene.m in Sources */,
 				E708BE2B13715AD800E45FDD /* GreedyGameEnvironment.m in Sources */,
+				E708BE60137166C000E45FDD /* cpCCNode.m in Sources */,
+				E708BE61137166C000E45FDD /* cpCCNodeImpl.m in Sources */,
+				E708BE62137166C000E45FDD /* cpCCSprite.m in Sources */,
+				E708BE63137166C000E45FDD /* cpConstraintNode.m in Sources */,
+				E708BE64137166C000E45FDD /* cpShapeNode.m in Sources */,
+				E708BE65137166C000E45FDD /* SpaceManagerCocos2d.m in Sources */,
+				E708BE66137166C000E45FDD /* cpPulleyJoint.c in Sources */,
+				E708BE67137166C000E45FDD /* cpSpaceSerializer.cpp in Sources */,
+				E708BE68137166C000E45FDD /* tinystr.cpp in Sources */,
+				E708BE69137166C000E45FDD /* tinyxml.cpp in Sources */,
+				E708BE6A137166C000E45FDD /* tinyxmlerror.cpp in Sources */,
+				E708BE6B137166C000E45FDD /* tinyxmlparser.cpp in Sources */,
+				E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

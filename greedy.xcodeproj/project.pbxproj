@@ -153,6 +153,9 @@
 		AB045A9813715E31001253D2 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = AB045A9713715E31001253D2 /* assets */; };
 		AB045A9A13715E97001253D2 /* Meteor1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB045A9913715E97001253D2 /* Meteor1.png */; };
 		AB045AA513716125001253D2 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = AB045AA413716125001253D2 /* Background.m */; };
+		E708BE211371542B00E45FDD /* GreedyGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE201371542B00E45FDD /* GreedyGameLayer.m */; };
+		E708BE28137155F000E45FDD /* GreedyGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE27137155F000E45FDD /* GreedyGameScene.m */; };
+		E708BE2B13715AD800E45FDD /* GreedyGameEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -339,7 +342,6 @@
 		AB0459D313714D3B001253D2 /* utlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utlist.h; path = libs/cocos2d/Support/utlist.h; sourceTree = "<group>"; };
 		AB0459D413714D3B001253D2 /* ZipUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZipUtils.h; path = libs/cocos2d/Support/ZipUtils.h; sourceTree = "<group>"; };
 		AB0459D513714D3B001253D2 /* ZipUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZipUtils.m; path = libs/cocos2d/Support/ZipUtils.m; sourceTree = "<group>"; };
-		AB0459D713714D3B001253D2 /* LICENSE_cocos2d.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_cocos2d.txt; path = libs/LICENSE_cocos2d.txt; sourceTree = "<group>"; };
 		AB0459D913714D3B001253D2 /* CDAudioManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDAudioManager.h; path = libs/CocosDenshion/CDAudioManager.h; sourceTree = "<group>"; };
 		AB0459DA13714D3B001253D2 /* CDAudioManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CDAudioManager.m; path = libs/CocosDenshion/CDAudioManager.m; sourceTree = "<group>"; };
 		AB0459DC13714D3B001253D2 /* CDConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDConfig.h; path = libs/CocosDenshion/CDConfig.h; sourceTree = "<group>"; };
@@ -349,14 +351,12 @@
 		AB0459E113714D3B001253D2 /* CocosDenshion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CocosDenshion.m; path = libs/CocosDenshion/CocosDenshion.m; sourceTree = "<group>"; };
 		AB0459E313714D3B001253D2 /* SimpleAudioEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SimpleAudioEngine.h; path = libs/CocosDenshion/SimpleAudioEngine.h; sourceTree = "<group>"; };
 		AB0459E413714D3B001253D2 /* SimpleAudioEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SimpleAudioEngine.m; path = libs/CocosDenshion/SimpleAudioEngine.m; sourceTree = "<group>"; };
-		AB0459E613714D3B001253D2 /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_CocosDenshion.txt; path = libs/LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
 		AB0459E813714D3B001253D2 /* CLScoreServerPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLScoreServerPost.h; path = libs/cocoslive/CLScoreServerPost.h; sourceTree = "<group>"; };
 		AB0459E913714D3B001253D2 /* CLScoreServerPost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLScoreServerPost.m; path = libs/cocoslive/CLScoreServerPost.m; sourceTree = "<group>"; };
 		AB0459EB13714D3B001253D2 /* CLScoreServerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLScoreServerRequest.h; path = libs/cocoslive/CLScoreServerRequest.h; sourceTree = "<group>"; };
 		AB0459EC13714D3B001253D2 /* CLScoreServerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLScoreServerRequest.m; path = libs/cocoslive/CLScoreServerRequest.m; sourceTree = "<group>"; };
 		AB0459EE13714D3B001253D2 /* cocoslive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocoslive.h; path = libs/cocoslive/cocoslive.h; sourceTree = "<group>"; };
 		AB0459EF13714D3B001253D2 /* cocoslive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = cocoslive.m; path = libs/cocoslive/cocoslive.m; sourceTree = "<group>"; };
-		AB0459F113714D3B001253D2 /* LICENSE_TouchJSON.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_TouchJSON.txt; path = libs/LICENSE_TouchJSON.txt; sourceTree = "<group>"; };
 		AB0459F313714D3B001253D2 /* CDataScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDataScanner.h; path = libs/TouchJSON/CDataScanner.h; sourceTree = "<group>"; };
 		AB0459F413714D3B001253D2 /* CDataScanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CDataScanner.m; path = libs/TouchJSON/CDataScanner.m; sourceTree = "<group>"; };
 		AB0459F613714D3B001253D2 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDataScanner_Extensions.h; path = libs/TouchJSON/Extensions/CDataScanner_Extensions.h; sourceTree = "<group>"; };
@@ -381,7 +381,6 @@
 		AB045A1313714D3B001253D2 /* ZAttributedStringPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZAttributedStringPrivate.h; path = libs/FontLabel/ZAttributedStringPrivate.h; sourceTree = "<group>"; };
 		AB045A1413714D3B001253D2 /* ZFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZFont.h; path = libs/FontLabel/ZFont.h; sourceTree = "<group>"; };
 		AB045A1513714D3B001253D2 /* ZFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZFont.m; path = libs/FontLabel/ZFont.m; sourceTree = "<group>"; };
-		AB045A1713714D3B001253D2 /* LICENSE_FontLabel.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_FontLabel.txt; path = libs/LICENSE_FontLabel.txt; sourceTree = "<group>"; };
 		AB045A1913714D3B001253D2 /* chipmunk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = chipmunk.h; path = libs/Chipmunk/include/chipmunk/chipmunk.h; sourceTree = "<group>"; };
 		AB045A1A13714D3B001253D2 /* chipmunk_ffi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = chipmunk_ffi.h; path = libs/Chipmunk/include/chipmunk/chipmunk_ffi.h; sourceTree = "<group>"; };
 		AB045A1B13714D3B001253D2 /* chipmunk_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = chipmunk_private.h; path = libs/Chipmunk/include/chipmunk/chipmunk_private.h; sourceTree = "<group>"; };
@@ -440,7 +439,6 @@
 		AB045A6813714D3C001253D2 /* cpSpaceStep.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cpSpaceStep.c; path = libs/Chipmunk/src/cpSpaceStep.c; sourceTree = "<group>"; };
 		AB045A6A13714D3C001253D2 /* cpVect.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cpVect.c; path = libs/Chipmunk/src/cpVect.c; sourceTree = "<group>"; };
 		AB045A6C13714D3C001253D2 /* prime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = prime.h; path = libs/Chipmunk/src/prime.h; sourceTree = "<group>"; };
-		AB045A6D13714D3C001253D2 /* LICENSE_Chipmunk.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_Chipmunk.txt; path = libs/LICENSE_Chipmunk.txt; sourceTree = "<group>"; };
 		AB045A6F13714D3C001253D2 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		AB045A7013714D3C001253D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB045A7213714D3C001253D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -451,12 +449,12 @@
 		AB045A7913714D3C001253D2 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		AB045A7B13714D3C001253D2 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
-		AB045A9313715AA7001253D2 /* AsteroidSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidSprite.h; sourceTree = "<group>"; };
-		AB045A9413715AA7001253D2 /* AsteroidSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidSprite.m; sourceTree = "<group>"; };
-		AB045A9713715E31001253D2 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
-		AB045A9913715E97001253D2 /* Meteor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Meteor1.png; path = assets/meteor/Meteor1.png; sourceTree = "<group>"; };
-		AB045AA313716125001253D2 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
-		AB045AA413716125001253D2 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		E708BE1F1371542B00E45FDD /* GreedyGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyGameLayer.h; sourceTree = "<group>"; };
+		E708BE201371542B00E45FDD /* GreedyGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameLayer.m; sourceTree = "<group>"; };
+		E708BE26137155F000E45FDD /* GreedyGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyGameScene.h; sourceTree = "<group>"; };
+		E708BE27137155F000E45FDD /* GreedyGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameScene.m; sourceTree = "<group>"; };
+		E708BE2913715AD800E45FDD /* GreedyGameEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyGameEnvironment.h; sourceTree = "<group>"; };
+		E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameEnvironment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,13 +511,6 @@
 		AB0458D113714D3A001253D2 /* greedy */ = {
 			isa = PBXGroup;
 			children = (
-				AB045AA21371604D001253D2 /* layers */,
-				AB045AA113716021001253D2 /* nodes */,
-				AB0459D713714D3B001253D2 /* LICENSE_cocos2d.txt */,
-				AB0459E613714D3B001253D2 /* LICENSE_CocosDenshion.txt */,
-				AB0459F113714D3B001253D2 /* LICENSE_TouchJSON.txt */,
-				AB045A1713714D3B001253D2 /* LICENSE_FontLabel.txt */,
-				AB045A6D13714D3C001253D2 /* LICENSE_Chipmunk.txt */,
 				AB045A7213714D3C001253D2 /* AppDelegate.h */,
 				AB045A7313714D3C001253D2 /* AppDelegate.m */,
 				AB045A7513714D3C001253D2 /* RootViewController.h */,
@@ -535,6 +526,12 @@
 				AB045A0613714D3B001253D2 /* FontLabel */,
 				AB045A1813714D3B001253D2 /* Chipmunk */,
 				AB045A6E13714D3C001253D2 /* Supporting Files */,
+				E708BE1F1371542B00E45FDD /* GreedyGameLayer.h */,
+				E708BE201371542B00E45FDD /* GreedyGameLayer.m */,
+				E708BE26137155F000E45FDD /* GreedyGameScene.h */,
+				E708BE27137155F000E45FDD /* GreedyGameScene.m */,
+				E708BE2913715AD800E45FDD /* GreedyGameEnvironment.h */,
+				E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */,
 			);
 			path = greedy;
 			sourceTree = "<group>";
@@ -915,7 +912,7 @@
 		AB0458B413714D3A001253D2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = "Digital Five";
+				ORGANIZATIONNAME = "Spacehip Studio";
 			};
 			buildConfigurationList = AB0458B713714D3A001253D2 /* Build configuration list for PBXProject "greedy" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1085,8 +1082,9 @@
 				AB045A7413714D3C001253D2 /* AppDelegate.m in Sources */,
 				AB045A7713714D3C001253D2 /* RootViewController.m in Sources */,
 				AB045A7A13714D3C001253D2 /* HelloWorldLayer.m in Sources */,
-				AB045A9513715AA7001253D2 /* AsteroidSprite.m in Sources */,
-				AB045AA513716125001253D2 /* Background.m in Sources */,
+				E708BE211371542B00E45FDD /* GreedyGameLayer.m in Sources */,
+				E708BE28137155F000E45FDD /* GreedyGameScene.m in Sources */,
+				E708BE2B13715AD800E45FDD /* GreedyGameEnvironment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

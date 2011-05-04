@@ -9,6 +9,7 @@
 #import "GreedyGameEnvironment.h"
 #import "cocos2d.h"
 #import "chipmunk.h"
+#import "SpaceManagerCocos2d.h"
 
 @implementation GreedyGameEnvironment
 
@@ -17,7 +18,11 @@
 - (id) init
 {
     if( (self=[super init])) {
-        _spaceManager = [[SpaceManager alloc] init];
+        //allocate our space manager
+        _spaceManager = [[SpaceManagerCocos2d alloc] init];
+        
+        //add four walls to our screen
+        [_spaceManager addWindowContainmentWithFriction:1.0 elasticity:1.0 inset:cpvzero];
     }
     return self;
 }

@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "chipmunk.h"
-#import "SpaceManager.h"
+#import "SpaceManagerCocos2d.h"
 
 @interface GreedyGameEnvironment : CCNode {
-    SpaceManager *_spaceManager;
+    SpaceManagerCocos2d *_spaceManager;
 }
 
 @property (nonatomic, retain) SpaceManager *manager;

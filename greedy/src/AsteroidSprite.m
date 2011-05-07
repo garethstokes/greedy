@@ -272,7 +272,7 @@ NSMutableArray *createAsteroidShape(int width, int height)
         cpSpaceAddShape(worldSpace, shape);
         
         //create the image for the sprite
-        UIImage *inputImage = [UIImage imageNamed:@"meteor1.png"];
+        UIImage *inputImage = [UIImage imageNamed:@"Meteor1.png"];
         
         //Create a new context to draw into
         CGImageRef imageRef = inputImage.CGImage;

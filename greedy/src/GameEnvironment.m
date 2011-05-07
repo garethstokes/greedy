@@ -18,11 +18,11 @@
 - (id) init
 {
     if( (self=[super init])) {
-        //allocate our space manager
-        _spaceManager = [[SpaceManagerCocos2d alloc] init];
+      //allocate our space manager
+      _spaceManager = [[SpaceManagerCocos2d alloc] init];
         
-        //add four walls to our screen
-        [_spaceManager addWindowContainmentWithFriction:1.0 elasticity:1.0 inset:cpvzero];
+      //add four walls to our screen
+      [_spaceManager addWindowContainmentWithFriction:1.0 elasticity:1.0 inset:cpvzero];
     }
     return self;
 }

@@ -15,7 +15,7 @@
     SpaceManagerCocos2d *_spaceManager;
 }
 
-@property (nonatomic, retain) SpaceManager *manager;
+@property (nonatomic, retain) SpaceManagerCocos2d *manager;
 -(void) step:(ccTime)dt;
 
 @end

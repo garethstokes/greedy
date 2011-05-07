@@ -11,8 +11,9 @@
 
 // Importing Chipmunk headers
 #import "chipmunk.h"
+#import "GameObject.h"
 
-@interface AsteroidSprite : CCSprite {
+@interface AsteroidSprite : CCSprite<GameObject> {
     cpBody *body;
     cpShape *shape;
 }

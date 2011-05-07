@@ -319,7 +319,6 @@ NSMutableArray *createAsteroidShape(int width, int height)
         
         // make this context into a real UIImage object
         CGImageRef imageRefWithAlpha = CGBitmapContextCreateImage(offscreenContext);
-        UIImage *imageWithAlpha = [UIImage imageWithCGImage:imageRefWithAlpha];
         
         CGRect copyRect = CGRectMake(xPixelOffset - (thisSize / 2), height - (thisSize / 2) - yPixelOffset, thisSize, thisSize);
         //NSLog(@"RectForCopy: (%f, %f, %f, %f)", copyRect.origin.x, copyRect.origin.y, copyRect.size.width, copyRect.size.height );
@@ -337,6 +336,10 @@ NSMutableArray *createAsteroidShape(int width, int height)
     
     return self;
 }
+
+- (void) step:(ccTime) delta {}
+- (void) draw:(cpShape *)shape {}
+- (void) attach:(cpSpace *)space {}
 
 - (void) dealloc
 {

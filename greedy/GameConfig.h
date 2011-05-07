@@ -24,5 +24,10 @@
 //
 #define GAME_AUTOROTATION kGameAutorotationUIViewController
 
+// turns on debug messages and such
+#define kDebugFalse 0
+#define kDebugTrue 1
+#define IS_DEBUG_MODE kDebugFalse
+
 
 #endif // __GAME_CONFIG_H

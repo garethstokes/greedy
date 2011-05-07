@@ -25,6 +25,9 @@
 		self.isAccelerometerEnabled = YES;
 		
 		_environment = [[GameEnvironment alloc] init];
+    
+    _greedy = [[Greedy alloc] initWith:_environment];
+    [self addChild:_greedy];
 		
 		[self schedule: @selector(step:)];
 	}
@@ -35,7 +38,7 @@
 {
   CGPoint p = ccp(x, y);
 	
-  NSLog(@"touch location (x => %f, y => %f)", p.x, p.y); 
+  //NSLog(@"touch location (x => %f, y => %f)", p.x, p.y); 
   SpaceManager *manager = [_environment manager];
   cpSpace *space = [manager space];
 	CCSprite *sprite = [[AsteroidSprite alloc] initWithSpace:space 
@@ -45,9 +48,26 @@
   [self addChild:sprite];
 }
 
+static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
+{
+  id <GameObject> obj = shape->data;
+	//[obj draw:shape];
+}	
+
+- (void) draw
+{
+	//loop through the static objects and draw
+  SpaceManager *manager = [_environment manager];
+  cpSpace *space = [manager space];
+  
+	cpSpaceHashEach(space->activeShapes, (cpSpaceHashIterator)drawStaticObject, self);
+	cpSpaceHashEach(space->staticShapes, (cpSpaceHashIterator)drawStaticObject, self);
+}
+
 -(void) step: (ccTime) dt
 {
-    [_environment step:dt];
+  [_environment step:dt];
+  [_greedy step:dt];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -57,10 +77,9 @@
 		
 		location = [[CCDirector sharedDirector] convertToGL: location];
 		
-        //NSLog(@"touch location (x => %f, y => %f)", location.x, location.y);
-		//[self addNewSpriteX: location.x y:location.y];
-        [self addNewAsteroidSprite:location.x y:location.y];
-    }
+    //NSLog(@"touch location (x => %f, y => %f)", location.x, location.y);
+    [self addNewAsteroidSprite:location.x y:location.y];
+  }
 }
 
 @end

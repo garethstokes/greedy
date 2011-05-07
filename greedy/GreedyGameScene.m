@@ -10,16 +10,20 @@
 
 @implementation GreedyGameScene
 
-@synthesize layer=_layer;
+@synthesize gameLayer = _gameLayer;
+@synthesize hudLayer = _hudLayer;
 
 + (id) scene
 {
-    GreedyGameScene *scene = [GreedyGameScene node];
+  GreedyGameScene *scene = [GreedyGameScene node];
     
-    scene.layer = [[GreedyGameLayer alloc] init];
-    [scene addChild:scene.layer z:5];
+  scene.gameLayer = [[[GreedyGameLayer alloc] init] autorelease];
+  [scene addChild:scene.gameLayer z:5];
+  
+  scene.hudLayer = [[[HudLayer alloc] init] autorelease];
+  [scene addChild:scene.hudLayer z:0];
     
-    return scene;
+  return scene;
 }
 
 @end

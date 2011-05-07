@@ -6,12 +6,12 @@
 //  Copyright 2011 Spacehip Studio. All rights reserved.
 //
 
-#import "GreedyGameEnvironment.h"
+#import "GameEnvironment.h"
 #import "cocos2d.h"
 #import "chipmunk.h"
 #import "SpaceManagerCocos2d.h"
 
-@implementation GreedyGameEnvironment
+@implementation GameEnvironment
 
 @synthesize manager=_spaceManager;
 

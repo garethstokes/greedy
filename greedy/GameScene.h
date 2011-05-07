@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "GreedyGameLayer.h"
+#import "GameLayer.h"
 #import "HudLayer.h"
 
-@interface GreedyGameScene : CCScene {
-  GreedyGameLayer *_gameLayer;
+@interface GameScene : CCScene {
+  GameLayer *_gameLayer;
   HudLayer *_hudLayer;
 }
 
-@property (nonatomic, retain) GreedyGameLayer *gameLayer;
+@property (nonatomic, retain) GameLayer *gameLayer;
 @property (nonatomic, retain) HudLayer *hudLayer;
 
 + (id) scene;

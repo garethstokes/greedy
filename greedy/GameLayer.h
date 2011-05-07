@@ -8,11 +8,11 @@
 
 #import "cocos2d.h"
 #import "chipmunk.h"
-#import "GreedyGameEnvironment.h"
+#import "GameEnvironment.h"
 
-@interface GreedyGameLayer : CCLayer
+@interface GameLayer : CCLayer
 {
-    GreedyGameEnvironment *_environment;
+    GameEnvironment *_environment;
 }
 
 -(void) step:(ccTime)dt;

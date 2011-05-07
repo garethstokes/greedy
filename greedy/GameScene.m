@@ -6,18 +6,18 @@
 //  Copyright 2011 Spacehip Studio. All rights reserved.
 //
 
-#import "GreedyGameScene.h"
+#import "GameScene.h"
 
-@implementation GreedyGameScene
+@implementation GameScene
 
 @synthesize gameLayer = _gameLayer;
 @synthesize hudLayer = _hudLayer;
 
 + (id) scene
 {
-  GreedyGameScene *scene = [GreedyGameScene node];
+  GameScene *scene = [GameScene node];
     
-  scene.gameLayer = [[[GreedyGameLayer alloc] init] autorelease];
+  scene.gameLayer = [[[GameLayer alloc] init] autorelease];
   [scene addChild:scene.gameLayer z:5];
   
   scene.hudLayer = [[[HudLayer alloc] init] autorelease];

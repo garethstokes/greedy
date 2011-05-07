@@ -12,7 +12,7 @@
 #import "GameConfig.h"
 #import "HelloWorldLayer.h"
 #import "RootViewController.h"
-#import "GreedyGameScene.h"
+#import "GameScene.h"
 
 @implementation AppDelegate
 
@@ -111,7 +111,7 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [GreedyGameScene scene]];
+	[[CCDirector sharedDirector] runWithScene: [GameScene scene]];
 }
 
 

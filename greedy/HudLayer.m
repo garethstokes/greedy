@@ -7,7 +7,7 @@
 //
 
 #import "HudLayer.h"
-#import "GreedyGameScene.h"
+#import "GameScene.h"
 
 @implementation HudLayer
 
@@ -43,7 +43,7 @@
 - (void)restartGame:(id)sender
 {
   //GreedyGameScene *current = (GreedyGameScene *)[[CCDirector sharedDirector] runningScene];
-  [[CCDirector sharedDirector] replaceScene:[GreedyGameScene scene]];
+  [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
 }
 
 @end

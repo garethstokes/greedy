@@ -151,9 +151,9 @@
 		AB045A7D13714D3C001253D2 /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */; };
 		AB045A9813715E31001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB045A9A13715E97001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E708BE211371542B00E45FDD /* GreedyGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE201371542B00E45FDD /* GreedyGameLayer.m */; };
-		E708BE28137155F000E45FDD /* GreedyGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE27137155F000E45FDD /* GreedyGameScene.m */; };
-		E708BE2B13715AD800E45FDD /* GreedyGameEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */; };
+		E708BE211371542B00E45FDD /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE201371542B00E45FDD /* GameLayer.m */; };
+		E708BE28137155F000E45FDD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE27137155F000E45FDD /* GameScene.m */; };
+		E708BE2B13715AD800E45FDD /* GameEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE2A13715AD800E45FDD /* GameEnvironment.m */; };
 		E708BE60137166C000E45FDD /* cpCCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE45137166C000E45FDD /* cpCCNode.m */; };
 		E708BE61137166C000E45FDD /* cpCCNodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE47137166C000E45FDD /* cpCCNodeImpl.m */; };
 		E708BE62137166C000E45FDD /* cpCCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE49137166C000E45FDD /* cpCCSprite.m */; };
@@ -464,12 +464,12 @@
 		AB045A7913714D3C001253D2 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		AB045A7B13714D3C001253D2 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
-		E708BE1F1371542B00E45FDD /* GreedyGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyGameLayer.h; sourceTree = "<group>"; };
-		E708BE201371542B00E45FDD /* GreedyGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameLayer.m; sourceTree = "<group>"; };
-		E708BE26137155F000E45FDD /* GreedyGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyGameScene.h; sourceTree = "<group>"; };
-		E708BE27137155F000E45FDD /* GreedyGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameScene.m; sourceTree = "<group>"; };
-		E708BE2913715AD800E45FDD /* GreedyGameEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyGameEnvironment.h; sourceTree = "<group>"; };
-		E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyGameEnvironment.m; sourceTree = "<group>"; };
+		E708BE1F1371542B00E45FDD /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = GameLayer.h; sourceTree = "<group>"; };
+		E708BE201371542B00E45FDD /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		E708BE26137155F000E45FDD /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; path = GameScene.h; sourceTree = "<group>"; };
+		E708BE27137155F000E45FDD /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		E708BE2913715AD800E45FDD /* GameEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; path = GameEnvironment.h; sourceTree = "<group>"; };
+		E708BE2A13715AD800E45FDD /* GameEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEnvironment.m; sourceTree = "<group>"; };
 		E708BE44137166C000E45FDD /* cpCCNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNode.h; sourceTree = "<group>"; };
 		E708BE45137166C000E45FDD /* cpCCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpCCNode.m; sourceTree = "<group>"; };
 		E708BE46137166C000E45FDD /* cpCCNodeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNodeImpl.h; sourceTree = "<group>"; };
@@ -577,12 +577,12 @@
 				AB045A1813714D3B001253D2 /* Chipmunk */,
 				AB045A6E13714D3C001253D2 /* Supporting Files */,
 				E708BE42137166C000E45FDD /* SpaceManager */,
-				E708BE1F1371542B00E45FDD /* GreedyGameLayer.h */,
-				E708BE201371542B00E45FDD /* GreedyGameLayer.m */,
-				E708BE26137155F000E45FDD /* GreedyGameScene.h */,
-				E708BE27137155F000E45FDD /* GreedyGameScene.m */,
-				E708BE2913715AD800E45FDD /* GreedyGameEnvironment.h */,
-				E708BE2A13715AD800E45FDD /* GreedyGameEnvironment.m */,
+				E708BE1F1371542B00E45FDD /* GameLayer.h */,
+				E708BE201371542B00E45FDD /* GameLayer.m */,
+				E708BE26137155F000E45FDD /* GameScene.h */,
+				E708BE27137155F000E45FDD /* GameScene.m */,
+				E708BE2913715AD800E45FDD /* GameEnvironment.h */,
+				E708BE2A13715AD800E45FDD /* GameEnvironment.m */,
 				E79795131374F55E005D0310 /* HudLayer.h */,
 				E79795141374F55E005D0310 /* HudLayer.m */,
 			);
@@ -1205,9 +1205,9 @@
 				AB045A7413714D3C001253D2 /* AppDelegate.m in Sources */,
 				AB045A7713714D3C001253D2 /* RootViewController.m in Sources */,
 				AB045A7A13714D3C001253D2 /* HelloWorldLayer.m in Sources */,
-				E708BE211371542B00E45FDD /* GreedyGameLayer.m in Sources */,
-				E708BE28137155F000E45FDD /* GreedyGameScene.m in Sources */,
-				E708BE2B13715AD800E45FDD /* GreedyGameEnvironment.m in Sources */,
+				E708BE211371542B00E45FDD /* GameLayer.m in Sources */,
+				E708BE28137155F000E45FDD /* GameScene.m in Sources */,
+				E708BE2B13715AD800E45FDD /* GameEnvironment.m in Sources */,
 				E708BE60137166C000E45FDD /* cpCCNode.m in Sources */,
 				E708BE61137166C000E45FDD /* cpCCNodeImpl.m in Sources */,
 				E708BE62137166C000E45FDD /* cpCCSprite.m in Sources */,

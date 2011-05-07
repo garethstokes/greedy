@@ -11,7 +11,7 @@
 #import "chipmunk.h"
 #import "SpaceManagerCocos2d.h"
 
-@interface GreedyGameEnvironment : CCNode {
+@interface GameEnvironment : CCNode {
     SpaceManagerCocos2d *_spaceManager;
 }
 

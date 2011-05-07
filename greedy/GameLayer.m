@@ -6,13 +6,13 @@
 //  Copyright 2011 Digital Five. All rights reserved.
 //
 
-#import "GreedyGameLayer.h"
-#import "GreedyGameEnvironment.h"
+#import "GameLayer.h"
+#import "GameEnvironment.h"
 #import "AsteroidSprite.h"
 #import "chipmunk.h"
 #import "SpaceManager.h"
 
-@implementation GreedyGameLayer
+@implementation GameLayer
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -24,7 +24,7 @@
 		self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
 		
-		_environment = [[GreedyGameEnvironment alloc] init];
+		_environment = [[GameEnvironment alloc] init];
 		
 		[self schedule: @selector(step:)];
 	}

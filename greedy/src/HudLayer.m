@@ -31,7 +31,7 @@
                                target:self 
                                selector:@selector(restartGame:)];
 
-  [restartButton setPosition:CGPointMake(210, 15)];
+  [restartButton setPosition:CGPointMake(45, 15)];
   
   CCMenu *menu = [CCMenu menuWithItems:restartButton, nil];
   [menu setPosition:CGPointMake(240, 0)];

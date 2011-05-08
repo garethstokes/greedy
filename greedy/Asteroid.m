@@ -22,9 +22,16 @@
   
   cpShape *asteroid = [environment.manager 
                        addPolyAt:position
-                       mass:_mass 
-                       rotation:0 
+                       mass:50.0f 
+                       rotation:CCRANDOM_0_1()
                        points:[_convexHull points]];
+  
+  // push it in a random direction. 
+  CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
+  cpBodyApplyImpulse(asteroid->body, 
+                     p, 
+                     ccp(rand() % 10000, rand() % 10000));
+
   
   cpCCSprite *sprite = [[AsteroidSprite alloc] initWithPoints:[_convexHull points] 
                                                          size:[_convexHull size] 

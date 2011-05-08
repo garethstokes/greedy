@@ -10,10 +10,12 @@
 #import "cocos2d.h"
 #import "GameLayer.h"
 #import "HudLayer.h"
+#import "Background.h"
 
 @interface GameScene : CCScene {
   GameLayer *_gameLayer;
   HudLayer *_hudLayer;
+  Background *_background;
 }
 
 @property (nonatomic, retain) GameLayer *gameLayer;

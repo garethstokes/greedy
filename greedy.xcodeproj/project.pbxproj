@@ -165,7 +165,6 @@
 		E708BE6B137166C000E45FDD /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5D137166C000E45FDD /* tinyxmlparser.cpp */; };
 		E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5F137166C000E45FDD /* SpaceManager.mm */; };
 		E73C9AC91375023000A7DF8D /* AsteroidSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AC61375023000A7DF8D /* AsteroidSprite.m */; };
-		E73C9ACA1375023000A7DF8D /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AC81375023000A7DF8D /* Background.m */; };
 		E73C9AD31375024300A7DF8D /* GameEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACC1375024300A7DF8D /* GameEnvironment.m */; };
 		E73C9AD41375024300A7DF8D /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACE1375024300A7DF8D /* GameLayer.m */; };
 		E73C9AD51375024300A7DF8D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AD01375024300A7DF8D /* GameScene.m */; };
@@ -173,6 +172,9 @@
 		E75E38D213764ECB00464CED /* GDKaosEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E75E38D113764ECB00464CED /* GDKaosEngine.m */; };
 		E76AE4B313766A6A00A94EDA /* ConvexHull.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B213766A6A00A94EDA /* ConvexHull.m */; };
 		E76AE4B71376757100A94EDA /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B61376757100A94EDA /* Asteroid.m */; };
+		E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DB137684ED0092DDA6 /* bg_stars.png */; };
+		E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DC137684ED0092DDA6 /* nebula.png */; };
+		E7B6D5E11376852D0092DDA6 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6D5E01376852D0092DDA6 /* Background.m */; };
 		E7CE21711371780600A700EA /* Meteor1.png in Resources */ = {isa = PBXBuildFile; fileRef = E7CE21701371780600A700EA /* Meteor1.png */; };
 		E7E5D93313750430004283ED /* Greedy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E5D93213750430004283ED /* Greedy.m */; };
 		E7E5D94813750A0E004283ED /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D93E13750A0E004283ED /* eye.png */; };
@@ -504,8 +506,6 @@
 		E708BE5F137166C000E45FDD /* SpaceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpaceManager.mm; sourceTree = "<group>"; };
 		E73C9AC51375023000A7DF8D /* AsteroidSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsteroidSprite.h; path = src/AsteroidSprite.h; sourceTree = "<group>"; };
 		E73C9AC61375023000A7DF8D /* AsteroidSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsteroidSprite.m; path = src/AsteroidSprite.m; sourceTree = "<group>"; };
-		E73C9AC71375023000A7DF8D /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = src/Background.h; sourceTree = "<group>"; };
-		E73C9AC81375023000A7DF8D /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = src/Background.m; sourceTree = "<group>"; };
 		E73C9ACB1375024300A7DF8D /* GameEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameEnvironment.h; path = src/GameEnvironment.h; sourceTree = "<group>"; };
 		E73C9ACC1375024300A7DF8D /* GameEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameEnvironment.m; path = src/GameEnvironment.m; sourceTree = "<group>"; };
 		E73C9ACD1375024300A7DF8D /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = src/GameLayer.h; sourceTree = "<group>"; };
@@ -521,6 +521,10 @@
 		E76AE4B51376757000A94EDA /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		E76AE4B61376757100A94EDA /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
 		E7979519137501CB005D0310 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = src/protocols/GameObject.h; sourceTree = "<group>"; };
+		E7B6D5DB137684ED0092DDA6 /* bg_stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_stars.png; sourceTree = "<group>"; };
+		E7B6D5DC137684ED0092DDA6 /* nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nebula.png; sourceTree = "<group>"; };
+		E7B6D5DF1376852D0092DDA6 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		E7B6D5E01376852D0092DDA6 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		E7CE21701371780600A700EA /* Meteor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meteor1.png; sourceTree = "<group>"; };
 		E7E5D93113750430004283ED /* Greedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Greedy.h; sourceTree = "<group>"; };
 		E7E5D93213750430004283ED /* Greedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Greedy.m; sourceTree = "<group>"; };
@@ -607,8 +611,6 @@
 				E73C9AD21375024300A7DF8D /* HudLayer.m */,
 				E73C9AC51375023000A7DF8D /* AsteroidSprite.h */,
 				E73C9AC61375023000A7DF8D /* AsteroidSprite.m */,
-				E73C9AC71375023000A7DF8D /* Background.h */,
-				E73C9AC81375023000A7DF8D /* Background.m */,
 				AB045A7213714D3C001253D2 /* AppDelegate.h */,
 				AB045A7313714D3C001253D2 /* AppDelegate.m */,
 				AB045A7513714D3C001253D2 /* RootViewController.h */,
@@ -627,6 +629,8 @@
 				E708BE42137166C000E45FDD /* SpaceManager */,
 				E76AE4B51376757000A94EDA /* Asteroid.h */,
 				E76AE4B61376757100A94EDA /* Asteroid.m */,
+				E7B6D5DF1376852D0092DDA6 /* Background.h */,
+				E7B6D5E01376852D0092DDA6 /* Background.m */,
 			);
 			path = greedy;
 			sourceTree = "<group>";
@@ -1042,9 +1046,19 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		E7B6D5DA137684ED0092DDA6 /* backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				E7B6D5DB137684ED0092DDA6 /* bg_stars.png */,
+				E7B6D5DC137684ED0092DDA6 /* nebula.png */,
+			);
+			path = backgrounds;
+			sourceTree = "<group>";
+		};
 		E7CE216E1371780600A700EA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				E7B6D5DA137684ED0092DDA6 /* backgrounds */,
 				E7E5D93D13750A0E004283ED /* greedy */,
 				E7CE216F1371780600A700EA /* meteor */,
 			);
@@ -1149,6 +1163,8 @@
 				E7E5D94F13750A0E004283ED /* greedy_open_5.png in Resources */,
 				E7E5D95013750A0E004283ED /* greedy_open_5_offset_a.png in Resources */,
 				E7E5D95113750A0E004283ED /* greedy_open_5_offset_b.png in Resources */,
+				E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */,
+				E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1297,7 +1313,6 @@
 				E708BE6B137166C000E45FDD /* tinyxmlparser.cpp in Sources */,
 				E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */,
 				E73C9AC91375023000A7DF8D /* AsteroidSprite.m in Sources */,
-				E73C9ACA1375023000A7DF8D /* Background.m in Sources */,
 				E73C9AD31375024300A7DF8D /* GameEnvironment.m in Sources */,
 				E73C9AD41375024300A7DF8D /* GameLayer.m in Sources */,
 				E73C9AD51375024300A7DF8D /* GameScene.m in Sources */,
@@ -1306,6 +1321,7 @@
 				E75E38D213764ECB00464CED /* GDKaosEngine.m in Sources */,
 				E76AE4B313766A6A00A94EDA /* ConvexHull.m in Sources */,
 				E76AE4B71376757100A94EDA /* Asteroid.m in Sources */,
+				E7B6D5E11376852D0092DDA6 /* Background.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

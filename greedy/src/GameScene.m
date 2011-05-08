@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "Background.h"
 
 @implementation GameScene
 
@@ -16,12 +17,15 @@
 + (id) scene
 {
   GameScene *scene = [GameScene node];
-    
+  
+  Background *background = [[Background alloc] init];
+  [scene addChild:background z:0];
+  
   scene.gameLayer = [[[GameLayer alloc] init] autorelease];
-  [scene addChild:scene.gameLayer z:5];
+  [scene addChild:scene.gameLayer z:10];
   
   scene.hudLayer = [[[HudLayer alloc] init] autorelease];
-  [scene addChild:scene.hudLayer z:0];
+  [scene addChild:scene.hudLayer z:100];
     
   return scene;
 }

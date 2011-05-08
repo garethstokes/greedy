@@ -28,5 +28,6 @@ enum {
 @property (nonatomic) cpShape *shape;
 
 - (id) initWith:(GameEnvironment *)environment;
+- (void) step:(ccTime) delta;
 
 @end

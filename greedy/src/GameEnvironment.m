@@ -22,7 +22,8 @@
       _spaceManager = [[SpaceManagerCocos2d alloc] init];
         
       //add four walls to our screen
-      [_spaceManager addWindowContainmentWithFriction:1.0 elasticity:1.0 inset:cpvzero];
+      [_spaceManager addWindowContainmentWithFriction:0.0 elasticity:0.01f inset:cpvzero];
+      [_spaceManager setGravity:ccp(0,0)];
     }
     return self;
 }

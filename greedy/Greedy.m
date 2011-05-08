@@ -22,8 +22,8 @@
   
   SpaceManagerCocos2d *manager = [environment manager];
   cpShape *shape = [manager 
-                    addRectAt:ccp(100,100) 
-                    mass:5.0f 
+                    addRectAt:ccp(100,200) 
+                    mass:1.0f 
                     width:50 
                     height:75 
                     rotation:0];
@@ -36,6 +36,11 @@
   [sprite setScaleY:0.5f];
   [self addChild:sprite];
   
+  // set physics
+  cpBodyApplyImpulse(shape->body, ccp(0,-150),cpvzero); // one time push.
+  cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
+  cpBodySetVelLimit(shape->body, 150);
+  
   _shape = shape;
   _sprite = sprite;
   return self;
@@ -43,7 +48,9 @@
 
 - (void) step:(ccTime) delta
 {
-
+  cpBody *body = _shape->body;
+  //NSLog(@"body force: (x => %f, y => %f)", body->f.x, body->f.y);
+  NSLog(@"body velocity: (x => %f, y => %f)", body->v.x, body->v.y);
 }
 
 - (void) draw

@@ -11,13 +11,13 @@
 
 // Importing Chipmunk headers
 #import "chipmunk.h"
+#import "cpCCSprite.h"
 #import "GameObject.h"
 
-@interface AsteroidSprite : CCSprite<GameObject> {
-    cpBody *body;
-    cpShape *shape;
+@interface AsteroidSprite : cpCCSprite {
+
 }
 
--(id) initWithSpace:(cpSpace *)worldSpace position:(CGPoint)position size:(int)size;
+-(id) initWithPoints:(NSArray *)convexHull size:(int)size withShape:(cpShape *)shape;
 
 @end

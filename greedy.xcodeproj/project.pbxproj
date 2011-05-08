@@ -170,6 +170,9 @@
 		E73C9AD41375024300A7DF8D /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACE1375024300A7DF8D /* GameLayer.m */; };
 		E73C9AD51375024300A7DF8D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AD01375024300A7DF8D /* GameScene.m */; };
 		E73C9AD61375024300A7DF8D /* HudLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AD21375024300A7DF8D /* HudLayer.m */; };
+		E75E38D213764ECB00464CED /* GDKaosEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E75E38D113764ECB00464CED /* GDKaosEngine.m */; };
+		E76AE4B313766A6A00A94EDA /* ConvexHull.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B213766A6A00A94EDA /* ConvexHull.m */; };
+		E76AE4B71376757100A94EDA /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B61376757100A94EDA /* Asteroid.m */; };
 		E7CE21711371780600A700EA /* Meteor1.png in Resources */ = {isa = PBXBuildFile; fileRef = E7CE21701371780600A700EA /* Meteor1.png */; };
 		E7E5D93313750430004283ED /* Greedy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E5D93213750430004283ED /* Greedy.m */; };
 		E7E5D94813750A0E004283ED /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D93E13750A0E004283ED /* eye.png */; };
@@ -511,6 +514,12 @@
 		E73C9AD01375024300A7DF8D /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = src/GameScene.m; sourceTree = "<group>"; };
 		E73C9AD11375024300A7DF8D /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HudLayer.h; path = src/HudLayer.h; sourceTree = "<group>"; };
 		E73C9AD21375024300A7DF8D /* HudLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HudLayer.m; path = src/HudLayer.m; sourceTree = "<group>"; };
+		E75E38D013764ECB00464CED /* GDKaosEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDKaosEngine.h; path = src/GDKaosEngine.h; sourceTree = "<group>"; };
+		E75E38D113764ECB00464CED /* GDKaosEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDKaosEngine.m; path = src/GDKaosEngine.m; sourceTree = "<group>"; };
+		E76AE4B113766A6A00A94EDA /* ConvexHull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConvexHull.h; path = src/ConvexHull.h; sourceTree = "<group>"; };
+		E76AE4B213766A6A00A94EDA /* ConvexHull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConvexHull.m; path = src/ConvexHull.m; sourceTree = "<group>"; };
+		E76AE4B51376757000A94EDA /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
+		E76AE4B61376757100A94EDA /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
 		E7979519137501CB005D0310 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = src/protocols/GameObject.h; sourceTree = "<group>"; };
 		E7CE21701371780600A700EA /* Meteor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meteor1.png; sourceTree = "<group>"; };
 		E7E5D93113750430004283ED /* Greedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Greedy.h; sourceTree = "<group>"; };
@@ -582,6 +591,10 @@
 			isa = PBXGroup;
 			children = (
 				E797951713750132005D0310 /* Protocols */,
+				E76AE4B113766A6A00A94EDA /* ConvexHull.h */,
+				E76AE4B213766A6A00A94EDA /* ConvexHull.m */,
+				E75E38D013764ECB00464CED /* GDKaosEngine.h */,
+				E75E38D113764ECB00464CED /* GDKaosEngine.m */,
 				E73C9ACB1375024300A7DF8D /* GameEnvironment.h */,
 				E73C9ACC1375024300A7DF8D /* GameEnvironment.m */,
 				E73C9ACD1375024300A7DF8D /* GameLayer.h */,
@@ -612,6 +625,8 @@
 				AB045A1813714D3B001253D2 /* Chipmunk */,
 				AB045A6E13714D3C001253D2 /* Supporting Files */,
 				E708BE42137166C000E45FDD /* SpaceManager */,
+				E76AE4B51376757000A94EDA /* Asteroid.h */,
+				E76AE4B61376757100A94EDA /* Asteroid.m */,
 			);
 			path = greedy;
 			sourceTree = "<group>";
@@ -1288,6 +1303,9 @@
 				E73C9AD51375024300A7DF8D /* GameScene.m in Sources */,
 				E73C9AD61375024300A7DF8D /* HudLayer.m in Sources */,
 				E7E5D93313750430004283ED /* Greedy.m in Sources */,
+				E75E38D213764ECB00464CED /* GDKaosEngine.m in Sources */,
+				E76AE4B313766A6A00A94EDA /* ConvexHull.m in Sources */,
+				E76AE4B71376757100A94EDA /* Asteroid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

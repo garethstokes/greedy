@@ -28,6 +28,7 @@
                     height:75 
                     rotation:0];
   
+  
   cpCCSprite *sprite = [cpCCSprite 
                             spriteWithShape:shape 
                             file:@"greedy_open_5.png"];
@@ -37,7 +38,7 @@
   [self addChild:sprite];
   
   // set physics
-  cpBodyApplyImpulse(shape->body, ccp(0,-150),cpvzero); // one time push.
+  cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
   cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
   cpBodySetVelLimit(shape->body, 150);
   
@@ -48,9 +49,9 @@
 
 - (void) step:(ccTime) delta
 {
-  cpBody *body = _shape->body;
+  //cpBody *body = _shape->body;
   //NSLog(@"body force: (x => %f, y => %f)", body->f.x, body->f.y);
-  NSLog(@"body velocity: (x => %f, y => %f)", body->v.x, body->v.y);
+  //NSLog(@"body velocity: (x => %f, y => %f)", body->v.x, body->v.y);
 }
 
 - (void) draw

@@ -8,9 +8,10 @@
 
 #import "GameLayer.h"
 #import "GameEnvironment.h"
-#import "AsteroidSprite.h"
 #import "chipmunk.h"
 #import "SpaceManager.h"
+#import "Asteroid.h"
+#import "GDKaosEngine.h"
 
 @implementation GameLayer
 
@@ -26,31 +27,30 @@
 		
 		_environment = [[GameEnvironment alloc] init];
     
+    // asteroids.
+    CGSize wins = [[CCDirector sharedDirector] winSize];
+    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:10.0f];
+    
+    while ([engine hasRoom])
+    {
+      Asteroid *a = [[Asteroid alloc] initWithEnvironment:_environment 
+                                             withPosition:[engine position]];
+      [engine addArea:[a area]];
+      [self addChild:a];
+    }
+
+    // greedy!
     _greedy = [[Greedy alloc] initWith:_environment];
     [self addChild:_greedy];
-		
+    
 		[self schedule: @selector(step:)];
 	}
 	return self;
 }
 
--(void) addNewAsteroidSprite: (float)x y:(float)y
-{
-  CGPoint p = ccp(x, y);
-	
-  //NSLog(@"touch location (x => %f, y => %f)", p.x, p.y); 
-  SpaceManager *manager = [_environment manager];
-  cpSpace *space = [manager space];
-	CCSprite *sprite = [[AsteroidSprite alloc] initWithSpace:space 
-                                             position:p 
-                                             size:rand() % 10];
-    
-  [self addChild:sprite];
-}
-
 static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
 {
-  id <GameObject> obj = shape->data;
+  //id <GameObject> obj = shape->data;
 	//[obj draw:shape];
 }	
 
@@ -78,7 +78,7 @@ static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
 		location = [[CCDirector sharedDirector] convertToGL: location];
 		
     //NSLog(@"touch location (x => %f, y => %f)", location.x, location.y);
-    [self addNewAsteroidSprite:location.x y:location.y];
+    //[self addNewAsteroidSprite:location.x y:location.y];
   }
 }
 

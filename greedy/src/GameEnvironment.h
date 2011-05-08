@@ -17,5 +17,5 @@
 
 @property (nonatomic, retain) SpaceManagerCocos2d *manager;
 -(void) step:(ccTime)dt;
-
+-(void) addNewAsteroidSprite:(cpBody *)body;
 @end

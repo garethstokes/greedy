@@ -52,11 +52,11 @@ eachShape(void *ptr, void* unused)
 
 -(void) addNewAsteroidSprite: (float)x y:(float)y
 {
-    CGPoint p = ccp(x, y);
+  //CGPoint p = ccp(x, y);
 	
-	CCSprite *sprite = [[AsteroidSprite alloc] initWithSpace:space position:p size:rand() % 10];
+	//CCSprite *sprite = [[AsteroidSprite alloc] initWithSpace:space position:p size:rand() % 10];
     
-    [self addChild:sprite];
+  //[self addChild:sprite];
 }
 
 -(void) addNewSpriteX: (float)x y:(float)y

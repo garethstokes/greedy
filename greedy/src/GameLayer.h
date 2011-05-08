@@ -18,6 +18,5 @@
 }
 
 -(void) step:(ccTime)dt;
--(void) addNewAsteroidSprite: (float)x y:(float)y;
 
 @end

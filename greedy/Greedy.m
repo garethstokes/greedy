@@ -38,10 +38,12 @@
   [self addChild:sprite];
   
   // set physics
-  cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
+  //cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
   cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
-  cpBodySetVelLimit(shape->body, 150);
+  cpBodySetVelLimit(shape->body, 50);
   
+
+  _isThrusting = false;
   _shape = shape;
   _sprite = sprite;
   return self;
@@ -49,9 +51,20 @@
 
 - (void) step:(ccTime) delta
 {
+  if (_isThrusting)
+  {
+    cpVect force = cpvforangle(_shape->body->a);
+    force = cpvmult(cpvperp(force), 4);
+    cpBodyApplyImpulse(_shape->body, force,cpvzero);
+    return;
+  }
+  
+  cpBodyApplyImpulse(_shape->body, ccp(0,-2),cpvzero);
+  
   //cpBody *body = _shape->body;
   //NSLog(@"body force: (x => %f, y => %f)", body->f.x, body->f.y);
   //NSLog(@"body velocity: (x => %f, y => %f)", body->v.x, body->v.y);
+  //NSLog(@"body angle: %f", body->a);
 }
 
 - (void) draw
@@ -76,5 +89,21 @@
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 #endif
 }
+
+- (void) applyThrust
+{
+  _isThrusting = true;
+}
+- (void) removeThrust
+{
+  _isThrusting = false;
+}
+
+- (void) setAngle:(cpFloat)value
+{
+  cpBody *body = _shape->body;
+  cpBodySetAngle(body, value);
+}
+
 
 @end

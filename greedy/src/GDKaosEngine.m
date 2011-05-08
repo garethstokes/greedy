@@ -43,7 +43,7 @@
   int y = (int)_worldSize.height;
   CGPoint position = ccp(arc4random() % x, arc4random() % y);
   
-  NSLog(@"kaos engine position: (x => %f, y => %f)", position.x, position.y);
+  //NSLog(@"kaos engine position: (x => %f, y => %f)", position.x, position.y);
   return position;
 }
 

@@ -23,11 +23,15 @@ enum {
 @interface Greedy : CCLayer {
   cpShape *_shape;
   CCSprite *_sprite;
+  bool _isThrusting;
 }
 
 @property (nonatomic) cpShape *shape;
 
 - (id) initWith:(GameEnvironment *)environment;
 - (void) step:(ccTime) delta;
+- (void) applyThrust;
+- (void) removeThrust;
+- (void) setAngle:(cpFloat)value;
 
 @end

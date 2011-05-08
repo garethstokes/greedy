@@ -12,6 +12,7 @@
 #import "SpaceManager.h"
 #import "Asteroid.h"
 #import "GDKaosEngine.h"
+#import "Background.h"
 
 @implementation GameLayer
 
@@ -24,6 +25,10 @@
 		
 		self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
+    
+    // background
+    Background *background = [[Background alloc] init];
+    [self addChild:background z:0];
 		
 		_environment = [[GameEnvironment alloc] init];
     
@@ -70,16 +75,32 @@ static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
   [_greedy step:dt];
 }
 
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  [_greedy applyThrust];
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	for( UITouch *touch in touches ) {
-		CGPoint location = [touch locationInView: [touch view]];
-		
-		location = [[CCDirector sharedDirector] convertToGL: location];
-		
-    //NSLog(@"touch location (x => %f, y => %f)", location.x, location.y);
-    //[self addNewAsteroidSprite:location.x y:location.y];
-  }
+  [_greedy removeThrust];
+}
+
+- (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+  static float prevX=0, prevY=0;
+  
+#define kFilterFactor 0.05f
+  
+	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
+	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;
+  
+	prevX = accelX;
+	prevY = accelY;
+  
+  float angle = accelX * 8;
+  [_greedy setAngle:angle];
+  
+  NSLog(@"accelerometer angle: (x => %f, y => %f)", accelX, accelY);
 }
 
 @end

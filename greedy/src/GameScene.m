@@ -18,9 +18,6 @@
 {
   GameScene *scene = [GameScene node];
   
-  Background *background = [[Background alloc] init];
-  [scene addChild:background z:0];
-  
   scene.gameLayer = [[[GameLayer alloc] init] autorelease];
   [scene addChild:scene.gameLayer z:10];
   

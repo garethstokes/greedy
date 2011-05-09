@@ -39,10 +39,10 @@
   
   // set physics
   //cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
-  cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
-  cpBodySetVelLimit(shape->body, 50);
+  //cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
+  cpBodySetVelLimit(shape->body, 80);
   
-
+  _lastPosition = shape->body->p;
   _isThrusting = false;
   _shape = shape;
   _sprite = sprite;
@@ -51,6 +51,15 @@
 
 - (void) step:(ccTime) delta
 {
+  //Speed += ((MoveDirection * MaximumSpeed) - Speed) * AccelerationFactor
+  cpVect currentPosition = _shape->body->p;
+  float speed = ccpDistance(_lastPosition, currentPosition);
+  _lastPosition = currentPosition;
+  
+  cpBodySetAngle(_shape->body, _angle);
+  
+  NSLog(@"speed: %f", speed);
+  
   if (_isThrusting)
   {
     cpVect force = cpvforangle(_shape->body->a);
@@ -101,8 +110,7 @@
 
 - (void) setAngle:(cpFloat)value
 {
-  cpBody *body = _shape->body;
-  cpBodySetAngle(body, value);
+  _angle = value;
 }
 
 

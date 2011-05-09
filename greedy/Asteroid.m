@@ -26,7 +26,7 @@
                        rotation:CCRANDOM_0_1()
                        points:[_convexHull points]];
   
-  // push it in a random direction. 
+  // push it in a random direction.
   CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
   cpBodyApplyImpulse(asteroid->body, 
                      p, 

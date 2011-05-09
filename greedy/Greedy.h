@@ -24,6 +24,8 @@ enum {
   cpShape *_shape;
   CCSprite *_sprite;
   bool _isThrusting;
+  cpVect _lastPosition;
+  cpFloat _angle;
 }
 
 @property (nonatomic) cpShape *shape;

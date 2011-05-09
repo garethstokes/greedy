@@ -89,7 +89,7 @@ static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
 {
   static float prevX=0, prevY=0;
   
-#define kFilterFactor 0.05f
+#define kFilterFactor 0.1f
   
 	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
 	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;
@@ -100,7 +100,7 @@ static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
   float angle = accelX * 8;
   [_greedy setAngle:angle];
   
-  NSLog(@"accelerometer angle: (x => %f, y => %f)", accelX, accelY);
+  //NSLog(@"accelerometer angle: (x => %f, y => %f)", accelX, accelY);
 }
 
 @end

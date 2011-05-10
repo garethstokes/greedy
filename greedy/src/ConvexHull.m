@@ -150,21 +150,6 @@ NSMutableArray *quickHull(NSMutableArray *points)
   return convexHull;
 }
 
-void drawCubicBezier(CGPoint origin, CGPoint control1, CGPoint control2, CGPoint destination, int segments, CGPoint *vertices)
-{
-  //CGPoint vertices[segments + 1];
-  
-  float t = 0.0;
-  for(int i = 0; i < segments; i++)
-  {
-    float x = pow(1 - t, 3) * origin.x + 3.0 * pow(1 - t, 2) * t * control1.x + 3.0 * (1 - t) * t * t * control2.x + t * t * t * destination.x;
-    float y = pow(1 - t, 3) * origin.y + 3.0 * pow(1 - t, 2) * t * control1.y + 3.0 * (1 - t) * t * t * control2.y + t * t * t * destination.y;
-    vertices[i] = CGPointMake(x, y);
-    t += 1.0 / segments;
-  }
-  vertices[segments] = destination;
-}
-
 NSMutableArray *createAsteroidShape(int width, int height)
 {
   NSMutableArray *points = [[NSMutableArray alloc] init];
@@ -228,6 +213,7 @@ NSMutableArray *createAsteroidShape(int width, int height)
 
 - (CGFloat) area
 {
+/*
   int minx = 0;
   int miny = 0;
   int maxx = 0;
@@ -243,6 +229,27 @@ NSMutableArray *createAsteroidShape(int width, int height)
     i++;
   }
   return (maxx - minx) * (maxy - miny);
+*/    
+
+  int val = 0;
+  int areaTotal = 0;
+  CGPoint p1;
+  CGPoint p2;
+  int pointsCount = [_points count];
+    
+  for(int i = 0; i < pointsCount; i++){
+    p1 = [(NSValue *)[_points objectAtIndex:i] CGPointValue];
+    if (i + 1 < pointsCount)
+      p2 = [(NSValue *)[_points objectAtIndex:i + 1] CGPointValue]; 
+    else
+      p2 = [(NSValue *)[_points objectAtIndex:0] CGPointValue]; 
+   
+    val = (p1.x * p2.y) - (p1.y * p2.x);
+       
+    areaTotal = areaTotal + val;
+  }
+
+  return abs(areaTotal / 2);
 }
 
 - (NSArray *)points { return _points; }

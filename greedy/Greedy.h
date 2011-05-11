@@ -11,6 +11,7 @@
 #import "cocos2d.h"
 #import "chipmunk.h"
 #import "GameEnvironment.h"
+#import "Asteroid.h"
 
 enum {
 	kGreedyOpen1 = 1,
@@ -26,9 +27,11 @@ enum {
   bool _isThrusting;
   cpVect _lastPosition;
   cpFloat _angle;
+  NSMutableArray *_asteroids;
 }
 
 @property (nonatomic) cpShape *shape;
+@property (retain) NSMutableArray *asteroids;
 
 - (id) initWith:(GameEnvironment *)environment;
 - (void) step:(ccTime) delta;

@@ -12,9 +12,19 @@
 #import "SpaceManager.h"
 #import "GameConfig.h"
 
-
 @implementation Greedy
 @synthesize shape = _shape;
+@synthesize asteroids = _asteroids;
+
+static void
+gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
+{
+  Greedy *this = (Greedy *)body->data;
+  Asteroid *a = [this.asteroids indexOfObject:0];
+	//cpVect g = cpvmult(ccpForAngle(ccpAngle(body->p, p)), -5000.0f);
+	
+	cpBodyUpdateVelocity(body, gravity, damping, dt);
+}
 
 - (id) initWith:(GameEnvironment *)environment
 {
@@ -28,7 +38,6 @@
                     height:75 
                     rotation:0];
   
-  
   cpCCSprite *sprite = [cpCCSprite 
                             spriteWithShape:shape 
                             file:@"greedy_open_5.png"];
@@ -38,9 +47,12 @@
   [self addChild:sprite];
   
   // set physics
+  cpBody *body = shape->body;
   //cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
   //cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
-  cpBodySetVelLimit(shape->body, 80);
+  cpBodySetVelLimit(body, 80);
+  body->velocity_func = gravityVelocityFunc;
+  body->data = self;
   
   _lastPosition = shape->body->p;
   _isThrusting = false;

@@ -15,6 +15,7 @@
 {
   GameEnvironment *_environment;
   Greedy *_greedy;
+  NSMutableArray *_asteroids;
 }
 
 -(void) step:(ccTime)dt;

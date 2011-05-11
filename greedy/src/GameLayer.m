@@ -34,18 +34,21 @@
     
     // asteroids.
     CGSize wins = [[CCDirector sharedDirector] winSize];
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:10.0f];
+    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:1.0f];
     
+    _asteroids = [[NSMutableArray alloc] init];
     while ([engine hasRoom])
     {
       Asteroid *a = [[Asteroid alloc] initWithEnvironment:_environment 
                                              withPosition:[engine position]];
       [engine addArea:[a area]];
       [self addChild:a];
+      [_asteroids addObject:a];
     }
 
     // greedy!
     _greedy = [[Greedy alloc] initWith:_environment];
+    [_greedy setAsteroids:_asteroids];
     [self addChild:_greedy];
     
 		[self schedule: @selector(step:)];
@@ -86,10 +89,10 @@ static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
 }
 
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
-{
+{ 
   static float prevX=0, prevY=0;
   
-#define kFilterFactor 0.1f
+#define kFilterFactor 0.05f
   
 	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
 	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;
@@ -97,8 +100,8 @@ static void drawStaticObject(cpShape *shape, GameLayer *gameLayer)
 	prevX = accelX;
 	prevY = accelY;
   
-  float angle = accelX * 8;
-  [_greedy setAngle:angle];
+  float angle = accelX * 4;
+  [_greedy setAngle:angle + (angle * 2)];
   
   //NSLog(@"accelerometer angle: (x => %f, y => %f)", accelX, accelY);
 }

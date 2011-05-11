@@ -229,27 +229,18 @@ NSMutableArray *createAsteroidShape(int width, int height)
     i++;
   }
   return (maxx - minx) * (maxy - miny);
-*/    
-
-  int val = 0;
-  int areaTotal = 0;
-  CGPoint p1;
-  CGPoint p2;
-  int pointsCount = [_points count];
-    
-  for(int i = 0; i < pointsCount; i++){
-    p1 = [(NSValue *)[_points objectAtIndex:i] CGPointValue];
-    if (i + 1 < pointsCount)
-      p2 = [(NSValue *)[_points objectAtIndex:i + 1] CGPointValue]; 
-    else
-      p2 = [(NSValue *)[_points objectAtIndex:0] CGPointValue]; 
+  /*
+   int i = 0;
    
-    val = (p1.x * p2.y) - (p1.y * p2.x);
-       
-    areaTotal = areaTotal + val;
-  }
-
-  return abs(areaTotal / 2);
+   CGPoint points[[_points count]]; 
+   for (NSValue *val in _points) {
+   CGPoint x = [val CGPointValue];
+   points[i] = x;
+   i++;
+   }
+   return 5.0f;
+   //return cpAreaForPoly([_points count], points);
+   */
 }
 
 - (NSArray *)points { return _points; }

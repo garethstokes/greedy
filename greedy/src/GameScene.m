@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "Background.h"
+#import "Balsamic.h"
 
 @implementation GameScene
 
@@ -22,7 +23,10 @@
   [scene addChild:scene.gameLayer z:10];
   
   scene.hudLayer = [[[HudLayer alloc] init] autorelease];
-  [scene addChild:scene.hudLayer z:100];
+  [scene addChild:scene.hudLayer z:50];
+  
+  Balsamic *vinegarette = [[[Balsamic alloc] init] autorelease];
+  [scene addChild:vinegarette z:49];
     
   return scene;
 }

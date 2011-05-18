@@ -55,7 +55,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     // asteroids.
     CGSize wins = [[CCDirector sharedDirector] winSize];
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:1.0f];
+    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:15.0f];
     
     _asteroids = [[NSMutableArray alloc] init];
     while ([engine hasRoom])
@@ -112,7 +112,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 { 
   static float prevX=0, prevY=0;
   
-#define kFilterFactor 0.2f
+#define kFilterFactor 0.1f
   
 	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
 	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;

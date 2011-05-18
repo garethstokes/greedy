@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 
 @interface Background : CCLayer {
-    
+  CCParallaxNode *_parallax;  
 }
 
 @end

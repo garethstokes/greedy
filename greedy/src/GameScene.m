@@ -19,14 +19,21 @@
 {
   GameScene *scene = [GameScene node];
   
-  scene.gameLayer = [[[GameLayer alloc] init] autorelease];
-  [scene addChild:scene.gameLayer z:10];
+  // background
+  Background *background = [[[Background alloc] init] autorelease];
+  [scene addChild:background z:0];
   
-  scene.hudLayer = [[[HudLayer alloc] init] autorelease];
-  [scene addChild:scene.hudLayer z:50];
+  CCSprite *balsamic = [CCSprite spriteWithFile:@"mid_z_layer_grad_vignette_2.png"];
+  [scene addChild:balsamic z:1];
+  
+  scene.gameLayer = [[[GameLayer alloc] initWithBackground:background] autorelease];
+  [scene addChild:scene.gameLayer z:10];
   
   Balsamic *vinegarette = [[[Balsamic alloc] init] autorelease];
   [scene addChild:vinegarette z:49];
+  
+  scene.hudLayer = [[[HudLayer alloc] init] autorelease];
+  [scene addChild:scene.hudLayer z:50];
     
   return scene;
 }

@@ -15,10 +15,37 @@
 {
   if(!(self = [super init])) return nil;
   
-  CCSprite *sprite = [CCSprite spriteWithFile:@"bg_stars.png"];
-  [self addChild:sprite];
+  CCSprite *stars = [CCSprite spriteWithFile:@"bg_stars.png"];
+  CCSprite *nebula = [CCSprite spriteWithFile:@"nebula.png"];
+
+  
+  //[self addChild:sprite];
+  // create a void node, a parent node
+  _parallax = [CCParallaxNode node];
+  
+  // background image is moved at a ratio of 0.4x, 0.5y
+  [_parallax addChild:stars z:-1 parallaxRatio:ccp(0.05f,0.1f) positionOffset:CGPointZero];
+  [_parallax addChild:nebula z:2 parallaxRatio:ccp(0.09f,0.15f) positionOffset:ccp(0, 200)];
+  
+  [self addChild:_parallax z:0];
   
   return self;
+}
+
+- (void) step
+{
+	//CGPoint diff = ccpSub(touchLocation,prevLocation);
+	//CCNode *node = [self getChildByTag:kTagNode];
+	//CGPoint currentPos = [node position];
+	//[node setPosition: ccpAdd(currentPos, diff)];
+  
+  //[_parallax setPosition:ccpMult([self position], 5)];
+}
+
+- (void) setPosition:(CGPoint)position
+{
+  [_parallax setPosition:position];
+  [super setPosition:position];
 }
 
 @end

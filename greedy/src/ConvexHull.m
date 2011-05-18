@@ -213,7 +213,7 @@ NSMutableArray *createAsteroidShape(int width, int height)
 
 - (CGFloat) area
 {
-/*
+
   int minx = 0;
   int miny = 0;
   int maxx = 0;

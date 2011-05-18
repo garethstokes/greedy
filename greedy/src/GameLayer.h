@@ -10,14 +10,20 @@
 #import "chipmunk.h"
 #import "GameEnvironment.h"
 #import "Greedy.h"
+#import "Background.h"
 
 @interface GameLayer : CCLayer
 {
   GameEnvironment *_environment;
   Greedy *_greedy;
   NSMutableArray *_asteroids;
+  CGPoint _lastPosition;
+  Background *_background;
 }
 
--(void) step:(ccTime)dt;
+@property (nonatomic, retain) Greedy *greedy;
+
+- (void) step:(ccTime)dt;
+- (id) initWithBackground:(Background *) background;
 
 @end

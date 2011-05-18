@@ -19,8 +19,8 @@
 static void
 gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 {
-  Greedy *this = (Greedy *)body->data;
-  Asteroid *a = [this.asteroids indexOfObject:0];
+  //Greedy *this = (Greedy *)body->data;
+  //Asteroid *a = [this.asteroids indexOfObject:0];
 	//cpVect g = cpvmult(ccpForAngle(ccpAngle(body->p, p)), -5000.0f);
 	
 	cpBodyUpdateVelocity(body, gravity, damping, dt);
@@ -115,6 +115,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 {
   _isThrusting = true;
 }
+
 - (void) removeThrust
 {
   _isThrusting = false;
@@ -125,5 +126,10 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   _angle = value;
 }
 
+- (CGPoint) position
+{
+  cpBody *body = _shape->body;
+  return body->p;
+}
 
 @end

@@ -189,6 +189,7 @@
 		E7E5D94F13750A0E004283ED /* greedy_open_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D94513750A0E004283ED /* greedy_open_5.png */; };
 		E7E5D95013750A0E004283ED /* greedy_open_5_offset_a.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D94613750A0E004283ED /* greedy_open_5_offset_a.png */; };
 		E7E5D95113750A0E004283ED /* greedy_open_5_offset_b.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D94713750A0E004283ED /* greedy_open_5_offset_b.png */; };
+		E7F18F921383DADE00B73978 /* mid_z_layer_grad_vignette_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E7F18F911383DADE00B73978 /* mid_z_layer_grad_vignette_2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -543,6 +544,7 @@
 		E7E5D94513750A0E004283ED /* greedy_open_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greedy_open_5.png; sourceTree = "<group>"; };
 		E7E5D94613750A0E004283ED /* greedy_open_5_offset_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greedy_open_5_offset_a.png; sourceTree = "<group>"; };
 		E7E5D94713750A0E004283ED /* greedy_open_5_offset_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greedy_open_5_offset_b.png; sourceTree = "<group>"; };
+		E7F18F911383DADE00B73978 /* mid_z_layer_grad_vignette_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mid_z_layer_grad_vignette_2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1048,6 +1050,7 @@
 		E76A26BD1377F0C400B24780 /* vinegarette */ = {
 			isa = PBXGroup;
 			children = (
+				E7F18F911383DADE00B73978 /* mid_z_layer_grad_vignette_2.png */,
 				E76A26BE1377F0C400B24780 /* vinegarette.png */,
 			);
 			path = vinegarette;
@@ -1182,6 +1185,7 @@
 				E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */,
 				E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */,
 				E76A26BF1377F0C400B24780 /* vinegarette.png in Resources */,
+				E7F18F921383DADE00B73978 /* mid_z_layer_grad_vignette_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

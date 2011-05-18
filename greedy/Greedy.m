@@ -63,29 +63,18 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 
 - (void) step:(ccTime) delta
 {
-  //Speed += ((MoveDirection * MaximumSpeed) - Speed) * AccelerationFactor
-  cpVect currentPosition = _shape->body->p;
-  float speed = ccpDistance(_lastPosition, currentPosition);
-  _lastPosition = currentPosition;
-  
-  cpBodySetAngle(_shape->body, _angle);
-  
-  NSLog(@"speed: %f", speed);
-  
+  cpFloat angle = _shape->body->a + (_angle - _shape->body->a) * delta;
+  cpBodySetAngle(_shape->body, angle);
+
   if (_isThrusting)
   {
     cpVect force = cpvforangle(_shape->body->a);
-    force = cpvmult(cpvperp(force), 4);
+    force = cpvmult(cpvperp(force), 100 * delta);
     cpBodyApplyImpulse(_shape->body, force,cpvzero);
     return;
   }
   
-  cpBodyApplyImpulse(_shape->body, ccp(0,-2),cpvzero);
-  
-  //cpBody *body = _shape->body;
-  //NSLog(@"body force: (x => %f, y => %f)", body->f.x, body->f.y);
-  //NSLog(@"body velocity: (x => %f, y => %f)", body->v.x, body->v.y);
-  //NSLog(@"body angle: %f", body->a);
+  cpBodyApplyImpulse(_shape->body, ccp(0, (50 * delta) * -1),cpvzero);
 }
 
 - (void) draw

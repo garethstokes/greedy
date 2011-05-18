@@ -95,12 +95,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [_background setPosition: ccpAdd([_background position], diff)];
   _lastPosition = [_greedy position];
   
-  NSLog(@"diff: (x => %f, y => %f)", diff.x, diff.y);
-  
-  //float magnitude = ccpDistance(_cameraPosition, [_greedy position]);
-  //NSLog(@"magnitude: %f", magnitude);
-  //NSLog(@"greedy position: (x => %f, y => %f", 
-  //      [_greedy position].x, [_greedy position].y);
+  //NSLog(@"diff: (x => %f, y => %f)", diff.x, diff.y);
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -117,7 +112,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 { 
   static float prevX=0, prevY=0;
   
-#define kFilterFactor 0.05f
+#define kFilterFactor 0.2f
   
 	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
 	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;

@@ -151,6 +151,7 @@
 		AB045A7D13714D3C001253D2 /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */; };
 		AB045A9813715E31001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB045A9A13715E97001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		AB383001138D1855003016C1 /* radio_sweep.png in Resources */ = {isa = PBXBuildFile; fileRef = AB383000138D1855003016C1 /* radio_sweep.png */; };
 		E708BE60137166C000E45FDD /* cpCCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE45137166C000E45FDD /* cpCCNode.m */; };
 		E708BE61137166C000E45FDD /* cpCCNodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE47137166C000E45FDD /* cpCCNodeImpl.m */; };
 		E708BE62137166C000E45FDD /* cpCCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE49137166C000E45FDD /* cpCCSprite.m */; };
@@ -483,6 +484,7 @@
 		AB045A7913714D3C001253D2 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		AB045A7B13714D3C001253D2 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
+		AB383000138D1855003016C1 /* radio_sweep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_sweep.png; sourceTree = "<group>"; };
 		E708BE44137166C000E45FDD /* cpCCNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNode.h; sourceTree = "<group>"; };
 		E708BE45137166C000E45FDD /* cpCCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpCCNode.m; sourceTree = "<group>"; };
 		E708BE46137166C000E45FDD /* cpCCNodeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNodeImpl.h; sourceTree = "<group>"; };
@@ -1095,6 +1097,7 @@
 		E7E5D93D13750A0E004283ED /* greedy */ = {
 			isa = PBXGroup;
 			children = (
+				AB383000138D1855003016C1 /* radio_sweep.png */,
 				E7E5D93E13750A0E004283ED /* eye.png */,
 				E7E5D93F13750A0E004283ED /* eyebrow.png */,
 				E7E5D94013750A0E004283ED /* greedy_close_body.png */,
@@ -1186,6 +1189,7 @@
 				E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */,
 				E76A26BF1377F0C400B24780 /* vinegarette.png in Resources */,
 				E7F18F921383DADE00B73978 /* mid_z_layer_grad_vignette_2.png in Resources */,
+				AB383001138D1855003016C1 /* radio_sweep.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

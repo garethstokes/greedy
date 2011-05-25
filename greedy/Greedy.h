@@ -23,6 +23,7 @@ enum {
 
 @interface Greedy : CCLayer {
   cpShape *_shape;
+  CCSprite *_radar;
   CCSprite *_sprite;
   bool _isThrusting;
   cpVect _lastPosition;
@@ -31,6 +32,7 @@ enum {
 }
 
 @property (nonatomic) cpShape *shape;
+@property (retain, nonatomic) CCSprite *radar;
 @property (retain) NSMutableArray *asteroids;
 
 - (id) initWith:(GameEnvironment *)environment;

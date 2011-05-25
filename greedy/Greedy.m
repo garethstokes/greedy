@@ -14,15 +14,16 @@
 
 @implementation Greedy
 @synthesize shape = _shape;
+@synthesize radar = _radar;
 @synthesize asteroids = _asteroids;
+
+#define GREEDYMASS    2000.0f
+#define GREEDYTHRUST  100000
+#define GREEDYTHRUSTPERSECOND (10000 / 60)
 
 static void
 gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 {
-  //Greedy *this = (Greedy *)body->data;
-  //Asteroid *a = [this.asteroids indexOfObject:0];
-	//cpVect g = cpvmult(ccpForAngle(ccpAngle(body->p, p)), -5000.0f);
-	
 	cpBodyUpdateVelocity(body, gravity, damping, dt);
 }
 
@@ -33,7 +34,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   SpaceManagerCocos2d *manager = [environment manager];
   cpShape *shape = [manager 
                     addRectAt:ccp(100,200) 
-                    mass:1.0f 
+                    mass:GREEDYMASS 
                     width:50 
                     height:75 
                     rotation:0];
@@ -42,9 +43,19 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
                             spriteWithShape:shape 
                             file:@"greedy_open_5.png"];
   
+  _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
+  
+  
   [sprite setScaleX:0.5f];
   [sprite setScaleY:0.5f];
   [self addChild:sprite];
+  
+  _radar.position = ccp(52, 90);
+  [sprite addChild:_radar];
+  
+  //add radar animation
+  id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
+  [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
   
   // set physics
   cpBody *body = shape->body;
@@ -69,7 +80,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   if (_isThrusting)
   {
     cpVect force = cpvforangle(_shape->body->a);
-    force = cpvmult(cpvperp(force), 100 * delta);
+    force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
     cpBodyApplyImpulse(_shape->body, force,cpvzero);
     return;
   }

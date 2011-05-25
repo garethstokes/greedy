@@ -175,6 +175,8 @@
 		E76A26C31377F0E600B24780 /* Balsamic.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A26C21377F0E600B24780 /* Balsamic.m */; };
 		E76AE4B313766A6A00A94EDA /* ConvexHull.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B213766A6A00A94EDA /* ConvexHull.m */; };
 		E76AE4B71376757100A94EDA /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B61376757100A94EDA /* Asteroid.m */; };
+		E7A4BD5A138D1E5600FA6637 /* greedy.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7A4BD58138D1E5600FA6637 /* greedy.plist */; };
+		E7A4BD5B138D1E5600FA6637 /* greedy.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A4BD59138D1E5600FA6637 /* greedy.png */; };
 		E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DB137684ED0092DDA6 /* bg_stars.png */; };
 		E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DC137684ED0092DDA6 /* nebula.png */; };
 		E7B6D5E11376852D0092DDA6 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6D5E01376852D0092DDA6 /* Background.m */; };
@@ -529,6 +531,8 @@
 		E76AE4B51376757000A94EDA /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		E76AE4B61376757100A94EDA /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
 		E7979519137501CB005D0310 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = src/protocols/GameObject.h; sourceTree = "<group>"; };
+		E7A4BD58138D1E5600FA6637 /* greedy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = greedy.plist; sourceTree = "<group>"; };
+		E7A4BD59138D1E5600FA6637 /* greedy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greedy.png; sourceTree = "<group>"; };
 		E7B6D5DB137684ED0092DDA6 /* bg_stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_stars.png; sourceTree = "<group>"; };
 		E7B6D5DC137684ED0092DDA6 /* nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nebula.png; sourceTree = "<group>"; };
 		E7B6D5DF1376852D0092DDA6 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
@@ -1098,6 +1102,8 @@
 			isa = PBXGroup;
 			children = (
 				AB383000138D1855003016C1 /* radio_sweep.png */,
+				E7A4BD58138D1E5600FA6637 /* greedy.plist */,
+				E7A4BD59138D1E5600FA6637 /* greedy.png */,
 				E7E5D93E13750A0E004283ED /* eye.png */,
 				E7E5D93F13750A0E004283ED /* eyebrow.png */,
 				E7E5D94013750A0E004283ED /* greedy_close_body.png */,
@@ -1190,6 +1196,8 @@
 				E76A26BF1377F0C400B24780 /* vinegarette.png in Resources */,
 				E7F18F921383DADE00B73978 /* mid_z_layer_grad_vignette_2.png in Resources */,
 				AB383001138D1855003016C1 /* radio_sweep.png in Resources */,
+				E7A4BD5A138D1E5600FA6637 /* greedy.plist in Resources */,
+				E7A4BD5B138D1E5600FA6637 /* greedy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

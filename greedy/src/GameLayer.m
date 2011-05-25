@@ -112,7 +112,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 { 
   static float prevX=0, prevY=0;
   
-#define kFilterFactor 0.1f
+#define kFilterFactor 0.05f
   
 	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
 	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;

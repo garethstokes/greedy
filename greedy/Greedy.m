@@ -39,9 +39,6 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
                     height:75 
                     rotation:0];
   
-  cpCCSprite *sprite = [cpCCSprite 
-                            spriteWithShape:shape 
-                            file:@"greedy_open_5.png"];
   
   _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
   
@@ -49,6 +46,23 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   [sprite setScaleX:0.5f];
   [sprite setScaleY:0.5f];
   [self addChild:sprite];
+  CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
+  [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
+  
+  _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
+  [_sprite setScaleX:0.5f];
+  [_sprite setScaleY:0.5f];
+  
+  NSMutableArray* shake_frames = [NSMutableArray array];
+  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
+  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
+  
+  CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
+  CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
+  
+  [_sprite runAction:[CCRepeatForever actionWithAction: action]];
+  
+  [batch addChild:_sprite];
   
   _radar.position = ccp(52, 90);
   [sprite addChild:_radar];
@@ -61,21 +75,25 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   cpBody *body = shape->body;
   //cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
   //cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
-  cpBodySetVelLimit(body, 80);
+  cpBodySetVelLimit(body, 180);
   body->velocity_func = gravityVelocityFunc;
   body->data = self;
   
   _lastPosition = shape->body->p;
   _isThrusting = false;
   _shape = shape;
-  _sprite = sprite;
+  //_sprite = sprite;
+  [self addChild:batch];
   return self;
 }
 
 - (void) step:(ccTime) delta
 {
-  cpFloat angle = _shape->body->a + (_angle - _shape->body->a) * delta;
+  cpFloat diff = _angle - _shape->body->a;
+  cpFloat angle = _shape->body->a + (diff / 2);
   cpBodySetAngle(_shape->body, angle);
+  
+  NSLog(@"diff: %f", diff);
 
   if (_isThrusting)
   {

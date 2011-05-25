@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>greedy_close_body.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 36}, {100, 110}}</string>
+			<key>offset</key>
+			<string>{0, -1}</string>
+			<key>sourceSize</key>
+			<string>{100, 110}</string>
+			<key>frame</key>
+			<string>{{0, 0}, {100, 110}}</string>
+		</dict>
+		<key>greedy_open_1.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 32}, {100, 118}}</string>
+			<key>offset</key>
+			<string>{0, -1}</string>
+			<key>sourceSize</key>
+			<string>{100, 118}</string>
+			<key>frame</key>
+			<string>{{105, 0}, {100, 118}}</string>
+		</dict>
+		<key>greedy_open_2.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 28}, {100, 126}}</string>
+			<key>offset</key>
+			<string>{0, -1}</string>
+			<key>sourceSize</key>
+			<string>{100, 126}</string>
+			<key>frame</key>
+			<string>{{216, 0}, {100, 126}}</string>
+		</dict>
+		<key>greedy_open_3.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 24}, {100, 134}}</string>
+			<key>offset</key>
+			<string>{0, -1}</string>
+			<key>sourceSize</key>
+			<string>{100, 134}</string>
+			<key>frame</key>
+			<string>{{328, 0}, {100, 134}}</string>
+		</dict>
+		<key>greedy_open_4.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 20}, {100, 142}}</string>
+			<key>offset</key>
+			<string>{0, -1}</string>
+			<key>sourceSize</key>
+			<string>{100, 142}</string>
+			<key>frame</key>
+			<string>{{0, 143}, {100, 142}}</string>
+		</dict>
+		<key>greedy_open_5.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 18}, {100, 146}}</string>
+			<key>offset</key>
+			<string>{0, -1}</string>
+			<key>sourceSize</key>
+			<string>{100, 146}</string>
+			<key>frame</key>
+			<string>{{119, 143}, {100, 146}}</string>
+		</dict>
+		<key>greedy_open_5_offset_a.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 17}, {102, 148}}</string>
+			<key>offset</key>
+			<string>{1, -1}</string>
+			<key>sourceSize</key>
+			<string>{102, 148}</string>
+			<key>frame</key>
+			<string>{{232, 151}, {102, 148}}</string>
+		</dict>
+		<key>greedy_open_5_offset_b.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{2, 17}, {102, 148}}</string>
+			<key>offset</key>
+			<string>{1, -1}</string>
+			<key>sourceSize</key>
+			<string>{102, 148}</string>
+			<key>frame</key>
+			<string>{{352, 159}, {102, 148}}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>1</integer>
+		<key>size</key>
+		<string>{512, 512}</string>
+	</dict>
+</dict>
+</plist>

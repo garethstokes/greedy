@@ -43,9 +43,6 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
   
   
-  [sprite setScaleX:0.5f];
-  [sprite setScaleY:0.5f];
-  [self addChild:sprite];
   CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
   
@@ -65,7 +62,9 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   [batch addChild:_sprite];
   
   _radar.position = ccp(52, 90);
-  [sprite addChild:_radar];
+  [_radar setScaleX:0.5f];
+  [_radar setScaleY:0.5f];
+  [_radar setPosition:[_sprite position]];  
   
   //add radar animation
   id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
@@ -84,6 +83,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   _shape = shape;
   //_sprite = sprite;
   [self addChild:batch];
+  [self addChild:_radar];
   return self;
 }
 
@@ -94,7 +94,8 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   cpBodySetAngle(_shape->body, angle);
   
   NSLog(@"diff: %f", diff);
-
+  [_radar setPosition:[_sprite position]];
+  
   if (_isThrusting)
   {
     cpVect force = cpvforangle(_shape->body->a);
@@ -103,7 +104,9 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
     return;
   }
   
-  cpBodyApplyImpulse(_shape->body, ccp(0, (50 * delta) * -1),cpvzero);
+  cpBodyApplyImpulse(_shape->body, ccp(0, (250 * delta) * -1),cpvzero);
+  
+  
 }
 
 - (void) draw

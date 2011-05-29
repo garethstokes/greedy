@@ -11,6 +11,19 @@
 
 @implementation HudLayer
 
+@synthesize lifeMeter = _lifeMeter;
+
+- (void) CreateLifeMeter: (CGSize) size  {
+  
+  //Create Life Meter art work
+  _lifeMeter = [[[LifeMeter alloc] initLifeMeter] retain];
+  _lifeMeter.scaleX = 98.0f / _lifeMeter.contentSizeInPixels.width;
+  _lifeMeter.scaleY = 12.0f / _lifeMeter.contentSizeInPixels.height;
+  _lifeMeter.position = ccp(size.width - 58, 15);
+  
+  [self addChild:_lifeMeter];
+}
+
 - (id) init
 {
   if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
@@ -34,8 +47,10 @@
   [restartButton setPosition:CGPointMake(45, 15)];
   
   CCMenu *menu = [CCMenu menuWithItems:restartButton, nil];
-  [menu setPosition:CGPointMake(240, 0)];
+  [menu setPosition:CGPointMake(4, 0)];
   [self addChild:menu];
+  
+  [self CreateLifeMeter: size];
   
   return self;
 }

@@ -152,6 +152,8 @@
 		AB045A9813715E31001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB045A9A13715E97001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB383001138D1855003016C1 /* radio_sweep.png in Resources */ = {isa = PBXBuildFile; fileRef = AB383000138D1855003016C1 /* radio_sweep.png */; };
+		AB44442013927F07006BA256 /* LifeMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB44441F13927F07006BA256 /* LifeMeter.m */; };
+		AB51949013928EAA001B8F16 /* life_bar_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = AB51948F13928EAA001B8F16 /* life_bar_sprite.png */; };
 		E708BE60137166C000E45FDD /* cpCCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE45137166C000E45FDD /* cpCCNode.m */; };
 		E708BE61137166C000E45FDD /* cpCCNodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE47137166C000E45FDD /* cpCCNodeImpl.m */; };
 		E708BE62137166C000E45FDD /* cpCCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE49137166C000E45FDD /* cpCCSprite.m */; };
@@ -487,6 +489,9 @@
 		AB045A7B13714D3C001253D2 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		AB045A7C13714D3C001253D2 /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
 		AB383000138D1855003016C1 /* radio_sweep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_sweep.png; sourceTree = "<group>"; };
+		AB44441E13927F07006BA256 /* LifeMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifeMeter.h; sourceTree = "<group>"; };
+		AB44441F13927F07006BA256 /* LifeMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeMeter.m; sourceTree = "<group>"; };
+		AB51948F13928EAA001B8F16 /* life_bar_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = life_bar_sprite.png; sourceTree = "<group>"; };
 		E708BE44137166C000E45FDD /* cpCCNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNode.h; sourceTree = "<group>"; };
 		E708BE45137166C000E45FDD /* cpCCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpCCNode.m; sourceTree = "<group>"; };
 		E708BE46137166C000E45FDD /* cpCCNodeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNodeImpl.h; sourceTree = "<group>"; };
@@ -646,6 +651,8 @@
 				AB045A1813714D3B001253D2 /* Chipmunk */,
 				AB045A6E13714D3C001253D2 /* Supporting Files */,
 				E708BE42137166C000E45FDD /* SpaceManager */,
+				AB44441E13927F07006BA256 /* LifeMeter.h */,
+				AB44441F13927F07006BA256 /* LifeMeter.m */,
 			);
 			path = greedy;
 			sourceTree = "<group>";
@@ -981,6 +988,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AB44442213927F7E006BA256 /* hud */ = {
+			isa = PBXGroup;
+			children = (
+				AB51948F13928EAA001B8F16 /* life_bar_sprite.png */,
+			);
+			name = hud;
+			sourceTree = "<group>";
+		};
 		E708BE42137166C000E45FDD /* SpaceManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1082,6 +1097,7 @@
 		E7CE216E1371780600A700EA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				AB44442213927F7E006BA256 /* hud */,
 				E76A26BD1377F0C400B24780 /* vinegarette */,
 				E7B6D5DA137684ED0092DDA6 /* backgrounds */,
 				E7E5D93D13750A0E004283ED /* greedy */,
@@ -1198,6 +1214,7 @@
 				AB383001138D1855003016C1 /* radio_sweep.png in Resources */,
 				E7A4BD5A138D1E5600FA6637 /* greedy.plist in Resources */,
 				E7A4BD5B138D1E5600FA6637 /* greedy.png in Resources */,
+				AB51949013928EAA001B8F16 /* life_bar_sprite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1356,6 +1373,7 @@
 				E76AE4B71376757100A94EDA /* Asteroid.m in Sources */,
 				E7B6D5E11376852D0092DDA6 /* Background.m in Sources */,
 				E76A26C31377F0E600B24780 /* Balsamic.m in Sources */,
+				AB44442013927F07006BA256 /* LifeMeter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

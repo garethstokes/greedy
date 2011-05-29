@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "LifeMeter.h"
 
 @interface HudLayer : CCLayerColor {
-    
+  LifeMeter *_lifeMeter;
 }
+
+@property (retain, nonatomic) LifeMeter *lifeMeter;
 
 - (void) restartGame:(id)sender;
 

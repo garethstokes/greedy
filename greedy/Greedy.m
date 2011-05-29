@@ -11,6 +11,7 @@
 #import "chipmunk.h"
 #import "SpaceManager.h"
 #import "GameConfig.h"
+#import "GameScene.h"
 
 @implementation Greedy
 @synthesize shape = _shape;
@@ -104,7 +105,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
     return;
   }
   
-  cpBodyApplyImpulse(_shape->body, ccp(0, (250 * delta) * -1),cpvzero);
+  cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/4 * delta) * -1),cpvzero);
   
   
 }
@@ -133,12 +134,15 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 }
 
 - (void) applyThrust
-{
+{  
+  [((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:10];
+  
   _isThrusting = true;
 }
 
 - (void) removeThrust
 {
+  [((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:5];
   _isThrusting = false;
 }
 

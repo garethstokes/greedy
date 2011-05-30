@@ -35,18 +35,7 @@
 
 -(void) step:(ccTime)dt
 {
-    [_spaceManager step:dt];
-}
-
--(void) addNewAsteroidSprite:(cpBody *)body
-{
-  NSLog(@"asteroid location (x => %f, y => %f)", body->p.x, body->p.y); 
-  //cpSpace *space = [_spaceManager space];
-	//CCSprite *sprite = [[AsteroidSprite alloc] initWithSpace:space 
-  //                                                    body:body
-  //                                                    size:rand() % 10];
-  
-  //[self addChild:sprite];
+  [_spaceManager step:dt];
 }
 
 @end

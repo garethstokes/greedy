@@ -43,7 +43,6 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   
   _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
   
-  
   CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
   
@@ -76,7 +75,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   //cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
   //cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
   cpBodySetVelLimit(body, 180);
-  body->velocity_func = gravityVelocityFunc;
+  //body->velocity_func = gravityVelocityFunc;
   body->data = self;
   
   _lastPosition = shape->body->p;
@@ -102,12 +101,11 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
     cpVect force = cpvforangle(_shape->body->a);
     force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
     cpBodyApplyImpulse(_shape->body, force,cpvzero);
-    return;
+    //return;
   }
   
-  cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/4 * delta) * -1),cpvzero);
-  
-  
+  //add down force (not a gravity just a "forcy thing")
+  cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/4 * delta) * -1),cpvzero);  
 }
 
 - (void) draw
@@ -135,14 +133,14 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 
 - (void) applyThrust
 {  
-  [((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:10];
+  //[((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:10];
   
   _isThrusting = true;
 }
 
 - (void) removeThrust
 {
-  [((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:5];
+  //[((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:5];
   _isThrusting = false;
 }
 

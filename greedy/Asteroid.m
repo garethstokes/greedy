@@ -22,7 +22,7 @@
   
   cpShape *asteroid = [environment.manager 
                        addPolyAt:position
-                       mass:50.0f 
+                       mass:_mass 
                        rotation:CCRANDOM_0_1()
                        points:[_convexHull points]];
   

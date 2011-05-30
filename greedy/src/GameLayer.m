@@ -7,6 +7,7 @@
 //
 
 #import "GameLayer.h"
+#import "GameScene.h"
 #import "GameEnvironment.h"
 #import "chipmunk.h"
 #import "SpaceManager.h"
@@ -86,14 +87,29 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 }
 
+
+- (void) SpeedBarUpdate {
+ cpBody* body = _greedy.shape->body;
+ float len = cpvdot(body->v,body->v); //len * len  
+ float ratio = len / (body->v_limit * body->v_limit);
+ int speed = (body->v_limit * ratio) / (body->v_limit / 10);
+ 
+ NSLog(@"len: %f ratio: %f speed: %d", len, ratio, speed);
+ 
+ [((GameScene *)(_greedy.parent.parent)).hudLayer.lifeMeter setLifeLevel:speed];
+}
+
 -(void) step: (ccTime) dt
 {
-  [_environment step:dt];
   [_greedy step:dt];
+  
+  [_environment step:dt];  
   
   CGPoint diff = ccpSub(_lastPosition, [_greedy position]);
   [_background setPosition: ccpAdd([_background position], diff)];
   _lastPosition = [_greedy position];
+  
+  [self SpeedBarUpdate];  
   
   //NSLog(@"diff: (x => %f, y => %f)", diff.x, diff.y);
 }

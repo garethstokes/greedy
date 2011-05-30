@@ -30,6 +30,10 @@
   
 
   // create the frames
+
+  frame = [[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 0, 0)];
+  [cache addSpriteFrame:frame name:@"lifeBar0"];  
+  
   for(int i = 0; i < 10; i++)
   {
     frame = [[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 16 + (i * 19), 15)];

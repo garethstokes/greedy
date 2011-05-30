@@ -34,12 +34,7 @@
 
 - (void) step
 {
-	//CGPoint diff = ccpSub(touchLocation,prevLocation);
-	//CCNode *node = [self getChildByTag:kTagNode];
-	//CGPoint currentPos = [node position];
-	//[node setPosition: ccpAdd(currentPos, diff)];
-  
-  //[_parallax setPosition:ccpMult([self position], 5)];
+
 }
 
 - (void) setPosition:(CGPoint)position

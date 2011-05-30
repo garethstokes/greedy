@@ -610,8 +610,12 @@
 			isa = PBXGroup;
 			children = (
 				E797951713750132005D0310 /* Protocols */,
+				AB045A7213714D3C001253D2 /* AppDelegate.h */,
+				AB045A7313714D3C001253D2 /* AppDelegate.m */,
 				E76AE4B51376757000A94EDA /* Asteroid.h */,
 				E76AE4B61376757100A94EDA /* Asteroid.m */,
+				E73C9AC51375023000A7DF8D /* AsteroidSprite.h */,
+				E73C9AC61375023000A7DF8D /* AsteroidSprite.m */,
 				E7B6D5DF1376852D0092DDA6 /* Background.h */,
 				E7B6D5E01376852D0092DDA6 /* Background.m */,
 				E76A26C11377F0E600B24780 /* Balsamic.h */,
@@ -620,6 +624,7 @@
 				E76AE4B213766A6A00A94EDA /* ConvexHull.m */,
 				E75E38D013764ECB00464CED /* GDKaosEngine.h */,
 				E75E38D113764ECB00464CED /* GDKaosEngine.m */,
+				AB045A7B13714D3C001253D2 /* GameConfig.h */,
 				E73C9ACB1375024300A7DF8D /* GameEnvironment.h */,
 				E73C9ACC1375024300A7DF8D /* GameEnvironment.m */,
 				E73C9ACD1375024300A7DF8D /* GameLayer.h */,
@@ -630,13 +635,10 @@
 				E7E5D93213750430004283ED /* Greedy.m */,
 				E73C9AD11375024300A7DF8D /* HudLayer.h */,
 				E73C9AD21375024300A7DF8D /* HudLayer.m */,
-				E73C9AC51375023000A7DF8D /* AsteroidSprite.h */,
-				E73C9AC61375023000A7DF8D /* AsteroidSprite.m */,
-				AB045A7213714D3C001253D2 /* AppDelegate.h */,
-				AB045A7313714D3C001253D2 /* AppDelegate.m */,
+				AB44441E13927F07006BA256 /* LifeMeter.h */,
+				AB44441F13927F07006BA256 /* LifeMeter.m */,
 				AB045A7513714D3C001253D2 /* RootViewController.h */,
 				AB045A7613714D3C001253D2 /* RootViewController.m */,
-				AB045A7B13714D3C001253D2 /* GameConfig.h */,
 				AB0458D213714D3A001253D2 /* Resources */,
 				AB0458E613714D3A001253D2 /* cocos2d */,
 				AB0459D813714D3B001253D2 /* CocosDenshion */,
@@ -646,8 +648,6 @@
 				AB045A1813714D3B001253D2 /* Chipmunk */,
 				AB045A6E13714D3C001253D2 /* Supporting Files */,
 				E708BE42137166C000E45FDD /* SpaceManager */,
-				AB44441E13927F07006BA256 /* LifeMeter.h */,
-				AB44441F13927F07006BA256 /* LifeMeter.m */,
 			);
 			path = greedy;
 			sourceTree = "<group>";

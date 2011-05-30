@@ -36,7 +36,8 @@ enum {
 @property (retain) NSMutableArray *asteroids;
 
 - (id) initWith:(GameEnvironment *)environment;
-- (void) step:(ccTime) delta;
+- (void) prestep:(ccTime) delta;
+- (void) postStep;
 - (void) applyThrust;
 - (void) removeThrust;
 - (void) setAngle:(cpFloat)value;

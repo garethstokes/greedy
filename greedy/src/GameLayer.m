@@ -94,24 +94,28 @@ ccpAngleBetween(CGPoint a, CGPoint b)
  float ratio = len / (body->v_limit * body->v_limit);
  int speed = (body->v_limit * ratio) / (body->v_limit / 10);
  
- NSLog(@"len: %f ratio: %f speed: %d", len, ratio, speed);
+ //NSLog(@"len: %f ratio: %f speed: %d", len, ratio, speed);
  
  [((GameScene *)(_greedy.parent.parent)).hudLayer.lifeMeter setLifeLevel:speed];
 }
 
 -(void) step: (ccTime) dt
 {
-  [_greedy step:dt];
+  // add all the external forces , such as thrusts, asteraid attraction
+  [_greedy prestep:dt];
   
-  [_environment step:dt];  
+  //now stepthe physics engine
+  [_environment step:dt];
   
+  [_greedy postStep];
+  
+  //move the parallax backgrounds
   CGPoint diff = ccpSub(_lastPosition, [_greedy position]);
   [_background setPosition: ccpAdd([_background position], diff)];
   _lastPosition = [_greedy position];
   
-  [self SpeedBarUpdate];  
-  
-  //NSLog(@"diff: (x => %f, y => %f)", diff.x, diff.y);
+  //debug speed details after all forces applied and calcualted
+  [self SpeedBarUpdate];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -126,20 +130,30 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 { 
-  static float prevX=0, prevY=0;
+#define kFilterFactor 0.4f	
+    
+  //low pass filter (remove gavity
+	accelX = (float) acceleration.x * kFilterFactor + ((1.0 - kFilterFactor)*accelX);
+	accelY = (float) acceleration.y * kFilterFactor + ((1.0 - kFilterFactor)*accelY);
+	accelZ = (float) acceleration.z * kFilterFactor + ((1.0 - kFilterFactor)*accelZ);
   
-#define kFilterFactor 0.05f
+  //high pass filter
+  //accelX = (acceleration.x * kFilterFactor) + (accelX * (1.0 - kFilterFactor));
+  //accelY = (acceleration.y * kFilterFactor) + (accelY * (1.0 - kFilterFactor));
   
-	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
-	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;
+  //orientation 
+  float angle = atan2(accelY, accelX);
+  angle *= 180/3.14159;
+  angle += 90.0;
+  if(angle < 0) angle = 360.0 + angle;
   
-	prevX = accelX;
-	prevY = accelY;
+  //float angleX = accelX * 180/3.14159; 
+  //float angleY = accelY * 180/3.14159; 
+  //float angleZ = accelZ * 180/3.14159; 
   
-  float angle = accelX * 4;
-  [_greedy setAngle:angle + (angle * 2)];
+  [_greedy setAngle:angle];
   
-  //NSLog(@"accelerometer angle: (x => %f, y => %f)", accelX, accelY);
+  //NSLog(@"\n angle [%f] accel (x => [%f][%f][%f], y => [%f][%f][%f], z => [%f][%f][%f])", angle, acceleration.x, accelX, angleX, acceleration.y, accelY, angleY, acceleration.z, accelZ, angleZ);
 }
 
 @end

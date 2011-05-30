@@ -19,6 +19,10 @@
   NSMutableArray *_asteroids;
   CGPoint _lastPosition;
   Background *_background;
+  
+  float accelX;
+  float accelY;
+  float accelZ;
 }
 
 @property (nonatomic, retain) Greedy *greedy;

@@ -19,8 +19,7 @@
 @synthesize asteroids = _asteroids;
 
 #define GREEDYMASS    2000.0f
-#define GREEDYTHRUST  100000
-#define GREEDYTHRUSTPERSECOND (10000 / 60)
+#define GREEDYTHRUST  200000
 
 static void
 gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
@@ -87,14 +86,11 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   return self;
 }
 
-- (void) step:(ccTime) delta
+- (void) prestep:(ccTime) delta
 {
-  cpFloat diff = _angle - _shape->body->a;
-  cpFloat angle = _shape->body->a + (diff / 2);
-  cpBodySetAngle(_shape->body, angle);
-  
-  NSLog(@"diff: %f", diff);
-  [_radar setPosition:[_sprite position]];
+  //cpFloat diff = _angle - _shape->body->a;
+  //cpFloat angle = _shape->body->a + (diff / 2);
+  cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
   
   if (_isThrusting)
   {
@@ -106,6 +102,12 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   
   //add down force (not a gravity just a "forcy thing")
   cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/4 * delta) * -1),cpvzero);  
+}
+
+- (void) postStep
+{
+  //NSLog(@"diff: %f", diff);
+  [_radar setPosition:[_sprite position]];
 }
 
 - (void) draw

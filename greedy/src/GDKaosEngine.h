@@ -10,12 +10,15 @@
 #import "cocos2d.h"
 
 @interface GDKaosEngine : CCNode {
-  CGFloat _density;
-  CGSize _worldSize;
-  CGFloat _currentArea;
+  CGFloat  _density;
+  CGSize   _worldSize;
+  CGFloat  _currentArea;
+  int      _radius;
+  float    _worldArea;
 }
 
 - (id) initWorldSize:(CGSize) worldSize withDensity:(CGFloat)density;
+- (id) initWorldSizeCircle:(int)worldRadius withDensity:(CGFloat)density;
 - (BOOL) hasRoom;
 - (void) addArea:(CGFloat)area;
 - (CGPoint) position;

@@ -17,4 +17,5 @@
 
 @property (nonatomic, retain) SpaceManagerCocos2d *manager;
 -(void) step:(ccTime)dt;
+-(void) addCircularWorldContainmentWithFriction:(cpFloat)friction elasticity:(cpFloat)elasticity radius:(cpFloat)radius;
 @end

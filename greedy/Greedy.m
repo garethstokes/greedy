@@ -32,8 +32,9 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   if(!(self = [super init])) return nil;
   
   SpaceManagerCocos2d *manager = [environment manager];
+  
   cpShape *shape = [manager 
-                    addRectAt:ccp(100,200) 
+                    addRectAt:ccp(0,0) 
                     mass:GREEDYMASS 
                     width:50 
                     height:75 
@@ -80,7 +81,8 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   _lastPosition = shape->body->p;
   _isThrusting = false;
   _shape = shape;
-  //_sprite = sprite;
+  
+  //_sprites
   [self addChild:batch];
   [self addChild:_radar];
   return self;

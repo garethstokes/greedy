@@ -56,7 +56,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     // asteroids.
     CGSize wins = [[CCDirector sharedDirector] winSize];
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:15.0f];
+    //GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:15.0f];
+    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:10.0f];
     
     _asteroids = [[NSMutableArray alloc] init];
     while ([engine hasRoom])
@@ -73,8 +74,14 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [_greedy setAsteroids:_asteroids];
     [self addChild:_greedy];
     [self runAction:[CCFollow actionWithTarget:_greedy]];
+  
+    // add circular limits
+    [_environment addCircularWorldContainmentWithFriction:0.0 elasticity:0.01f radius:500]; 
     
 		[self schedule: @selector(step:)];
+    
+    [self addChild:[_environment.manager createDebugLayer]];
+    [_environment.manager start];
     
     _background = background;
     _lastPosition = [_greedy position];
@@ -84,7 +91,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) draw
 {
-
+  
 }
 
 
@@ -105,7 +112,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [_greedy prestep:dt];
   
   //now stepthe physics engine
-  [_environment step:dt];
+  //[_environment step:dt];
   
   [_greedy postStep];
   

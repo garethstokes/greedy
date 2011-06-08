@@ -83,7 +83,6 @@ void hullSet(CGPoint A, CGPoint B, NSMutableArray *set, NSMutableArray *hull) {
   
   // Determine who's to the left of PB
   NSMutableArray *leftSetPB = [[NSMutableArray alloc] init];
-  i = 0;
   for (NSValue *val in set) {
     CGPoint M = [val CGPointValue];   
     if (pointLocation(P,B,M)==1) {

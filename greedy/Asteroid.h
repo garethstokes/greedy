@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "chipmunk.h"
-#import "SpaceManager.h"
 #import "GameEnvironment.h"
 #import "ConvexHull.h"
 

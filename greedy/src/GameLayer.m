@@ -55,8 +55,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 	 	_environment = [[GameEnvironment alloc] init];
     
     // asteroids.
-    CGSize wins = [[CCDirector sharedDirector] winSize];
-    //GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:wins withDensity:15.0f];
     GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:10.0f];
     
     _asteroids = [[NSMutableArray alloc] init];
@@ -71,7 +69,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
     // greedy!
     _greedy = [[Greedy alloc] initWith:_environment];
-    [_greedy setAsteroids:_asteroids];
     [self addChild:_greedy];
     [self runAction:[CCFollow actionWithTarget:_greedy]];
   
@@ -94,14 +91,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   
 }
 
-
 - (void) SpeedBarUpdate {
  cpBody* body = _greedy.shape->body;
  float len = cpvdot(body->v,body->v); //len * len  
  float ratio = len / (body->v_limit * body->v_limit);
  int speed = (body->v_limit * ratio) / (body->v_limit / 10);
- 
- //NSLog(@"len: %f ratio: %f speed: %d", len, ratio, speed);
  
  [((GameScene *)(_greedy.parent.parent)).hudLayer.lifeMeter setLifeLevel:speed];
 }
@@ -111,10 +105,10 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   // add all the external forces , such as thrusts, asteraid attraction
   [_greedy prestep:dt];
   
-  //now stepthe physics engine
-  //[_environment step:dt];
+  // now step the physics engine
+  // [_environment step:dt];
   
-  [_greedy postStep];
+  [_greedy postStep:dt];
   
   //move the parallax backgrounds
   CGPoint diff = ccpSub(_lastPosition, [_greedy position]);

@@ -9,14 +9,11 @@
 #import "Greedy.h"
 #import "cocos2d.h"
 #import "chipmunk.h"
-#import "SpaceManager.h"
 #import "GameConfig.h"
 #import "GameScene.h"
 
 @implementation Greedy
 @synthesize shape = _shape;
-@synthesize radar = _radar;
-@synthesize asteroids = _asteroids;
 
 #define GREEDYMASS    2000.0f
 #define GREEDYTHRUST  200000
@@ -40,76 +37,38 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
                     height:75 
                     rotation:0];
   
-  
-  _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
-  
-  CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
-  [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
-  
-  _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
-  [_sprite setScaleX:0.5f];
-  [_sprite setScaleY:0.5f];
-  
-  NSMutableArray* shake_frames = [NSMutableArray array];
-  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
-  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
-  
-  CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
-  CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
-  
-  [_sprite runAction:[CCRepeatForever actionWithAction: action]];
-  
-  [batch addChild:_sprite];
-  
-  _radar.position = ccp(52, 90);
-  [_radar setScaleX:0.5f];
-  [_radar setScaleY:0.5f];
-  [_radar setPosition:[_sprite position]];  
-  
-  //add radar animation
-  id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
-  [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
-  
   // set physics
   cpBody *body = shape->body;
-  //cpBodyApplyImpulse(shape->body, ccp(0,-15),cpvzero); // one time push.
-  //cpBodyApplyForce(shape->body, ccp(0,-10),cpvzero); // maintains push over time. 
   cpBodySetVelLimit(body, 180);
-  //body->velocity_func = gravityVelocityFunc;
   body->data = self;
   
   _lastPosition = shape->body->p;
-  _isThrusting = false;
   _shape = shape;
   
-  //_sprites
-  [self addChild:batch];
-  [self addChild:_radar];
+  // view
+  _view = [[GreedyView alloc] initWithShape:shape];
+  [self addChild:_view];
   return self;
 }
 
 - (void) prestep:(ccTime) delta
 {
-  //cpFloat diff = _angle - _shape->body->a;
-  //cpFloat angle = _shape->body->a + (diff / 2);
   cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
   
-  if (_isThrusting)
+  if ([_view thrusting] > 1)
   {
     cpVect force = cpvforangle(_shape->body->a);
     force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
     cpBodyApplyImpulse(_shape->body, force,cpvzero);
-    //return;
   }
   
   //add down force (not a gravity just a "forcy thing")
   cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/4 * delta) * -1),cpvzero);  
 }
 
-- (void) postStep
+- (void) postStep:(ccTime) delta
 {
-  //NSLog(@"diff: %f", diff);
-  [_radar setPosition:[_sprite position]];
+  [_view step:delta];
 }
 
 - (void) draw
@@ -136,16 +95,16 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 }
 
 - (void) applyThrust
-{  
-  //[((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:10];
-  
-  _isThrusting = true;
+{
+  if (_view.thrusting > 1) return;
+  NSLog(@"applying thrust...");
+  [_view setThrusting:kGreedyThrustLittle];
 }
 
 - (void) removeThrust
 {
-  //[((GameScene *)(self.parent.parent)).hudLayer.lifeMeter setLifeLevel:5];
-  _isThrusting = false;
+  NSLog(@"removing thrust...");
+  [_view setThrusting:kGreedyThrustNone];
 }
 
 - (void) setAngle:(cpFloat)value

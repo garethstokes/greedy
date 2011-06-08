@@ -12,6 +12,7 @@
 #import "chipmunk.h"
 #import "GameEnvironment.h"
 #import "Asteroid.h"
+#import "GreedyView.h"
 
 enum {
 	kGreedyOpen1 = 1,
@@ -21,23 +22,34 @@ enum {
   kGreedyOpen5 = 5
 };
 
+enum {
+  kGreedyIdle = 1,
+  kGreedyExcited = 2,
+  kGreedyDetectedFood = 3,
+  kGreedyEating = 4
+};
+
+enum {
+  kGreedyThrustNone = 1,
+  kGreedyThrustLittle = 2,
+  kGreedyThrustMassive = 3
+};
+
 @interface Greedy : CCLayer {
   cpShape *_shape;
-  CCSprite *_radar;
-  CCSprite *_sprite;
-  bool _isThrusting;
   cpVect _lastPosition;
   cpFloat _angle;
-  NSMutableArray *_asteroids;
+  
+  int _feeding;
+  
+  GreedyView *_view;
 }
 
 @property (nonatomic) cpShape *shape;
-@property (retain, nonatomic) CCSprite *radar;
-@property (retain) NSMutableArray *asteroids;
 
 - (id) initWith:(GameEnvironment *)environment;
 - (void) prestep:(ccTime) delta;
-- (void) postStep;
+- (void) postStep:(ccTime) delta;
 - (void) applyThrust;
 - (void) removeThrust;
 - (void) setAngle:(cpFloat)value;

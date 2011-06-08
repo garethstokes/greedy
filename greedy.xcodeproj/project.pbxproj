@@ -166,6 +166,7 @@
 		E708BE6A137166C000E45FDD /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5C137166C000E45FDD /* tinyxmlerror.cpp */; };
 		E708BE6B137166C000E45FDD /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5D137166C000E45FDD /* tinyxmlparser.cpp */; };
 		E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5F137166C000E45FDD /* SpaceManager.mm */; };
+		E7188B8313964A41005A1E81 /* GreedyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7188B8213964A41005A1E81 /* GreedyView.m */; };
 		E73C9AC91375023000A7DF8D /* AsteroidSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AC61375023000A7DF8D /* AsteroidSprite.m */; };
 		E73C9AD31375024300A7DF8D /* GameEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACC1375024300A7DF8D /* GameEnvironment.m */; };
 		E73C9AD41375024300A7DF8D /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACE1375024300A7DF8D /* GameLayer.m */; };
@@ -513,6 +514,8 @@
 		E708BE5D137166C000E45FDD /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E708BE5E137166C000E45FDD /* SpaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceManager.h; sourceTree = "<group>"; };
 		E708BE5F137166C000E45FDD /* SpaceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpaceManager.mm; sourceTree = "<group>"; };
+		E7188B8113964A41005A1E81 /* GreedyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyView.h; sourceTree = "<group>"; };
+		E7188B8213964A41005A1E81 /* GreedyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyView.m; sourceTree = "<group>"; };
 		E73C9AC51375023000A7DF8D /* AsteroidSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsteroidSprite.h; path = src/AsteroidSprite.h; sourceTree = "<group>"; };
 		E73C9AC61375023000A7DF8D /* AsteroidSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsteroidSprite.m; path = src/AsteroidSprite.m; sourceTree = "<group>"; };
 		E73C9ACB1375024300A7DF8D /* GameEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameEnvironment.h; path = src/GameEnvironment.h; sourceTree = "<group>"; };
@@ -633,6 +636,8 @@
 				E73C9AD01375024300A7DF8D /* GameScene.m */,
 				E7E5D93113750430004283ED /* Greedy.h */,
 				E7E5D93213750430004283ED /* Greedy.m */,
+				E7188B8113964A41005A1E81 /* GreedyView.h */,
+				E7188B8213964A41005A1E81 /* GreedyView.m */,
 				E73C9AD11375024300A7DF8D /* HudLayer.h */,
 				E73C9AD21375024300A7DF8D /* HudLayer.m */,
 				AB44441E13927F07006BA256 /* LifeMeter.h */,
@@ -1368,6 +1373,7 @@
 				E7B6D5E11376852D0092DDA6 /* Background.m in Sources */,
 				E76A26C31377F0E600B24780 /* Balsamic.m in Sources */,
 				AB44442013927F07006BA256 /* LifeMeter.m in Sources */,
+				E7188B8313964A41005A1E81 /* GreedyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

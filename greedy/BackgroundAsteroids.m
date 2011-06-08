@@ -36,7 +36,7 @@
   
   //[self schedule: @selector(step:)];
   
-  [self addChild:[_environment.manager createDebugLayer]];
+  //[self addChild:[_environment.manager createDebugLayer]];
   [_environment.manager start];
   
   return self;

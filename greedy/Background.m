@@ -28,7 +28,7 @@
   // background image is moved at a ratio of 0.4x, 0.5y
   [_parallax addChild:stars z:-1 parallaxRatio:ccp(0.05f,0.1f) positionOffset:CGPointZero];
   [_parallax addChild:nebula z:2 parallaxRatio:ccp(0.09f,0.15f) positionOffset:ccp(0, 200)];
-  [_parallax addChild:background z:3 parallaxRatio:ccp(0.01f,0.1f) positionOffset:CGPointZero];
+  [_parallax addChild:background z:3 parallaxRatio:ccp(0.04f,0.3f) positionOffset:CGPointZero];
   
   [self addChild:_parallax z:0];
   

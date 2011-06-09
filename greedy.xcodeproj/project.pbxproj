@@ -624,6 +624,8 @@
 				E73C9AC61375023000A7DF8D /* AsteroidSprite.m */,
 				E7B6D5DF1376852D0092DDA6 /* Background.h */,
 				E7B6D5E01376852D0092DDA6 /* Background.m */,
+				E722C704139F791900A757A0 /* BackgroundAsteroids.h */,
+				E722C705139F791900A757A0 /* BackgroundAsteroids.m */,
 				E76A26C11377F0E600B24780 /* Balsamic.h */,
 				E76A26C21377F0E600B24780 /* Balsamic.m */,
 				E76AE4B113766A6A00A94EDA /* ConvexHull.h */,
@@ -656,8 +658,6 @@
 				AB045A1813714D3B001253D2 /* Chipmunk */,
 				AB045A6E13714D3C001253D2 /* Supporting Files */,
 				E708BE42137166C000E45FDD /* SpaceManager */,
-				E722C704139F791900A757A0 /* BackgroundAsteroids.h */,
-				E722C705139F791900A757A0 /* BackgroundAsteroids.m */,
 			);
 			path = greedy;
 			sourceTree = "<group>";

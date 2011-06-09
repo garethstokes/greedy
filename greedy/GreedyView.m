@@ -28,14 +28,13 @@
   [_sprite setScaleX:0.5f];
   [_sprite setScaleY:0.5f];
   
-  NSMutableArray* shake_frames = [NSMutableArray array];
-  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
-  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
+//  NSMutableArray* shake_frames = [NSMutableArray array];
+//  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
+//  
+//  CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
+//  CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
   
-  CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
-  CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
-  
-  [_sprite runAction:[CCRepeatForever actionWithAction: action]];
+//  [_sprite runAction:[CCRepeatForever actionWithAction: action]];
   
   [batch addChild:_sprite];
   
@@ -53,6 +52,7 @@
   [self addChild:_radar];
   
   _thrusting = kGreedyThrustNone;
+  _shape = shape;
   
   return self;
 } 
@@ -60,6 +60,31 @@
 - (void) step:(ccTime) delta
 {
   [_radar setPosition:[_sprite position]];
+}
+
+- (void) updateFeeding:(int)value
+{
+  NSLog(@"update feeding: %i", value);
+  return;
+  
+  if (value == kGreedyIdle)
+  {
+    _sprite = [cpCCSprite spriteWithShape:_shape spriteFrameName:@"greedy_open_1.png"];
+    [_sprite setScaleX:0.5f];
+    [_sprite setScaleY:0.5f];
+  }
+  
+  if (value >= kGreedyEating)
+  {
+    NSMutableArray* shake_frames = [NSMutableArray array];
+    [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
+    
+    CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
+    CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
+    
+    [_sprite runAction:[CCRepeatForever actionWithAction: action]];
+    return;
+  }
 }
 
 @end

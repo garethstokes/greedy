@@ -13,6 +13,7 @@
   CCSprite *_radar;
   CCSprite *_sprite;
 
+  cpShape *_shape;
   int _thrusting;
 }
 

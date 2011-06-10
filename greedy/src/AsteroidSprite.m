@@ -118,6 +118,8 @@
       
       myGradient = CGGradientCreateWithColorComponents (myColorspace, components,locations, num_locations); 
       
+      CGColorSpaceRelease(myColorspace);
+      
       // gradient start and end points 
       
       CGPoint myStartPoint, myEndPoint; 
@@ -153,6 +155,8 @@
       CGImageRef resImageRef = CGImageCreateWithImageInRect(imageRefWithAlpha, copyRect);
       UIImage *imageResed = [UIImage imageWithCGImage:resImageRef];
      
+      CGImageRelease(resImageRef);
+      
       //call sprite init fucntion to use new image
       [self initWithCGImage:imageResed.CGImage key:[NSString stringWithFormat:@"Meteor%d", rand()%1000000]];
 

@@ -30,4 +30,14 @@
 #define IS_DEBUG_MODE kDebugFalse
 
 
+//greedy stuff
+#define GREEDYMASS    2000.0f
+#define GREEDYTHRUST  200000
+
+//Collision Codes
+#define LAYER_MAIN      1
+#define LAYER_GREEDY    2
+#define LAYER_ASTEROID  3
+
+
 #endif // __GAME_CONFIG_H

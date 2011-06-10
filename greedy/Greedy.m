@@ -15,9 +15,6 @@
 @implementation Greedy
 @synthesize shape = _shape;
 
-#define GREEDYMASS    2000.0f
-#define GREEDYTHRUST  200000
-
 static void
 gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 {
@@ -46,7 +43,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   _shape = shape;
   
   // view
-  _view = [[GreedyView alloc] initWithShape:shape];
+  _view = [[GreedyView alloc] initWithShape:shape manager:manager];
   [self addChild:_view];
   return self;
 }

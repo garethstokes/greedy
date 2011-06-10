@@ -57,6 +57,9 @@
       _spaceManager = [[SpaceManagerCocos2d alloc] init];
       [_spaceManager setGravity:ccp(0,0)];
       
+      [_spaceManager addWindowContainmentWithFriction:1.0 
+                     elasticity:1.0 
+                     inset:CGPointMake(320, 1024)];
     }
     return self;
 }

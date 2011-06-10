@@ -56,6 +56,10 @@
 
 - (void) setLifeLevel:(int) level
 {  
+  //sanity check
+  if(level < 0) level = 0;
+  if(level > 9) level = 9;
+  
   [_lifeBars setDisplayFrame: [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"lifeBar%d", level]]];
   
   _lifeBars.position = ccp(_lifeBars.contentSizeInPixels.width / 2 + 4, _lifeBars.contentSizeInPixels.height / 2 + 3);

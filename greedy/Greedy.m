@@ -60,7 +60,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   }
   
   //add down force (not a gravity just a "forcy thing")
-  cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/4 * delta) * -1),cpvzero);  
+  cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/3 * delta) * -1),cpvzero);  
 }
 
 - (void) postStep:(ccTime) delta

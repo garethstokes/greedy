@@ -8,8 +8,10 @@
 
 #import "cocos2d.h"
 #import "GameEnvironment.h"
+#import "GDKaosEngine.h"
 
 @interface BackgroundAsteroids : CCNode {
+  GDKaosEngine *_engine;
   GameEnvironment *_environment;
   NSMutableArray *_asteroids;
 }

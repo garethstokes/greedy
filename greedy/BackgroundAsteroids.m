@@ -7,7 +7,6 @@
 //
 
 #import "BackgroundAsteroids.h"
-#import "GDKaosEngine.h"
 #import "Asteroid.h"
 
 @implementation BackgroundAsteroids
@@ -16,17 +15,17 @@
 {
   if(!(self = [super init])) return nil;
   
-  _environment = [[GameEnvironment alloc] init];
+  _environment = [[[GameEnvironment alloc] init] autorelease];
   
   // asteroids.
-  GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:10.0f];
+  _engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:10.0f];
   
-  _asteroids = [[NSMutableArray alloc] init];
-  while ([engine hasRoom])
+  _asteroids = [[[NSMutableArray alloc] init] autorelease];
+  while ([_engine hasRoom])
   {
-    Asteroid *a = [[Asteroid alloc] initWithEnvironment:_environment 
-                                           withPosition:[engine position]];
-    [engine addArea:[a area]];
+    Asteroid *a = [[[Asteroid alloc] initWithEnvironment:_environment 
+                                           withPosition:[_engine position]] autorelease];
+    [_engine addArea:[a area]];
     [self addChild:a];
     [_asteroids addObject:a];
   }
@@ -40,6 +39,12 @@
   [_environment.manager start];
   
   return self;
+}
+
+-(void) dealloc
+{
+  [_engine release];
+  [super dealloc];
 }
 
 @end

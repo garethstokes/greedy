@@ -16,7 +16,7 @@
   if(!(self = [super init])) return nil;
   
   // load the sprite sheet
-  _lifeMeterBatchNode = [[CCSpriteBatchNode alloc] initWithFile:@"life_bar_sprite.png" capacity:11];
+  _lifeMeterBatchNode = [[[CCSpriteBatchNode alloc] initWithFile:@"life_bar_sprite.png" capacity:11] autorelease];
 
   //grab the cache singleton
   CCSpriteFrameCache *cache = [CCSpriteFrameCache sharedSpriteFrameCache];
@@ -25,18 +25,18 @@
   CCSpriteFrame *frame;
   
   //Create the background grid
-  frame = [[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 195, 21)];
+  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 195, 21)] autorelease];
   [cache addSpriteFrame:frame name:@"lifeMeterGrid"];
   
 
   // create the frames
 
-  frame = [[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 0, 0)];
+  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 0, 0)] autorelease];
   [cache addSpriteFrame:frame name:@"lifeBar0"];  
   
   for(int i = 0; i < 10; i++)
   {
-    frame = [[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 16 + (i * 19), 15)];
+    frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 16 + (i * 19), 15)] autorelease];
     [cache addSpriteFrame:frame name:[NSString stringWithFormat:@"lifeBar%d", i + 1]];
   };
   
@@ -69,6 +69,7 @@
 -(void) dealloc
 {
   [_lifeBars release];
+  [_lifeMeterBatchNode release];
 	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
 	[super dealloc];
 }

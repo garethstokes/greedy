@@ -11,10 +11,12 @@
 #import "GameEnvironment.h"
 #import "Greedy.h"
 #import "Background.h"
+#import "GDKaosEngine.h"
 
 @interface GameLayer : CCLayer
 {
   GameEnvironment *_environment;
+  GDKaosEngine *_engine;
   Greedy *_greedy;
   NSMutableArray *_asteroids;
   CGPoint _lastPosition;

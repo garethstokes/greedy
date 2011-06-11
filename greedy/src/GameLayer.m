@@ -12,7 +12,6 @@
 #import "chipmunk.h"
 #import "SpaceManager.h"
 #import "Asteroid.h"
-#import "GDKaosEngine.h"
 #import "Background.h"
 
 @implementation GameLayer
@@ -52,23 +51,23 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 		self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
 		
-	 	_environment = [[GameEnvironment alloc] init];
+	 	_environment = [[[GameEnvironment alloc] init] autorelease];
     
     // asteroids.
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:10.0f];
+    _engine = [[[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:10.0f] autorelease];
     
-    _asteroids = [[NSMutableArray alloc] init];
-    while ([engine hasRoom])
+    _asteroids = [[[NSMutableArray alloc] init] autorelease];
+    while ([_engine hasRoom])
     {
-      Asteroid *a = [[Asteroid alloc] initWithEnvironment:_environment 
-                                             withPosition:[engine position]];
-      [engine addArea:[a area]];
+      Asteroid *a = [[[Asteroid alloc] initWithEnvironment:_environment 
+                                             withPosition:[_engine position]] autorelease];
+      [_engine addArea:[a area]];
       [self addChild:a];
       [_asteroids addObject:a];
     }
 
     // greedy!
-    _greedy = [[Greedy alloc] initWith:_environment];
+    _greedy = [[[Greedy alloc] initWith:_environment] autorelease];
     [self addChild:_greedy];
     [self runAction:[CCFollow actionWithTarget:_greedy]];
   
@@ -84,6 +83,15 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _lastPosition = [_greedy position];
 	}
 	return self;
+}
+
+- (void) dealloc
+{
+  //[_greedy release];
+  //[_engine release];
+  //[_environment.manager stop];
+  //[_environment release];
+  [super dealloc];
 }
 
 - (void) draw

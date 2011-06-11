@@ -26,16 +26,15 @@ springForce(cpConstraint *spring, cpFloat dist)
   float segCount = 16.0;
   float segAngle = 360.0 / segCount;
   float radius = 8;
+  CGPoint pos = [_sprite position];
+  pos.y += 15.0;
+  pos.x -= 1;
+  
+  float fromX, fromY = 0.0;
+  float toX, toY = 0.0;
   
   for(int seg = 0; seg < segCount; seg++)
   {
-    float fromX, fromY = 0.0;
-    float toX, toY = 0.0;
-    
-    CGPoint pos = [_sprite position];
-    pos.y += 15.0;
-    pos.x -= 1;
-    
     fromX = pos.x + (radius * cos( CC_DEGREES_TO_RADIANS(seg * segAngle) ) );
     fromY = pos.y + (radius * sin( CC_DEGREES_TO_RADIANS(seg * segAngle) ) );
     
@@ -45,10 +44,14 @@ springForce(cpConstraint *spring, cpFloat dist)
     _iris[seg] = cpSpaceAddShape(manager.space, cpSegmentShapeNew(shape->body, cpv(fromX, fromY), cpv(toX, toY), 1.0f));
     
     _iris[seg]->layers = 2;
-    _iris[seg]->e = 1.0;
+    _iris[seg]->e = 0.3;
     _iris[seg]->u  = 1.0;
   }
 
+  _irisBoundingCircle = cpCircleShapeNew(shape->body, radius, ccp(1.0, 15.0));
+  _irisBoundingCircle->sensor = YES;
+  _irisBoundingCircle->layers = 2;
+  cpSpaceAddShape(manager.space, _irisBoundingCircle);
 }
 
 - (id) initWithShape:(cpShape *) shape  manager:(SpaceManagerCocos2d *)manager
@@ -72,7 +75,7 @@ springForce(cpConstraint *spring, cpFloat dist)
   [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
   
   CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
-  CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
+  CCAnimate *action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]];
   
   [_sprite runAction:[CCRepeatForever actionWithAction: action]];
   
@@ -98,20 +101,12 @@ springForce(cpConstraint *spring, cpFloat dist)
   CGPoint eyePos = [_sprite position];
   eyePos.y += 15;
   
-  cpShape *sh1 = [manager addCircleAt:eyePos mass:20.0 radius:4];
-  //sh1->group = (cpGroup)LAYER_GREEDY; 
+  cpShape *sh1 = [manager addCircleAt:eyePos mass:20.0 radius:4.0];
   sh1->layers = 2;
   _eyeBall = [[cpShapeNode alloc] initWithShape:sh1];
   _eyeBall.color = ccBLACK;
   [self addChild:_eyeBall];
-  
-  //cpConstraint *spring = cpSpaceAddConstraint(manager.space, cpDampedSpringNew(sh1->body, shape->body, cpv(0.0f, 0.0f), cpv(-1.0f, 15.0f), 5.0, 100.0, 0.5));
-  //cpDampedSpringSetSpringForceFunc(spring, springForce);
-  //cpConstraint *pin = cpSpaceAddConstraint(manager.space, cpPinJointNew(sh1->body, shape->body, cpv(0.0f, 0.0f), cpv(0.0f, 14.0f)));
-  //cpDampedSpringSetSpringForceFunc(spring, springForce);
-  //cpSpaceAddConstraint(manager.space, cpDampedSpringNew(sh1->body, shape->body, cpv(0.0f, 0.0f), cpv(-1.0f, 15.0f), 0.0, 20.0, 1.5));
-  //cpSpaceAddConstraint(manager.space, cpDampedRotarySpringNew(sh1->body, shape->body, CC_DEGREES_TO_RADIANS(90), 100.0, 0.5));
-  		
+		
   
   _thrusting = kGreedyThrustNone;
   
@@ -124,15 +119,32 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   [_radar setPosition:pos];
   
-  pos.y += 15;
-  for (int i = 0; i < 16; i++) {
-//    cpShape *segment = _iris[i];
-//    cpBodySetPos(segment->body, pos);
+  //update the pupil so keep it clamped in side the iris
+  CGPoint irisPos =  ((cpCircleShape *)(_irisBoundingCircle))->tc;
+  CGPoint pupilPos = _eyeBall.position;
+  
+  cpFloat d = cpvdistsq(pupilPos, irisPos);
+  NSLog(@"dist: %f", d, nil);
+  
+  if(!cpvnear(pupilPos, irisPos, 4.5))
+  {
+    cpVect dxdy = cpvnormalize_safe(cpvsub(pupilPos, irisPos));	
+    CGPoint newPos = cpvadd(irisPos, cpvmult(dxdy, 4.0));
+    
+    //[_eyeBall setPosition:newPos];
+    cpBodySetPos(_eyeBall.shape->body, newPos);
+    cpBodyResetForces(_eyeBall.shape->body);
   }
   
   //add down force (not a gravity just a "forcy thing")
   cpBodyApplyImpulse(_eyeBall.shape->body, ccp(0, (GREEDYTHRUST/4 * delta) / 500 * - 1),cpvzero); 
   //[_eyeBall setPosition:[_sprite position]];
+}
+
+-(void) dealloc
+{
+	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
+	[super dealloc];
 }
 
 @end

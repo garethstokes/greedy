@@ -61,4 +61,9 @@
   [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
 }
 
+- (void) dealloc
+{
+  [_lifeMeter release];
+  [super dealloc];
+}
 @end

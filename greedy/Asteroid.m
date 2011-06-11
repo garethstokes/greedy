@@ -17,7 +17,7 @@
 {
   if(!(self = [super init])) return nil;
 
-  _convexHull = [[ConvexHull alloc] initWithStaticSize:arc4random() % 10];
+  _convexHull = [[[ConvexHull alloc] initWithStaticSize:arc4random() % 10]autorelease];
   _mass = (int)[_convexHull area];
   
   cpShape *asteroid = [environment.manager 

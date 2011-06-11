@@ -14,6 +14,7 @@
   CCSprite *_radar;
   CCSprite *_sprite;
   cpShape *_iris[16];
+  cpShape *_irisBoundingCircle;
   cpShapeNode  *_eyeBall;
   int _thrusting;
 }

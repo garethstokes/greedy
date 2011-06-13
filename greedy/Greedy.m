@@ -52,8 +52,9 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 {
   cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
   
-  if ([_view thrusting] > 1)
+  if ([_view isThrusting])
   {
+    NSLog(@"applying force");
     cpVect force = cpvforangle(_shape->body->a);
     force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
     cpBodyApplyImpulse(_shape->body, force,cpvzero);
@@ -93,7 +94,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 
 - (void) applyThrust
 {
-  if (_view.thrusting > 1) return;
+  if ([_view isThrusting]) return;
   NSLog(@"applying thrust...");
   [_view setThrusting:kGreedyThrustLittle];
 }

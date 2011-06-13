@@ -14,17 +14,22 @@
 @interface GreedyView : CCNode {
   CCSprite *_radar;
   CCSprite *_sprite;
+  CCSprite *_flames;
 
   cpShape *_shape;
   cpShape *_iris[16];
   cpShapeNode  *_eyeBall;
   int _thrusting;
+  CCAction *_thrustAction;
+  
+  NSMutableArray *_flameFrames;
+  CCSpriteBatchNode *_batch;
 }
-
-@property (nonatomic) int thrusting;
 
 - (id) initWithShape:(cpShape *)shape manager:(SpaceManagerCocos2d *)manager;
 - (void) step:(ccTime) delta;
+- (void) setThrusting:(int)value;
+- (BOOL) isThrusting;
 //- (void) updateFeeding:(int) value;
 
 @end

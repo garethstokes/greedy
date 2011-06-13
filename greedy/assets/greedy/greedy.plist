@@ -4,6 +4,91 @@
 <dict>
 	<key>frames</key>
 	<dict>
+		
+		<key>flames_1.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{29, 3}, {58, 55}}</string>
+			<key>offset</key>
+			<string>{0, 17}</string>
+			<key>sourceSize</key>
+			<string>{58, 55}</string>
+			<key>frame</key>
+			<string>{{456, 8}, {58, 55}}</string>
+		</dict>
+		
+		<key>flames_2.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{25, 3}, {66, 69}}</string>
+			<key>offset</key>
+			<string>{0, 10}</string>
+			<key>sourceSize</key>
+			<string>{66, 69}</string>
+			<key>frame</key>
+			<string>{{528, 8}, {66, 69}}</string>
+		</dict>
+		
+		<key>flames_3.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{17, 3}, {84, 89}}</string>
+			<key>offset</key>
+			<string>{1, -0}</string>
+			<key>sourceSize</key>
+			<string>{84, 89}</string>
+			<key>frame</key>
+			<string>{{552, 88}, {84, 89}}</string>
+		</dict>
+		
+		<key>flames_4.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{17, 3}, {84, 89}}</string>
+			<key>offset</key>
+			<string>{1, -0}</string>
+			<key>sourceSize</key>
+			<string>{84, 89}</string>
+			<key>frame</key>
+			<string>{{639, 88}, {84, 89}}</string>
+		</dict>
+		
+		<key>flames_5.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{18, 3}, {82, 85}}</string>
+			<key>offset</key>
+			<string>{1, 2}</string>
+			<key>sourceSize</key>
+			<string>{82, 85}</string>
+			<key>frame</key>
+			<string>{{464, 88}, {82, 85}}</string>
+		</dict>
+		
+		<key>flames_6.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{17, 3}, {84, 89}}</string>
+			<key>offset</key>
+			<string>{1, -0}</string>
+			<key>sourceSize</key>
+			<string>{84, 89}</string>
+			<key>frame</key>
+			<string>{{472, 183}, {84, 89}}</string>
+		</dict>
+		
+		<key>flames_7.png</key>
+		<dict>
+			<key>sourceColorRect</key>
+			<string>{{16, 3}, {84, 89}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{84, 89}</string>
+			<key>frame</key>
+			<string>{{568, 184}, {84, 89}}</string>
+		</dict>
+		
 		<key>greedy_close_body.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -15,6 +100,7 @@
 			<key>frame</key>
 			<string>{{0, 0}, {100, 110}}</string>
 		</dict>
+		
 		<key>greedy_open_1.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -26,6 +112,7 @@
 			<key>frame</key>
 			<string>{{105, 0}, {100, 118}}</string>
 		</dict>
+		
 		<key>greedy_open_2.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -37,6 +124,7 @@
 			<key>frame</key>
 			<string>{{216, 0}, {100, 126}}</string>
 		</dict>
+		
 		<key>greedy_open_3.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -48,6 +136,7 @@
 			<key>frame</key>
 			<string>{{328, 0}, {100, 134}}</string>
 		</dict>
+		
 		<key>greedy_open_4.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -59,6 +148,7 @@
 			<key>frame</key>
 			<string>{{0, 143}, {100, 142}}</string>
 		</dict>
+		
 		<key>greedy_open_5.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -70,6 +160,7 @@
 			<key>frame</key>
 			<string>{{119, 143}, {100, 146}}</string>
 		</dict>
+		
 		<key>greedy_open_5_offset_a.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -81,6 +172,7 @@
 			<key>frame</key>
 			<string>{{232, 151}, {102, 148}}</string>
 		</dict>
+		
 		<key>greedy_open_5_offset_b.png</key>
 		<dict>
 			<key>sourceColorRect</key>
@@ -92,13 +184,14 @@
 			<key>frame</key>
 			<string>{{352, 159}, {102, 148}}</string>
 		</dict>
+		
 	</dict>
 	<key>metadata</key>
 	<dict>
 		<key>format</key>
 		<integer>1</integer>
 		<key>size</key>
-		<string>{512, 512}</string>
+		<string>{1024, 512}</string>
 	</dict>
 </dict>
 </plist>

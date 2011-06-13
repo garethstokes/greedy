@@ -12,7 +12,6 @@
 #import "Greedy.h"
 
 @implementation GreedyView
-@synthesize thrusting = _thrusting;
 
 static cpFloat
 springForce(cpConstraint *spring, cpFloat dist)
@@ -57,7 +56,7 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
   
-  CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
+  _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
   
   //shape->group = (cpGroup)LAYER_GREEDY;
@@ -66,16 +65,7 @@ springForce(cpConstraint *spring, cpFloat dist)
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
   [_sprite setScaleX:0.5f];
   [_sprite setScaleY:0.5f];
-  
-//  NSMutableArray* shake_frames = [NSMutableArray array];
-//  [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
-//  
-//  CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
-//  CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
-  
-//  [_sprite runAction:[CCRepeatForever actionWithAction: action]];
-  
-  [batch addChild:_sprite];
+  [_batch addChild:_sprite];
   
   _radar.position = ccp(52, 90);
   [_radar setScaleX:0.5f];
@@ -87,22 +77,22 @@ springForce(cpConstraint *spring, cpFloat dist)
   [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
   
   //_sprites
-  [self addChild:batch];
+  [self addChild:_batch];
   [self addChild:_radar];
   
   //add crazy eye container
-  [self addEyeContainer: manager shape:shape];
+  //[self addEyeContainer: manager shape:shape];
   
   //add crazy eye
-  CGPoint eyePos = [_sprite position];
-  eyePos.y += 15;
+  //CGPoint eyePos = [_sprite position];
+  //eyePos.y += 15;
   
-  cpShape *sh1 = [manager addCircleAt:eyePos mass:20.0 radius:4];
+  //cpShape *sh1 = [manager addCircleAt:eyePos mass:20.0 radius:4];
   //sh1->group = (cpGroup)LAYER_GREEDY; 
-  sh1->layers = 2;
-  _eyeBall = [[cpShapeNode alloc] initWithShape:sh1];
-  _eyeBall.color = ccBLACK;
-  [self addChild:_eyeBall];
+  //sh1->layers = 2;
+  //_eyeBall = [[cpShapeNode alloc] initWithShape:sh1];
+  //_eyeBall.color = ccBLACK;
+  //[self addChild:_eyeBall];
   
   //cpConstraint *spring = cpSpaceAddConstraint(manager.space, cpDampedSpringNew(sh1->body, shape->body, cpv(0.0f, 0.0f), cpv(-1.0f, 15.0f), 5.0, 100.0, 0.5));
   //cpDampedSpringSetSpringForceFunc(spring, springForce);
@@ -110,8 +100,7 @@ springForce(cpConstraint *spring, cpFloat dist)
   //cpDampedSpringSetSpringForceFunc(spring, springForce);
   //cpSpaceAddConstraint(manager.space, cpDampedSpringNew(sh1->body, shape->body, cpv(0.0f, 0.0f), cpv(-1.0f, 15.0f), 0.0, 20.0, 1.5));
   //cpSpaceAddConstraint(manager.space, cpDampedRotarySpringNew(sh1->body, shape->body, CC_DEGREES_TO_RADIANS(90), 100.0, 0.5));
-  		
-  
+
   _thrusting = kGreedyThrustNone;
   _shape = shape;
   
@@ -124,6 +113,11 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   [_radar setPosition:pos];
   
+  if (_flames != nil)
+  {
+    [_flames setPosition:ccpAdd([_sprite position], ccp(0, -40))];  
+  }
+  
   pos.y += 15;
   for (int i = 0; i < 16; i++) {
 //    cpShape *segment = _iris[i];
@@ -131,17 +125,63 @@ springForce(cpConstraint *spring, cpFloat dist)
   }
   
   //add down force (not a gravity just a "forcy thing")
-  cpBodyApplyImpulse(_eyeBall.shape->body, ccp(0, (GREEDYTHRUST/4 * delta) / 500 * - 1),cpvzero); 
+  //cpBodyApplyImpulse(_eyeBall.shape->body, ccp(0, (GREEDYTHRUST/4 * delta) / 500 * - 1),cpvzero); 
   //[_eyeBall setPosition:[_sprite position]];
+}
+
+- (void) setThrusting:(int)value
+{
+  if (value == kGreedyThrustNone)
+  {
+    NSLog(@"update thrusting: nill");
+    
+    [self removeChild:_flames cleanup:YES];
+    _flames = nil;
+    
+    _thrusting = value;
+    return;
+  }
+  
+  if (value >= kGreedyThrustLittle)
+  {
+    NSLog(@"update thrusting: zomg flames!");    
+
+    NSMutableArray *flameFrames = [NSMutableArray array];
+    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_3.png"]];
+    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_4.png"]];
+    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_5.png"]];
+    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_6.png"]];
+    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_7.png"]];
+    
+    CCAnimation *animation = [CCAnimation animationWithFrames:flameFrames delay:0.1f];
+    CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
+    
+    _flames = [CCSprite spriteWithSpriteFrameName:@"flames_3.png"];
+    _flames.position = ccp(52, 90);
+    [_flames setScaleX:0.5f];
+    [_flames setScaleY:0.5f];
+    [_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  
+    [_flames runAction:action];
+    
+    [self addChild:_flames z:-1];
+    
+    _thrusting = value;
+    return;
+  }
+}
+
+- (BOOL) isThrusting
+{
+  return (_thrusting > 1);
 }
 
 - (void) updateFeeding:(int)value
 {
-  NSLog(@"update feeding: %i", value);
-  return;
+//  return;
   
   if (value == kGreedyIdle)
   {
+    NSLog(@"update feeding: idle");
     _sprite = [cpCCSprite spriteWithShape:_shape spriteFrameName:@"greedy_open_1.png"];
     [_sprite setScaleX:0.5f];
     [_sprite setScaleY:0.5f];
@@ -149,10 +189,8 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   if (value >= kGreedyEating)
   {
-    NSMutableArray* shake_frames = [NSMutableArray array];
-    [shake_frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
-    
-    CCAnimation *animation = [CCAnimation animationWithFrames:shake_frames delay:0.1f];
+    NSLog(@"update feeding: eating");
+    CCAnimation *animation = [CCAnimation animationWithFrames:_flameFrames delay:0.1f];
     CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
     
     [_sprite runAction:[CCRepeatForever actionWithAction: action]];

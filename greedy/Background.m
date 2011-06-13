@@ -12,23 +12,22 @@
 
 @implementation Background
 
-- (id) init
+- (id) initWithEnvironment:(GameEnvironment *)environment
 {
   if(!(self = [super init])) return nil;
-  
-  CCSprite *stars = [CCSprite spriteWithFile:@"bg_stars.png"];
-  CCSprite *nebula = [CCSprite spriteWithFile:@"nebula.png"];
-  //CCNode *background = [[[BackgroundAsteroids alloc] init] autorelease];
-
   
   //[self addChild:sprite];
   // create a void node, a parent node
   _parallax = [CCParallaxNode node];
   
+  CCSprite *stars = [CCSprite spriteWithFile:@"bg_stars.png"];
+  CCSprite *nebula = [CCSprite spriteWithFile:@"nebula.png"];
+  BackgroundAsteroids *background = [[[BackgroundAsteroids alloc] initWithEnvironment:environment] autorelease];
+
   // background image is moved at a ratio of 0.4x, 0.5y
-  [_parallax addChild:stars z:-1 parallaxRatio:ccp(0.05f,0.1f) positionOffset:CGPointZero];
-  [_parallax addChild:nebula z:2 parallaxRatio:ccp(0.09f,0.15f) positionOffset:ccp(0, 200)];
-  //[_parallax addChild:background z:3 parallaxRatio:ccp(0.04f,0.3f) positionOffset:CGPointZero];
+  [_parallax addChild:stars z:-1 parallaxRatio:ccp(0.05f,0.1f) positionOffset:ccp(150, 638)];
+  [_parallax addChild:nebula z:2 parallaxRatio:ccp(0.09f,0.15f) positionOffset:ccp(150, 530)];
+  [_parallax addChild:background z:3 parallaxRatio:ccp(0.04f,0.3f) positionOffset:CGPointZero];
   
   [self addChild:_parallax z:0];
   

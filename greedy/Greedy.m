@@ -21,14 +21,14 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 	cpBodyUpdateVelocity(body, gravity, damping, dt);
 }
 
-- (id) initWith:(GameEnvironment *)environment
+- (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos
 {
   if(!(self = [super init])) return nil;
   
   SpaceManagerCocos2d *manager = [environment manager];
   
   cpShape *shape = [manager 
-                    addRectAt:ccp(0,0) 
+                    addRectAt:startPos 
                     mass:GREEDYMASS 
                     width:50 
                     height:75 

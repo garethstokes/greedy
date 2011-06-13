@@ -13,7 +13,7 @@
 
 @implementation Asteroid
 
-- (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position
+- (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer
 {
   if(!(self = [super init])) return nil;
 
@@ -25,6 +25,8 @@
                        mass:_mass 
                        rotation:CCRANDOM_0_1()
                        points:[_convexHull points]];
+  
+  asteroid->layers = withLayer;
   
   // push it in a random direction.
   CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));

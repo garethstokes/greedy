@@ -8,19 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "GameEnvironment.h"
+#import "GDKaosEngine.h"
+#import "Background.h"
 #import "GameLayer.h"
 #import "HudLayer.h"
-#import "Background.h"
 
 @interface GameScene : CCScene {
+  GameEnvironment *_environment;
+  GDKaosEngine *_engine;
+  Background *_background;
   GameLayer *_gameLayer;
   HudLayer *_hudLayer;
-  Background *_background;
 }
 
+@property (nonatomic, retain) GameEnvironment *environment;
+@property (nonatomic, retain) GDKaosEngine *engine;
+@property (nonatomic, retain) Background *background;
 @property (nonatomic, retain) GameLayer *gameLayer;
 @property (nonatomic, retain) HudLayer *hudLayer;
 
-+ (id) scene;
++(id) scene;
 
 @end

@@ -26,7 +26,7 @@ springForce(cpConstraint *spring, cpFloat dist)
   float segCount = 16.0;
   float segAngle = 360.0 / segCount;
   float radius = 8;
-  CGPoint pos = [_sprite position];
+  CGPoint pos = ccp(0,0);//[_sprite position];
   pos.y += 15.0;
   pos.x -= 1;
   
@@ -43,14 +43,14 @@ springForce(cpConstraint *spring, cpFloat dist)
     
     _iris[seg] = cpSpaceAddShape(manager.space, cpSegmentShapeNew(shape->body, cpv(fromX, fromY), cpv(toX, toY), 1.0f));
     
-    _iris[seg]->layers = 2;
-    _iris[seg]->e = 0.3;
-    _iris[seg]->u  = 1.0;
+    _iris[seg]->layers = LAYER_GREEDY_EYE;
+    _iris[seg]->e = 0.5;
+    _iris[seg]->u  = 0.5;
   }
 
-  _irisBoundingCircle = cpCircleShapeNew(shape->body, radius, ccp(1.0, 15.0));
+  _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(-1.0, 15.0));
   _irisBoundingCircle->sensor = YES;
-  _irisBoundingCircle->layers = 2;
+  _irisBoundingCircle->layers = LAYER_GREEDY_EYE;
   cpSpaceAddShape(manager.space, _irisBoundingCircle);
 }
 
@@ -63,8 +63,8 @@ springForce(cpConstraint *spring, cpFloat dist)
   CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
 
-  //Move greedy into layer 1 so its shape doesn't impace eyeball
-  shape->layers = 1;
+  //Move greedy into layer DEFAULT so its shape doesn't impact eyeball or background asteroids
+  shape->layers = LAYER_DEFAULT;
   
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
   [_sprite setScaleX:0.5f];
@@ -101,8 +101,8 @@ springForce(cpConstraint *spring, cpFloat dist)
   CGPoint eyePos = [_sprite position];
   eyePos.y += 15;
   
-  cpShape *sh1 = [manager addCircleAt:eyePos mass:20.0 radius:4.0];
-  sh1->layers = 2;
+  cpShape *sh1 = [manager addCircleAt:eyePos mass:10.0 radius:4.0];
+  sh1->layers = LAYER_GREEDY_EYE;
   _eyeBall = [[cpShapeNode alloc] initWithShape:sh1];
   _eyeBall.color = ccBLACK;
   [self addChild:_eyeBall];
@@ -119,22 +119,20 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   [_radar setPosition:pos];
   
-  //update the pupil so keep it clamped inside the iris
+  //update the pupil to keep it clamped inside the iris
   CGPoint irisPos =  ((cpCircleShape *)(_irisBoundingCircle))->tc;
   CGPoint pupilPos = _eyeBall.position;
  
-  if(!cpvnear(pupilPos, irisPos, 4.5))
+  if(!cpvnear(pupilPos, irisPos, 4.0))
   {
     cpVect dxdy = cpvnormalize_safe(cpvsub(pupilPos, irisPos));	
     CGPoint newPos = cpvadd(irisPos, cpvmult(dxdy, 4.0));
-    
-    //[_eyeBall setPosition:newPos];
     cpBodySetPos(_eyeBall.shape->body, newPos);
     cpBodyResetForces(_eyeBall.shape->body);
   }
   
   //add down force (not a gravity just a "forcy thing")
-  cpBodyApplyImpulse(_eyeBall.shape->body, ccp(0, (GREEDYTHRUST/4 * delta) / 500 * - 1),cpvzero); 
+  cpBodyApplyImpulse(_eyeBall.shape->body, ccp(0, (-100 * delta)),cpvzero); 
 }
 
 -(void) dealloc

@@ -57,9 +57,13 @@
 - (CGPoint) position
 {
   if(_radius == 0){
-    int x = (int)_worldSize.width;
-    int y = (int)_worldSize.height;
-    CGPoint position = ccp(arc4random() % x, arc4random() % y);
+    int x = arc4random() %(int)_worldSize.width / 2;
+    int y = arc4random() %(int)_worldSize.height / 2;
+    
+    if(arc4random() % 10 >= 5) x = -x;
+    if(arc4random() % 10 >= 5) y = -y;
+    
+    CGPoint position = ccp(x, y);
     return position;
   } else {
     

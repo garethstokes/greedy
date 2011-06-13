@@ -48,12 +48,12 @@
       int xPixelOffset = width / 2; //middle of image
       int yPixelOffset= height / 2; //middle of image
       
-      if ((rand() % 1) == 0) 
+      if ((rand() % 10) >= 5) 
           xPixelOffset += (rand() % ((width - thisSize) / 2));
       else    
           xPixelOffset -= (rand() % ((width - thisSize) / 2));
       
-     if((rand() % 1) == 0)
+     if((rand() % 10) >= 5)
          yPixelOffset += (rand() % ((height - thisSize) / 2));
       else
           yPixelOffset -= (rand() % ((height - thisSize) / 2));

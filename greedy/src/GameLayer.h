@@ -8,19 +8,18 @@
 
 #import "cocos2d.h"
 #import "chipmunk.h"
-#import "GameEnvironment.h"
 #import "Greedy.h"
-#import "Background.h"
-#import "GDKaosEngine.h"
+#import "AsteroidField.h"
+
 
 @interface GameLayer : CCLayer
 {
-  GameEnvironment *_environment;
-  GDKaosEngine *_engine;
+
   Greedy *_greedy;
-  NSMutableArray *_asteroids;
+  AsteroidField *_asteroidField;
   CGPoint _lastPosition;
-  Background *_background;
+  
+  CCLayer* _debugLayer;
   
   float accelX;
   float accelY;
@@ -30,6 +29,7 @@
 @property (nonatomic, retain) Greedy *greedy;
 
 - (void) step:(ccTime)dt;
-- (id) initWithBackground:(Background *) background;
+- (id) initWithEnvironment:(GameEnvironment *) environment;
+- (void) toggleDebug;
 
 @end

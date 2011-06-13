@@ -17,7 +17,7 @@
   int _mass;
 }
 
-- (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position;
+- (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer;
 - (cpFloat) area; 
 - (int) mass;
 

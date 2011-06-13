@@ -46,7 +46,19 @@
 
   [restartButton setPosition:CGPointMake(45, 15)];
   
-  CCMenu *menu = [CCMenu menuWithItems:restartButton, nil];
+  CCLabelTTF *debugLabel = [CCLabelTTF labelWithString:@"debug" 
+                                                fontName:@"Helvetica" 
+                                                fontSize:16];
+  
+  CCMenuItem *debugButton = [CCMenuItemLabel
+                               itemWithLabel:debugLabel
+                               target:self 
+                               selector:@selector(debugGame:)];
+  
+  [debugButton setPosition:CGPointMake(145, 15)];
+
+  
+  CCMenu *menu = [CCMenu menuWithItems:restartButton, debugButton, nil];
   [menu setPosition:CGPointMake(4, 0)];
   [self addChild:menu];
   
@@ -57,8 +69,12 @@
 
 - (void)restartGame:(id)sender
 {
-  //GreedyGameScene *current = (GreedyGameScene *)[[CCDirector sharedDirector] runningScene];
   [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
+}
+
+- (void)debugGame:(id)sender
+{
+  [((GameScene *)(self.parent)).gameLayer toggleDebug];
 }
 
 - (void) dealloc

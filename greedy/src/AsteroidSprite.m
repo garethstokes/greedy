@@ -62,7 +62,10 @@
       //NSLog(@"PixelOffsets: (%d, %d)", xPixelOffset, yPixelOffset);
       
       //create the clipping path for the asteroids
-      CGContextMoveToPoint(offscreenContext, xPixelOffset + verts[0].x, yPixelOffset + verts[0].y);
+      CGPoint xP = verts[0];
+      CGFloat xVal = xP.x;
+      
+      CGContextMoveToPoint(offscreenContext, xPixelOffset + xVal, yPixelOffset + verts[0].y);
           
           for(int idx = 1; idx < num; idx++){
               CGContextAddLineToPoint(offscreenContext, xPixelOffset + verts[idx].x, yPixelOffset + verts[idx].y);

@@ -62,8 +62,8 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
-  
-  //shape->group = (cpGroup)LAYER_GREEDY;
+
+  //Move greedy into layer 1 so its shape doesn't impace eyeball
   shape->layers = 1;
   
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
@@ -119,13 +119,10 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   [_radar setPosition:pos];
   
-  //update the pupil so keep it clamped in side the iris
+  //update the pupil so keep it clamped inside the iris
   CGPoint irisPos =  ((cpCircleShape *)(_irisBoundingCircle))->tc;
   CGPoint pupilPos = _eyeBall.position;
-  
-  cpFloat d = cpvdistsq(pupilPos, irisPos);
-  NSLog(@"dist: %f", d, nil);
-  
+ 
   if(!cpvnear(pupilPos, irisPos, 4.5))
   {
     cpVect dxdy = cpvnormalize_safe(cpvsub(pupilPos, irisPos));	
@@ -138,7 +135,6 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   //add down force (not a gravity just a "forcy thing")
   cpBodyApplyImpulse(_eyeBall.shape->body, ccp(0, (GREEDYTHRUST/4 * delta) / 500 * - 1),cpvzero); 
-  //[_eyeBall setPosition:[_sprite position]];
 }
 
 -(void) dealloc

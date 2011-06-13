@@ -76,11 +76,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
 		[self schedule: @selector(step:)];
     
-    //[self addChild:[_environment.manager createDebugLayer]];
-    [_environment.manager start];
-    
     _background = background;
     _lastPosition = [_greedy position];
+    
+    //[self addChild:[_environment.manager createDebugLayer]];
+    [_environment.manager start];
 	}
 	return self;
 }

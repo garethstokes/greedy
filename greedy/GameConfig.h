@@ -32,12 +32,13 @@
 
 //greedy stuff
 #define GREEDYMASS    2000.0f
-#define GREEDYTHRUST  200000
+#define GREEDYTHRUST  200000.0f
+#define PUPILGRAVITY  -100.0f
 
 //Collision Codes
-#define LAYER_MAIN      1
-#define LAYER_GREEDY    2
-#define LAYER_ASTEROID  3
-
+#define LAYER_GREEDY       0x0001
+#define LAYER_GREEDY_EYE   0x0002
+#define LAYER_BACKGROUND   0x0004
+#define LAYER_DEFAULT      (CP_ALL_LAYERS && ~LAYER_GREEDY_EYE && ~LAYER_BACKGROUND)
 
 #endif // __GAME_CONFIG_H

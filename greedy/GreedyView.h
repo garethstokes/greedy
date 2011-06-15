@@ -18,6 +18,7 @@
 
   cpShape *_shape;
   cpShape *_iris[16];
+  cpShape *_irisBoundingCircle;
   cpShapeNode  *_eyeBall;
   int _thrusting;
   CCAction *_thrustAction;

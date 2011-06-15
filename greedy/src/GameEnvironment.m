@@ -48,7 +48,44 @@
   
 }
 
-
+-(void) addTopDownWorldContainmentWithFriction:(cpFloat)friction elasticity:(cpFloat)elasticity height:(cpFloat)height width:(cpFloat)width
+{	
+  cpFloat WidthHalf = width / 2.0f;
+  CGFloat HalfHeight = height / 2.0f;
+  
+  //bottom
+  cpShape *thisSeg;
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, -HalfHeight) 
+                                     toWorldAnchor:cpv(WidthHalf, -HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = elasticity;
+  thisSeg->u  = friction;
+  
+  //top
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, HalfHeight) 
+                                     toWorldAnchor:cpv(WidthHalf, HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = elasticity;
+  thisSeg->u  = friction;
+  
+  //left
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, -HalfHeight) 
+                                     toWorldAnchor:cpv(-WidthHalf, HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = elasticity;
+  thisSeg->u  = friction;
+  
+  //right
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(WidthHalf, -HalfHeight) 
+                                     toWorldAnchor:cpv(WidthHalf, HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = elasticity;
+  thisSeg->u  = friction;
+}
 - (id) init
 {
     if( (self=[super init])) {

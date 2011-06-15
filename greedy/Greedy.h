@@ -47,7 +47,7 @@ enum {
 
 @property (nonatomic) cpShape *shape;
 
-- (id) initWith:(GameEnvironment *)environment;
+- (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos;
 - (void) prestep:(ccTime) delta;
 - (void) postStep:(ccTime) delta;
 - (void) applyThrust;

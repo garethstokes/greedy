@@ -71,7 +71,7 @@ void hullSet(CGPoint A, CGPoint B, NSMutableArray *set, NSMutableArray *hull) {
   [hull insertObject:[NSValue valueWithCGPoint:P] atIndex:insertPosition];
   
   // Determine who's to the left of AP
-  NSMutableArray *leftSetAP = [[NSMutableArray alloc] init];
+  NSMutableArray *leftSetAP = [[[NSMutableArray alloc] init] autorelease];
   i = 0;
   for (NSValue *val in set) {
     CGPoint M = [val CGPointValue];   
@@ -82,7 +82,7 @@ void hullSet(CGPoint A, CGPoint B, NSMutableArray *set, NSMutableArray *hull) {
   }
   
   // Determine who's to the left of PB
-  NSMutableArray *leftSetPB = [[NSMutableArray alloc] init];
+  NSMutableArray *leftSetPB = [[[NSMutableArray alloc] init] autorelease];
   for (NSValue *val in set) {
     CGPoint M = [val CGPointValue];   
     if (pointLocation(P,B,M)==1) {
@@ -96,11 +96,11 @@ void hullSet(CGPoint A, CGPoint B, NSMutableArray *set, NSMutableArray *hull) {
 
 NSMutableArray *quickHull(NSMutableArray *points) 
 {
-  NSMutableArray *convexHull = [[NSMutableArray alloc] init];
-  
   //If we have less then 3 points this is a no go
   if ([points count] < 3) 
     return points;
+ 
+  NSMutableArray *convexHull = [[[NSMutableArray alloc] init] autorelease];
   
   // find extremals
   int minPoint = -1;
@@ -132,8 +132,8 @@ NSMutableArray *quickHull(NSMutableArray *points)
   [points removeObject:[NSValue valueWithCGPoint:A]];
   [points removeObject:[NSValue valueWithCGPoint:B]];
   
-  NSMutableArray *leftSet  = [[NSMutableArray alloc] init];
-  NSMutableArray *rightSet = [[NSMutableArray alloc] init];
+  NSMutableArray *leftSet  = [[[NSMutableArray alloc] init] autorelease];
+  NSMutableArray *rightSet = [[[NSMutableArray alloc] init] autorelease];
   
   for (NSValue *val in points) {
     CGPoint p = [val CGPointValue];
@@ -151,7 +151,7 @@ NSMutableArray *quickHull(NSMutableArray *points)
 
 NSMutableArray *createAsteroidShape(int width, int height)
 {
-  NSMutableArray *points = [[NSMutableArray alloc] init];
+  NSMutableArray *points = [[[NSMutableArray alloc] init] autorelease];
   
   int halfWidth = width / 2;
   int halfHeight = height / 2;
@@ -199,7 +199,7 @@ NSMutableArray *createAsteroidShape(int width, int height)
     case 9: thisSize = SIZE_LARGE;
       break;
     default:
-      thisSize - SIZE_SMALL;
+      thisSize = SIZE_SMALL;
   }
   
   _size = thisSize;

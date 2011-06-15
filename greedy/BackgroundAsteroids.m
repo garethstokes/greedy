@@ -7,39 +7,23 @@
 //
 
 #import "BackgroundAsteroids.h"
-#import "GDKaosEngine.h"
 #import "Asteroid.h"
 
 @implementation BackgroundAsteroids
 
-- (id) init
+-(id) initWithEnvironment:(GameEnvironment *)environment
 {
   if(!(self = [super init])) return nil;
   
-  _environment = [[GameEnvironment alloc] init];
+  _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 500) density:0.25 Layer:LAYER_BACKGROUND];
+  [self addChild:_asteroidField];
   
-  // asteroids.
-  GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:10.0f];
-  
-  _asteroids = [[NSMutableArray alloc] init];
-  while ([engine hasRoom])
-  {
-    Asteroid *a = [[Asteroid alloc] initWithEnvironment:_environment 
-                                           withPosition:[engine position]];
-    [engine addArea:[a area]];
-    [self addChild:a];
-    [_asteroids addObject:a];
-  }
-    
-  // add circular limits
-  [_environment addCircularWorldContainmentWithFriction:0.0 elasticity:0.01f radius:500]; 
-  
-  //[self schedule: @selector(step:)];
-  
-  //[self addChild:[_environment.manager createDebugLayer]];
-  [_environment.manager start];
-  
-  return self;
+  return self; 
+}
+
+-(void) dealloc
+{
+  [super dealloc];
 }
 
 @end

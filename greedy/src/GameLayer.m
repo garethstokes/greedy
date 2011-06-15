@@ -11,9 +11,7 @@
 #import "GameEnvironment.h"
 #import "chipmunk.h"
 #import "SpaceManager.h"
-#import "Asteroid.h"
-#import "GDKaosEngine.h"
-#import "Background.h"
+#import "GameScene.h"
 
 @implementation GameLayer
 @synthesize greedy = _greedy;
@@ -49,41 +47,51 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
 		
-		self.isTouchEnabled = YES;
+  }
+	return self;
+}
+
+- (id) initWithEnvironment:(GameEnvironment *) environment
+{
+  if( (self=[super init])) {
+    self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
-		
-	 	_environment = [[GameEnvironment alloc] init];
     
     // asteroids.
     GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:3.0f];
+    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 500) density:0.25 Layer:LAYER_DEFAULT];
+    [self addChild:_asteroidField];
     
-    _asteroids = [[NSMutableArray alloc] init];
-    while ([engine hasRoom])
-    {
-      Asteroid *a = [[Asteroid alloc] initWithEnvironment:_environment 
-                                             withPosition:[engine position]];
-      [engine addArea:[a area]];
-      [self addChild:a];
-      [_asteroids addObject:a];
-    }
-
     // greedy!
-    _greedy = [[Greedy alloc] initWith:_environment];
+    _greedy = [[[Greedy alloc] initWith:environment startPos:cpv(0.0, -(900.0 - 40.0))] autorelease];
     [self addChild:_greedy];
     [self runAction:[CCFollow actionWithTarget:_greedy]];
-  
+    
     // add circular limits
     //[_environment addCircularWorldContainmentWithFriction:0.0 elasticity:0.01f radius:500]; 
+    //[_environment addCircularWorldContainmentWithFriction:0.0 elasticity:0.1f radius:500];
+    [environment addTopDownWorldContainmentWithFriction:0.0 elasticity:0.1f height:1800.0 width:500.0];
     
-		[self schedule: @selector(step:)];
-    
-    //[self addChild:[_environment.manager createDebugLayer]];
-    [_environment.manager start];
-    
-    _background = background;
     _lastPosition = [_greedy position];
-	}
-	return self;
+    
+    _debugLayer = [environment.manager createDebugLayer];
+    _debugLayer.visible = NO;
+    [self addChild: _debugLayer];
+    
+    [environment.manager start:(1.0/60.0)];
+    [self schedule: @selector(step:)];
+  }
+  return self;
+}
+
+- (void) toggleDebug;
+{
+  _debugLayer.visible = !_debugLayer.visible;
+}
+
+- (void) dealloc
+{
+  [super dealloc];
 }
 
 - (void) draw
@@ -106,14 +114,16 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [_greedy prestep:dt];
   
   // now step the physics engine
-  // [_environment step:dt];
-  
   [_greedy postStep:dt];
   
   //move the parallax backgrounds
   CGPoint diff = ccpSub(_lastPosition, [_greedy position]);
-  [_background setPosition: ccpAdd([_background position], diff)];
+  
+  [((GameScene *)(self.parent)).background setPosition: ccpAdd([((GameScene *)(self.parent)).background position], diff)];
+  
   _lastPosition = [_greedy position];
+  
+  //NSLog(@"Greedy Pos: %f, %f", _lastPosition.x, _lastPosition.y);
   
   //debug speed details after all forces applied and calcualted
   [self SpeedBarUpdate];

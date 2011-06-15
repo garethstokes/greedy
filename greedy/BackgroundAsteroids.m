@@ -23,6 +23,7 @@
 
 -(void) dealloc
 {
+  NSLog(@"Dealloc BackgroundAsteroids");
   [super dealloc];
 }
 

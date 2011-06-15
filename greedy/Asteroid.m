@@ -29,19 +29,31 @@
   asteroid->layers = withLayer;
   
   // push it in a random direction.
-  CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
-  cpBodyApplyImpulse(asteroid->body, 
+  if(withLayer != LAYER_BACKGROUND)
+  {
+    CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
+    cpBodyApplyImpulse(asteroid->body, 
                      p, 
                      ccp(rand() % 10000, rand() % 10000));
-
+  }else{
+    cpBodySleep(asteroid->body);
+  };
   
   cpCCSprite *sprite = [[AsteroidSprite alloc] initWithPoints:[_convexHull points] 
                                                          size:[_convexHull size] 
                                                     withShape:asteroid];
   
   [self addChild:sprite];
+  [sprite release];
   
   return self;
+}
+
+- (void)dealloc
+{
+  NSLog(@"Dealloc Asteroid");
+  [self removeAllChildrenWithCleanup:YES];
+  [super dealloc];
 }
 
 - (cpFloat) area { return [_convexHull area]; }

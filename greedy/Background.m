@@ -42,6 +42,7 @@
 
 -(void) dealloc
 {
+  NSLog(@"Dealloc Background");
   [super dealloc];
 }
 

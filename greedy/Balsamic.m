@@ -21,4 +21,9 @@
   return self;
 }
 
+- (void)dealloc {
+  NSLog(@"Dealloc Balsamic");
+  [super dealloc];
+}
+
 @end

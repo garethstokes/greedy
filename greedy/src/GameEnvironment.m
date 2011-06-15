@@ -93,12 +93,17 @@
       //allocate our space manager
       _spaceManager = [[SpaceManagerCocos2d alloc] init];
       [_spaceManager setGravity:ccp(0,0)];
-      
-      [_spaceManager addWindowContainmentWithFriction:1.0 
-                     elasticity:1.0 
-                     inset:CGPointMake(320, 1024)];
     }
     return self;
+}
+
+- (void) dealloc
+{
+  NSLog(@"Dealloc GameEnvironment");
+  [self removeAllChildrenWithCleanup:YES];
+  
+  [_spaceManager release];
+  [super dealloc];
 }
 
 -(void) step:(ccTime)dt

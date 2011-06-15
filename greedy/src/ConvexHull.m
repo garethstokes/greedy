@@ -210,6 +210,11 @@ NSMutableArray *createAsteroidShape(int width, int height)
   return self;
 }
 
+- (void)dealloc {
+  NSLog(@"Dealloc ConvexHull");
+  [super dealloc];
+}
+
 - (CGFloat) area
 {
 

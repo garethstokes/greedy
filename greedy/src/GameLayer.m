@@ -58,12 +58,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 		self.isAccelerometerEnabled = YES;
     
     // asteroids.
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSizeCircle:500 withDensity:3.0f];
     _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 500) density:0.25 Layer:LAYER_DEFAULT];
     [self addChild:_asteroidField];
     
     // greedy!
-    _greedy = [[[Greedy alloc] initWith:environment startPos:cpv(0.0, -(900.0 - 40.0))] autorelease];
+    _greedy = [[Greedy alloc] initWith:environment startPos:cpv(0.0, -(900.0 - 40.0))];
     [self addChild:_greedy];
     [self runAction:[CCFollow actionWithTarget:_greedy]];
     
@@ -91,6 +90,10 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) dealloc
 {
+  NSLog(@"Dealloc GameLayer");
+  [ self removeAllChildrenWithCleanup:YES];
+  [_asteroidField release];
+  [_greedy release];
   [super dealloc];
 }
 

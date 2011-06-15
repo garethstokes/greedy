@@ -13,7 +13,7 @@
 
 @interface GreedyView : CCNode {
   CCSprite *_radar;
-  CCSprite *_sprite;
+  cpCCSprite *_sprite;
   CCSprite *_flames;
 
   cpShape *_shape;

@@ -68,9 +68,11 @@
 
 -(void) dealloc
 {
+  NSLog(@"Dealloc LifeMeter");
   [_lifeBars release];
   [_lifeMeterBatchNode release];
 	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
+  [self removeFromParentAndCleanup:YES];
 	[super dealloc];
 }
 

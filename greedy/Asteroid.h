@@ -11,8 +11,9 @@
 #import "chipmunk.h"
 #import "GameEnvironment.h"
 #import "ConvexHull.h"
+#import "GameConfig.h"
 
-@interface Asteroid : CCLayer {
+@interface Asteroid : CCNode {
   ConvexHull *_convexHull;
   int _mass;
 }

@@ -26,6 +26,7 @@
 
 - (id) init
 {
+  NSLog(@"HudLayer Init");
   if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
   {
     return nil;
@@ -79,6 +80,7 @@
 
 - (void) dealloc
 {
+  NSLog(@"Dealloc HudLayer");
   [_lifeMeter release];
   [super dealloc];
 }

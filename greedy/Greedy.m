@@ -48,6 +48,14 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   return self;
 }
 
+- (void)dealloc
+{
+  NSLog(@"Dealloc Greedy");
+  [_view release];
+  [self removeAllChildrenWithCleanup:YES];
+  [super dealloc];
+}
+
 - (void) prestep:(ccTime) delta
 {
   cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));

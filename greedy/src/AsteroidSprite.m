@@ -174,7 +174,9 @@
 
 - (void) dealloc
 {
-	CCLOGINFO(@"AsteroidSprite: deallocing %@", self);
+	//CCLOGINFO(@"AsteroidSprite: deallocing %@", self);
+  NSLog(@"Dealloc AsteroidSprite");
+  [self removeFromParentAndCleanup:YES];
 	[super dealloc];
 }
 

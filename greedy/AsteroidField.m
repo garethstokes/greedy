@@ -16,18 +16,19 @@
 {
   if((self=[super init])){
     
-    _asteroids = [[[NSMutableArray alloc] init] autorelease];
+    _asteroids = [[NSMutableArray alloc] init];
     
     GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:10.0f];
     
     while ([engine hasRoom])
     {
-      Asteroid *a = [[Asteroid alloc] initWithEnvironment:environment 
+      Asteroid *a = [[[Asteroid alloc] initWithEnvironment:environment 
                                               withPosition:[engine position]
-                                                withLayer:Layer];
+                                                withLayer:Layer] autorelease];
       [engine addArea:[a area]];
       
       [_asteroids addObject:a];
+      //[a release];
       
       [self addChild:a];
     }
@@ -36,6 +37,14 @@
   };
   
   return self;
+}
+
+- (void)dealloc
+{
+  NSLog(@"Dealloc AsteroidField");
+  [self removeAllChildrenWithCleanup:YES];
+  [_asteroids removeAllObjects];
+  [super dealloc];
 }
 
 @end

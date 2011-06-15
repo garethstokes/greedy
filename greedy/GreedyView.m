@@ -24,9 +24,9 @@ springForce(cpConstraint *spring, cpFloat dist)
 {
   float segCount = 16.0;
   float segAngle = 360.0 / segCount;
-  float radius = 8;
+  float radius = 6;
   CGPoint pos = ccp(0,0);//[_sprite position];
-  pos.y += 15.0;
+  pos.y += 8.0;
   pos.x -= 1;
   
   float fromX, fromY = 0.0;
@@ -47,7 +47,7 @@ springForce(cpConstraint *spring, cpFloat dist)
     _iris[seg]->u  = 0.5;
   }
 
-  _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(-1.0, 15.0));
+  _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(-1.0, 8.0));
   _irisBoundingCircle->sensor = YES;
   _irisBoundingCircle->layers = LAYER_GREEDY_EYE;
   cpSpaceAddShape(manager.space, _irisBoundingCircle);
@@ -88,12 +88,13 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   //add crazy eye
   CGPoint eyePos = [_sprite position];
-  eyePos.y += 15;
+  eyePos.y += 8;
   
-  cpShape *sh1 = [manager addCircleAt:eyePos mass:10.0 radius:4.0];
+  cpShape *sh1 = [manager addCircleAt:eyePos mass:10.0 radius:3.0];
   sh1->layers = LAYER_GREEDY_EYE;
   _eyeBall = [[cpShapeNode alloc] initWithShape:sh1];
-  _eyeBall.color = ccBLACK;
+  static const ccColor3B ccGreedyEye = {33,33,33};
+  _eyeBall.color = ccGreedyEye;
   [self addChild:_eyeBall];
 		
   _thrusting = kGreedyThrustNone;
@@ -107,10 +108,13 @@ springForce(cpConstraint *spring, cpFloat dist)
   CGPoint pos = [_sprite position];
   
   [_radar setPosition:pos];
-  
+
   if (_flames != nil)
   {
-    [_flames setPosition:ccpAdd([_sprite position], ccp(0, -40))];  
+    [_flames setRotation:[_sprite rotation]];
+    cpFloat angle = _sprite.shape->body->a;
+    cpVect offset = cpvrotate(cpvforangle(angle), ccp(1, -40));
+    [_flames setPosition:cpvadd([_sprite position], offset)];
   }
   
   //update the pupil to keep it clamped inside the iris
@@ -118,10 +122,10 @@ springForce(cpConstraint *spring, cpFloat dist)
   CGPoint pupilPos = _eyeBall.position;
     
  
-  if(!cpvnear(pupilPos, irisPos, 4.0))
+  if(!cpvnear(pupilPos, irisPos, 3.0))
   {
     cpVect dxdy = cpvnormalize_safe(cpvsub(pupilPos, irisPos));	
-    CGPoint newPos = cpvadd(irisPos, cpvmult(dxdy, 4.0));
+    CGPoint newPos = cpvadd(irisPos, cpvmult(dxdy, 3.0));
     cpBodySetPos(_eyeBall.shape->body, newPos);
     cpBodyResetForces(_eyeBall.shape->body);
   }
@@ -201,6 +205,7 @@ springForce(cpConstraint *spring, cpFloat dist)
 
 -(void) dealloc
 {
+  NSLog(@"Dealloc GreedyView");
 	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
 	[super dealloc];
 }

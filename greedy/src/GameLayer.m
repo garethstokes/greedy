@@ -66,13 +66,23 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [self addChild:_greedy];
     
     // add limits
-    [environment addTopDownWorldContainmentWithFriction:0.0 elasticity:0.1f height:1800.0 width:300.0];
+    [environment addTopDownWorldContainmentWithFriction:0.5f elasticity:0.1f height:1800.0 width:300.0];
     
     _lastPosition = [_greedy position];
     
+    // debug layer
     _debugLayer = [environment.manager createDebugLayer];
     _debugLayer.visible = NO;
     [self addChild: _debugLayer];
+    
+    // start and end points
+    CCSprite *startPoint = [CCSprite spriteWithFile:@"start_point.png"];
+    [startPoint setPosition:ccpAdd([_greedy position], ccp(0, 100))];
+    [self addChild:startPoint z:-1];
+    
+    CCSprite *endPoint = [CCSprite spriteWithFile:@"end_point.png"];
+    [endPoint setPosition:ccpAdd([_greedy position], ccp(0, 1600))];
+    [self addChild:endPoint z:-1];    
     
     //camera
     _cameraPosition = [_greedy position];
@@ -97,11 +107,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [_asteroidField release];
   [_greedy release];
   [super dealloc];
-}
-
-- (void) draw
-{
-  
 }
 
 - (void) SpeedBarUpdate {

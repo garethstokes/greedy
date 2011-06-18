@@ -66,7 +66,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [self addChild:_greedy];
     
     // add limits
-    [environment addTopDownWorldContainmentWithFriction:0.0 elasticity:0.1f height:1800.0 width:500.0];
+    [environment addTopDownWorldContainmentWithFriction:0.0 elasticity:0.1f height:1800.0 width:300.0];
     
     _lastPosition = [_greedy position];
     
@@ -76,8 +76,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     //camera
     _cameraPosition = [_greedy position];
-    [self.camera setCenterX:_cameraPosition.x - 160 centerY:_cameraPosition.y - 240 centerZ:0];
-    [self.camera setEyeX:_cameraPosition.x - 160 eyeY:_cameraPosition.y - 240 eyeZ:90];
+    [self.camera setCenterX:-160 centerY:_cameraPosition.y - 240 centerZ:0];
+    [self.camera setEyeX:-160 eyeY:_cameraPosition.y - 240 eyeZ:90];
     
     [environment.manager start:(1.0/60.0)];
     [self schedule: @selector(step:)];
@@ -147,8 +147,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     CGPoint delta = ccpGetOffset(angle, magnitude - 100);
     _cameraPosition = ccpAdd(_cameraPosition, delta);
     
-    [self.camera setCenterX:_cameraPosition.x - 160 centerY:_cameraPosition.y - 240 centerZ:0];
-    [self.camera setEyeX:_cameraPosition.x - 160 eyeY:_cameraPosition.y - 240 eyeZ:90];
+    [self.camera setCenterX:-160 centerY:_cameraPosition.y - 240 centerZ:0];
+    [self.camera setEyeX:-160 eyeY:_cameraPosition.y - 240 eyeZ:90];
   }
 }
 

@@ -113,7 +113,7 @@ springForce(cpConstraint *spring, cpFloat dist)
   {
     [_flames setRotation:[_sprite rotation]];
     cpFloat angle = _sprite.shape->body->a;
-    cpVect offset = cpvrotate(cpvforangle(angle), ccp(1, -40));
+    cpVect offset = cpvrotate(cpvforangle(angle), ccp(0, -40));
     [_flames setPosition:cpvadd([_sprite position], offset)];
   }
   
@@ -162,7 +162,7 @@ springForce(cpConstraint *spring, cpFloat dist)
     CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
     
     _flames = [CCSprite spriteWithSpriteFrameName:@"flames_3.png"];
-    _flames.position = ccp(52, 90);
+    _flames.position = ccp(50, 90);
     [_flames setScaleX:0.5f];
     [_flames setScaleY:0.5f];
     [_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  

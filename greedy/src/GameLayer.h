@@ -18,6 +18,7 @@
   Greedy *_greedy;
   AsteroidField *_asteroidField;
   CGPoint _lastPosition;
+  CGPoint _cameraPosition;
   
   CCLayer* _debugLayer;
   
@@ -31,5 +32,6 @@
 - (void) step:(ccTime)dt;
 - (id) initWithEnvironment:(GameEnvironment *) environment;
 - (void) toggleDebug;
+- (void) moveCameraTo:(CGPoint)point;
 
 @end

@@ -64,11 +64,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     // greedy!
     _greedy = [[Greedy alloc] initWith:environment startPos:cpv(0.0, -(900.0 - 40.0))];
     [self addChild:_greedy];
-    [self runAction:[CCFollow actionWithTarget:_greedy]];
     
-    // add circular limits
-    //[_environment addCircularWorldContainmentWithFriction:0.0 elasticity:0.01f radius:500]; 
-    //[_environment addCircularWorldContainmentWithFriction:0.0 elasticity:0.1f radius:500];
+    // add limits
     [environment addTopDownWorldContainmentWithFriction:0.0 elasticity:0.1f height:1800.0 width:500.0];
     
     _lastPosition = [_greedy position];
@@ -76,6 +73,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _debugLayer = [environment.manager createDebugLayer];
     _debugLayer.visible = NO;
     [self addChild: _debugLayer];
+    
+    //camera
+    _cameraPosition = [_greedy position];
+    [self.camera setCenterX:_cameraPosition.x - 160 centerY:_cameraPosition.y - 240 centerZ:0];
+    [self.camera setEyeX:_cameraPosition.x - 160 eyeY:_cameraPosition.y - 240 eyeZ:90];
     
     [environment.manager start:(1.0/60.0)];
     [self schedule: @selector(step:)];
@@ -130,6 +132,24 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   
   //debug speed details after all forces applied and calcualted
   [self SpeedBarUpdate];
+  [self moveCameraTo:[_greedy position]];
+}
+
+- (void) moveCameraTo:(CGPoint)point
+{
+  float magnitude = abs(_cameraPosition.y - point.y); //ccpDistance(_cameraPosition, point);
+  NSLog(@"magnitude: %f", magnitude);
+  
+  if (magnitude > 100) 
+  {
+    cpVect offset = ccpAngleBetween(_cameraPosition, point);
+    float angle = cpvtoangle(offset);
+    CGPoint delta = ccpGetOffset(angle, magnitude - 100);
+    _cameraPosition = ccpAdd(_cameraPosition, delta);
+    
+    [self.camera setCenterX:_cameraPosition.x - 160 centerY:_cameraPosition.y - 240 centerZ:0];
+    [self.camera setEyeX:_cameraPosition.x - 160 eyeY:_cameraPosition.y - 240 eyeZ:90];
+  }
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

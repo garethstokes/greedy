@@ -106,9 +106,4 @@
   [super dealloc];
 }
 
--(void) step:(ccTime)dt
-{
-  [_spaceManager step:dt];
-}
-
 @end

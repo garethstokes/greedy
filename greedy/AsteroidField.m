@@ -18,7 +18,7 @@
     
     _asteroids = [[NSMutableArray alloc] init];
     
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:10.0f];
+    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:3.0f];
     
     while ([engine hasRoom])
     {
@@ -28,7 +28,7 @@
       [engine addArea:[a area]];
       
       [_asteroids addObject:a];
-      //[a release];
+      [a release];
       
       [self addChild:a];
     }

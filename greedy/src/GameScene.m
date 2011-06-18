@@ -33,24 +33,12 @@
   scene->_background = [[Background alloc] initWithEnvironment:scene->_environment];
   [scene addChild:scene->_background z:0];
   
-  //balsamic 1
-  CCSprite *balsamic = [CCSprite spriteWithFile:@"mid_z_layer_grad_vignette_2.png"];
-  //balsamic.position = ccp(0.0,0.0);
-  [scene addChild:balsamic z:1];
-  
   //HUD
   scene->_hudLayer = [[HudLayer alloc] init];
-  
   
   //Game Layer
   scene.gameLayer = [[GameLayer alloc] initWithEnvironment:scene->_environment];
   [scene addChild:scene.gameLayer z:10];
-  
-  //balsamic 2
-  //Balsamic *vinegarette = [[[Balsamic alloc] init] autorelease];
-  //vinegarette.position = ccp(0.0,0.0);
-  //[scene addChild:vinegarette z:49];
-  
 
   [scene addChild:scene->_hudLayer z:50];
   

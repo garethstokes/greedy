@@ -169,6 +169,7 @@
 		E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5F137166C000E45FDD /* SpaceManager.mm */; };
 		E716F0AA13AC67DE00F5F348 /* end_point.png in Resources */ = {isa = PBXBuildFile; fileRef = E716F0A813AC67DE00F5F348 /* end_point.png */; };
 		E716F0AB13AC67DE00F5F348 /* start_point.png in Resources */ = {isa = PBXBuildFile; fileRef = E716F0A913AC67DE00F5F348 /* start_point.png */; };
+		E716F0AD13ADE23300F5F348 /* MeteorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E716F0AC13ADE23300F5F348 /* MeteorBackground.png */; };
 		E7188B8313964A41005A1E81 /* GreedyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7188B8213964A41005A1E81 /* GreedyView.m */; };
 		E722C706139F791900A757A0 /* BackgroundAsteroids.m in Sources */ = {isa = PBXBuildFile; fileRef = E722C705139F791900A757A0 /* BackgroundAsteroids.m */; };
 		E73C9AC91375023000A7DF8D /* AsteroidSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AC61375023000A7DF8D /* AsteroidSprite.m */; };
@@ -529,6 +530,7 @@
 		E708BE5F137166C000E45FDD /* SpaceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpaceManager.mm; sourceTree = "<group>"; };
 		E716F0A813AC67DE00F5F348 /* end_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end_point.png; sourceTree = "<group>"; };
 		E716F0A913AC67DE00F5F348 /* start_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_point.png; sourceTree = "<group>"; };
+		E716F0AC13ADE23300F5F348 /* MeteorBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MeteorBackground.png; sourceTree = "<group>"; };
 		E7188B8113964A41005A1E81 /* GreedyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyView.h; sourceTree = "<group>"; };
 		E7188B8213964A41005A1E81 /* GreedyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyView.m; sourceTree = "<group>"; };
 		E722C704139F791900A757A0 /* BackgroundAsteroids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAsteroids.h; sourceTree = "<group>"; };
@@ -1147,6 +1149,7 @@
 		E7CE216F1371780600A700EA /* meteor */ = {
 			isa = PBXGroup;
 			children = (
+				E716F0AC13ADE23300F5F348 /* MeteorBackground.png */,
 				E7CE21701371780600A700EA /* Meteor1.png */,
 			);
 			path = meteor;
@@ -1269,6 +1272,7 @@
 				AB8633AE13A5EA9E00CB8E31 /* Default@2x.png in Resources */,
 				E716F0AA13AC67DE00F5F348 /* end_point.png in Resources */,
 				E716F0AB13AC67DE00F5F348 /* start_point.png in Resources */,
+				E716F0AD13ADE23300F5F348 /* MeteorBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

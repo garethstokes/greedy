@@ -66,7 +66,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [self addChild:_greedy];
     
     // add limits
-    [environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:300.0];
+    [environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:350.0];
     
     _lastPosition = [_greedy position];
     

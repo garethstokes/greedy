@@ -13,7 +13,7 @@
 
 @implementation AsteroidSprite
 
-- (id) initWithPoints:(NSArray *)convexHull size:(int)thisSize withShape:(cpShape *)shape
+- (id) initWithPoints:(NSArray *)convexHull size:(int)thisSize withShape:(cpShape *)shape isBackground:(BOOL)isBackground
 {
     if((self=[super init])){
       CPCCNODE_MEM_VARS_INIT(shape);
@@ -30,7 +30,7 @@
       }
       
       //create the image for the sprite
-      UIImage *inputImage = [UIImage imageNamed:@"Meteor1.png"];
+      UIImage *inputImage = isBackground ? [UIImage imageNamed:@"MeteorBackground.png"] : [UIImage imageNamed:@"Meteor1.png"];
         
       //Create a new context to draw into
       CGImageRef imageRef = inputImage.CGImage;

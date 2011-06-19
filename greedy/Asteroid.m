@@ -41,7 +41,8 @@
   
   cpCCSprite *sprite = [[AsteroidSprite alloc] initWithPoints:[_convexHull points] 
                                                          size:[_convexHull size] 
-                                                    withShape:_shape];
+                                                    withShape:_shape
+                                                 isBackground:(withLayer == LAYER_BACKGROUND)];
   
   [self addChild:sprite];
   [sprite release];

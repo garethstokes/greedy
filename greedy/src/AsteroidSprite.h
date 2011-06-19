@@ -18,6 +18,6 @@
 
 }
 
--(id) initWithPoints:(NSArray *)convexHull size:(int)size withShape:(cpShape *)shape;
+-(id) initWithPoints:(NSArray *)convexHull size:(int)size withShape:(cpShape *)shape isBackground:(BOOL)isBackground;
 
 @end

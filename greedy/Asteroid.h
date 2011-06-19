@@ -16,6 +16,7 @@
 @interface Asteroid : CCNode {
   ConvexHull *_convexHull;
   int _mass;
+  cpShape *_shape;
 }
 
 - (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer;

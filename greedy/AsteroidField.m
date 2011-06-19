@@ -11,6 +11,7 @@
 #import "GDKaosEngine.h"
 
 @implementation AsteroidField
+@synthesize asteroids = _asteroids;
 
 - (id) initWithEnvironment:(GameEnvironment *)environment totalArea:(float)totalArea density:(float)density Layer:(cpLayers)Layer
 {
@@ -18,7 +19,7 @@
     
     _asteroids = [[NSMutableArray alloc] init];
     
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:3.0f];
+    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:density];
     
     while ([engine hasRoom])
     {

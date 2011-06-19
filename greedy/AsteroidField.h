@@ -15,6 +15,8 @@
   NSMutableArray *_asteroids;
 }
 
+@property (nonatomic, retain) NSMutableArray *asteroids;
+
 - (id) initWithEnvironment:(GameEnvironment *)environment totalArea:(float)totalArea density:(float)density  Layer:(cpLayers)Layer;
 
 @end

@@ -58,7 +58,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 		self.isAccelerometerEnabled = YES;
     
     // asteroids.
-    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 500) density:0.25 Layer:LAYER_DEFAULT];
+    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:5.0f Layer:LAYER_DEFAULT];
     [self addChild:_asteroidField];
     
     // greedy!
@@ -66,7 +66,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [self addChild:_greedy];
     
     // add limits
-    [environment addTopDownWorldContainmentWithFriction:0.5f elasticity:0.1f height:1800.0 width:300.0];
+    [environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:300.0];
     
     _lastPosition = [_greedy position];
     
@@ -91,6 +91,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     [environment.manager start:(1.0/60.0)];
     [self schedule: @selector(step:)];
+    [self schedule: @selector(checkForAsteroids:) interval:(1.0 / 2.0)];
   }
   return self;
 }
@@ -118,12 +119,36 @@ ccpAngleBetween(CGPoint a, CGPoint b)
  [((GameScene *)(_greedy.parent.parent)).hudLayer.lifeMeter setLifeLevel:speed];
 }
 
+- (void) checkForAsteroids:(ccTime) dt
+{
+  // loop through asteroids and determine if any are close to greedy
+  float magnitude = 0;
+  for (Asteroid *a in [_asteroidField asteroids]) {
+    float m = ccpDistance([a position], [_greedy position]);     
+    if (magnitude == 0) 
+    {
+      magnitude = m;
+      continue;
+    }
+    if (m < magnitude) magnitude = m;
+  }
+  
+  if (magnitude < 100)
+  {
+    //NSLog(@"watch out greedy! ...an asteroid is near you!");
+    [_greedy setEatingStatusTo:kGreedyEating];
+    return;
+  }
+  
+  [_greedy setEatingStatusTo:kGreedyIdle];
+}
+
 -(void) step: (ccTime) dt
 {
   // add all the external forces , such as thrusts, asteraid attraction
   [_greedy prestep:dt];
   
-  // now step the physics engine
+  // now step the graphics
   [_greedy postStep:dt];
   
   //move the parallax backgrounds
@@ -143,7 +168,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 - (void) moveCameraTo:(CGPoint)point
 {
   float magnitude = abs(_cameraPosition.y - point.y); //ccpDistance(_cameraPosition, point);
-  NSLog(@"magnitude: %f", magnitude);
+  //NSLog(@"magnitude: %f", magnitude);
   
   if (magnitude > 100) 
   {

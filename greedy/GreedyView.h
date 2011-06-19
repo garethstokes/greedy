@@ -30,7 +30,7 @@
 - (id) initWithShape:(cpShape *)shape manager:(SpaceManagerCocos2d *)manager;
 - (void) step:(ccTime) delta;
 - (void) setThrusting:(int)value;
+- (void) updateFeeding:(int) value;
 - (BOOL) isThrusting;
-//- (void) updateFeeding:(int) value;
 
 @end

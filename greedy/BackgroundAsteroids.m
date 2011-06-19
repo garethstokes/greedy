@@ -15,7 +15,7 @@
 {
   if(!(self = [super init])) return nil;
   
-  _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 500) density:0.25 Layer:LAYER_BACKGROUND];
+  _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1500 * 300) density:0.25f Layer:LAYER_BACKGROUND];
   [self addChild:_asteroidField];
   
   return self; 

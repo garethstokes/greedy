@@ -57,7 +57,7 @@ springForce(cpConstraint *spring, cpFloat dist)
 {
   if(!(self = [super init])) return nil;
   
-  _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
+  //_radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
   
   _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
@@ -70,18 +70,18 @@ springForce(cpConstraint *spring, cpFloat dist)
   [_sprite setScaleY:0.5f];
   [_batch addChild:_sprite];
   
-  _radar.position = ccp(52, 90);
-  [_radar setScaleX:0.5f];
-  [_radar setScaleY:0.5f];
-  [_radar setPosition:[_sprite position]];  
+  //_radar.position = ccp(52, 90);
+  //[_radar setScaleX:0.5f];
+  //[_radar setScaleY:0.5f];
+  //[_radar setPosition:[_sprite position]];  
   
   //add radar animation
-  id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
-  [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
+  //id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
+  //[_radar runAction: [CCRepeatForever actionWithAction:rot1]];
   
   //_sprites
   [self addChild:_batch];
-  [self addChild:_radar];
+  //[self addChild:_radar];
   
   //add crazy eye container
   [self addEyeContainer: manager shape:shape];
@@ -105,9 +105,9 @@ springForce(cpConstraint *spring, cpFloat dist)
 
 - (void) step:(ccTime) delta
 {
-  CGPoint pos = [_sprite position];
+  //CGPoint pos = [_sprite position];
   
-  [_radar setPosition:pos];
+  //[_radar setPosition:pos];
 
   if (_flames != nil)
   {
@@ -138,7 +138,7 @@ springForce(cpConstraint *spring, cpFloat dist)
 {
   if (value == kGreedyThrustNone)
   {
-    NSLog(@"update thrusting: nill");
+    NSLog(@"update thrusting: nil");
     
     [self removeChild:_flames cleanup:YES];
     _flames = nil;
@@ -182,23 +182,37 @@ springForce(cpConstraint *spring, cpFloat dist)
 
 - (void) updateFeeding:(int)value
 {
-//  return;
-  
   if (value == kGreedyIdle)
   {
     NSLog(@"update feeding: idle");
+    [_batch removeChild:_sprite cleanup:YES];
+    
     _sprite = [cpCCSprite spriteWithShape:_shape spriteFrameName:@"greedy_open_1.png"];
     [_sprite setScaleX:0.5f];
     [_sprite setScaleY:0.5f];
+    [_batch addChild:_sprite];  
+    return;
   }
   
   if (value >= kGreedyEating)
   {
     NSLog(@"update feeding: eating");
-    CCAnimation *animation = [CCAnimation animationWithFrames:_flameFrames delay:0.1f];
+    
+    NSMutableArray *openFrames = [NSMutableArray array];
+    [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
+    [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
+    
+    CCAnimation *animation = [CCAnimation animationWithFrames:openFrames delay:0.1f];
     CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
     
-    [_sprite runAction:[CCRepeatForever actionWithAction: action]];
+    [_batch removeChild:_sprite cleanup:YES];
+    
+    _sprite = [cpCCSprite spriteWithShape:_shape spriteFrameName:@"greedy_open_5.png"];
+    [_sprite setScaleX:0.5f];
+    [_sprite setScaleY:0.5f];
+    [_batch addChild:_sprite];    
+    
+    [_sprite runAction:action];
     return;
   }
 }

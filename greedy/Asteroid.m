@@ -20,33 +20,39 @@
   _convexHull = [[[ConvexHull alloc] initWithStaticSize:arc4random() % 10]autorelease];
   _mass = (int)[_convexHull area];
   
-  cpShape *asteroid = [environment.manager 
+  _shape = [environment.manager 
                        addPolyAt:position
                        mass:_mass 
                        rotation:CCRANDOM_0_1()
                        points:[_convexHull points]];
   
-  asteroid->layers = withLayer;
+  _shape->layers = withLayer;
   
   // push it in a random direction.
   if(withLayer != LAYER_BACKGROUND)
   {
     CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
-    cpBodyApplyImpulse(asteroid->body, 
+    cpBodyApplyImpulse(_shape->body, 
                      p, 
                      ccp(rand() % 10000, rand() % 10000));
   }else{
-    cpBodySleep(asteroid->body);
+    cpBodySleep(_shape->body);
   };
   
   cpCCSprite *sprite = [[AsteroidSprite alloc] initWithPoints:[_convexHull points] 
                                                          size:[_convexHull size] 
-                                                    withShape:asteroid];
+                                                    withShape:_shape];
   
   [self addChild:sprite];
   [sprite release];
   
   return self;
+}
+
+- (CGPoint) position
+{
+  cpBody *body = _shape->body;
+  return body->p;
 }
 
 - (void)dealloc

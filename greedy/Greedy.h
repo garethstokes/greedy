@@ -53,5 +53,6 @@ enum {
 - (void) applyThrust;
 - (void) removeThrust;
 - (void) setAngle:(cpFloat)value;
+- (void) setEatingStatusTo:(int) value;
 
 @end

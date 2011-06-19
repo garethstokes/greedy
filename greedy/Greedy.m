@@ -62,7 +62,6 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   
   if ([_view isThrusting])
   {
-    NSLog(@"applying force");
     cpVect force = cpvforangle(_shape->body->a);
     force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
     cpBodyApplyImpulse(_shape->body, force,cpvzero);
@@ -99,6 +98,12 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 {
   cpBody *body = _shape->body;
   return body->p;
+}
+
+- (void) setEatingStatusTo:(int) value
+{
+  if (value == _feeding) return;
+  [_view updateFeeding:value];
 }
 
 @end

@@ -103,6 +103,7 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 - (void) setEatingStatusTo:(int) value
 {
   if (value == _feeding) return;
+  _feeding = value;
   [_view updateFeeding:value];
 }
 

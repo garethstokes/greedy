@@ -57,8 +57,6 @@ springForce(cpConstraint *spring, cpFloat dist)
 {
   if(!(self = [super init])) return nil;
   
-  //_radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
-  
   _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
 
@@ -70,18 +68,8 @@ springForce(cpConstraint *spring, cpFloat dist)
   [_sprite setScaleY:0.5f];
   [_batch addChild:_sprite];
   
-  //_radar.position = ccp(52, 90);
-  //[_radar setScaleX:0.5f];
-  //[_radar setScaleY:0.5f];
-  //[_radar setPosition:[_sprite position]];  
-  
-  //add radar animation
-  //id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
-  //[_radar runAction: [CCRepeatForever actionWithAction:rot1]];
-  
   //_sprites
   [self addChild:_batch];
-  //[self addChild:_radar];
   
   //add crazy eye container
   [self addEyeContainer: manager shape:shape];
@@ -105,10 +93,12 @@ springForce(cpConstraint *spring, cpFloat dist)
 
 - (void) step:(ccTime) delta
 {
-  //CGPoint pos = [_sprite position];
+  if (_radar != nil)
+  {
+    CGPoint pos = [_sprite position];
+    [_radar setPosition:pos];
+  }
   
-  //[_radar setPosition:pos];
-
   if (_flames != nil)
   {
     [_flames setRotation:[_sprite rotation]];
@@ -140,7 +130,7 @@ springForce(cpConstraint *spring, cpFloat dist)
   {
     NSLog(@"update thrusting: nil");
     
-    [self removeChild:_flames cleanup:YES];
+    [_batch removeChild:_flames cleanup:YES];
     _flames = nil;
     
     _thrusting = value;
@@ -168,7 +158,7 @@ springForce(cpConstraint *spring, cpFloat dist)
     [_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  
     [_flames runAction:action];
     
-    [self addChild:_flames z:-1];
+    [_batch addChild:_flames z:-1];
     
     _thrusting = value;
     return;
@@ -185,6 +175,9 @@ springForce(cpConstraint *spring, cpFloat dist)
   if (value == kGreedyIdle)
   {
     NSLog(@"update feeding: idle");
+    [self removeChild:_radar cleanup:YES];
+    _radar = nil;
+    
     [_batch removeChild:_sprite cleanup:YES];
     
     _sprite = [cpCCSprite spriteWithShape:_shape spriteFrameName:@"greedy_open_1.png"];
@@ -197,6 +190,17 @@ springForce(cpConstraint *spring, cpFloat dist)
   if (value >= kGreedyEating)
   {
     NSLog(@"update feeding: eating");
+    
+    _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
+    
+    [_radar setScaleX:0.5f];
+    [_radar setScaleY:0.5f];
+    [_radar setPosition:[_sprite position]];  
+    
+    //add radar animation
+    id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
+    [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
+    [self addChild:_radar];
     
     NSMutableArray *openFrames = [NSMutableArray array];
     [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];

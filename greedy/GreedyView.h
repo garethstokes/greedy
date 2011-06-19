@@ -21,10 +21,13 @@
   cpShape *_irisBoundingCircle;
   cpShapeNode  *_eyeBall;
   int _thrusting;
+  int _feeding;
   CCAction *_thrustAction;
   
   NSMutableArray *_flameFrames;
   CCSpriteBatchNode *_batch;
+  
+  SpaceManagerCocos2d *_manager;
 }
 
 - (id) initWithShape:(cpShape *)shape manager:(SpaceManagerCocos2d *)manager;
@@ -32,5 +35,8 @@
 - (void) setThrusting:(int)value;
 - (void) updateFeeding:(int) value;
 - (BOOL) isThrusting;
+- (float) getEyePositionForCurrentSprite;
+- (void) addCrazyEye:(SpaceManagerCocos2d *)manager;
+- (void) removeCrazyEyeAndContainer;
 
 @end

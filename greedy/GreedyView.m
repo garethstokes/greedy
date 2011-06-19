@@ -20,13 +20,20 @@ springForce(cpConstraint *spring, cpFloat dist)
 	return cpfclamp(cpDampedSpringGetRestLength(spring) - dist, -clamp, clamp)*cpDampedSpringGetStiffness(spring);
 }
 
+- (float) getEyePositionForCurrentSprite
+{
+  if (_feeding == kGreedyIdle) return 8.0f;
+  if (_feeding == kGreedyEating) return 15.0f;
+  return 15.0f;
+}
+
 -(void) addEyeContainer:(SpaceManagerCocos2d *)manager shape:(cpShape *) shape
 {
   float segCount = 16.0;
   float segAngle = 360.0 / segCount;
   float radius = 6;
-  CGPoint pos = ccp(0,0);//[_sprite position];
-  pos.y += 8.0;
+  CGPoint pos = ccp(0,0);
+  pos.y += [self getEyePositionForCurrentSprite];
   pos.x -= 1;
   
   float fromX, fromY = 0.0;
@@ -47,7 +54,8 @@ springForce(cpConstraint *spring, cpFloat dist)
     _iris[seg]->u  = 0.5;
   }
 
-  _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(-1.0, 8.0));
+  float p = [self getEyePositionForCurrentSprite];
+  _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(-1.0, p));
   _irisBoundingCircle->sensor = YES;
   _irisBoundingCircle->layers = LAYER_GREEDY_EYE;
   cpSpaceAddShape(manager.space, _irisBoundingCircle);
@@ -56,6 +64,9 @@ springForce(cpConstraint *spring, cpFloat dist)
 - (id) initWithShape:(cpShape *) shape  manager:(SpaceManagerCocos2d *)manager
 {
   if(!(self = [super init])) return nil;
+  
+  _thrusting = kGreedyThrustNone;
+  _feeding = kGreedyIdle;
   
   _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
@@ -73,10 +84,19 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   //add crazy eye container
   [self addEyeContainer: manager shape:shape];
+  [self addCrazyEye:manager];
   
+  _shape = shape;
+  _manager = manager;
+  
+  return self;
+} 
+
+- (void) addCrazyEye:(SpaceManagerCocos2d *)manager
+{
   //add crazy eye
   CGPoint eyePos = [_sprite position];
-  eyePos.y += 8;
+  eyePos.y += [self getEyePositionForCurrentSprite];
   
   cpShape *sh1 = [manager addCircleAt:eyePos mass:10.0 radius:3.0];
   sh1->layers = LAYER_GREEDY_EYE;
@@ -84,12 +104,21 @@ springForce(cpConstraint *spring, cpFloat dist)
   static const ccColor3B ccGreedyEye = {33,33,33};
   _eyeBall.color = ccGreedyEye;
   [self addChild:_eyeBall];
-		
-  _thrusting = kGreedyThrustNone;
-  _shape = shape;
+}
+
+- (void) removeCrazyEyeAndContainer
+{
+  [self removeChild:_eyeBall cleanup:YES];
+  _eyeBall = nil;
+  for(int i = 0; i < 16; i++)
+  {
+    cpSpaceRemoveShape(_manager.space, _iris[i]);
+    _iris[i] = nil;
+  }
   
-  return self;
-} 
+  cpSpaceRemoveShape(_manager.space, _irisBoundingCircle);
+  _irisBoundingCircle = nil;
+}
 
 - (void) step:(ccTime) delta
 {
@@ -110,7 +139,6 @@ springForce(cpConstraint *spring, cpFloat dist)
   //update the pupil to keep it clamped inside the iris
   CGPoint irisPos =  ((cpCircleShape *)(_irisBoundingCircle))->tc;
   CGPoint pupilPos = _eyeBall.position;
-    
  
   if(!cpvnear(pupilPos, irisPos, 3.0))
   {
@@ -172,11 +200,16 @@ springForce(cpConstraint *spring, cpFloat dist)
 
 - (void) updateFeeding:(int)value
 {
+  _feeding = value;
+  
   if (value == kGreedyIdle)
   {
     NSLog(@"update feeding: idle");
     [self removeChild:_radar cleanup:YES];
     _radar = nil;
+    
+    // eyeballz
+    [self removeCrazyEyeAndContainer];
     
     [_batch removeChild:_sprite cleanup:YES];
     
@@ -184,15 +217,18 @@ springForce(cpConstraint *spring, cpFloat dist)
     [_sprite setScaleX:0.5f];
     [_sprite setScaleY:0.5f];
     [_batch addChild:_sprite];  
+    
+    [self addEyeContainer:_manager shape:_shape];
+    [self addCrazyEye:_manager];
     return;
   }
   
   if (value >= kGreedyEating)
   {
     NSLog(@"update feeding: eating");
-    
-    _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];
-    
+   
+    // radar
+    _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];    
     [_radar setScaleX:0.5f];
     [_radar setScaleY:0.5f];
     [_radar setPosition:[_sprite position]];  
@@ -202,6 +238,10 @@ springForce(cpConstraint *spring, cpFloat dist)
     [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
     [self addChild:_radar];
     
+    // eyeballz
+    [self removeCrazyEyeAndContainer];
+
+    // animation
     NSMutableArray *openFrames = [NSMutableArray array];
     [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
     [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
@@ -215,6 +255,9 @@ springForce(cpConstraint *spring, cpFloat dist)
     [_sprite setScaleX:0.5f];
     [_sprite setScaleY:0.5f];
     [_batch addChild:_sprite];    
+    
+    [self addEyeContainer:_manager shape:_shape];
+    [self addCrazyEye:_manager];
     
     [_sprite runAction:action];
     return;

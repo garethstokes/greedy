@@ -113,10 +113,12 @@ springForce(cpConstraint *spring, cpFloat dist)
   for(int i = 0; i < 16; i++)
   {
     cpSpaceRemoveShape(_manager.space, _iris[i]);
+    cpShapeFree(_iris[i]);
     _iris[i] = nil;
   }
   
   cpSpaceRemoveShape(_manager.space, _irisBoundingCircle);
+  cpShapeFree(_irisBoundingCircle);
   _irisBoundingCircle = nil;
 }
 
@@ -177,7 +179,7 @@ springForce(cpConstraint *spring, cpFloat dist)
     [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_7.png"]];
     
     CCAnimation *animation = [CCAnimation animationWithFrames:flameFrames delay:0.1f];
-    CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
+    CCAnimate *action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]];
     
     _flames = [CCSprite spriteWithSpriteFrameName:@"flames_3.png"];
     _flames.position = ccp(50, 90);
@@ -247,7 +249,7 @@ springForce(cpConstraint *spring, cpFloat dist)
     [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
     
     CCAnimation *animation = [CCAnimation animationWithFrames:openFrames delay:0.1f];
-    CCAnimate *action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
+    CCAnimate *action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]];
     
     [_batch removeChild:_sprite cleanup:YES];
     
@@ -267,6 +269,7 @@ springForce(cpConstraint *spring, cpFloat dist)
 -(void) dealloc
 {
   NSLog(@"Dealloc GreedyView");
+  [self removeCrazyEyeAndContainer];
 	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
 	[super dealloc];
 }

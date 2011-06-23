@@ -55,4 +55,7 @@ enum {
 - (void) setAngle:(cpFloat)value;
 - (void) setEatingStatusTo:(int) value;
 
+//Collision
+- (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
+
 @end

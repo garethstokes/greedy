@@ -27,6 +27,7 @@
                        points:[_convexHull points]];
   
   _shape->layers = withLayer;
+  _shape->collision_type = kAsteroidCollisionType;
   
   // push it in a random direction.
   if(withLayer != LAYER_BACKGROUND)

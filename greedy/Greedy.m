@@ -34,6 +34,8 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
                     height:75 
                     rotation:0];
   
+  shape->collision_type = kGreedyCollisionType;
+  
   // set physics
   cpBody *body = shape->body;
   cpBodySetVelLimit(body, 180);
@@ -42,10 +44,37 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   _lastPosition = shape->body->p;
   _shape = shape;
   
+  //init collisions
+  
+	[manager addCollisionCallbackBetweenType:kAsteroidCollisionType 
+                              otherType:kGreedyCollisionType 
+                                 target:self 
+                               selector:@selector(handleCollisionWithAsteroid:arbiter:space:)];
+  
   // view
   _view = [[GreedyView alloc] initWithShape:shape manager:manager];
   [self addChild:_view];
+  
   return self;
+}
+
+- (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
+{
+	if (moment == COLLISION_BEGIN)
+	{
+		NSLog(@"You hit an asteroid!!!");
+    
+    CP_ARBITER_GET_SHAPES(arb,a,b);
+    
+    cpVect p = cpArbiterGetPoint(arb, 0);
+    
+    CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"AsteroidPuff.plist"];
+    [puff setPosition:p];
+    [puff setDuration:1.0];
+    [self addChild:puff];
+	}
+  
+	return YES;
 }
 
 - (void)dealloc

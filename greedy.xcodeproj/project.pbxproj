@@ -142,6 +142,7 @@
 		AB045A9813715E31001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB045A9A13715E97001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB383001138D1855003016C1 /* radio_sweep.png in Resources */ = {isa = PBXBuildFile; fileRef = AB383000138D1855003016C1 /* radio_sweep.png */; };
+		AB3E0F3913B2067D00702DA2 /* AsteroidPuff.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB3E0F3813B2067D00702DA2 /* AsteroidPuff.plist */; };
 		AB44442013927F07006BA256 /* LifeMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB44441F13927F07006BA256 /* LifeMeter.m */; };
 		AB51949013928EAA001B8F16 /* life_bar_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = AB51948F13928EAA001B8F16 /* life_bar_sprite.png */; };
 		AB8633A013A5E7FA00CB8E31 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = AB86339913A5E7FA00CB8E31 /* fps_images.png */; };
@@ -169,7 +170,6 @@
 		E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E708BE5F137166C000E45FDD /* SpaceManager.mm */; };
 		E716F0AA13AC67DE00F5F348 /* end_point.png in Resources */ = {isa = PBXBuildFile; fileRef = E716F0A813AC67DE00F5F348 /* end_point.png */; };
 		E716F0AB13AC67DE00F5F348 /* start_point.png in Resources */ = {isa = PBXBuildFile; fileRef = E716F0A913AC67DE00F5F348 /* start_point.png */; };
-		E716F0AD13ADE23300F5F348 /* MeteorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E716F0AC13ADE23300F5F348 /* MeteorBackground.png */; };
 		E7188B8313964A41005A1E81 /* GreedyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7188B8213964A41005A1E81 /* GreedyView.m */; };
 		E722C706139F791900A757A0 /* BackgroundAsteroids.m in Sources */ = {isa = PBXBuildFile; fileRef = E722C705139F791900A757A0 /* BackgroundAsteroids.m */; };
 		E73C9AC91375023000A7DF8D /* AsteroidSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AC61375023000A7DF8D /* AsteroidSprite.m */; };
@@ -490,6 +490,7 @@
 		AB045A7613714D3C001253D2 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		AB045A7B13714D3C001253D2 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		AB383000138D1855003016C1 /* radio_sweep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_sweep.png; sourceTree = "<group>"; };
+		AB3E0F3813B2067D00702DA2 /* AsteroidPuff.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AsteroidPuff.plist; sourceTree = "<group>"; };
 		AB44441E13927F07006BA256 /* LifeMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifeMeter.h; sourceTree = "<group>"; };
 		AB44441F13927F07006BA256 /* LifeMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeMeter.m; sourceTree = "<group>"; };
 		AB51948F13928EAA001B8F16 /* life_bar_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = life_bar_sprite.png; sourceTree = "<group>"; };
@@ -530,7 +531,6 @@
 		E708BE5F137166C000E45FDD /* SpaceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpaceManager.mm; sourceTree = "<group>"; };
 		E716F0A813AC67DE00F5F348 /* end_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end_point.png; sourceTree = "<group>"; };
 		E716F0A913AC67DE00F5F348 /* start_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_point.png; sourceTree = "<group>"; };
-		E716F0AC13ADE23300F5F348 /* MeteorBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MeteorBackground.png; sourceTree = "<group>"; };
 		E7188B8113964A41005A1E81 /* GreedyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyView.h; sourceTree = "<group>"; };
 		E7188B8213964A41005A1E81 /* GreedyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyView.m; sourceTree = "<group>"; };
 		E722C704139F791900A757A0 /* BackgroundAsteroids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAsteroids.h; sourceTree = "<group>"; };
@@ -1149,7 +1149,7 @@
 		E7CE216F1371780600A700EA /* meteor */ = {
 			isa = PBXGroup;
 			children = (
-				E716F0AC13ADE23300F5F348 /* MeteorBackground.png */,
+				AB3E0F3813B2067D00702DA2 /* AsteroidPuff.plist */,
 				E7CE21701371780600A700EA /* Meteor1.png */,
 			);
 			path = meteor;
@@ -1272,7 +1272,7 @@
 				AB8633AE13A5EA9E00CB8E31 /* Default@2x.png in Resources */,
 				E716F0AA13AC67DE00F5F348 /* end_point.png in Resources */,
 				E716F0AB13AC67DE00F5F348 /* start_point.png in Resources */,
-				E716F0AD13ADE23300F5F348 /* MeteorBackground.png in Resources */,
+				AB3E0F3913B2067D00702DA2 /* AsteroidPuff.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

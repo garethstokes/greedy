@@ -101,7 +101,6 @@
 {
   NSLog(@"Dealloc GameEnvironment");
   [self removeAllChildrenWithCleanup:YES];
-  
   [_spaceManager release];
   [super dealloc];
 }

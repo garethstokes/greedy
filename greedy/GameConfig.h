@@ -41,4 +41,8 @@
 #define LAYER_BACKGROUND   0x0004
 #define LAYER_DEFAULT      (CP_ALL_LAYERS && ~LAYER_GREEDY_EYE && ~LAYER_BACKGROUND)
 
+//Collision groups
+#define kAsteroidCollisionType		1
+#define kGreedyCollisionType      2
+
 #endif // __GAME_CONFIG_H

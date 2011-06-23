@@ -30,7 +30,7 @@
       }
       
       //create the image for the sprite
-      UIImage *inputImage = isBackground ? [UIImage imageNamed:@"MeteorBackground.png"] : [UIImage imageNamed:@"Meteor1.png"];
+      UIImage *inputImage = [UIImage imageNamed:@"Meteor1.png"];
         
       //Create a new context to draw into
       CGImageRef imageRef = inputImage.CGImage;
@@ -88,38 +88,44 @@
       
       CGContextClosePath(offscreenContext);
       
-      //CGContextSetStrokeColorWithColor(offscreenContext, [[UIColor colorWithRed:0.5 green:0.5 blue:0.0 alpha:0.2] CGColor]);
-      //CGContextSetLineWidth(offscreenContext, 30.0f);
-      //CGContextStrokePath(offscreenContext);  
-      
       // gradient properties: 
       
       CGGradientRef myGradient; 
       
-      // You need tell Quartz your colour space (how you define colours), there are many colour spaces: RGBA, black&white‚Ä¶ 
+      // You need tell Quartz your colour space (how you define colours), there are many colour spaces: RGBA, black&white 
       
       CGColorSpaceRef myColorspace; 
       
       // the number of different colours 
       
       size_t num_locations = 3; 
-      
+        	
       // the location of each colour change, these are between 0 and 1, zero is the first circle and 1 is the end circle, so 0.5 is in the middle. 
       
       CGFloat locations[3] = { 0.0, 0.4, 1.0 }; 
       
       // this is the colour components array, because we are using an RGBA system each colour has four components (four numbers associated with it). 
       
-      CGFloat components[16] = {  0.0, 0.0, 0.0, 0.0, // Start colour 
+      CGFloat componentsNormal[16] = {  
+        0.0, 0.0, 0.0, 0.0, // Start colour 
         0.0, 0.0, 0.0, 0.30,    // middle colour 
-        0.0, 0.0, 0.0, 0.8,
-        0.4, 0.4, 1.4, 0.40}; // End colour 
+        0.0, 0.0, 0.0, 0.60};
+
+      CGFloat componentsBackground[16] = {  
+        0.0, 0.0, 0.0, 0.30, // Start colour 
+        0.0, 0.0, 0.0, 0.50,    // middle colour 
+        0.0, 0.0, 0.0, 0.80}
+      ; // End colour 
+      
+      CGFloat *thisComponents = isBackground ? componentsBackground : componentsNormal;
+      
+      
       
       myColorspace = CGColorSpaceCreateDeviceRGB(); 
       
       // Create a CGGradient object. 
       
-      myGradient = CGGradientCreateWithColorComponents (myColorspace, components,locations, num_locations); 
+      myGradient = CGGradientCreateWithColorComponents (myColorspace, thisComponents,locations, num_locations); 
       
       CGColorSpaceRelease(myColorspace);
       
@@ -145,7 +151,11 @@
       
       CGContextDrawRadialGradient(offscreenContext, 
                                   myGradient, 
-                                  myStartPoint,myStartRadius, myEndPoint, myEndRadius, 0); 
+                                  myStartPoint,
+                                  myStartRadius, 
+                                  myEndPoint, 
+                                  myEndRadius, 0); 
+
       
       CGGradientRelease(myGradient);
       
@@ -161,7 +171,8 @@
       CGImageRelease(resImageRef);
       
       //call sprite init fucntion to use new image
-      [self initWithCGImage:imageResed.CGImage key:[NSString stringWithFormat:@"Meteor%d", rand()%1000000]];
+      static int MeteorID = 0;
+      [self initWithCGImage:imageResed.CGImage key:[NSString stringWithFormat:@"Meteor%d", MeteorID++]];
 
       //clean up memory
       CGContextRelease(offscreenContext);

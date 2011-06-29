@@ -23,17 +23,18 @@
   radarshape->e = .5; 
 	radarshape->u = .5;
   radarshape->group = 0;
-  radarshape->layers = LAYER_RADAR;
+  radarshape->layers = LAYER_DEFAULT;
 	radarshape->collision_type = kGreedyRadarCollisionType;
   radarshape->sensor = YES;
 	radarshape->data = nil;
   cpSpaceAddShape(manager.space, radarshape);
-  [manager addCollisionCallbackBetweenType:kAsteroidRadarCollisionType 
+  [manager addCollisionCallbackBetweenType:kAsteroidCollisionType 
                                  otherType:kGreedyRadarCollisionType 
                                     target:self 
                                   selector:@selector(handleCollisionRadar:arbiter:space:)];
 
 }
+
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos
 {
   if(!(self = [super init])) return nil;

@@ -57,6 +57,9 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
     
+    _environment = environment;
+    _debugLayer = nil;
+    
     // asteroids.
     _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:5.0f Layer:LAYER_DEFAULT];
     [self addChild:_asteroidField];
@@ -69,11 +72,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:350.0];
     
     _lastPosition = [_greedy position];
-    
-    // debug layer
-    _debugLayer = [environment.manager createDebugLayer];
-    _debugLayer.visible = NO;
-    [self addChild: _debugLayer];
     
     // start and end points
     CCSprite *startPoint = [CCSprite spriteWithFile:@"start_point.png"];
@@ -91,14 +89,23 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     [environment.manager start:(1.0/60.0)];
     [self schedule: @selector(step:)];
-    [self schedule: @selector(checkForAsteroids:) interval:(1.0 / 2.0)];
+    //[self schedule: @selector(checkForAsteroids:) interval:(1.0 / 2.0)];
   }
   return self;
 }
 
 - (void) toggleDebug;
-{
-  _debugLayer.visible = !_debugLayer.visible;
+{  
+  // debug layer
+  if(_debugLayer == nil){
+    _debugLayer = [_environment.manager createDebugLayer];
+    _debugLayer.visible = YES;
+    [self addChild: _debugLayer];
+  } else
+  {
+    [self removeChild:_debugLayer cleanup:YES];
+    _debugLayer = nil;
+  }
 }
 
 - (void) dealloc

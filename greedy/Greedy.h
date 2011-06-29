@@ -22,12 +22,12 @@ enum {
   kGreedyOpen5 = 5
 };
 
-enum {
+typedef enum {
   kGreedyIdle = 1,
   kGreedyExcited = 2,
   kGreedyDetectedFood = 3,
   kGreedyEating = 4
-};
+} GREEDYSTATE;
 
 enum {
   kGreedyThrustNone = 1,
@@ -39,13 +39,14 @@ enum {
   cpShape *_shape;
   cpVect _lastPosition;
   cpFloat _angle;
-  
-  int _feeding;
+
+  int _feedingCount;
   
   GreedyView *_view;
 }
 
 @property (nonatomic) cpShape *shape;
+@property (nonatomic) int feedingCount;
 
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos;
 - (void) prestep:(ccTime) delta;
@@ -57,5 +58,6 @@ enum {
 
 //Collision
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
+- (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
 
 @end

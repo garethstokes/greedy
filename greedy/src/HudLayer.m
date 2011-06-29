@@ -26,6 +26,12 @@
 
 - (id) init
 {
+  return [self initWithGameLayer:nil];
+}
+
+- (id) initWithGameLayer:(GameLayer*)gameLayer
+{
+  
   NSLog(@"HudLayer Init");
   if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
   {
@@ -37,33 +43,35 @@
   [self setContentSize:CGSizeMake(size.width, 30)];
   
   CCLabelTTF *restartLabel = [CCLabelTTF labelWithString:@"restart" 
-                                         fontName:@"Helvetica" 
-                                         fontSize:16];
+                                                fontName:@"Helvetica" 
+                                                fontSize:16];
   
   CCMenuItem *restartButton = [CCMenuItemLabel
                                itemWithLabel:restartLabel
                                target:self 
                                selector:@selector(restartGame:)];
-
+  
   [restartButton setPosition:CGPointMake(45, 15)];
   
   CCLabelTTF *debugLabel = [CCLabelTTF labelWithString:@"debug" 
-                                                fontName:@"Helvetica" 
-                                                fontSize:16];
+                                              fontName:@"Helvetica" 
+                                              fontSize:16];
   
   CCMenuItem *debugButton = [CCMenuItemLabel
-                               itemWithLabel:debugLabel
-                               target:self 
-                               selector:@selector(debugGame:)];
+                             itemWithLabel:debugLabel
+                             target:self 
+                             selector:@selector(debugGame:)];
   
   [debugButton setPosition:CGPointMake(145, 15)];
-
+  
   
   CCMenu *menu = [CCMenu menuWithItems:restartButton, debugButton, nil];
   [menu setPosition:CGPointMake(4, 0)];
   [self addChild:menu];
   
   [self CreateLifeMeter: size];
+  
+  _gameLayer = gameLayer;
   
   return self;
 }
@@ -75,7 +83,8 @@
 
 - (void)debugGame:(id)sender
 {
-  [((GameScene *)(self.parent)).gameLayer toggleDebug];
+  if (_gameLayer != nil)
+    [_gameLayer toggleDebug];
 }
 
 - (void) dealloc

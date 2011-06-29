@@ -32,14 +32,15 @@
   // star layer background
   scene->_background = [[Background alloc] initWithEnvironment:scene->_environment];
   [scene addChild:scene->_background z:0];
-  
-  //HUD
-  scene->_hudLayer = [[HudLayer alloc] init];
+
   
   //Game Layer
   scene.gameLayer = [[GameLayer alloc] initWithEnvironment:scene->_environment];
   [scene addChild:scene.gameLayer z:10];
-
+  
+  
+  //HUD
+  scene->_hudLayer = [[HudLayer alloc] initWithGameLayer:scene.gameLayer];
   [scene addChild:scene->_hudLayer z:50];
   
 	// return the scene

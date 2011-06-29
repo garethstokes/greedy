@@ -36,13 +36,16 @@
 #define PUPILGRAVITY  -100.0f
 
 //Collision Codes
-#define LAYER_GREEDY       0x0001
-#define LAYER_GREEDY_EYE   0x0002
-#define LAYER_BACKGROUND   0x0004
+#define LAYER_GREEDY        0x0001
+#define LAYER_GREEDY_EYE    0x0002
+#define LAYER_BACKGROUND    0x0004
+#define LAYER_RADAR         0x0008
 #define LAYER_DEFAULT      (CP_ALL_LAYERS && ~LAYER_GREEDY_EYE && ~LAYER_BACKGROUND)
 
 //Collision groups
-#define kAsteroidCollisionType		1
-#define kGreedyCollisionType      2
+#define kAsteroidCollisionType        1
+#define kGreedyCollisionType          2
+#define kAsteroidRadarCollisionType   3
+#define kGreedyRadarCollisionType     4
 
 #endif // __GAME_CONFIG_H

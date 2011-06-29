@@ -9,13 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "LifeMeter.h"
+#import "GameLayer.h"
 
 @interface HudLayer : CCLayerColor {
+  GameLayer *_gameLayer;
   LifeMeter *_lifeMeter;
 }
 
 @property (retain, nonatomic) LifeMeter *lifeMeter;
 
+- (id) initWithGameLayer:(GameLayer*)gameLayer;
+
 - (void) restartGame:(id)sender;
+
 
 @end

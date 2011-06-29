@@ -45,8 +45,25 @@
                                                     withShape:_shape
                                                  isBackground:(withLayer == LAYER_BACKGROUND)];
   
+  if(withLayer != LAYER_BACKGROUND)
+  {
+    //Add the Radar sensor
+    cpShape *radarshape = cpCircleShapeNew(_shape->body, sprite.textureRect.size.width, cpvzero);  
+    radarshape->e = .5; 
+    radarshape->u = .5;
+    radarshape->group = 0;
+    radarshape->layers = LAYER_RADAR;
+    radarshape->collision_type = kAsteroidRadarCollisionType;
+    radarshape->sensor = YES;
+    radarshape->data = nil;
+    cpSpaceAddShape(environment.manager.space, radarshape);
+  }
+  
   [self addChild:sprite];
+  
   [sprite release];
+  
+
   
   return self;
 }

@@ -13,13 +13,6 @@
 
 @implementation GreedyView
 
-static cpFloat
-springForce(cpConstraint *spring, cpFloat dist)
-{
-	cpFloat clamp = 1.0f;
-	return cpfclamp(cpDampedSpringGetRestLength(spring) - dist, -clamp, clamp)*cpDampedSpringGetStiffness(spring);
-}
-
 - (float) getEyePositionForCurrentSprite
 {
   if (_feeding == kGreedyIdle) return 8.0f;
@@ -28,7 +21,7 @@ springForce(cpConstraint *spring, cpFloat dist)
 }
 
 -(void) addEyeContainer:(SpaceManagerCocos2d *)manager shape:(cpShape *) shape
-{
+{  
   float segCount = 16.0;
   float segAngle = 360.0 / segCount;
   float radius = 6;
@@ -61,6 +54,36 @@ springForce(cpConstraint *spring, cpFloat dist)
   cpSpaceAddShape(manager.space, _irisBoundingCircle);
 }
 
+- (void) addCrazyEye:(SpaceManagerCocos2d *)manager
+{  
+  //add crazy eye
+  CGPoint eyePos = [_sprite position];
+  eyePos.y += [self getEyePositionForCurrentSprite];
+  
+  cpShape *sh1 = [manager addCircleAt:eyePos mass:10.0 radius:3.0];
+  sh1->layers = LAYER_GREEDY_EYE;
+  _eyeBall = [[[cpShapeNode alloc] initWithShape:sh1] retain];
+  static const ccColor3B ccGreedyEye = {33,33,33};
+  _eyeBall.color = ccGreedyEye;
+  [self addChild:_eyeBall];
+}
+
+- (void) removeCrazyEyeAndContainer
+{
+  [self removeChild:_eyeBall cleanup:YES];
+  [_eyeBall release];
+  for(int i = 0; i < 16; i++)
+  {
+    cpSpaceRemoveShape(_manager.space, _iris[i]);
+    cpShapeFree(_iris[i]);
+    _iris[i] = nil;
+  }
+  
+  cpSpaceRemoveShape(_manager.space, _irisBoundingCircle);
+  cpShapeFree(_irisBoundingCircle);
+  _irisBoundingCircle = nil;
+}
+
 - (id) initWithShape:(cpShape *) shape  manager:(SpaceManagerCocos2d *)manager
 {
   if(!(self = [super init])) return nil;
@@ -91,36 +114,6 @@ springForce(cpConstraint *spring, cpFloat dist)
   
   return self;
 } 
-
-- (void) addCrazyEye:(SpaceManagerCocos2d *)manager
-{
-  //add crazy eye
-  CGPoint eyePos = [_sprite position];
-  eyePos.y += [self getEyePositionForCurrentSprite];
-  
-  cpShape *sh1 = [manager addCircleAt:eyePos mass:10.0 radius:3.0];
-  sh1->layers = LAYER_GREEDY_EYE;
-  _eyeBall = [[cpShapeNode alloc] initWithShape:sh1];
-  static const ccColor3B ccGreedyEye = {33,33,33};
-  _eyeBall.color = ccGreedyEye;
-  [self addChild:_eyeBall];
-}
-
-- (void) removeCrazyEyeAndContainer
-{
-  [self removeChild:_eyeBall cleanup:YES];
-  _eyeBall = nil;
-  for(int i = 0; i < 16; i++)
-  {
-    cpSpaceRemoveShape(_manager.space, _iris[i]);
-    cpShapeFree(_iris[i]);
-    _iris[i] = nil;
-  }
-  
-  cpSpaceRemoveShape(_manager.space, _irisBoundingCircle);
-  cpShapeFree(_irisBoundingCircle);
-  _irisBoundingCircle = nil;
-}
 
 - (void) step:(ccTime) delta
 {

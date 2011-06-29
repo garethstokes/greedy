@@ -22,6 +22,8 @@
   
   CCLayer* _debugLayer;
   
+  GameEnvironment *_environment;
+  
   float accelX;
   float accelY;
   float accelZ;

@@ -245,8 +245,9 @@ static const GLfloat SMGR_cPt[CP_CIRCLE_PT_COUNT+CP_CIRCLE_PT_COUNT] = {
 {
 	//[super draw];
 	cpShape *shape = _implementation.shape;
+
 	cpShapeType type = shape->klass->type;
-	
+
 	//need to update verts?
 	BOOL update = (type != _lastType) || _cacheDraw;
 	_lastType = type;

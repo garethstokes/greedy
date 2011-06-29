@@ -14,13 +14,26 @@
 
 @implementation Greedy
 @synthesize shape = _shape;
+@synthesize feedingCount = _feedingCount;
 
-static void
-gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
-{
-	cpBodyUpdateVelocity(body, gravity, damping, dt);
+- (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager  {
+  //Add radar
+  //Add the Radar sensor
+    cpShape *radarshape = cpCircleShapeNew(body, 120.0, cpvzero);  
+  radarshape->e = .5; 
+	radarshape->u = .5;
+  radarshape->group = 0;
+  radarshape->layers = LAYER_RADAR;
+	radarshape->collision_type = kGreedyRadarCollisionType;
+  radarshape->sensor = YES;
+	radarshape->data = nil;
+  cpSpaceAddShape(manager.space, radarshape);
+  [manager addCollisionCallbackBetweenType:kAsteroidRadarCollisionType 
+                                 otherType:kGreedyRadarCollisionType 
+                                    target:self 
+                                  selector:@selector(handleCollisionRadar:arbiter:space:)];
+
 }
-
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos
 {
   if(!(self = [super init])) return nil;
@@ -44,12 +57,16 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
   _lastPosition = shape->body->p;
   _shape = shape;
   
+  [self addRadarSensor: body manager: manager];
+  
   //init collisions
   
 	[manager addCollisionCallbackBetweenType:kAsteroidCollisionType 
                               otherType:kGreedyCollisionType 
                                  target:self 
                                selector:@selector(handleCollisionWithAsteroid:arbiter:space:)];
+  
+
   
   // view
   _view = [[GreedyView alloc] initWithShape:shape manager:manager];
@@ -73,6 +90,44 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
     [puff setDuration:1.0];
     [self addChild:puff];
 	}
+  
+	return YES;
+}
+
+static void setGreedyEatingState(cpSpace *space, void *obj, void *data)
+{
+  Greedy *g = (Greedy*)(obj);
+  
+   if(data == nil)
+     [g setEatingStatusTo:kGreedyIdle];
+  else
+    [g setEatingStatusTo:kGreedyEating];
+}
+
+- (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
+{
+	if (moment == COLLISION_BEGIN)
+	{
+		NSLog(@"You are within radar range... woot!!!");
+    
+    if(_feedingCount == 0)
+      cpSpaceAddPostStepCallback(space, setGreedyEatingState, self, self); // Set secound param to self just toprovide a simple flag
+    
+    _feedingCount++;
+    
+    NSLog(@"Greedy Feed Count %d", _feedingCount);
+	}
+  
+  if (moment == COLLISION_SEPARATE)
+  {
+    NSLog(@"You are no longer in radar range... :( !!!");
+    
+    _feedingCount--;
+    if(_feedingCount == 0)
+      cpSpaceAddPostStepCallback(space, setGreedyEatingState, self, nil);
+    
+    NSLog(@"Greedy Feed Count %d", _feedingCount);
+  }
   
 	return YES;
 }
@@ -131,8 +186,6 @@ gravityVelocityFunc(cpBody *body, cpVect gravity, cpFloat damping, cpFloat dt)
 
 - (void) setEatingStatusTo:(int) value
 {
-  if (value == _feeding) return;
-  _feeding = value;
   [_view updateFeeding:value];
 }
 

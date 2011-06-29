@@ -28,8 +28,16 @@
   CCSpriteBatchNode *_batch;
   
   SpaceManagerCocos2d *_manager;
+  
+  //animation
+  CCAnimation *_animationOpenUp;
+  CCAnimate *_actionOpenUp;
+  CCAnimate *_actionCloseDown;
+  CCAnimate *_actionFlame;
+  
 }
 
+- (void) createSprites;
 - (id) initWithShape:(cpShape *)shape manager:(SpaceManagerCocos2d *)manager;
 - (void) step:(ccTime) delta;
 - (void) setThrusting:(int)value;
@@ -38,5 +46,12 @@
 - (float) getEyePositionForCurrentSprite;
 - (void) addCrazyEye:(SpaceManagerCocos2d *)manager;
 - (void) removeCrazyEyeAndContainer;
+
+//animation commands
+-(void) goIdle:(id)sender;
+-(void) openUp;
+-(void) closeDown;
+
+
 
 @end

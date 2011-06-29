@@ -15,7 +15,7 @@
 
 - (float) getEyePositionForCurrentSprite
 {
-  if (_feeding == kGreedyIdle) return 8.0f;
+  if (_feeding == kGreedyIdle) return 7.0f;
   if (_feeding == kGreedyEating) return 15.0f;
   return 15.0f;
 }
@@ -84,6 +84,44 @@
   _irisBoundingCircle = nil;
 }
 
+- (void) createSprites
+{
+  //load in the masters files ... ie the PNG and zwoptex plist
+  _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
+  [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"]; 
+  
+  
+  //Create sequences
+  
+  
+  //flame
+  NSMutableArray *flameFrames = [NSMutableArray array];
+  [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_3.png"]];
+  [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_4.png"]];
+  [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_5.png"]];
+  [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_6.png"]];
+  [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_7.png"]];
+
+  CCAnimation *animation = [CCAnimation animationWithFrames:flameFrames delay:0.1f];
+  [[CCAnimationCache sharedAnimationCache] addAnimation:animation name:@"flames"];
+  _actionFlame = [CCAnimate actionWithDuration:0.1 animation:[[CCAnimationCache sharedAnimationCache] animationByName:@"flames"] restoreOriginalFrame:NO];
+  
+  //openUp
+  NSMutableArray *_aryOpenUp = [NSMutableArray array];
+  [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_1.png"]];
+  [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_2.png"]];
+  [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_3.png"]];
+  [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_4.png"]];
+  [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5.png"]];
+  
+  _animationOpenUp = [CCAnimation animationWithFrames:_aryOpenUp];
+  _actionOpenUp    = [[CCAnimate actionWithDuration:0.2 animation:_animationOpenUp restoreOriginalFrame:NO] retain];
+  
+  //closeDown
+  _actionCloseDown = [[_actionOpenUp reverse] retain];
+
+}
+
 - (id) initWithShape:(cpShape *) shape  manager:(SpaceManagerCocos2d *)manager
 {
   if(!(self = [super init])) return nil;
@@ -91,12 +129,24 @@
   _thrusting = kGreedyThrustNone;
   _feeding = kGreedyIdle;
   
-  _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
-  [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"];
-
+  [self createSprites];
+  
   //Move greedy into layer DEFAULT so its shape doesn't impact eyeball or background asteroids
   shape->layers = LAYER_DEFAULT;
   
+
+  
+ 
+  //Flame on!!!
+ // _flames = [cpCCSprite spriteWithShape:shape spriteFrameName:@"flames_3.png"];
+  //_flames.position = ccp(50, 90);
+  //[_flames setScaleX:0.5f];
+  //[_flames setScaleY:0.5f];
+  //[_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  
+  //[_flames runAction:_actionFlame];
+  //[_batch addChild:_flames];
+  
+  //Body
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
   [_sprite setScaleX:0.5f];
   [_sprite setScaleY:0.5f];
@@ -104,6 +154,8 @@
   
   //_sprites
   [self addChild:_batch];
+  
+  [self goIdle:_sprite];
   
   //add crazy eye container
   [self addEyeContainer: manager shape:shape];
@@ -135,10 +187,10 @@
   CGPoint irisPos =  ((cpCircleShape *)(_irisBoundingCircle))->tc;
   CGPoint pupilPos = _eyeBall.position;
  
-  if(!cpvnear(pupilPos, irisPos, 3.0))
+  if(!cpvnear(pupilPos, irisPos, 2.0))
   {
     cpVect dxdy = cpvnormalize_safe(cpvsub(pupilPos, irisPos));	
-    CGPoint newPos = cpvadd(irisPos, cpvmult(dxdy, 3.0));
+    CGPoint newPos = cpvadd(irisPos, cpvmult(dxdy, 2.0));
     cpBodySetPos(_eyeBall.shape->body, newPos);
     cpBodyResetForces(_eyeBall.shape->body);
   }
@@ -206,15 +258,12 @@
     // eyeballz
     [self removeCrazyEyeAndContainer];
     
-    [_batch removeChild:_sprite cleanup:YES];
-    
-    _sprite = [cpCCSprite spriteWithShape:_shape spriteFrameName:@"greedy_open_1.png"];
-    [_sprite setScaleX:0.5f];
-    [_sprite setScaleY:0.5f];
-    [_batch addChild:_sprite];  
-    
     [self addEyeContainer:_manager shape:_shape];
+
     [self addCrazyEye:_manager];
+    
+    [self closeDown];
+    
     return;
   }
   
@@ -235,28 +284,49 @@
     
     // eyeballz
     [self removeCrazyEyeAndContainer];
-
-    // animation
-    NSMutableArray *openFrames = [NSMutableArray array];
-    [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
-    [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
-    
-    CCAnimation *animation = [CCAnimation animationWithFrames:openFrames delay:0.1f];
-    CCAnimate *action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]];
-    
-    [_batch removeChild:_sprite cleanup:YES];
-    
-    _sprite = [cpCCSprite spriteWithShape:_shape spriteFrameName:@"greedy_open_5.png"];
-    [_sprite setScaleX:0.5f];
-    [_sprite setScaleY:0.5f];
-    [_batch addChild:_sprite];    
     
     [self addEyeContainer:_manager shape:_shape];
+    
     [self addCrazyEye:_manager];
     
-    [_sprite runAction:action];
+    [self openUp];
+    
     return;
   }
+}
+
+-(void) openUp
+{
+  [_sprite runAction:[CCSequence actions:_actionOpenUp, 
+                      [CCCallFuncN actionWithTarget:self selector:@selector(wobbleHead:)],
+                      nil]];
+}
+
+-(void) closeDown
+{ 
+  [_sprite runAction:[CCSequence actions:_actionCloseDown,
+                      [CCCallFuncN actionWithTarget:self selector:@selector(goIdle:)],
+                      nil]];
+}
+
+-(void) wobbleHead:(id)sender
+{
+  NSMutableArray *openFrames = [NSMutableArray array];
+  
+  [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
+  [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
+  
+  CCAnimation *animation2 = [CCAnimation animationWithFrames:openFrames delay:0.1f];
+  CCAnimate *actionWobble = [CCRepeatForever actionWithAction:[CCAnimate actionWithDuration:0.2 animation:animation2 restoreOriginalFrame:NO]];
+  
+	[sender runAction:actionWobble];
+}
+
+-(void) goIdle:(id)sender
+{
+  _feeding = kGreedyIdle;
+  [sender stopAllActions];
+	[sender setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_close_body.png"]];
 }
 
 -(void) dealloc

@@ -78,9 +78,22 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [startPoint setPosition:ccpAdd([_greedy position], ccp(0, 100))];
     [self addChild:startPoint z:-1];
     
-    CCSprite *endPoint = [CCSprite spriteWithFile:@"end_point.png"];
-    [endPoint setPosition:ccpAdd([_greedy position], ccp(0, 1600))];
-    [self addChild:endPoint z:-1];    
+    _endPoint = [CCSprite spriteWithFile:@"end_point.png"];
+    [_endPoint setPosition:ccpAdd([_greedy position], ccp(0, 1600))];
+    [self addChild:_endPoint z:-1];   
+    
+    // add event when greedy crosses the finish line. 
+    cpShape *finishlineshape = [environment.manager addSegmentAt:ccpAdd([_greedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
+    //cpSegmentShapeNew(, ccp(0, 1600), ccp(100, 1600), 2);
+    finishlineshape->group = 0;
+    finishlineshape->layers = LAYER_DEFAULT;
+    finishlineshape->collision_type = kGreedyFinishLineCollisionType;
+    finishlineshape->sensor = YES;
+    [environment.manager addCollisionCallbackBetweenType:kGreedyCollisionType 
+                                   otherType:kGreedyFinishLineCollisionType
+                                      target:self 
+                                    selector:@selector(handleCollisionFinishline:arbiter:space:)];
+    
     
     //camera
     _cameraPosition = [_greedy position];
@@ -92,6 +105,17 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     //[self schedule: @selector(checkForAsteroids:) interval:(1.0 / 2.0)];
   }
   return self;
+}
+
+- (BOOL) handleCollisionFinishline:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
+{
+  NSLog(@"crossed the finish line");
+  CGPoint p = [_endPoint position];
+  [self removeChild:_endPoint cleanup:YES];
+  _endPoint = [CCSprite spriteWithFile:@"end_point_ready.png"];
+  [_endPoint setPosition:p];
+  [self addChild:_endPoint z:-1]; 
+  return YES;
 }
 
 - (void) toggleDebug;

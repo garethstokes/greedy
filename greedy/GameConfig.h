@@ -43,9 +43,10 @@
 #define LAYER_DEFAULT      (CP_ALL_LAYERS && ~LAYER_GREEDY_EYE && ~LAYER_BACKGROUND)
 
 //Collision groups
-#define kAsteroidCollisionType        1
-#define kGreedyCollisionType          2
-#define kAsteroidRadarCollisionType   3
-#define kGreedyRadarCollisionType     4
+#define kAsteroidCollisionType            1
+#define kGreedyCollisionType              2
+#define kAsteroidRadarCollisionType       3
+#define kGreedyRadarCollisionType         4
+#define kGreedyFinishLineCollisionType    5
 
 #endif // __GAME_CONFIG_H

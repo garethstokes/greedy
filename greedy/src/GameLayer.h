@@ -11,10 +11,8 @@
 #import "Greedy.h"
 #import "AsteroidField.h"
 
-
 @interface GameLayer : CCLayer
 {
-
   Greedy *_greedy;
   AsteroidField *_asteroidField;
   CGPoint _lastPosition;
@@ -23,6 +21,8 @@
   CCLayer* _debugLayer;
   
   GameEnvironment *_environment;
+  
+  CCSprite *_endPoint;
   
   float accelX;
   float accelY;

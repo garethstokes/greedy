@@ -155,6 +155,7 @@
 		AB8633AD13A5EA9E00CB8E31 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AB8633AB13A5EA9C00CB8E31 /* Default.png */; };
 		AB8633AE13A5EA9E00CB8E31 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB8633AC13A5EA9D00CB8E31 /* Default@2x.png */; };
 		AB87A1D913A63C5100675796 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = AB87A1D813A63C5000675796 /* AsteroidField.m */; };
+		E704A62F13BB447100577C13 /* end_point_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = E704A62E13BB447100577C13 /* end_point_ready.png */; };
 		E708BE60137166C000E45FDD /* cpCCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE45137166C000E45FDD /* cpCCNode.m */; };
 		E708BE61137166C000E45FDD /* cpCCNodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE47137166C000E45FDD /* cpCCNodeImpl.m */; };
 		E708BE62137166C000E45FDD /* cpCCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E708BE49137166C000E45FDD /* cpCCSprite.m */; };
@@ -505,6 +506,7 @@
 		AB8633AC13A5EA9D00CB8E31 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AB87A1D713A63C5000675796 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		AB87A1D813A63C5000675796 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
+		E704A62E13BB447100577C13 /* end_point_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end_point_ready.png; sourceTree = "<group>"; };
 		E708BE44137166C000E45FDD /* cpCCNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNode.h; sourceTree = "<group>"; };
 		E708BE45137166C000E45FDD /* cpCCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cpCCNode.m; sourceTree = "<group>"; };
 		E708BE46137166C000E45FDD /* cpCCNodeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpCCNodeImpl.h; sourceTree = "<group>"; };
@@ -1101,6 +1103,7 @@
 		E716F0A713AC67DE00F5F348 /* start_end_points */ = {
 			isa = PBXGroup;
 			children = (
+				E704A62E13BB447100577C13 /* end_point_ready.png */,
 				E716F0A813AC67DE00F5F348 /* end_point.png */,
 				E716F0A913AC67DE00F5F348 /* start_point.png */,
 			);
@@ -1273,6 +1276,7 @@
 				E716F0AA13AC67DE00F5F348 /* end_point.png in Resources */,
 				E716F0AB13AC67DE00F5F348 /* start_point.png in Resources */,
 				AB3E0F3913B2067D00702DA2 /* AsteroidPuff.plist in Resources */,
+				E704A62F13BB447100577C13 /* end_point_ready.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

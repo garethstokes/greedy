@@ -19,7 +19,7 @@
 - (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager  {
   //Add radar
   //Add the Radar sensor
-    cpShape *radarshape = cpCircleShapeNew(body, 120.0, cpvzero);  
+  cpShape *radarshape = cpCircleShapeNew(body, 120.0, cpvzero);  
   radarshape->e = .5; 
 	radarshape->u = .5;
   radarshape->group = 0;

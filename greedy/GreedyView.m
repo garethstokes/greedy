@@ -144,19 +144,7 @@
   
   //Move greedy into layer DEFAULT so its shape doesn't impact eyeball or background asteroids
   shape->layers = LAYER_DEFAULT;
-  
-
-  
  
-  //Flame on!!!
- // _flames = [cpCCSprite spriteWithShape:shape spriteFrameName:@"flames_3.png"];
-  //_flames.position = ccp(50, 90);
-  //[_flames setScaleX:0.5f];
-  //[_flames setScaleY:0.5f];
-  //[_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  
-  //[_flames runAction:_actionFlame];
-  //[_batch addChild:_flames];
-  
   //Body
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
   [_sprite setScaleX:0.5f];
@@ -263,8 +251,8 @@
   if (value == kGreedyIdle)
   {
     NSLog(@"update feeding: idle");
-    [self removeChild:_radar cleanup:YES];
-    _radar = nil;
+    
+    [self stopRadar];
     
     // eyeballz
     [self removeCrazyEyeAndContainer];
@@ -282,16 +270,7 @@
   {
     NSLog(@"update feeding: eating");
    
-    // radar
-    _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];    
-    [_radar setScaleX:0.5f];
-    [_radar setScaleY:0.5f];
-    [_radar setPosition:[_sprite position]];  
-    
-    //add radar animation
-    id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
-    [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
-    [self addChild:_radar];
+    [self startRadar];
     
     // eyeballz
     [self removeCrazyEyeAndContainer];
@@ -304,6 +283,26 @@
     
     return;
   }
+}
+
+- (void) startRadar
+{
+  // radar
+  _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];    
+  [_radar setScaleX:0.5f];
+  [_radar setScaleY:0.5f];
+  [_radar setPosition:[_sprite position]];  
+  
+  //add radar animation
+  id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
+  [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
+  [self addChild:_radar];
+}
+
+- (void) stopRadar
+{
+  [self removeChild:_radar cleanup:YES];
+  _radar = nil;  
 }
 
 -(void) openUp
@@ -324,6 +323,7 @@
 
 -(void) wobbleHead:(id)sender
 {
+  [_sprite stopAllActions];
 	[sender runAction:_actionWobble];
 }
 

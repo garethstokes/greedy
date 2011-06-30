@@ -48,6 +48,10 @@
 - (void) addCrazyEye:(SpaceManagerCocos2d *)manager;
 - (void) removeCrazyEyeAndContainer;
 
+//radar stuff
+- (void) startRadar;
+- (void) stopRadar;
+
 //animation commands
 -(void) goIdle:(id)sender;
 -(void) openUp;

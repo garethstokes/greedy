@@ -27,6 +27,8 @@
   float accelX;
   float accelY;
   float accelZ;
+  
+  int ACCELORMETER_DIRECTION;
 }
 
 @property (nonatomic, retain) Greedy *greedy;
@@ -36,5 +38,6 @@
 - (void) toggleDebug;
 - (void) moveCameraTo:(CGPoint)point;
 - (void) checkForAsteroids:(ccTime)dt;
+- (void) toggleController;
 
 @end

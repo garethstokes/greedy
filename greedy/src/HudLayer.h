@@ -14,6 +14,7 @@
 @interface HudLayer : CCLayerColor {
   GameLayer *_gameLayer;
   LifeMeter *_lifeMeter;
+  CCLabelTTF *_debugLabel;
 }
 
 @property (retain, nonatomic) LifeMeter *lifeMeter;

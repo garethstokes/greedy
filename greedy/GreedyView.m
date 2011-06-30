@@ -115,10 +115,12 @@
   [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5.png"]];
   
   _animationOpenUp = [CCAnimation animationWithFrames:_aryOpenUp];
-  _actionOpenUp    = [[CCAnimate actionWithDuration:0.2 animation:_animationOpenUp restoreOriginalFrame:NO] retain];
+  _actionOpenUp    = [[CCAnimate actionWithDuration:0.05 animation:_animationOpenUp restoreOriginalFrame:NO] retain];
   
   //closeDown
   _actionCloseDown = [[_actionOpenUp reverse] retain];
+  [_actionCloseDown setDuration:0.2];
+  
 
 }
 
@@ -297,6 +299,7 @@
 
 -(void) openUp
 {
+  [_sprite stopAllActions];
   [_sprite runAction:[CCSequence actions:_actionOpenUp, 
                       [CCCallFuncN actionWithTarget:self selector:@selector(wobbleHead:)],
                       nil]];
@@ -304,6 +307,7 @@
 
 -(void) closeDown
 { 
+  [_sprite stopAllActions];
   [_sprite runAction:[CCSequence actions:_actionCloseDown,
                       [CCCallFuncN actionWithTarget:self selector:@selector(goIdle:)],
                       nil]];

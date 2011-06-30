@@ -8,6 +8,7 @@
 
 #import "HudLayer.h"
 #import "GameScene.h"
+#import "GameConfig.h"
 
 @implementation HudLayer
 
@@ -53,12 +54,12 @@
   
   [restartButton setPosition:CGPointMake(45, 15)];
   
-  CCLabelTTF *debugLabel = [CCLabelTTF labelWithString:@"debug" 
+  _debugLabel = [CCLabelTTF labelWithString:@"Toggle -->" 
                                               fontName:@"Helvetica" 
                                               fontSize:16];
   
   CCMenuItem *debugButton = [CCMenuItemLabel
-                             itemWithLabel:debugLabel
+                             itemWithLabel:_debugLabel
                              target:self 
                              selector:@selector(debugGame:)];
   
@@ -83,8 +84,18 @@
 
 - (void)debugGame:(id)sender
 {
-  if (_gameLayer != nil)
-    [_gameLayer toggleDebug];
+  //if (_gameLayer != nil)
+    //[_gameLayer toggleDebug];
+  static BOOL toggleSwitch = NO;
+  if(toggleSwitch)
+  {
+    [_debugLabel setString:@"Toggle <--"];
+  
+  }else{
+    [_debugLabel setString:@"Toggle -->"];
+  };
+  toggleSwitch = !toggleSwitch;
+  [_gameLayer toggleController];
 }
 
 - (void) dealloc

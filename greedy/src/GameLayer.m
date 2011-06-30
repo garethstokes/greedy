@@ -56,6 +56,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   if( (self=[super init])) {
     self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
+    ACCELORMETER_DIRECTION = -1;
     
     _environment = environment;
     _debugLayer = nil;
@@ -246,9 +247,21 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   //float angleY = accelY * 180/3.14159; 
   //float angleZ = accelZ * 180/3.14159; 
   
-  [_greedy setAngle:angle];
+  [_greedy setAngle:(angle * ACCELORMETER_DIRECTION)];
   
   //NSLog(@"\n angle [%f] accel (x => [%f][%f][%f], y => [%f][%f][%f], z => [%f][%f][%f])", angle, acceleration.x, accelX, angleX, acceleration.y, accelY, angleY, acceleration.z, accelZ, angleZ);
+}
+
+- (void) toggleController
+{
+  if(ACCELORMETER_DIRECTION == -1)
+  {
+    ACCELORMETER_DIRECTION = 1;
+        
+  }else{
+    ACCELORMETER_DIRECTION = -1;
+   
+  };
 }
 
 @end

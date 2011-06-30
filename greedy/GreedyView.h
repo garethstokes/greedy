@@ -34,6 +34,7 @@
   CCAnimate *_actionOpenUp;
   CCAnimate *_actionCloseDown;
   CCAnimate *_actionFlame;
+  CCAnimate *_actionWobble;
   
 }
 

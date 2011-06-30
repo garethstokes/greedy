@@ -121,6 +121,15 @@
   _actionCloseDown = [[_actionOpenUp reverse] retain];
   [_actionCloseDown setDuration:0.2];
   
+  //head wobble open
+  NSMutableArray *wobbleFrames = [NSMutableArray array];
+  
+  [wobbleFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
+  [wobbleFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
+  
+  CCAnimation *animationWobble = [CCAnimation animationWithFrames:wobbleFrames delay:0.1f];
+  _actionWobble = [[CCRepeatForever actionWithAction:[CCAnimate actionWithDuration:0.2 animation:animationWobble restoreOriginalFrame:NO]] retain];
+  
 
 }
 
@@ -315,15 +324,7 @@
 
 -(void) wobbleHead:(id)sender
 {
-  NSMutableArray *openFrames = [NSMutableArray array];
-  
-  [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
-  [openFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
-  
-  CCAnimation *animation2 = [CCAnimation animationWithFrames:openFrames delay:0.1f];
-  CCAnimate *actionWobble = [CCRepeatForever actionWithAction:[CCAnimate actionWithDuration:0.2 animation:animation2 restoreOriginalFrame:NO]];
-  
-	[sender runAction:actionWobble];
+	[sender runAction:_actionWobble];
 }
 
 -(void) goIdle:(id)sender
@@ -336,6 +337,10 @@
 -(void) dealloc
 {
   NSLog(@"Dealloc GreedyView");
+  [_actionCloseDown release];
+  [_actionFlame release];
+  [_actionOpenUp release];
+  [_actionWobble release];
   [self removeCrazyEyeAndContainer];
 	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
 	[super dealloc];

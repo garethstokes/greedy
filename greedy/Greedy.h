@@ -6,7 +6,6 @@
 //  Copyright 2011 Spacehip Studio. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "GameObject.h"
 #import "cocos2d.h"
 #import "chipmunk.h"
@@ -37,6 +36,7 @@ enum {
 
 @interface Greedy : CCLayer {
   cpShape *_shape;
+  cpShape *_radarShape;
   cpVect _lastPosition;
   cpFloat _angle;
 
@@ -56,8 +56,12 @@ enum {
 - (void) setAngle:(cpFloat)value;
 - (void) setEatingStatusTo:(int) value;
 
+//radar
+- (void) createRadarLine:(SpaceManagerCocos2d *) manager;
+
 //Collision
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
 - (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
+- (BOOL) handleCollisionRadarLine:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
 
 @end

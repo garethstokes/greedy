@@ -15,7 +15,8 @@
   CCSprite *_radar;
   cpCCSprite *_sprite;
   CCSprite *_flames;
-
+  cpShape *_radarShape;
+  
   cpShape *_shape;
   cpShape *_iris[16];
   cpShape *_irisBoundingCircle;
@@ -35,11 +36,10 @@
   CCAnimate *_actionCloseDown;
   CCAnimate *_actionFlame;
   CCAnimate *_actionWobble;
-  
 }
 
 - (void) createSprites;
-- (id) initWithShape:(cpShape *)shape manager:(SpaceManagerCocos2d *)manager;
+- (id) initWithShape:(cpShape *)shape manager:(SpaceManagerCocos2d *)manager radar:(cpShape *)radar;
 - (void) step:(ccTime) delta;
 - (void) setThrusting:(int)value;
 - (void) updateFeeding:(int) value;

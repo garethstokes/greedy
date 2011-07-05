@@ -40,8 +40,8 @@
   }
   
   CGSize size = [[CCDirector sharedDirector] winSize];
-  [self setPosition:ccp(0, size.height - 30)];
-  [self setContentSize:CGSizeMake(size.width, 30)];
+  [self setPosition:ccp(0, size.height - 45)];
+  [self setContentSize:CGSizeMake(size.width, 45)];
   
   CCLabelTTF *restartLabel = [CCLabelTTF labelWithString:@"restart" 
                                                 fontName:@"Helvetica" 
@@ -52,21 +52,31 @@
                                target:self 
                                selector:@selector(restartGame:)];
   
-  [restartButton setPosition:CGPointMake(45, 15)];
+  [restartButton setPosition:CGPointMake(45, 20)];
   
-  _debugLabel = [CCLabelTTF labelWithString:@"Toggle -->" 
-                                              fontName:@"Helvetica" 
-                                              fontSize:16];
+  _debugLabel = [CCLabelTTF labelWithString:@"Show Debug" 
+                                   fontName:@"Helvetica" 
+                                   fontSize:16];
   
   CCMenuItem *debugButton = [CCMenuItemLabel
                              itemWithLabel:_debugLabel
                              target:self 
                              selector:@selector(debugGame:)];
   
-  [debugButton setPosition:CGPointMake(145, 15)];
+  [debugButton setPosition:CGPointMake(145, 20)];
   
+  _toggleLabel = [CCLabelTTF labelWithString:@"Toggle -->" 
+                                    fontName:@"Helvetica" 
+                                    fontSize:16];
   
-  CCMenu *menu = [CCMenu menuWithItems:restartButton, debugButton, nil];
+  CCMenuItem *toggleButton = [CCMenuItemLabel
+                              itemWithLabel:_toggleLabel
+                              target:self 
+                              selector:@selector(toggleGame:)];
+  
+  [toggleButton setPosition:CGPointMake(145, 0)];
+  
+  CCMenu *menu = [CCMenu menuWithItems:restartButton, toggleButton, debugButton, nil];
   [menu setPosition:CGPointMake(4, 0)];
   [self addChild:menu];
   
@@ -84,15 +94,19 @@
 
 - (void)debugGame:(id)sender
 {
-  //if (_gameLayer != nil)
-    //[_gameLayer toggleDebug];
+  if (_gameLayer != nil)
+    [_gameLayer toggleDebug];
+}
+
+- (void)toggleGame:(id)sender
+{
   static BOOL toggleSwitch = NO;
   if(toggleSwitch)
   {
-    [_debugLabel setString:@"Toggle <--"];
-  
+    [_toggleLabel setString:@"Toggle <--"];
+    
   }else{
-    [_debugLabel setString:@"Toggle -->"];
+    [_toggleLabel setString:@"Toggle -->"];
   };
   toggleSwitch = !toggleSwitch;
   [_gameLayer toggleController];

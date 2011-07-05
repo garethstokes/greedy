@@ -15,6 +15,7 @@
   GameLayer *_gameLayer;
   LifeMeter *_lifeMeter;
   CCLabelTTF *_debugLabel;
+  CCLabelTTF *_toggleLabel;
 }
 
 @property (retain, nonatomic) LifeMeter *lifeMeter;

@@ -103,7 +103,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     [environment.manager start:(1.0/60.0)];
     [self schedule: @selector(step:)];
-    //[self schedule: @selector(checkForAsteroids:) interval:(1.0 / 2.0)];
   }
   return self;
 }
@@ -151,29 +150,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
  [((GameScene *)(_greedy.parent.parent)).hudLayer.lifeMeter setLifeLevel:speed];
 }
 
-- (void) checkForAsteroids:(ccTime) dt
-{
-  // loop through asteroids and determine if any are close to greedy
-  float magnitude = 0;
-  for (Asteroid *a in [_asteroidField asteroids]) {
-    float m = ccpDistance([a position], [_greedy position]);     
-    if (magnitude == 0) 
-    {
-      magnitude = m;
-      continue;
-    }
-    if (m < magnitude) magnitude = m;
-  }
-  
-  if (magnitude < 100)
-  {
-    //NSLog(@"watch out greedy! ...an asteroid is near you!");
-    [_greedy setEatingStatusTo:kGreedyEating];
-    return;
-  }
-  
-  [_greedy setEatingStatusTo:kGreedyIdle];
-}
 
 -(void) step: (ccTime) dt
 {
@@ -194,6 +170,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   
   //debug speed details after all forces applied and calcualted
   [self SpeedBarUpdate];
+  
   [self moveCameraTo:[_greedy position]];
 }
 

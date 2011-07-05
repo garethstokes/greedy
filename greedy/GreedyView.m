@@ -133,13 +133,19 @@
 
 }
 
-- (id) initWithShape:(cpShape *) shape  manager:(SpaceManagerCocos2d *)manager
+- (id) initWithShape:(cpShape *)shape  manager:(SpaceManagerCocos2d *)manager radar:(cpShape *)radar
 {
   if(!(self = [super init])) return nil;
   
+  //_greedy = greedy;
+  //cpShape *shape = greedy->shape;
+  
+  _shape = shape;
+  _manager = manager;
+  _radarShape = radar;
+  
   _thrusting = kGreedyThrustNone;
   _feeding = kGreedyIdle;
-  
   [self createSprites];
   
   //Move greedy into layer DEFAULT so its shape doesn't impact eyeball or background asteroids
@@ -153,15 +159,11 @@
   
   //_sprites
   [self addChild:_batch];
-  
   [self goIdle:_sprite];
   
   //add crazy eye container
   [self addEyeContainer: manager shape:shape];
   [self addCrazyEye:manager];
-  
-  _shape = shape;
-  _manager = manager;
   
   return self;
 } 
@@ -172,6 +174,7 @@
   {
     CGPoint pos = [_sprite position];
     [_radar setPosition:pos];
+    [_radar setRotation: CC_RADIANS_TO_DEGREES( - _radarShape->body->a)];
   }
   
   if (_flames != nil)
@@ -285,6 +288,7 @@
   }
 }
 
+
 - (void) startRadar
 {
   // radar
@@ -292,16 +296,33 @@
   [_radar setScaleX:0.5f];
   [_radar setScaleY:0.5f];
   [_radar setPosition:[_sprite position]];  
+  [_radar setRotation: _radarShape->body->a];
   
   //add radar animation
-  id rot1 = [CCRotateBy actionWithDuration: 2 angle:359];  
-  [_radar runAction: [CCRepeatForever actionWithAction:rot1]];
+  //id rot1 = [CCRotateBy actionWithDuration: 3 angle:359];  
+  //[_radar runAction: [CCRepeatForever actionWithAction:rot1]];
   [self addChild:_radar];
+}
+
+- (void)  updateRadarPosition:(id)sender
+{
+   //cpBodySetAngle(_radarLine->body, [_radar rotation]);
+}
+
+- (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
+{
+  NSLog(@"Radar detected asteroid");
+
+  return YES;
 }
 
 - (void) stopRadar
 {
+  
+  [self stopAllActions]; //remove the radar updater
+  
   [self removeChild:_radar cleanup:YES];
+  
   _radar = nil;  
 }
 

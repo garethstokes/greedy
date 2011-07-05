@@ -37,7 +37,6 @@
 - (id) initWithEnvironment:(GameEnvironment *) environment;
 - (void) toggleDebug;
 - (void) moveCameraTo:(CGPoint)point;
-- (void) checkForAsteroids:(ccTime)dt;
 - (void) toggleController;
 
 @end

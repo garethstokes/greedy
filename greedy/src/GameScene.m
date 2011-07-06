@@ -44,11 +44,17 @@
   scene->_hudLayer = [[HudLayer alloc] initWithGameLayer:scene.gameLayer];
   [scene addChild:scene->_hudLayer z:50];
   
-  scene->_scorecard = [[ScoreCard alloc] initWithScore:1000 level:1];
-  [scene addChild:scene->_scorecard  z:100];
+  //scene->_scorecard = [[ScoreCard alloc] initWithScore:1000 level:1];
+  //[scene addChild:scene->_scorecard  z:100];
   
 	// return the scene
 	return scene;
+}
+
+- (void) showScore
+{
+  _scorecard = [[ScoreCard alloc] initWithScore:1000 level:1];
+  [self addChild:_scorecard  z:100];
 }
 
 - (void) dealloc

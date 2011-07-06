@@ -7,6 +7,7 @@
 //
 
 #import "ScoreCard.h"
+#import "GameScene.h"
 
 
 @implementation ScoreCard
@@ -38,7 +39,7 @@
 
   CCSprite *btnReplayOn = [CCSprite spriteWithFile:@"btn_replay_on.png"];
   CCSprite *btnReplayOff = [CCSprite spriteWithFile:@"btn_replay_off.png"];
-  CCMenuItemSprite * btnReplay = [CCMenuItemSprite itemFromNormalSprite:btnReplayOff selectedSprite:btnReplayOn];
+  CCMenuItemSprite * btnReplay = [CCMenuItemSprite itemFromNormalSprite:btnReplayOff selectedSprite:btnReplayOn target:self selector:@selector(restartLevel:)];
   
   CCSprite *btnSkipOn = [CCSprite spriteWithFile:@"btn_skip_on.png"];
   CCSprite *btnSkipOff = [CCSprite spriteWithFile:@"btn_skip_off.png"];
@@ -51,14 +52,18 @@
   [self addChild:top_menu];
 }
 
+-(void) restartLevel: (id) sender
+{
+  [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
 
       
-      CCSprite *test;
-      
+      //CCSprite *test;
       //test = [[CCSprite alloc] initWithFile:@"example.png"];
       //[test setPosition:ccp(160,240)];
       //[test setScale:0.5];

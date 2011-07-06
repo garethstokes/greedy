@@ -32,4 +32,6 @@
 
 +(id) scene;
 
+- (void) showScore;
+
 @end

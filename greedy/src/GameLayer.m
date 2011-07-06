@@ -115,6 +115,10 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   _endPoint = [CCSprite spriteWithFile:@"end_point_ready.png"];
   [_endPoint setPosition:p];
   [self addChild:_endPoint z:-1]; 
+  
+  GameScene * scene = (GameScene*)(self->parent_);
+  [scene showScore];
+  
   return YES;
 }
 

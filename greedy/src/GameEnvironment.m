@@ -61,7 +61,8 @@
                                             radius:1.0f];  
   thisSeg->e = elasticity;
   thisSeg->u  = friction;
-  
+  thisSeg->layers = LAYER_OOB;
+
   //top
   thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, HalfHeight) 
                                      toWorldAnchor:cpv(WidthHalf, HalfHeight) 
@@ -69,6 +70,7 @@
                                             radius:1.0f];  
   thisSeg->e = elasticity;
   thisSeg->u  = friction;
+  thisSeg->layers = LAYER_OOB;
   
   //left
   thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, -HalfHeight) 
@@ -77,6 +79,7 @@
                                             radius:1.0f];  
   thisSeg->e = elasticity;
   thisSeg->u  = friction;
+  thisSeg->layers = LAYER_OOB;
   
   //right
   thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(WidthHalf, -HalfHeight) 
@@ -85,7 +88,15 @@
                                             radius:1.0f];  
   thisSeg->e = elasticity;
   thisSeg->u  = friction;
+  thisSeg->layers = LAYER_OOB;
 }
+
+- (BOOL) handleCollisionOutOfBounds:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
+{
+  NSLog(@"OUT OF BOUNDS~!!!");
+  return YES;
+}
+
 - (id) init
 {
     if( (self=[super init])) {

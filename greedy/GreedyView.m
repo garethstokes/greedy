@@ -42,7 +42,7 @@
     
     _iris[seg] = cpSpaceAddShape(manager.space, cpSegmentShapeNew(shape->body, cpv(fromX, fromY), cpv(toX, toY), 1.0f));
     
-    _iris[seg]->layers = LAYER_GREEDY_EYE;
+    _iris[seg]->layers = LAYER_EYEBALL;
     _iris[seg]->e = 0.5;
     _iris[seg]->u  = 0.5;
   }
@@ -50,7 +50,7 @@
   float p = [self getEyePositionForCurrentSprite];
   _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(-1.0, p));
   _irisBoundingCircle->sensor = YES;
-  _irisBoundingCircle->layers = LAYER_GREEDY_EYE;
+  _irisBoundingCircle->layers = LAYER_EYEBALL;
   cpSpaceAddShape(manager.space, _irisBoundingCircle);
 }
 
@@ -61,7 +61,7 @@
   eyePos.y += [self getEyePositionForCurrentSprite];
   
   cpShape *sh1 = [manager addCircleAt:eyePos mass:10.0 radius:3.0];
-  sh1->layers = LAYER_GREEDY_EYE;
+  sh1->layers = LAYER_EYEBALL;
   _eyeBall = [[[cpShapeNode alloc] initWithShape:sh1] retain];
   static const ccColor3B ccGreedyEye = {33,33,33};
   _eyeBall.color = ccGreedyEye;
@@ -149,7 +149,7 @@
   [self createSprites];
   
   //Move greedy into layer DEFAULT so its shape doesn't impact eyeball or background asteroids
-  shape->layers = LAYER_DEFAULT;
+  shape->layers = LAYER_GREEDY;
  
   //Body
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];

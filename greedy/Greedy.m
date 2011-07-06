@@ -24,13 +24,13 @@
   radarshape->e = .5; 
 	radarshape->u = .5;
   radarshape->group = 0;
-  radarshape->layers = LAYER_DEFAULT;
+  radarshape->layers = LAYER_RADAR;
 	radarshape->collision_type = kGreedyRadarCollisionType;
   radarshape->sensor = YES;
 	radarshape->data = nil;
   cpSpaceAddShape(manager.space, radarshape);
-  [manager addCollisionCallbackBetweenType: kAsteroidCollisionType 
-                                 otherType: kGreedyRadarCollisionType 
+  [manager addCollisionCallbackBetweenType: kGreedyRadarCollisionType
+                                 otherType: kAsteroidCollisionType 
                                     target: self 
                                   selector: @selector(handleCollisionRadar:arbiter:space:)];
 
@@ -49,6 +49,7 @@
                     height:75 
                     rotation:0];
   
+  shape->layers = LAYER_GREEDY;
   shape->collision_type = kGreedyCollisionType;
   
   // set physics
@@ -83,7 +84,7 @@
 {
 	if (moment == COLLISION_BEGIN)
 	{
-		NSLog(@"You hit an asteroid!!!");
+		//NSLog(@"You hit an asteroid!!!");
     
     CP_ARBITER_GET_SHAPES(arb,a,b);
     
@@ -208,7 +209,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   {
     _radarShape = [manager addSegmentAt:_shape->body->p fromLocalAnchor:ccp(0,0) toLocalAnchor:ccp(130, 0) mass:1.0 radius:2.0];
     _radarShape->sensor = YES;
-    _radarShape->layers = LAYER_DEFAULT;
+    _radarShape->layers = LAYER_RADARLINE;
     _radarShape->collision_type = kGreedyRadarlineCollisionType;
     
     [manager addPinToBody:_shape->body fromBody:_radarShape->body toBodyAnchor:ccp(0,0) fromBodyAnchor:ccp(0,0)];

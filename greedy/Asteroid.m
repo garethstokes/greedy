@@ -45,6 +45,7 @@
                                                     withShape:_shape
                                                  isBackground:(withLayer == LAYER_BACKGROUND)];
   
+  /*
   if(withLayer != LAYER_BACKGROUND)
   {
     //Add the Radar sensor
@@ -58,6 +59,7 @@
     radarshape->data = nil;
     cpSpaceAddShape(environment.manager.space, radarshape);
   }
+   */
   
   [self addChild:sprite];
   

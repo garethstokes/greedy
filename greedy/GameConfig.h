@@ -35,13 +35,49 @@
 #define GREEDYTHRUST  200000.0f
 #define PUPILGRAVITY  -100.0f
 
-//Collision Codes
-#define LAYER_GREEDY        0x0001
-#define LAYER_GREEDY_EYE    0x0002
-#define LAYER_BACKGROUND    0x0004
-#define LAYER_RADAR         0x0008
-#define LAYER_RADARLINE     0x0010
-#define LAYER_DEFAULT      (CP_ALL_LAYERS && ~LAYER_GREEDY_EYE && ~LAYER_BACKGROUND && ~LAYER_RADAR && ~LAYER_RADARLINE)
+//Collision Layers
+
+/* 
+                | Asteroid | Greedy | Out of bounds | Radar | Radar line | Finish line | background | eyeball | iris |
+ --------------------------------------------------------------------------------------------------------------------|
+ Asteroid       |    1     |   2    |               |   3   |     4      |             |            |
+ --------------------------+--------+---------------+-------+------------+-------------+-----------------------------| 
+ Greedy         |    2     |   -    |       5       |       |            |      6      |            |
+ --------------------------+--------+---------------+-------+------------+-------------+-----------------------------|
+ Out Of Bounds  |          |   5    |       -       |       |            |             |            |
+ --------------------------+--------+---------------+-------+------------+-------------+-----------------------------|
+ radar          |    3     |        |               |   -   |            |             |            |
+ --------------------------+--------+---------------+-------+------------+-------------+-----------------------------|
+ radar line     |    4     |        |               |       |     -      |             |            |
+ --------------------------+--------+---------------+-------+------------+-------------+-----------------------------|
+ finish line    |          |   6    |               |       |            |     -       |            |
+ --------------------------------------------------------------------------------------+-----------------------------|
+ background     |          |        |               |       |            |             |     9      |
+ --------------------------------------------------------------------------------------+-----------------------+-----|
+ eyeball        |          |        |               |       |            |             |            |    -     |  8  |
+ --------------------------------------------------------------------------------------+-----------------------+-----|
+ iris           |          |        |               |       |            |             |            |    8     |  -  |
+ --------------------------------------------------------------------------------------+-----------------------------|
+ 
+*/
+
+#define LAYER_ONE           0x0001
+#define LAYER_TWO           0x0002
+#define LAYER_THREE         0x0004
+#define LAYER_FOUR          0x0008
+#define LAYER_FIVE          0x0010
+#define LAYER_SIX           0x0020
+#define LAYER_SEVEN         0x0040
+#define LAYER_EIGHT         0x0080
+
+#define LAYER_ASTEROID      (LAYER_ONE && LAYER_TWO && LAYER_THREE && LAYER_FOUR)
+#define LAYER_GREEDY        (LAYER_TWO && LAYER_FIVE)
+#define LAYER_OOB           (LAYER_TWO && LAYER_FIVE)
+#define LAYER_RADAR         (LAYER_ONE && LAYER_THREE)
+#define LAYER_RADARLINE     (LAYER_ONE && LAYER_FOUR)
+#define LAYER_FINISHLINE    (LAYER_TWO && LAYER_SIX)
+#define LAYER_BACKGROUND    (LAYER_SEVEN)
+#define LAYER_EYEBALL       (LAYER_EIGHT)
 
 //Collision groups
 #define kAsteroidCollisionType            1
@@ -50,5 +86,6 @@
 #define kGreedyRadarCollisionType         4
 #define kGreedyFinishLineCollisionType    5
 #define kGreedyRadarlineCollisionType     6
+#define kOutOfBoundsCollisionType         7
 
 #endif // __GAME_CONFIG_H

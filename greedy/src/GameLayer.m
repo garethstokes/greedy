@@ -62,7 +62,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _debugLayer = nil;
     
     // asteroids.
-    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:5.0f Layer:LAYER_DEFAULT];
+    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:5.0f Layer:LAYER_ASTEROID];
     [self addChild:_asteroidField];
     
     // greedy!
@@ -87,7 +87,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     cpShape *finishlineshape = [environment.manager addSegmentAt:ccpAdd([_greedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
     //cpSegmentShapeNew(, ccp(0, 1600), ccp(100, 1600), 2);
     finishlineshape->group = 0;
-    finishlineshape->layers = LAYER_DEFAULT;
+    finishlineshape->layers = LAYER_FINISHLINE;
     finishlineshape->collision_type = kGreedyFinishLineCollisionType;
     finishlineshape->sensor = YES;
     [environment.manager addCollisionCallbackBetweenType:kGreedyCollisionType 

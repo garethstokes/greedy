@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "Background.h"
 #import "Balsamic.h"
+#import "ScoreCard.h"
 
 @implementation GameScene
 
@@ -43,6 +44,9 @@
   scene->_hudLayer = [[HudLayer alloc] initWithGameLayer:scene.gameLayer];
   [scene addChild:scene->_hudLayer z:50];
   
+  scene->_scorecard = [[ScoreCard alloc] initWithScore:1000 level:1];
+  [scene addChild:scene->_scorecard  z:100];
+  
 	// return the scene
 	return scene;
 }
@@ -50,6 +54,7 @@
 - (void) dealloc
 {
   NSLog(@"Dealloc GameScene");
+  [_scorecard release];
   [_hudLayer release];
   [_gameLayer release];
   [_background release];

@@ -13,6 +13,7 @@
 #import "Background.h"
 #import "GameLayer.h"
 #import "HudLayer.h"
+#import "ScoreCard.h"
 
 @interface GameScene : CCScene {
   GameEnvironment *_environment;
@@ -20,6 +21,7 @@
   Background *_background;
   GameLayer *_gameLayer;
   HudLayer *_hudLayer;
+  ScoreCard *_scorecard;
 }
 
 @property (nonatomic, retain) GameEnvironment *environment;

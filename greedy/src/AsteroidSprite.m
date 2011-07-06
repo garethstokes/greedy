@@ -13,10 +13,14 @@
 
 @implementation AsteroidSprite
 
+@synthesize ore = _ore;
+
 - (id) initWithPoints:(NSArray *)convexHull size:(int)thisSize withShape:(cpShape *)shape isBackground:(BOOL)isBackground
 {
     if((self=[super init])){
       CPCCNODE_MEM_VARS_INIT(shape);
+      
+        _ore = thisSize * 25.0;
         
       //Copy the remaing convex shap into vert array for body, shape and clipping usage
       int num = [convexHull count];
@@ -181,6 +185,24 @@
     
     CPCCNODE_SYNC_POS_ROT(self);
     return self;
+}
+
+- (float) mineOre:(float)time length:(float)length
+{
+  if(_ore == 0) return 0;
+  
+  float extracted = abs(length) * time;
+  
+  if(_ore > extracted)
+  {
+    _ore -= extracted;
+  }else
+  {
+    extracted = extracted - _ore;
+    _ore = 0;
+  }
+  
+  return extracted;
 }
 
 - (void) dealloc

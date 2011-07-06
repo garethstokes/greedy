@@ -11,6 +11,7 @@
 #import "chipmunk.h"
 #import "GameConfig.h"
 #import "GameScene.h"
+#import "AsteroidSprite.h"
 
 @implementation Greedy
 @synthesize shape = _shape;
@@ -111,13 +112,12 @@ static void setGreedyEatingState(cpSpace *space, void *obj, void *data)
 static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 {
   Greedy *g = (Greedy*)(obj);
- // cpArbiter *a = (cpArbiter *)data;
   cpVect *p = (cpVect *)data;
-  
+    
   CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
   [puff setPosition:p[0]];
   [puff setDuration:0.1];
-  //[puff setStartColor:ccc4FFromccc3B(ccYELLOW)];
+  
   [g addChild:puff];
   
   free(p);
@@ -128,26 +128,34 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 	if (moment == COLLISION_BEGIN)
 	{
     CCLOG(@"Line Meets asteroid begin");
-
-    CP_ARBITER_GET_SHAPES(arb,a,b);
-  
-    cpVect *p = malloc(sizeof(cpVect));
-    p[0] = cpArbiterGetPoint(arb, 0);
     
-    cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
+    CP_ARBITER_GET_SHAPES(arb, a, b);
+    AsteroidSprite * ast = (AsteroidSprite *)(b->data);
+    cpFloat len = cpArbiteGetDepth(arb, 0);
+    
+    if([ast mineOre:1.0 length:len] > 0)
+    {  
+      cpVect *p = malloc(sizeof(cpVect));
+      p[0] = cpArbiterGetPoint(arb, 0);
+      
+      cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
+    }
   }
   
   if (moment == COLLISION_PRESOLVE)
 	{
     CCLOG(@"Line Meets asteroid post solve");
+    CP_ARBITER_GET_SHAPES(arb, a, b);
+    AsteroidSprite * ast = (AsteroidSprite *)(b->data);
+    cpFloat len = cpArbiteGetDepth(arb, 0);
     
-    CP_ARBITER_GET_SHAPES(arb,a,b);
-
-    cpVect *p = malloc(sizeof(cpVect));
-    p[0] = cpArbiterGetPoint(arb, 0);
-    
-    cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
-
+    if([ast mineOre:1.0 length:len] > 0)
+    {  
+      cpVect *p = malloc(sizeof(cpVect));
+      p[0] = cpArbiterGetPoint(arb, 0);
+      
+      cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
+    }
   }
   
   if (moment == COLLISION_SEPARATE)

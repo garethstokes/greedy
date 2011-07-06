@@ -15,9 +15,12 @@
 #import "GameObject.h"
 
 @interface AsteroidSprite : cpCCSprite {
-
+  float _ore;
 }
 
+@property (nonatomic) float ore;
+
 -(id) initWithPoints:(NSArray *)convexHull size:(int)size withShape:(cpShape *)shape isBackground:(BOOL)isBackground;
+- (float) mineOre:(float)time length:(float)length;
 
 @end

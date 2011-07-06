@@ -292,16 +292,19 @@
 - (void) startRadar
 {
   // radar
-  _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];    
-  [_radar setScaleX:0.5f];
-  [_radar setScaleY:0.5f];
-  [_radar setPosition:[_sprite position]];  
-  [_radar setRotation: _radarShape->body->a];
-  
-  //add radar animation
-  //id rot1 = [CCRotateBy actionWithDuration: 3 angle:359];  
-  //[_radar runAction: [CCRepeatForever actionWithAction:rot1]];
-  [self addChild:_radar];
+  if(_radar == nil)
+  {
+    _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];    
+    [_radar setScaleX:0.5f];
+    [_radar setScaleY:0.5f];
+    [_radar setPosition:[_sprite position]];  
+    [_radar setRotation: _radarShape->body->a];
+    
+    //add radar animation
+    //id rot1 = [CCRotateBy actionWithDuration: 3 angle:359];  
+    //[_radar runAction: [CCRepeatForever actionWithAction:rot1]];
+    [self addChild:_radar];
+  }
 }
 
 - (void)  updateRadarPosition:(id)sender
@@ -318,12 +321,14 @@
 
 - (void) stopRadar
 {
-  
-  [self stopAllActions]; //remove the radar updater
-  
-  [self removeChild:_radar cleanup:YES];
-  
-  _radar = nil;  
+  if(_radar != nil)
+  {
+    [self stopAllActions]; //remove the radar updater
+    
+    [self removeChild:_radar cleanup:YES];
+    
+    _radar = nil;  
+  }
 }
 
 -(void) openUp

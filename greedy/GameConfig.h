@@ -36,15 +36,14 @@
 #define PUPILGRAVITY  -100.0f
 
 //Collision Layers
-
 /* 
                 | Asteroid | Greedy | Out of bounds | Radar | Radar line | Finish line | background | eyeball | iris |
  --------------------------------------------------------------------------------------------------------------------|
- Asteroid       |    1     |   2    |               |   3   |     4      |             |            |
+ Asteroid       |    1     |   -    |               |   3   |     4      |             |            |
  --------------------------+--------+---------------+-------+------------+-------------+-----------------------------| 
  Greedy         |    2     |   -    |       5       |       |            |      6      |            |
  --------------------------+--------+---------------+-------+------------+-------------+-----------------------------|
- Out Of Bounds  |          |   5    |       -       |       |            |             |            |
+ Out Of Bounds  |          |   -    |       -       |       |            |             |            |
  --------------------------+--------+---------------+-------+------------+-------------+-----------------------------|
  radar          |    3     |        |               |   -   |            |             |            |
  --------------------------+--------+---------------+-------+------------+-------------+-----------------------------|
@@ -70,12 +69,12 @@
 #define LAYER_SEVEN         0x0040
 #define LAYER_EIGHT         0x0080
 
-#define LAYER_ASTEROID      (LAYER_ONE && LAYER_TWO && LAYER_THREE && LAYER_FOUR)
-#define LAYER_GREEDY        (LAYER_TWO && LAYER_FIVE)
-#define LAYER_OOB           (LAYER_TWO && LAYER_FIVE)
-#define LAYER_RADAR         (LAYER_ONE && LAYER_THREE)
-#define LAYER_RADARLINE     (LAYER_ONE && LAYER_FOUR)
-#define LAYER_FINISHLINE    (LAYER_TWO && LAYER_SIX)
+#define LAYER_ASTEROID      (LAYER_ONE | LAYER_TWO | LAYER_THREE | LAYER_FOUR)
+#define LAYER_GREEDY        (LAYER_TWO | LAYER_FIVE)
+#define LAYER_OOB           LAYER_FIVE
+#define LAYER_RADAR         LAYER_THREE
+#define LAYER_RADARLINE     LAYER_FOUR
+#define LAYER_FINISHLINE    LAYER_SIX
 #define LAYER_BACKGROUND    (LAYER_SEVEN)
 #define LAYER_EYEBALL       (LAYER_EIGHT)
 

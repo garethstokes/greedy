@@ -18,4 +18,5 @@
 @property (nonatomic, retain) SpaceManagerCocos2d *manager;
 -(void) addCircularWorldContainmentWithFriction:(cpFloat)friction elasticity:(cpFloat)elasticity radius:(cpFloat)radius;
 -(void) addTopDownWorldContainmentWithFriction:(cpFloat)friction elasticity:(cpFloat)elasticity height:(cpFloat)height width:(cpFloat)width;
+- (void) addOutOfBoundsForAsteroids:(cpFloat)friction elasticity:(cpFloat)elasticity height:(cpFloat)height width:(cpFloat)width;
 @end

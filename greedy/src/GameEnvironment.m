@@ -48,6 +48,49 @@
   
 }
 
+- (void) addOutOfBoundsForAsteroids:(cpFloat)friction elasticity:(cpFloat)elasticity height:(cpFloat)height width:(cpFloat)width
+{
+  cpFloat WidthHalf = width / 2.0f;
+  CGFloat HalfHeight = height / 2.0f;
+  
+  //bottom
+  cpShape *thisSeg;
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, -HalfHeight) 
+                                     toWorldAnchor:cpv(WidthHalf, -HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = 1;
+  thisSeg->u  = friction;
+  thisSeg->layers = LAYER_ASTEROID_OOB;
+  
+  //top
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, HalfHeight) 
+                                     toWorldAnchor:cpv(WidthHalf, HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = 1;
+  thisSeg->u  = friction;
+  thisSeg->layers = LAYER_ASTEROID_OOB;
+  
+  //left
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(-WidthHalf, -HalfHeight) 
+                                     toWorldAnchor:cpv(-WidthHalf, HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = 1;
+  thisSeg->u  = friction;
+  thisSeg->layers = LAYER_ASTEROID_OOB;
+  
+  //right
+  thisSeg = [_spaceManager addSegmentAtWorldAnchor:cpv(WidthHalf, -HalfHeight) 
+                                     toWorldAnchor:cpv(WidthHalf, HalfHeight) 
+                                              mass:STATIC_MASS 
+                                            radius:1.0f];  
+  thisSeg->e = 1;
+  thisSeg->u  = friction;
+  thisSeg->layers = LAYER_ASTEROID_OOB;
+}
+
 -(void) addTopDownWorldContainmentWithFriction:(cpFloat)friction elasticity:(cpFloat)elasticity height:(cpFloat)height width:(cpFloat)width
 {	
   cpFloat WidthHalf = width / 2.0f;
@@ -89,6 +132,8 @@
   thisSeg->e = elasticity;
   thisSeg->u  = friction;
   thisSeg->layers = LAYER_OOB;
+  
+  [self addOutOfBoundsForAsteroids:friction elasticity:elasticity height:(height + 400) width:(width + 200)];
 }
 
 - (BOOL) handleCollisionOutOfBounds:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space

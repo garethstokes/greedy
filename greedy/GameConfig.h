@@ -68,15 +68,17 @@
 #define LAYER_SIX           0x0020
 #define LAYER_SEVEN         0x0040
 #define LAYER_EIGHT         0x0080
+#define LAYER_NINE          0x0100
 
-#define LAYER_ASTEROID      (LAYER_ONE | LAYER_TWO | LAYER_THREE | LAYER_FOUR)
-#define LAYER_GREEDY        (LAYER_TWO | LAYER_FIVE)
+#define LAYER_ASTEROID      (LAYER_ONE | LAYER_TWO | LAYER_THREE | LAYER_FOUR | LAYER_NINE)
+#define LAYER_GREEDY        (LAYER_TWO | LAYER_FIVE | LAYER_SIX)
 #define LAYER_OOB           LAYER_FIVE
 #define LAYER_RADAR         LAYER_THREE
 #define LAYER_RADARLINE     LAYER_FOUR
 #define LAYER_FINISHLINE    LAYER_SIX
-#define LAYER_BACKGROUND    (LAYER_SEVEN)
-#define LAYER_EYEBALL       (LAYER_EIGHT)
+#define LAYER_BACKGROUND    LAYER_SEVEN
+#define LAYER_EYEBALL       LAYER_EIGHT
+#define LAYER_ASTEROID_OOB  LAYER_NINE
 
 //Collision groups
 #define kAsteroidCollisionType            1

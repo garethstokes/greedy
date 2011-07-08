@@ -13,10 +13,12 @@
 @private
   int _score;
   int _level;
+  ccTime _timeleft;
   
   CCLabelAtlas *_ScoreLabel;
+  CCLabelAtlas *_TimeLabel;
 }
 
-- (id) initWithScore:(int)score level:(int)level;
+- (id) initWithScore:(int)score level:(int)level time:(ccTime)time;
 
 @end

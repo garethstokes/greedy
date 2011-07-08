@@ -32,6 +32,6 @@
 
 +(id) scene;
 
-- (void) showScore;
+- (void) showScore:(int) score time:(ccTime)time;
 
 @end

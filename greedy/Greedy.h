@@ -42,11 +42,14 @@ enum {
 
   int _feedingCount;
   
+  float _score;
+  
   GreedyView *_view;
 }
 
 @property (nonatomic) cpShape *shape;
 @property (nonatomic) int feedingCount;
+@property (nonatomic) float score;
 
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos;
 - (void) prestep:(ccTime) delta;

@@ -24,6 +24,8 @@
   
   CCSprite *_endPoint;
   
+  ccTime _timeleft;
+  
   float accelX;
   float accelY;
   float accelZ;

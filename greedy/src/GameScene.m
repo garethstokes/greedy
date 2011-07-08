@@ -51,9 +51,12 @@
 	return scene;
 }
 
-- (void) showScore
+- (void) showScore:(int) score time:(ccTime)time
 {
-  _scorecard = [[ScoreCard alloc] initWithScore:1000 level:1];
+  if(_scorecard != nil) return;
+  
+  _scorecard = [[ScoreCard alloc] initWithScore:score level:1 time:time];
+  
   [self addChild:_scorecard  z:100];
 }
 

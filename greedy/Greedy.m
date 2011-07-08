@@ -16,6 +16,7 @@
 @implementation Greedy
 @synthesize shape = _shape;
 @synthesize feedingCount = _feedingCount;
+@synthesize score = _score;
 
 - (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager  {
   //Add radar
@@ -115,11 +116,11 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   Greedy *g = (Greedy*)(obj);
   cpVect *p = (cpVect *)data;
     
-  CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
-  [puff setPosition:p[0]];
-  [puff setDuration:0.1];
+  CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
+  [sparkle setPosition:p[0]];
+  [sparkle setDuration:0.1];
   
-  [g addChild:puff];
+  [g addChild:sparkle];
   
   free(p);
 }
@@ -134,8 +135,12 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
     AsteroidSprite * ast = (AsteroidSprite *)(b->data);
     cpFloat len = cpArbiteGetDepth(arb, 0);
     
-    if([ast mineOre:1.0 length:len] > 0)
-    {  
+    float oreScore = [ast mineOre:1.0 length:len];
+    
+    if( oreScore > 0)
+    { 
+      _score += oreScore;
+      
       cpVect *p = malloc(sizeof(cpVect));
       p[0] = cpArbiterGetPoint(arb, 0);
       
@@ -150,8 +155,12 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
     AsteroidSprite * ast = (AsteroidSprite *)(b->data);
     cpFloat len = cpArbiteGetDepth(arb, 0);
     
-    if([ast mineOre:1.0 length:len] > 0)
-    {  
+    float oreScore = [ast mineOre:1.0 length:len];
+    
+    if( oreScore > 0)
+    { 
+      _score += oreScore;
+      
       cpVect *p = malloc(sizeof(cpVect));
       p[0] = cpArbiterGetPoint(arb, 0);
       

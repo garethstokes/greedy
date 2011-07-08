@@ -117,7 +117,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [self addChild:_endPoint z:-1]; 
   
   GameScene * scene = (GameScene*)(self->parent_);
-  [scene showScore];
+  [scene showScore:_greedy.score time:_timeleft];
   
   return YES;
 }

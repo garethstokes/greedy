@@ -165,6 +165,8 @@
   [self addEyeContainer: manager shape:shape];
   [self addCrazyEye:manager];
   
+  [self startRadar];
+  
   return self;
 } 
 
@@ -255,8 +257,6 @@
   {
     NSLog(@"update feeding: idle");
     
-    [self stopRadar];
-    
     // eyeballz
     [self removeCrazyEyeAndContainer];
     
@@ -272,8 +272,6 @@
   if (value >= kGreedyEating)
   {
     NSLog(@"update feeding: eating");
-   
-    [self startRadar];
     
     // eyeballz
     [self removeCrazyEyeAndContainer];
@@ -300,16 +298,8 @@
     [_radar setPosition:[_sprite position]];  
     [_radar setRotation: _radarShape->body->a];
     
-    //add radar animation
-    //id rot1 = [CCRotateBy actionWithDuration: 3 angle:359];  
-    //[_radar runAction: [CCRepeatForever actionWithAction:rot1]];
     [self addChild:_radar];
   }
-}
-
-- (void)  updateRadarPosition:(id)sender
-{
-   //cpBodySetAngle(_radarLine->body, [_radar rotation]);
 }
 
 - (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space

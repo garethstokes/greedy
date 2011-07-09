@@ -15,18 +15,16 @@
 - (void) createScoreLabel {
   CCTexture2DPixelFormat currentFormat = [CCTexture2D defaultAlphaPixelFormat];
   [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
-  _ScoreLabel = [[CCLabelAtlas labelWithString:@"0000" charMapFile:@"white_score.png" itemWidth:60 itemHeight:74 startCharMap:'.'] retain];
+  _ScoreLabel = [[CCLabelAtlas labelWithString:@"0000" charMapFile:@"white_score.png" itemWidth:30 itemHeight:37 startCharMap:'.'] retain];
   [CCTexture2D setDefaultAlphaPixelFormat:currentFormat];	
-  [_ScoreLabel setScale:0.5];
   [_ScoreLabel setPosition:ccp(35,289)];
 }
 
 - (void) createTimeLabel {
   CCTexture2DPixelFormat currentFormat = [CCTexture2D defaultAlphaPixelFormat];
   [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
-  _TimeLabel = [[CCLabelAtlas labelWithString:@"123456.78" charMapFile:@"orange_numbers.png" itemWidth:20 itemHeight:32 startCharMap:'.'] retain];
+  _TimeLabel = [[CCLabelAtlas labelWithString:@"123456.78" charMapFile:@"orange_numbers.png" itemWidth:10 itemHeight:16 startCharMap:'.'] retain];
   [CCTexture2D setDefaultAlphaPixelFormat:currentFormat];	
-  [_TimeLabel setScale:0.5];
   [_TimeLabel setPosition:ccp(170,186)];
 }
 
@@ -44,9 +42,8 @@
   CCMenuItemSprite * btnSkip = [CCMenuItemSprite itemFromNormalSprite:btnSkipOff selectedSprite:btnSkipOn];
   
   CCMenu *top_menu = [CCMenu menuWithItems:btnChooseLevel, btnReplay, btnSkip, nil];
-  [top_menu  alignItemsHorizontallyWithPadding:66.0f];
-  top_menu.position = ccp(84,-64);
-  [top_menu setScale:0.5];
+  [top_menu  alignItemsHorizontallyWithPadding:32.0];
+  top_menu.position = ccp(160,56);
   [self addChild:top_menu];
 }
 
@@ -58,15 +55,12 @@
 - (void) showBars {
   CCSprite *sprite;
   sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
-  [sprite setScale:0.5];
   [sprite setPosition:ccp(204.0, 284.0)];
   [self addChild:sprite];
   sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
-  [sprite setScale:0.5];
   [sprite setPosition:ccp(230.0, 308.0)];
   [self addChild:sprite];
   sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
-  [sprite setScale:0.5];
   [sprite setPosition:ccp(256.0, 332.0)];
   [self addChild:sprite];
 }
@@ -74,7 +68,6 @@
 - (void) showHighScore {
   CCSprite *sprite;
   sprite = [[CCSprite alloc] initWithFile:@"highscore.png"];
-  [sprite setScale:0.5];
   [sprite setPosition:ccp(158.0, 140.0)];
   [self addChild:sprite];
 }
@@ -84,8 +77,8 @@
   {
     CCSprite *test;
     test = [[CCSprite alloc] initWithFile:@"example.png"];
-    [test setPosition:ccp(160,240)];
     [test setScale:0.5];
+    [test setPosition:ccp(160,240)];
     [self addChild:test];
   }
 }
@@ -111,16 +104,13 @@
       // load in background
       CCSprite *sprite = [[CCSprite alloc] initWithFile:@"level_1_header.png"];
       [sprite setPosition:ccp(160, 430)];
-      [sprite setScale:0.5];
       [self addChild:sprite];
       
       sprite = [[CCSprite alloc] initWithFile:@"time_text.png"];
-      [sprite setScale:0.5];
       [sprite setPosition:ccp(132.0, 194.0)];
       [self addChild:sprite];   
 
       sprite = [[CCSprite alloc] initWithFile:@"score-dots.png"];
-      [sprite setScale:0.5];
       [sprite setPosition:ccp(93.0, 307.0)];
       [self addChild:sprite]; 
       

@@ -87,7 +87,7 @@
 - (void) createSprites
 {
   //load in the masters files ... ie the PNG and zwoptex plist
-  _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:50]; 
+  _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:15]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"]; 
   
   

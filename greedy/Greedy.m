@@ -129,7 +129,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 {
 	if (moment == COLLISION_BEGIN)
 	{
-    CCLOG(@"Line Meets asteroid begin");
+    //CCLOG(@"Line Meets asteroid begin");
     
     CP_ARBITER_GET_SHAPES(arb, a, b);
     AsteroidSprite * ast = (AsteroidSprite *)(b->data);
@@ -150,7 +150,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   
   if (moment == COLLISION_PRESOLVE)
 	{
-    CCLOG(@"Line Meets asteroid post solve");
+    //CCLOG(@"Line Meets asteroid post solve");
     CP_ARBITER_GET_SHAPES(arb, a, b);
     AsteroidSprite * ast = (AsteroidSprite *)(b->data);
     cpFloat len = cpArbiteGetDepth(arb, 0);
@@ -170,7 +170,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   
   if (moment == COLLISION_SEPARATE)
   {
-    CCLOG(@"Line Leaves asteroid end");
+    //CCLOG(@"Line Leaves asteroid end");
   }
   
   return YES;
@@ -180,25 +180,25 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 {
 	if (moment == COLLISION_BEGIN)
 	{
-		NSLog(@"You are within radar range... woot!!!");
+		CCLOG(@"You are within radar range... woot!!!");
     
     if(_feedingCount == 0)
       cpSpaceAddPostStepCallback(space, setGreedyEatingState, self, self); // Set secound param to self just toprovide a simple flag
     
     _feedingCount++;
     
-    NSLog(@"Greedy Feed Count %d", _feedingCount);
+    CCLOG(@"Greedy Feed Count %d", _feedingCount);
 	}
   
   if (moment == COLLISION_SEPARATE)
   {
-    NSLog(@"You are no longer in radar range... :( !!!");
+    CCLOG(@"You are no longer in radar range... :( !!!");
     
     _feedingCount--;
     if(_feedingCount == 0)
       cpSpaceAddPostStepCallback(space, setGreedyEatingState, self, nil);
     
-    NSLog(@"Greedy Feed Count %d", _feedingCount);
+    CCLOG(@"Greedy Feed Count %d", _feedingCount);
   }
   
 	return YES;
@@ -206,7 +206,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 
 - (void)dealloc
 {
-  NSLog(@"Dealloc Greedy");
+  CCLOG(@"Dealloc Greedy");
   [_view release];
   [self removeAllChildrenWithCleanup:YES];
   [super dealloc];

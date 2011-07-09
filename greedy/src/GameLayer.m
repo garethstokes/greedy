@@ -56,7 +56,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   if( (self=[super init])) {
     self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
-    ACCELORMETER_DIRECTION = -1;
+    
+    ACCELORMETER_DIRECTION = 1;
     
     _environment = environment;
     _debugLayer = nil;
@@ -66,7 +67,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [self addChild:_asteroidField];
     
     // greedy!
-    _greedy = [[Greedy alloc] initWith:environment startPos:cpv(0.0, -(900.0 - 40.0))];
+    _greedy = [[Greedy alloc] initWith:environment startPos:cpv(0.0, -(850.0 - 40.0))];
     [self addChild:_greedy];
     
     // add limits
@@ -85,7 +86,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     // add event when greedy crosses the finish line. 
     cpShape *finishlineshape = [environment.manager addSegmentAt:ccpAdd([_greedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
-    //cpSegmentShapeNew(, ccp(0, 1600), ccp(100, 1600), 2);
     finishlineshape->group = 0;
     finishlineshape->layers = LAYER_FINISHLINE;
     finishlineshape->collision_type = kGreedyFinishLineCollisionType;
@@ -95,11 +95,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
                                       target:self 
                                     selector:@selector(handleCollisionFinishline:arbiter:space:)];
     
-    
-    //camera
-    _cameraPosition = [_greedy position];
-    [self.camera setCenterX:-160 centerY:_cameraPosition.y - 240 centerZ:0];
-    [self.camera setEyeX:-160 eyeY:_cameraPosition.y - 240 eyeZ:90];
+    _cameraPosition = ccp(0,0);
+    [self moveCameraTo:_lastPosition];
     
     [environment.manager start:(1.0/60.0)];
     [self schedule: @selector(step:)];
@@ -175,7 +172,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   //debug speed details after all forces applied and calcualted
   [self SpeedBarUpdate];
   
-  [self moveCameraTo:[_greedy position]];
+  [self moveCameraTo:_lastPosition];
 }
 
 - (void) moveCameraTo:(CGPoint)point

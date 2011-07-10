@@ -19,6 +19,8 @@ const int POINTS_PER_QUADRANT = 9;
 const int SIZE_SMALL = 30;
 const int SIZE_MEDIUM = 60;
 const int SIZE_LARGE = 90;
+const int SIZE_ENORMOUS = 250;
+
 
 int pointLocation(CGPoint A, CGPoint B, CGPoint P) {
   
@@ -197,6 +199,8 @@ NSMutableArray *createAsteroidShape(int width, int height)
       break;
     case 8:
     case 9: thisSize = SIZE_LARGE;
+      break;
+    case 100: thisSize = SIZE_ENORMOUS;
       break;
     default:
       thisSize = SIZE_SMALL;

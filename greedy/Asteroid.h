@@ -20,6 +20,12 @@
 }
 
 - (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer;
+
+- (id) initWithEnvironment:(GameEnvironment *)environment 
+                 withLayer:(cpLayers)withLayer 
+                  withSize:(float) size 
+              withPosition:(cpVect) withPosition;
+
 - (cpFloat) area; 
 - (int) mass;
 

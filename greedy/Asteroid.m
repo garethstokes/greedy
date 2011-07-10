@@ -13,29 +13,32 @@
 
 @implementation Asteroid
 
-- (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer
+- (id) initWithEnvironment:(GameEnvironment *)environment 
+                 withLayer:(cpLayers)withLayer 
+                  withSize:(float) size 
+              withPosition:(cpVect) withPosition
 {
   if(!(self = [super init])) return nil;
-
-  _convexHull = [[[ConvexHull alloc] initWithStaticSize:arc4random() % 10]autorelease];
+  
+  _convexHull = [[[ConvexHull alloc] initWithStaticSize:size]autorelease];
   _mass = (int)[_convexHull area];
   
   _shape = [environment.manager 
-                       addPolyAt:position
-                       mass:_mass 
-                       rotation:CCRANDOM_0_1()
-                       points:[_convexHull points]];
+            addPolyAt:withPosition
+            mass:(size == 100 ? 1000000 : _mass)
+            rotation:CCRANDOM_0_1()
+            points:[_convexHull points]];
   
   _shape->layers = withLayer;
   _shape->collision_type = kAsteroidCollisionType;
   
   // push it in a random direction.
-  if(withLayer != LAYER_BACKGROUND)
+  if(withLayer != LAYER_BACKGROUND || size < 100)
   {
     CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
     cpBodyApplyImpulse(_shape->body, 
-                     p, 
-                     ccp(rand() % 10000, rand() % 10000));
+                       p, 
+                       ccp(rand() % 10000, rand() % 10000));
   }else{
     cpBodySleep(_shape->body);
   };
@@ -44,30 +47,20 @@
                                                          size:[_convexHull size] 
                                                     withShape:_shape
                                                  isBackground:(withLayer == LAYER_BACKGROUND)];
-  
-  /*
-  if(withLayer != LAYER_BACKGROUND)
-  {
-    //Add the Radar sensor
-    cpShape *radarshape = cpCircleShapeNew(_shape->body, sprite.textureRect.size.width, cpvzero);  
-    radarshape->e = .5; 
-    radarshape->u = .5;
-    radarshape->group = 0;
-    radarshape->layers = LAYER_RADAR;
-    radarshape->collision_type = kAsteroidRadarCollisionType;
-    radarshape->sensor = YES;
-    radarshape->data = nil;
-    cpSpaceAddShape(environment.manager.space, radarshape);
-  }
-   */
-  
-  [self addChild:sprite];
-  
+
+  [self addChild:sprite];  
   [sprite release];
   
-
-  
   return self;
+}
+
+- (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer
+{
+  Asteroid* a = [self initWithEnvironment:environment 
+                                withLayer:withLayer 
+                                 withSize:(arc4random() % 10) 
+                             withPosition:position];
+  return a;
 }
 
 - (CGPoint) position

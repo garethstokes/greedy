@@ -66,6 +66,20 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:5.0f Layer:LAYER_ASTEROID];
     [self addChild:_asteroidField];
     
+    // static asteroids (big ones!)
+    Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
+                                                            withLayer:LAYER_ASTEROID 
+                                                             withSize:100
+                                                         withPosition:ccp(200,-100)];
+    [self addChild:staticAsteroid1];
+    
+    Asteroid* staticAsteroid2 = [[Asteroid alloc] initWithEnvironment:environment 
+                                                            withLayer:LAYER_ASTEROID 
+                                                             withSize:100
+                                                         withPosition:ccp(-200,150)];
+    
+    [self addChild:staticAsteroid2];
+    
     // greedy!
     _greedy = [[Greedy alloc] initWith:environment startPos:cpv(0.0, -(850.0 - 40.0))];
     [self addChild:_greedy];

@@ -21,6 +21,7 @@
   _lifeMeter.scaleX = 98.0f / _lifeMeter.contentSizeInPixels.width;
   _lifeMeter.scaleY = 12.0f / _lifeMeter.contentSizeInPixels.height;
   _lifeMeter.position = ccp(size.width - 58, 15);
+  [_lifeMeter setLifeLevel:10];
   
   [self addChild:_lifeMeter];
 }

@@ -34,14 +34,14 @@
   frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 0, 0)] autorelease];
   [cache addSpriteFrame:frame name:@"lifeBar0"];  
   
-  for(int i = 0; i < 10; i++)
+  for(int i = 1; i <= 10; i++)
   {
     frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 16 + (i * 19), 15)] autorelease];
-    [cache addSpriteFrame:frame name:[NSString stringWithFormat:@"lifeBar%d", i + 1]];
+    [cache addSpriteFrame:frame name:[NSString stringWithFormat:@"lifeBar%d", i]];
   };
   
   //Set to full bars
-  _lifeBars = [[CCSprite spriteWithSpriteFrame:[cache spriteFrameByName:@"lifeBar1"]] retain];
+  _lifeBars = [[CCSprite spriteWithSpriteFrame:[cache spriteFrameByName:@"lifeBar10"]] retain];
   _lifeBars.position = ccp(_lifeBars.contentSizeInPixels.width / 2 + 4, _lifeBars.contentSizeInPixels.height / 2 + 3);
   [_lifeMeterBatchNode addChild:_lifeBars];
 
@@ -58,7 +58,7 @@
 {  
   //sanity check
   if(level < 0) level = 0;
-  if(level > 9) level = 9;
+  if(level > 10) level = 10;
   
   [_lifeBars setDisplayFrame: [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"lifeBar%d", level]]];
   

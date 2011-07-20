@@ -40,5 +40,10 @@
 - (void) toggleDebug;
 - (void) moveCameraTo:(CGPoint)point;
 - (void) toggleController;
+- (void) startLevel;
+- (void) start;
+- (void) pause;
+- (void) stop;
+- (void) endLevel;
 
 @end

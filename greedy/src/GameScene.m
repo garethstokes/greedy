@@ -47,6 +47,8 @@
   //scene->_scorecard = [[ScoreCard alloc] initWithScore:1000 level:1 time:12.34];
   //[scene addChild:scene->_scorecard  z:100];
   
+  [scene.gameLayer startLevel];
+  
 	// return the scene
 	return scene;
 }

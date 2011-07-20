@@ -18,6 +18,7 @@
 @synthesize feedingCount = _feedingCount;
 @synthesize score = _score;
 @synthesize fuel = _fuel;
+@synthesize view = _view;
 
 - (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager  {
   //Add radar

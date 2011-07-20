@@ -51,11 +51,23 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 	return self;
 }
 
+- (void) createFinishLine: (GameEnvironment *) environment  {
+    // add event when greedy crosses the finish line. 
+      cpShape *finishlineshape = [environment.manager addSegmentAt:ccpAdd([_greedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
+    finishlineshape->group = 0;
+    finishlineshape->layers = LAYER_FINISHLINE;
+    finishlineshape->collision_type = kGreedyFinishLineCollisionType;
+    finishlineshape->sensor = YES;
+    [environment.manager addCollisionCallbackBetweenType:kGreedyCollisionType 
+                                   otherType:kGreedyFinishLineCollisionType
+                                      target:self 
+                                    selector:@selector(handleCollisionFinishline:arbiter:space:)];
+
+}
 - (id) initWithEnvironment:(GameEnvironment *) environment
 {
   if( (self=[super init])) {
-    self.isTouchEnabled = YES;
-		self.isAccelerometerEnabled = YES;
+
     
     ACCELORMETER_DIRECTION = 1;
     
@@ -98,24 +110,65 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [_endPoint setPosition:ccpAdd([_greedy position], ccp(0, 1600))];
     [self addChild:_endPoint z:-1];   
     
-    // add event when greedy crosses the finish line. 
-    cpShape *finishlineshape = [environment.manager addSegmentAt:ccpAdd([_greedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
-    finishlineshape->group = 0;
-    finishlineshape->layers = LAYER_FINISHLINE;
-    finishlineshape->collision_type = kGreedyFinishLineCollisionType;
-    finishlineshape->sensor = YES;
-    [environment.manager addCollisionCallbackBetweenType:kGreedyCollisionType 
-                                   otherType:kGreedyFinishLineCollisionType
-                                      target:self 
-                                    selector:@selector(handleCollisionFinishline:arbiter:space:)];
+    [self createFinishLine: environment];
+
     
     _cameraPosition = ccp(0,0);
     [self moveCameraTo:_lastPosition];
-    
-    [environment.manager start:(1.0/60.0)];
-    [self schedule: @selector(step:)];
   }
   return self;
+}
+
+- (void) startLevel
+{
+  [_greedy.view  setPosition:ccp(_greedy.view.position.x, _greedy.view.position.y - 250)];
+  
+  // animate the greedy into view
+  [_greedy.view runAction:[CCSequence actions:
+                        //[CCFadeOut actionWithDuration:0.25f],
+                        //[CCFadeIn actionWithDuration:0.25f],
+                        //[CCRotateBy actionWithDuration:2.0f angle:90],
+                           [CCMoveBy actionWithDuration:1.5f position:ccp(0, +250)],
+                           [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
+                        nil ] 
+   ];
+  /*
+   [_greedy runAction:[CCSequence actions:
+                    [CCDelayTime actionWithDuration:1.4f],
+                    [CCFadeOut actionWithDuration:1.1f],
+                    nil]
+   ];
+   */
+}
+
+-(void) startGame:(id)sender
+{
+  [_greedy stopAllActions];
+	[self start];
+}
+
+- (void) start
+{
+  [_greedy.view stopAllActions];
+  [self schedule: @selector(step:)];
+  [_environment.manager start:(1.0/60.0)];
+  self.isTouchEnabled = YES;
+  self.isAccelerometerEnabled = YES;
+}
+
+- (void) pause
+{
+  
+}
+
+- (void) stop
+{
+  
+}
+
+- (void) endLevel
+{
+  
 }
 
 - (BOOL) handleCollisionFinishline:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space

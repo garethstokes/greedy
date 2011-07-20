@@ -52,6 +52,7 @@ enum {
 @property (nonatomic) int feedingCount;
 @property (nonatomic) float score;
 @property (nonatomic) float fuel;
+@property (nonatomic) GreedyView *view;
 
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos;
 - (void) prestep:(ccTime) delta;

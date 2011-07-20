@@ -63,7 +63,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _debugLayer = nil;
     
     // asteroids.
-    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:5.0f Layer:LAYER_ASTEROID];
+    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:2.0f Layer:LAYER_ASTEROID];
     [self addChild:_asteroidField];
     
     // static asteroids (big ones!)

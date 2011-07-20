@@ -208,6 +208,11 @@
 		E73C9AD41375024300A7DF8D /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACE1375024300A7DF8D /* GameLayer.m */; };
 		E73C9AD51375024300A7DF8D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AD01375024300A7DF8D /* GameScene.m */; };
 		E73C9AD61375024300A7DF8D /* HudLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AD21375024300A7DF8D /* HudLayer.m */; };
+		E747BB5013CD89DA0056281F /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E747BB4F13CD89DA0056281F /* MenuScene.m */; };
+		E747BB5313CD98EC0056281F /* ChooseLevelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E747BB5213CD98EC0056281F /* ChooseLevelLayer.m */; };
+		E747BB5813CD99360056281F /* choose_level_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E747BB5513CD99360056281F /* choose_level_bg.png */; };
+		E747BB5913CD99360056281F /* level_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = E747BB5613CD99360056281F /* level_ready.png */; };
+		E747BB5A13CD99360056281F /* score_block.png in Resources */ = {isa = PBXBuildFile; fileRef = E747BB5713CD99360056281F /* score_block.png */; };
 		E75E38D213764ECB00464CED /* GDKaosEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E75E38D113764ECB00464CED /* GDKaosEngine.m */; };
 		E76A26BF1377F0C400B24780 /* vinegarette.png in Resources */ = {isa = PBXBuildFile; fileRef = E76A26BE1377F0C400B24780 /* vinegarette.png */; };
 		E76A26C31377F0E600B24780 /* Balsamic.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A26C21377F0E600B24780 /* Balsamic.m */; };
@@ -593,6 +598,13 @@
 		E73C9AD01375024300A7DF8D /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = src/GameScene.m; sourceTree = "<group>"; };
 		E73C9AD11375024300A7DF8D /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HudLayer.h; path = src/HudLayer.h; sourceTree = "<group>"; };
 		E73C9AD21375024300A7DF8D /* HudLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HudLayer.m; path = src/HudLayer.m; sourceTree = "<group>"; };
+		E747BB4E13CD89DA0056281F /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		E747BB4F13CD89DA0056281F /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
+		E747BB5113CD98EC0056281F /* ChooseLevelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLevelLayer.h; sourceTree = "<group>"; };
+		E747BB5213CD98EC0056281F /* ChooseLevelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLevelLayer.m; sourceTree = "<group>"; };
+		E747BB5513CD99360056281F /* choose_level_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choose_level_bg.png; sourceTree = "<group>"; };
+		E747BB5613CD99360056281F /* level_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_ready.png; sourceTree = "<group>"; };
+		E747BB5713CD99360056281F /* score_block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_block.png; sourceTree = "<group>"; };
 		E75E38D013764ECB00464CED /* GDKaosEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDKaosEngine.h; path = src/GDKaosEngine.h; sourceTree = "<group>"; };
 		E75E38D113764ECB00464CED /* GDKaosEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDKaosEngine.m; path = src/GDKaosEngine.m; sourceTree = "<group>"; };
 		E76A26BE1377F0C400B24780 /* vinegarette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vinegarette.png; sourceTree = "<group>"; };
@@ -686,6 +698,8 @@
 				E722C705139F791900A757A0 /* BackgroundAsteroids.m */,
 				E76A26C11377F0E600B24780 /* Balsamic.h */,
 				E76A26C21377F0E600B24780 /* Balsamic.m */,
+				E747BB5113CD98EC0056281F /* ChooseLevelLayer.h */,
+				E747BB5213CD98EC0056281F /* ChooseLevelLayer.m */,
 				E76AE4B113766A6A00A94EDA /* ConvexHull.h */,
 				E76AE4B213766A6A00A94EDA /* ConvexHull.m */,
 				E75E38D013764ECB00464CED /* GDKaosEngine.h */,
@@ -705,6 +719,8 @@
 				E73C9AD21375024300A7DF8D /* HudLayer.m */,
 				AB44441E13927F07006BA256 /* LifeMeter.h */,
 				AB44441F13927F07006BA256 /* LifeMeter.m */,
+				E747BB4E13CD89DA0056281F /* MenuScene.h */,
+				E747BB4F13CD89DA0056281F /* MenuScene.m */,
 				AB045A7513714D3C001253D2 /* RootViewController.h */,
 				AB045A7613714D3C001253D2 /* RootViewController.m */,
 				ABB5BEA013C45FDF00B06F68 /* ScoreCard.h */,
@@ -1178,6 +1194,16 @@
 			path = start_end_points;
 			sourceTree = "<group>";
 		};
+		E747BB5413CD99360056281F /* choose_levels */ = {
+			isa = PBXGroup;
+			children = (
+				E747BB5513CD99360056281F /* choose_level_bg.png */,
+				E747BB5613CD99360056281F /* level_ready.png */,
+				E747BB5713CD99360056281F /* score_block.png */,
+			);
+			path = choose_levels;
+			sourceTree = "<group>";
+		};
 		E76A26BD1377F0C400B24780 /* vinegarette */ = {
 			isa = PBXGroup;
 			children = (
@@ -1207,6 +1233,7 @@
 		E7CE216E1371780600A700EA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				E747BB5413CD99360056281F /* choose_levels */,
 				ABC883ED13C4B74B00EFBFC6 /* scorecard */,
 				E716F0A713AC67DE00F5F348 /* start_end_points */,
 				AB44442213927F7E006BA256 /* hud */,
@@ -1346,6 +1373,9 @@
 				AB020C3413C8A29E00D96276 /* orange_numbers-hd.png in Resources */,
 				AB020C3513C8A29E00D96276 /* score-dots-hd.png in Resources */,
 				AB020C3613C8A29E00D96276 /* white_score-hd.png in Resources */,
+				E747BB5813CD99360056281F /* choose_level_bg.png in Resources */,
+				E747BB5913CD99360056281F /* level_ready.png in Resources */,
+				E747BB5A13CD99360056281F /* score_block.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1508,6 +1538,8 @@
 				E722C706139F791900A757A0 /* BackgroundAsteroids.m in Sources */,
 				AB87A1D913A63C5100675796 /* AsteroidField.m in Sources */,
 				ABB5BEA213C45FDF00B06F68 /* ScoreCard.m in Sources */,
+				E747BB5013CD89DA0056281F /* MenuScene.m in Sources */,
+				E747BB5313CD98EC0056281F /* ChooseLevelLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

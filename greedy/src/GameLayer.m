@@ -156,16 +156,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [super dealloc];
 }
 
-- (void) SpeedBarUpdate {
- cpBody* body = _greedy.shape->body;
- float len = cpvdot(body->v,body->v); //len * len  
- float ratio = len / (body->v_limit * body->v_limit);
- int speed = (body->v_limit * ratio) / (body->v_limit / 10);
- 
- [((GameScene *)(_greedy.parent.parent)).hudLayer.lifeMeter setLifeLevel:speed];
-}
-
-
 -(void) step: (ccTime) dt
 {
   // add all the external forces , such as thrusts, asteraid attraction
@@ -184,7 +174,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   //NSLog(@"Greedy Pos: %f, %f", _lastPosition.x, _lastPosition.y);
   
   //debug speed details after all forces applied and calcualted
-  [self SpeedBarUpdate];
+  //[self SpeedBarUpdate];
+  [((GameScene *)(_greedy.parent.parent)).hudLayer.lifeMeter setLifeLevel:floor(_greedy.fuel)];
   
   [self moveCameraTo:_lastPosition];
 }

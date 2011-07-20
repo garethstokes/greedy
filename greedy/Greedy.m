@@ -17,6 +17,7 @@
 @synthesize shape = _shape;
 @synthesize feedingCount = _feedingCount;
 @synthesize score = _score;
+@synthesize fuel = _fuel;
 
 - (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager  {
   //Add radar
@@ -61,6 +62,8 @@
   _lastPosition = shape->body->p;
   _shape        = shape;
   
+  _fuel = 10;
+  
   [self createRadarLine:manager];
 
   //init collisions
@@ -83,19 +86,33 @@
 
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
-	if (moment == COLLISION_BEGIN)
+	if (moment == COLLISION_POSTSOLVE)
 	{
 		//NSLog(@"You hit an asteroid!!!");
     
     CP_ARBITER_GET_SHAPES(arb,a,b);
     
-    cpVect p = cpArbiterGetPoint(arb, 0);
+    //cpVect p = cpArbiterGetPoint(arb, 0);
     
-    CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"AsteroidPuff.plist"];
+    //CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"AsteroidPuff.plist"];
     
-    [puff setPosition:p];
-    [puff setDuration:2.0];
-    [self addChild:puff];
+    //[puff setPosition:p];
+    //[puff setDuration:2.0];
+    //[self addChild:puff];
+    
+    float bumpStrength = cpvlength(cpArbiterTotalImpulse(arb));
+    
+    //reduce the fuel
+    if ((bumpStrength > 1.0) && (_fuel > 0.0))
+    {
+#define FUELBUMP 1
+      CCLOG(@"Asteroid Bump %f", bumpStrength);
+     // _fuel -= (FUELBUMP * bumpStrength);
+      if (_fuel < 0.0){
+        [self removeThrust];
+        _fuel = 0.0;
+      }
+    }
 	}
   
 	return YES;
@@ -250,6 +267,16 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   static cpFloat ONEDEGREE = CC_DEGREES_TO_RADIANS(1);
   #define DEGREES_PER_SECOND 120
   cpBodySetAngle(_radarShape->body, _radarShape->body->a - (ONEDEGREE * DEGREES_PER_SECOND) * delta);
+  
+  //reduce the fuel
+  if ([_view isThrusting] && (_fuel > 0.0))
+  {
+    _fuel -= (FUELRATE * delta);
+    if (_fuel < 0.0){
+      [self removeThrust];
+      _fuel = 0.0;
+    }
+  }
 }
 
 - (void) postStep:(ccTime) delta
@@ -261,6 +288,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 - (void) applyThrust
 {
   if ([_view isThrusting]) return;
+  if (_fuel <= 0.0) return;
   NSLog(@"applying thrust...");
   [_view setThrusting:kGreedyThrustLittle];
 }

@@ -151,7 +151,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
     
     CP_ARBITER_GET_SHAPES(arb, a, b);
     AsteroidSprite * ast = (AsteroidSprite *)(b->data);
-    cpFloat len = cpArbiteGetDepth(arb, 0);
+    cpFloat len = cpArbiterGetDepth(arb, 0);
     
     float oreScore = [ast mineOre:1.0 length:len];
     
@@ -171,7 +171,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
     //CCLOG(@"Line Meets asteroid post solve");
     CP_ARBITER_GET_SHAPES(arb, a, b);
     AsteroidSprite * ast = (AsteroidSprite *)(b->data);
-    cpFloat len = cpArbiteGetDepth(arb, 0);
+    cpFloat len = cpArbiterGetDepth(arb, 0);
     
     float oreScore = [ast mineOre:1.0 length:len];
     

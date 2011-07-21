@@ -146,6 +146,7 @@
 {
   CCLOG(@"Dealloc ScoreCare");
   [_ScoreLabel release];
+  [_TimeLabel release];
   [self removeAllChildrenWithCleanup:YES];
   [super dealloc];
 }

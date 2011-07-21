@@ -18,7 +18,7 @@
   CCLabelTTF *_toggleLabel;
 }
 
-@property (retain, nonatomic) LifeMeter *lifeMeter;
+@property (nonatomic, assign) LifeMeter *lifeMeter;
 
 - (id) initWithGameLayer:(GameLayer*)gameLayer;
 

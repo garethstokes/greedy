@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		
+		<key>bra-hd.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 1}, {46, 38}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{46, 40}</string>
+			<key>frame</key>
+			<string>{{112, 2}, {46, 38}}</string>
+		</dict>
+		
+		<key>bra.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {23, 20}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{23, 20}</string>
+			<key>frame</key>
+			<string>{{112, 42}, {23, 20}}</string>
+		</dict>
+		
+		<key>foamfinger-hd.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 1}, {34, 50}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{34, 52}</string>
+			<key>frame</key>
+			<string>{{30, 2}, {34, 50}}</string>
+		</dict>
+		
+		<key>foamfinger.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {17, 26}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{17, 26}</string>
+			<key>frame</key>
+			<string>{{66, 46}, {17, 26}}</string>
+		</dict>
+		
+		<key>hammer-hd.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {44, 42}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{44, 42}</string>
+			<key>frame</key>
+			<string>{{66, 2}, {44, 42}}</string>
+		</dict>
+		
+		<key>hammer.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {22, 21}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{22, 21}</string>
+			<key>frame</key>
+			<string>{{2, 66}, {22, 21}}</string>
+		</dict>
+		
+		<key>heels-hd.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {44, 36}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{44, 36}</string>
+			<key>frame</key>
+			<string>{{160, 2}, {44, 36}}</string>
+		</dict>
+		
+		<key>heels.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {22, 18}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{22, 18}</string>
+			<key>frame</key>
+			<string>{{85, 64}, {22, 18}}</string>
+		</dict>
+		
+		<key>rubber_ducky-hd.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {36, 32}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{36, 32}</string>
+			<key>frame</key>
+			<string>{{160, 40}, {36, 32}}</string>
+		</dict>
+		
+		<key>rubber_ducky.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {18, 16}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{18, 16}</string>
+			<key>frame</key>
+			<string>{{85, 46}, {18, 16}}</string>
+		</dict>
+		
+		<key>thong-hd.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {26, 62}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{26, 62}</string>
+			<key>frame</key>
+			<string>{{2, 2}, {26, 62}}</string>
+		</dict>
+		
+		<key>thong.png</key>
+		<dict>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {13, 31}}</string>
+			<key>offset</key>
+			<string>{0, -0}</string>
+			<key>sourceSize</key>
+			<string>{13, 31}</string>
+			<key>frame</key>
+			<string>{{30, 54}, {13, 31}}</string>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<format>1</format>
+		<key>size</key>
+		<string>{256, 128}</string>
+	</dict>
+</dict>
+</plist>

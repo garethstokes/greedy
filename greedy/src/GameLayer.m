@@ -12,6 +12,9 @@
 #import "chipmunk.h"
 #import "SpaceManager.h"
 #import "GameScene.h"
+#import "WorldRepository.h";
+#import "World.h"
+#import "GreedyLevel.h"
 
 @implementation GameLayer
 @synthesize greedy = _greedy;
@@ -74,40 +77,46 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _environment = environment;
     _debugLayer = nil;
     
+    WorldRepository *repository = [[[WorldRepository alloc] init] autorelease];
+    World *w = [repository findWorldBy:1];
+    GreedyLevel *level = [w.levels objectAtIndex:0];
+    
     // asteroids.
-    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:(1800 * 300) density:2.0f Layer:LAYER_ASTEROID];
+    int asteroidFieldSize = [level asteroidFieldWidth] * [level asteroidFieldHeight];
+    _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:asteroidFieldSize density:2.0f Layer:LAYER_ASTEROID];
     [self addChild:_asteroidField];
     
     // static asteroids (big ones!)
-    Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
-                                                            withLayer:LAYER_ASTEROID 
-                                                             withSize:100
-                                                         withPosition:ccp(200,-100)];
-    [self addChild:staticAsteroid1];
-    
-    Asteroid* staticAsteroid2 = [[Asteroid alloc] initWithEnvironment:environment 
-                                                            withLayer:LAYER_ASTEROID 
-                                                             withSize:100
-                                                         withPosition:ccp(-200,150)];
-    
-    [self addChild:staticAsteroid2];
+    for (int i = 0; i < [level.staticAsteroids count]; i++)
+    {
+      StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
+      Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
+                                                              withLayer:LAYER_ASTEROID 
+                                                               withSize:[config size]
+                                                           withPosition:[config position]];
+      [self addChild:staticAsteroid1];
+    }
     
     // greedy!
-    _greedy = [[Greedy alloc] initWith:environment startPos:cpv(0.0, -(850.0 - 40.0))];
+    _greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition]];
     [self addChild:_greedy];
     
     // add limits
-    [environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:350.0];
+    //[environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:350.0];
+    [environment addTopDownWorldContainmentWithFriction:[level.environment friction] 
+                                             elasticity:[level.environment elasticity] 
+                                                 height:[level.environment height]  
+                                                  width:[level.environment width] ];
     
     _lastPosition = [_greedy position];
     
     // start and end points
     CCSprite *startPoint = [CCSprite spriteWithFile:@"start_point.png"];
-    [startPoint setPosition:ccpAdd([_greedy position], ccp(0, 100))];
+    [startPoint setPosition:ccpAdd([_greedy position], [level startPosition])];
     [self addChild:startPoint z:-1];
     
     _endPoint = [CCSprite spriteWithFile:@"end_point.png"];
-    [_endPoint setPosition:ccpAdd([_greedy position], ccp(0, 1600))];
+    [_endPoint setPosition:ccpAdd([_greedy position], [level finishPosition])];
     [self addChild:_endPoint z:-1];   
     
     [self createFinishLine: environment];

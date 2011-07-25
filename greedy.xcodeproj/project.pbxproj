@@ -224,6 +224,10 @@
 		E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DC137684ED0092DDA6 /* nebula.png */; };
 		E7B6D5E11376852D0092DDA6 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6D5E01376852D0092DDA6 /* Background.m */; };
 		E7CE21711371780600A700EA /* Meteor1.png in Resources */ = {isa = PBXBuildFile; fileRef = E7CE21701371780600A700EA /* Meteor1.png */; };
+		E7CE9EDF13D6DC34009D9D6A /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EDE13D6DC34009D9D6A /* World.m */; };
+		E7CE9EE313D6DC99009D9D6A /* GreedyLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */; };
+		E7CE9EE613D6E890009D9D6A /* WorldRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE513D6E890009D9D6A /* WorldRepository.m */; };
+		E7CEA14F13D708EA009D9D6A /* worlds in Resources */ = {isa = PBXBuildFile; fileRef = E7CEA14E13D708EA009D9D6A /* worlds */; };
 		E7E5D93313750430004283ED /* Greedy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E5D93213750430004283ED /* Greedy.m */; };
 		E7E5D94813750A0E004283ED /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D93E13750A0E004283ED /* eye.png */; };
 		E7E5D94913750A0E004283ED /* eyebrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D93F13750A0E004283ED /* eyebrow.png */; };
@@ -622,6 +626,13 @@
 		E7B6D5DF1376852D0092DDA6 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		E7B6D5E01376852D0092DDA6 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		E7CE21701371780600A700EA /* Meteor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meteor1.png; sourceTree = "<group>"; };
+		E7CE9EDD13D6DC34009D9D6A /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		E7CE9EDE13D6DC34009D9D6A /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
+		E7CE9EE113D6DC99009D9D6A /* GreedyLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyLevel.h; sourceTree = "<group>"; };
+		E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyLevel.m; sourceTree = "<group>"; };
+		E7CE9EE413D6E890009D9D6A /* WorldRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldRepository.h; sourceTree = "<group>"; };
+		E7CE9EE513D6E890009D9D6A /* WorldRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldRepository.m; sourceTree = "<group>"; };
+		E7CEA14E13D708EA009D9D6A /* worlds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = worlds; sourceTree = "<group>"; };
 		E7E5D93113750430004283ED /* Greedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Greedy.h; sourceTree = "<group>"; };
 		E7E5D93213750430004283ED /* Greedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Greedy.m; sourceTree = "<group>"; };
 		E7E5D93E13750A0E004283ED /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
@@ -713,6 +724,8 @@
 				E73C9AD01375024300A7DF8D /* GameScene.m */,
 				E7E5D93113750430004283ED /* Greedy.h */,
 				E7E5D93213750430004283ED /* Greedy.m */,
+				E7CE9EE113D6DC99009D9D6A /* GreedyLevel.h */,
+				E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */,
 				E7188B8113964A41005A1E81 /* GreedyView.h */,
 				E7188B8213964A41005A1E81 /* GreedyView.m */,
 				E73C9AD11375024300A7DF8D /* HudLayer.h */,
@@ -725,6 +738,10 @@
 				AB045A7613714D3C001253D2 /* RootViewController.m */,
 				ABB5BEA013C45FDF00B06F68 /* ScoreCard.h */,
 				ABB5BEA113C45FDF00B06F68 /* ScoreCard.m */,
+				E7CE9EDD13D6DC34009D9D6A /* World.h */,
+				E7CE9EDE13D6DC34009D9D6A /* World.m */,
+				E7CE9EE413D6E890009D9D6A /* WorldRepository.h */,
+				E7CE9EE513D6E890009D9D6A /* WorldRepository.m */,
 				AB0458D213714D3A001253D2 /* Resources */,
 				AB0458E613714D3A001253D2 /* cocos2d */,
 				AB0459D813714D3B001253D2 /* CocosDenshion */,
@@ -741,6 +758,7 @@
 		AB0458D213714D3A001253D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E7CEA14E13D708EA009D9D6A /* worlds */,
 				E7CE216E1371780600A700EA /* assets */,
 				AB0458E313714D3A001253D2 /* Info.plist */,
 				AB8633AB13A5EA9C00CB8E31 /* Default.png */,
@@ -1376,6 +1394,7 @@
 				E747BB5813CD99360056281F /* choose_level_bg.png in Resources */,
 				E747BB5913CD99360056281F /* level_ready.png in Resources */,
 				E747BB5A13CD99360056281F /* score_block.png in Resources */,
+				E7CEA14F13D708EA009D9D6A /* worlds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1540,6 +1559,9 @@
 				ABB5BEA213C45FDF00B06F68 /* ScoreCard.m in Sources */,
 				E747BB5013CD89DA0056281F /* MenuScene.m in Sources */,
 				E747BB5313CD98EC0056281F /* ChooseLevelLayer.m in Sources */,
+				E7CE9EDF13D6DC34009D9D6A /* World.m in Sources */,
+				E7CE9EE313D6DC99009D9D6A /* GreedyLevel.m in Sources */,
+				E7CE9EE613D6E890009D9D6A /* WorldRepository.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,7 @@
 @property (nonatomic, retain) Greedy *greedy;
 
 - (void) step:(ccTime)dt;
-- (id) initWithEnvironment:(GameEnvironment *) environment;
+- (id) initWithEnvironment:(GameEnvironment *) environment level:(int)l;
 - (void) toggleDebug;
 - (void) moveCameraTo:(CGPoint)point;
 - (void) toggleController;

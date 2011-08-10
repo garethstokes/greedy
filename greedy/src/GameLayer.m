@@ -67,7 +67,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
                                     selector:@selector(handleCollisionFinishline:arbiter:space:)];
 
 }
-- (id) initWithEnvironment:(GameEnvironment *) environment
+- (id) initWithEnvironment:(GameEnvironment *) environment level:(int)l
 {
   if( (self=[super init])) {
 
@@ -79,7 +79,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     WorldRepository *repository = [[[WorldRepository alloc] init] autorelease];
     World *w = [repository findWorldBy:1];
-    GreedyLevel *level = [w.levels objectAtIndex:0];
+    GreedyLevel *level = [w.levels objectAtIndex:(l - 1)];
     
     // asteroids.
     int asteroidFieldSize = [level asteroidFieldWidth] * [level asteroidFieldHeight];

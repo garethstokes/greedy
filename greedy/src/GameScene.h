@@ -30,8 +30,7 @@
 @property (nonatomic, retain) GameLayer *gameLayer;
 @property (nonatomic, retain) HudLayer *hudLayer;
 
-+(id) scene;
-
++(id) sceneWithLevel:(int)level;
 - (void) showScore:(int) score time:(ccTime)time;
 
 @end

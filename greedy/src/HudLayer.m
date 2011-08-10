@@ -7,7 +7,7 @@
 //
 
 #import "HudLayer.h"
-#import "GameScene.h"
+#import "MenuScene.h"
 #import "GameConfig.h"
 
 @implementation HudLayer
@@ -44,7 +44,7 @@
   [self setPosition:ccp(0, size.height - 45)];
   [self setContentSize:CGSizeMake(size.width, 45)];
   
-  CCLabelTTF *restartLabel = [CCLabelTTF labelWithString:@"restart" 
+  CCLabelTTF *restartLabel = [CCLabelTTF labelWithString:@"menu" 
                                                 fontName:@"Helvetica" 
                                                 fontSize:16];
   
@@ -90,7 +90,7 @@
 
 - (void)restartGame:(id)sender
 {
-  [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
+  [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
 }
 
 - (void)debugGame:(id)sender

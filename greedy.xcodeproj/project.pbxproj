@@ -237,7 +237,7 @@
 		E7CE9EDF13D6DC34009D9D6A /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EDE13D6DC34009D9D6A /* World.m */; };
 		E7CE9EE313D6DC99009D9D6A /* GreedyLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */; };
 		E7CE9EE613D6E890009D9D6A /* WorldRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE513D6E890009D9D6A /* WorldRepository.m */; };
-		E7CEA14F13D708EA009D9D6A /* worlds in Resources */ = {isa = PBXBuildFile; fileRef = E7CEA14E13D708EA009D9D6A /* worlds */; };
+		E7E3265613F2B04F0070C3F1 /* worlds in Resources */ = {isa = PBXBuildFile; fileRef = E7E3265513F2B04F0070C3F1 /* worlds */; };
 		E7E5D93313750430004283ED /* Greedy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E5D93213750430004283ED /* Greedy.m */; };
 		E7E5D94813750A0E004283ED /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D93E13750A0E004283ED /* eye.png */; };
 		E7E5D94913750A0E004283ED /* eyebrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D93F13750A0E004283ED /* eyebrow.png */; };
@@ -652,7 +652,7 @@
 		E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyLevel.m; sourceTree = "<group>"; };
 		E7CE9EE413D6E890009D9D6A /* WorldRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldRepository.h; sourceTree = "<group>"; };
 		E7CE9EE513D6E890009D9D6A /* WorldRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldRepository.m; sourceTree = "<group>"; };
-		E7CEA14E13D708EA009D9D6A /* worlds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = worlds; sourceTree = "<group>"; };
+		E7E3265513F2B04F0070C3F1 /* worlds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = worlds; sourceTree = "<group>"; };
 		E7E5D93113750430004283ED /* Greedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Greedy.h; sourceTree = "<group>"; };
 		E7E5D93213750430004283ED /* Greedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Greedy.m; sourceTree = "<group>"; };
 		E7E5D93E13750A0E004283ED /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
@@ -778,7 +778,7 @@
 		AB0458D213714D3A001253D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E7CEA14E13D708EA009D9D6A /* worlds */,
+				E7E3265513F2B04F0070C3F1 /* worlds */,
 				E7CE216E1371780600A700EA /* assets */,
 				AB0458E313714D3A001253D2 /* Info.plist */,
 				AB8633AB13A5EA9C00CB8E31 /* Default.png */,
@@ -1430,7 +1430,6 @@
 				E747BB5813CD99360056281F /* choose_level_bg.png in Resources */,
 				E747BB5913CD99360056281F /* level_ready.png in Resources */,
 				E747BB5A13CD99360056281F /* score_block.png in Resources */,
-				E7CEA14F13D708EA009D9D6A /* worlds in Resources */,
 				AB395B8313DDB02000510C81 /* random_elements-hd.plist in Resources */,
 				AB395B8413DDB02000510C81 /* random_elements-hd.png in Resources */,
 				AB395B8513DDB02000510C81 /* random_elements.plist in Resources */,
@@ -1443,6 +1442,7 @@
 				AB395B9413DDB78E00510C81 /* parts-hd.png in Resources */,
 				AB395B9513DDB78E00510C81 /* parts.plist in Resources */,
 				AB395B9613DDB78E00510C81 /* parts.png in Resources */,
+				E7E3265613F2B04F0070C3F1 /* worlds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

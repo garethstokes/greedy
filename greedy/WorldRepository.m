@@ -25,6 +25,7 @@
 
 - (World *) findWorldBy:(int) worldId
 {
+  if (worldId > 12) worldId = 1;
   World *world = [[World alloc] init];
   
   //Load in the plist and start processing the stuff

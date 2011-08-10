@@ -19,7 +19,7 @@
 @synthesize gameLayer = _gameLayer;
 @synthesize hudLayer = _hudLayer;
 
-+(id) scene
++(id) sceneWithLevel:(int)level
 {
 	// 'scene' is an autorelease object.
 	GameScene *scene = [GameScene node];
@@ -34,12 +34,10 @@
   scene->_background = [[Background alloc] initWithEnvironment:scene->_environment];
   [scene addChild:scene->_background z:0];
 
-  
   //Game Layer
-  scene.gameLayer = [[GameLayer alloc] initWithEnvironment:scene->_environment];
+  scene.gameLayer = [[GameLayer alloc] initWithEnvironment:scene->_environment level:level];
   [scene addChild:scene.gameLayer z:10];
-  
-  
+    
   //HUD
   scene->_hudLayer = [[HudLayer alloc] initWithGameLayer:scene.gameLayer];
   [scene addChild:scene->_hudLayer z:50];

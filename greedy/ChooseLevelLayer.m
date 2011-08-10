@@ -25,13 +25,14 @@
       CCMenu *menu = [CCMenu menuWithItems:nil];
       
       int y_level = 1;
-      for (int i = 0; i < 12; i++)
+      for (int i = 0; i < 4; i++)
       {
         CCMenuItemImage *image = [CCMenuItemImage itemFromNormalImage:@"level_ready.png" 
                                                        selectedImage:@"level_ready.png"
                                                               target:self 
                                                             selector:@selector(buttonTapped:)];
         [image setScale:0.55f];
+        [image setTag:(i + 1)];
         [menu addChild:image];
         
         //[button setContentSize:CGSizeMake(100, 80)];
@@ -55,7 +56,9 @@
 }
 
 - (void)buttonTapped:(id)sender {
-  [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
+  CCMenuItemImage *image = (CCMenuItemImage *)sender;
+  int level = [image tag];
+  [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:level]];
 }
 
 @end

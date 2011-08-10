@@ -347,7 +347,9 @@
 -(void) explode
 {
   CGPoint explosionPosition = [_sprite position];
-  cpVect explosionVect = ccp(160, 320);
+  CGPoint test = [self convertToWorldSpace:explosionPosition];
+  CCLOG(@"test x:%f | y:%f",test.x, test.y);
+
   //remove greedy
   [_sprite stopAllActions];
   [self removeChild:_sprite cleanup:NO];
@@ -381,21 +383,22 @@
                               nil]) {
     if (CCRANDOM_0_1() > 0.5) {
       CCSpriteFrame* frame1 = [cache spriteFrameByName:objName];
-      cpShape* aShape = [_manager addRectAt:explosionPosition mass:3.0 width:frame1.rectInPixels.size.width height:frame1.rectInPixels.size.height rotation:0.0 ];
-      aShape->layers = LAYER_RADARLINE;
+      CGPoint randPos = explosionPosition;
+      randPos.x += CCRANDOM_0_1() - CCRANDOM_0_1();
+      randPos.y += CCRANDOM_0_1()- CCRANDOM_0_1();
+      
+      cpShape* aShape = [_manager addRectAt:randPos mass:1.0 width:frame1.rectInPixels.size.width height:frame1.rectInPixels.size.height rotation:0.0 ];
+      aShape->layers = LAYER_RADAR;
       _spriteExplosion1 = [cpCCSprite spriteWithShape:aShape spriteFrameName:objName];
       [_batchExplosion addChild:_spriteExplosion1];
     }
   }
   
   [self addChild:_batchExplosion];
-   
-   //add explosion
- 
   
-  [_manager applyLinearExplosionAt:explosionVect radius:400 maxForce:20000];
-  
+  [_manager applyLinearExplosionAt:explosionPosition radius:20 maxForce:50 layers:LAYER_RADAR group:CP_NO_GROUP];
 }
+
 
 -(void) dealloc
 {

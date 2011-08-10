@@ -137,24 +137,20 @@
 {
   if(!(self = [super init])) return nil;
   
-  //_greedy = greedy;
-  //cpShape *shape = greedy->shape;
-  
   _shape = shape;
   _manager = manager;
   _radarShape = radar;
   
   _thrusting = kGreedyThrustNone;
   _feeding = kGreedyIdle;
+
   [self createSprites];
   
-  //Move greedy into layer DEFAULT so its shape doesn't impact eyeball or background asteroids
+  //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
   shape->layers = LAYER_GREEDY;
  
   //Body
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
-  [_sprite setScaleX:0.5f];
-  [_sprite setScaleY:0.5f];
   [_batch addChild:_sprite];
   
   //_sprites
@@ -232,8 +228,6 @@
     
     _flames = [CCSprite spriteWithSpriteFrameName:@"flames_3.png"];
     _flames.position = ccp(50, 90);
-    [_flames setScaleX:0.5f];
-    [_flames setScaleY:0.5f];
     [_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  
     [_flames runAction:action];
     
@@ -348,6 +342,59 @@
   _feeding = kGreedyIdle;
   [sender stopAllActions];
 	[sender setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_close_body.png"]];
+}
+
+-(void) explode
+{
+  CGPoint explosionPosition = [_sprite position];
+  cpVect explosionVect = ccp(160, 320);
+  //remove greedy
+  [_sprite stopAllActions];
+  [self removeChild:_sprite cleanup:NO];
+  [self removeChild:_batch cleanup:NO];
+  [self removeChild:_radar cleanup:NO];
+  [self removeCrazyEyeAndContainer];
+  
+  //add random bits
+  CCSpriteFrameCache * cache = [CCSpriteFrameCache sharedSpriteFrameCache];
+  
+  //load in the masters files ... ie the PNG and zwoptex plist
+  _batchExplosion = [CCSpriteBatchNode batchNodeWithFile:@"parts.png" capacity:14]; 
+  [cache addSpriteFramesWithFile:@"parts.plist"];
+
+  // choose some parts
+  for (NSString * objName in [NSArray arrayWithObjects: 
+                              @"bolt.png", 
+                              @"cog.png", 
+                              @"eye.png", 
+                              @"key.png", 
+                              @"nail.png", 
+                              @"nut.png", 
+                              @"shell_a.png", 
+                              @"shell_b.png", 
+                              @"shell_c.png", 
+                              @"shell_d.png", 
+                              @"spring.png", 
+                              @"stem.png", 
+                              @"tooth.png", 
+                              @"wheel.png", 
+                              nil]) {
+    if (CCRANDOM_0_1() > 0.5) {
+      CCSpriteFrame* frame1 = [cache spriteFrameByName:objName];
+      cpShape* aShape = [_manager addRectAt:explosionPosition mass:3.0 width:frame1.rectInPixels.size.width height:frame1.rectInPixels.size.height rotation:0.0 ];
+      aShape->layers = LAYER_RADARLINE;
+      _spriteExplosion1 = [cpCCSprite spriteWithShape:aShape spriteFrameName:objName];
+      [_batchExplosion addChild:_spriteExplosion1];
+    }
+  }
+  
+  [self addChild:_batchExplosion];
+   
+   //add explosion
+ 
+  
+  [_manager applyLinearExplosionAt:explosionVect radius:400 maxForce:20000];
+  
 }
 
 -(void) dealloc

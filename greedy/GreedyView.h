@@ -36,6 +36,11 @@
   CCAnimate *_actionCloseDown;
   CCAnimate *_actionFlame;
   CCAnimate *_actionWobble;
+  
+  
+  //explosion
+  CCSpriteBatchNode * _batchExplosion;
+  cpCCSprite *_spriteExplosion1;
 }
 
 - (void) createSprites;
@@ -56,6 +61,7 @@
 -(void) goIdle:(id)sender;
 -(void) openUp;
 -(void) closeDown;
+-(void) explode;
 
 
 

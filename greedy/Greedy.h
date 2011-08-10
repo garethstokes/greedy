@@ -44,8 +44,11 @@ enum {
   
   float _score;
   float _fuel;
+  BOOL  _exploded;
   
   GreedyView *_view;
+  
+  SpaceManagerCocos2d *_manager;
 }
 
 @property (nonatomic) cpShape *shape;

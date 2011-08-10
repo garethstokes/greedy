@@ -45,6 +45,8 @@
   
   SpaceManagerCocos2d *manager = [environment manager];
   
+  _manager = manager;
+  
   cpShape *shape = [manager 
                     addRectAt:startPos 
                     mass:GREEDYMASS 
@@ -65,6 +67,8 @@
   
   _fuel = 10;
   
+  _exploded = NO;
+  
   [self createRadarLine:manager];
 
   //init collisions
@@ -76,8 +80,6 @@
   //add radar
   [self addRadarSensor: body manager: manager];
   
-
-  
   // view
   _view = [[GreedyView alloc] initWithShape:shape manager:manager radar:_radarShape];
   [self addChild:_view];
@@ -87,6 +89,8 @@
 
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
+  if (_exploded) return YES;
+  
 	if (moment == COLLISION_POSTSOLVE)
 	{
 		//NSLog(@"You hit an asteroid!!!");
@@ -145,7 +149,9 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 
 - (BOOL) handleCollisionRadarLine:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
-	if (moment == COLLISION_BEGIN)
+	if (_exploded) return YES;
+  
+  if (moment == COLLISION_BEGIN)
 	{
     //CCLOG(@"Line Meets asteroid begin");
     
@@ -196,6 +202,8 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 
 - (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
+  if (_exploded) return YES;
+  
 	if (moment == COLLISION_BEGIN)
 	{
 		CCLOG(@"You are within radar range... woot!!!");
@@ -222,14 +230,6 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 	return YES;
 }
 
-- (void)dealloc
-{
-  CCLOG(@"Dealloc Greedy");
-  [_view release];
-  [self removeAllChildrenWithCleanup:YES];
-  [super dealloc];
-}
-
 - (void) createRadarLine:(SpaceManagerCocos2d *) manager
 {
   if(_radarShape == nil)
@@ -248,56 +248,90 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   }
 }
 
-- (void) prestep:(ccTime) delta
+static void explodeGreedy(cpSpace *space, void *obj, void *data)
 {
-  //set angle of greedy
-  cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
+  Greedy *g = (Greedy*)(obj);
+  SpaceManagerCocos2d * manager = (SpaceManagerCocos2d *)data;
   
-  if ([_view isThrusting])
-  {
-    //add force to greedy
-    cpVect force = cpvforangle(_shape->body->a);
-    force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
-    cpBodyApplyImpulse(_shape->body, force,cpvzero);
-  }
+  cpBodyResetForces(g.shape->body);
+  cpBodySleep(g.shape->body);
 
-  //add down force (not a gravity just a "forcy thing")
-  cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/3 * delta) * -1),cpvzero);
-
-  //Rotate the Radar
-  static cpFloat ONEDEGREE = CC_DEGREES_TO_RADIANS(1);
-  #define DEGREES_PER_SECOND 120
-  cpBodySetAngle(_radarShape->body, _radarShape->body->a - (ONEDEGREE * DEGREES_PER_SECOND) * delta);
+  cpSpaceRemoveBody(manager.space, g.shape->body);
   
-  //reduce the fuel
-  if ([_view isThrusting] && (_fuel > 0.0))
-  {
-    _fuel -= (FUELRATE * delta);
+  [g.view explode];
+}
+
+- (void) burnFuel:(float)amount
+{
+  if(_fuel > 0.0){
+    _fuel -= amount;
     if (_fuel < 0.0){
       [self removeThrust];
       _fuel = 0.0;
+      if(!_exploded)
+        cpSpaceAddPostStepCallback(_manager.space, explodeGreedy, self, _manager);
+      _exploded = YES;
     }
   }
+}
+
+- (void) prestep:(ccTime) delta
+{
+  if(!_exploded){
+    //set angle of greedy
+    cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
+    
+    //add down force (not a gravity just a "forcy thing")
+    cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/3 * delta) * -1),cpvzero);
+    
+    //Rotate the Radar
+    static cpFloat ONEDEGREE = CC_DEGREES_TO_RADIANS(1);
+    cpBodySetAngle(_radarShape->body, _radarShape->body->a - (ONEDEGREE * RADAR_SPIN_DEGREES_PER_SECOND) * delta);
+    
+    if ([_view isThrusting])
+    {
+      //add force to greedy
+      cpVect force = cpvforangle(_shape->body->a);
+      force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
+      cpBodyApplyImpulse(_shape->body, force,cpvzero);
+
+      //reduce the fuel
+      [self burnFuel:(FUELRATE * delta)];
+    }
+
+
+  } else{
+  }
+
 }
 
 - (void) postStep:(ccTime) delta
 {
   //update the view
-  [_view step:delta];
+  if(!_exploded)
+    [_view step:delta];
 }
 
 - (void) applyThrust
 {
-  if ([_view isThrusting]) return;
-  if (_fuel <= 0.0) return;
-  NSLog(@"applying thrust...");
-  [_view setThrusting:kGreedyThrustLittle];
+  if(!_exploded){
+    if ([_view isThrusting]) return;
+    
+    if (_fuel <= 0.0) return;
+    
+    NSLog(@"applying thrust...");
+    
+    [_view setThrusting:kGreedyThrustLittle];
+  }
 }
 
 - (void) removeThrust
 {
   NSLog(@"removing thrust...");
-  [_view setThrusting:kGreedyThrustNone];
+  if(!_exploded)
+    [_view setThrusting:kGreedyThrustNone];
+  else {
+  }
 }
 
 - (void) setAngle:(cpFloat)value
@@ -313,7 +347,17 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 
 - (void) setEatingStatusTo:(int) value
 {
-  [_view updateFeeding:value];
+  if(!_exploded)
+    [_view updateFeeding:value];
+}
+
+
+- (void)dealloc
+{
+  CCLOG(@"Dealloc Greedy");
+  [_view release];
+  [self removeAllChildrenWithCleanup:YES];
+  [super dealloc];
 }
 
 @end

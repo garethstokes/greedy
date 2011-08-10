@@ -159,10 +159,12 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 - (void) start
 {
   [_greedy.view stopAllActions];
-  [self schedule: @selector(step:)];
-  [_environment.manager start:(1.0/60.0)];
+
   self.isTouchEnabled = YES;
   self.isAccelerometerEnabled = YES;
+
+  [_environment.manager start:(1.0/60.0)];
+  [self schedule: @selector(step:)];
 }
 
 - (void) pause

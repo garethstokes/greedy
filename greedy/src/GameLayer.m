@@ -15,6 +15,7 @@
 #import "WorldRepository.h";
 #import "World.h"
 #import "GreedyLevel.h"
+#import "SettingsManager.h"
 
 @implementation GameLayer
 @synthesize greedy = _greedy;
@@ -72,7 +73,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   if( (self=[super init])) {
 
     
-    ACCELORMETER_DIRECTION = 1;
+    ACCELORMETER_DIRECTION = [[SettingsManager sharedSettingsManager] getInt:@"controlDirection" withDefault:1] == 0 ? -1 : 1;
     
     _environment = environment;
     _debugLayer = nil;
@@ -257,7 +258,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _cameraPosition = ccpAdd(_cameraPosition, delta);
     
     [self.camera setCenterX:-160 centerY:_cameraPosition.y - 240 centerZ:0];
-    [self.camera setEyeX:-160 eyeY:_cameraPosition.y - 240 eyeZ:90];
+    [self.camera setEyeX:-160 eyeY:_cameraPosition.y - 240 eyeZ:90.0];
   }
 }
 
@@ -304,10 +305,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   if(ACCELORMETER_DIRECTION == -1)
   {
     ACCELORMETER_DIRECTION = 1;
+    [[SettingsManager sharedSettingsManager] setValue:@"controlDirection" newInt:1];
         
   }else{
     ACCELORMETER_DIRECTION = -1;
-   
+    [[SettingsManager sharedSettingsManager] setValue:@"controlDirection" newInt:0];   
   };
 }
 

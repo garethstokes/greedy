@@ -7,13 +7,18 @@
 //
 
 #import "cocos2d.h"
+#import "MainMenuLayer.h"
 #import "ChooseLevelLayer.h"
 
 @interface MenuScene : CCScene{
+  MainMenuLayer *_mainMenu;
   ChooseLevelLayer *_chooseLevel;
 }
 
+@property (nonatomic, retain) MainMenuLayer *mainMenu;
 @property (nonatomic, retain) ChooseLevelLayer *chooseLevel;
 
 +(id) scene;
+- (void) showMainMenu;
+- (void) showChooseLevel;
 @end

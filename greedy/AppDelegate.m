@@ -13,6 +13,7 @@
 #import "RootViewController.h"
 #import "GameScene.h"
 #import "MenuScene.h"
+#import "SettingsManager.h"
 
 @implementation AppDelegate
 
@@ -41,6 +42,9 @@
 }
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
+  
+  [[SettingsManager sharedSettingsManager] load];
+  
 	// Init the window
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
@@ -118,10 +122,12 @@
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+  [[SettingsManager sharedSettingsManager] save];
 	[[CCDirector sharedDirector] pause];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+  [[SettingsManager sharedSettingsManager] load];
 	[[CCDirector sharedDirector] resume];
 }
 
@@ -138,6 +144,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+  //[[SettingsManager sharedSettingsManager] save];
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	[[director openGLView] removeFromSuperview];

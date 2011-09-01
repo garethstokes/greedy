@@ -8,7 +8,7 @@
 
 #import "cocos2d.h"
 
-@interface ChooseLevelLayer : CCLayer
+@interface ChooseLevelLayer : CCLayerColor
 
 - (void)buttonTapped:(id)sender;
 

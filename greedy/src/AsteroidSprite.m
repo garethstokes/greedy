@@ -171,12 +171,26 @@
       
       CGImageRef resImageRef = CGImageCreateWithImageInRect(imageRefWithAlpha, copyRect);
       UIImage *imageResed = [UIImage imageWithCGImage:resImageRef];
+      UIImage *result;
+      //if retina enlarge this baby
+      if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2){
+        //iPhone 4
      
+      CGContextRef bitmap = CGBitmapContextCreate(NULL, thisSize * 2, thisSize * 2, CGImageGetBitsPerComponent(imageResed.CGImage), 4 * thisSize * 2, CGImageGetColorSpace(imageResed.CGImage), kCGImageAlphaNoneSkipLast);
+      CGContextDrawImage(bitmap, CGRectMake(0, 0, thisSize * 2, thisSize * 2), imageResed.CGImage);
+      CGImageRef ref = CGBitmapContextCreateImage(bitmap);
+      result = [UIImage imageWithCGImage:ref];
+      
+      CGContextRelease(bitmap);
+      CGImageRelease(ref);
+      }else
+        result = imageResed;
+      
       CGImageRelease(resImageRef);
       
       //call sprite init fucntion to use new image
       static int MeteorID = 0;
-      [self initWithCGImage:imageResed.CGImage key:[NSString stringWithFormat:@"Meteor%d", MeteorID++]];
+      [self initWithCGImage:result.CGImage key:[NSString stringWithFormat:@"Meteor%d", MeteorID++]];
 
       //clean up memory
       CGContextRelease(offscreenContext);

@@ -8,6 +8,8 @@
 
 #import "ScoreCard.h"
 #import "GameScene.h"
+#import "MenuScene.h"
+#import "SettingsManager.h"
 
 
 @implementation ScoreCard
@@ -31,7 +33,7 @@
 - (void) createMenu {
   CCSprite *btnChooseLevelOn = [CCSprite spriteWithFile:@"btn_choose_level_on.png"];
   CCSprite *btnChooseLevelOff = [CCSprite spriteWithFile:@"btn_choose_level_off.png"];
-  CCMenuItemSprite * btnChooseLevel = [CCMenuItemSprite itemFromNormalSprite:btnChooseLevelOff selectedSprite:btnChooseLevelOn];
+  CCMenuItemSprite * btnChooseLevel = [CCMenuItemSprite itemFromNormalSprite:btnChooseLevelOff selectedSprite:btnChooseLevelOn  target:self selector:@selector(gotoMainMenu:)];
 
   CCSprite *btnReplayOn = [CCSprite spriteWithFile:@"btn_replay_on.png"];
   CCSprite *btnReplayOff = [CCSprite spriteWithFile:@"btn_replay_off.png"];
@@ -49,7 +51,12 @@
 
 -(void) restartLevel: (id) sender
 {
-  [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
+  [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:1]];
+}
+
+-(void) gotoMainMenu: (id) sender
+{
+  [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
 }
 
 - (void) showBars {
@@ -131,7 +138,12 @@
   
   [self showBars];
   
-  [self showHighScore];
+  int prevHighScore = [[SettingsManager sharedSettingsManager] getInt:[NSString stringWithFormat:@"HighScoreLevel%d", level] withDefault:0]; 
+  if(score > prevHighScore)
+  {
+    [self showHighScore];
+    [[SettingsManager sharedSettingsManager] setValue:[NSString stringWithFormat:@"HighScoreLevel%d", level] newInt:score];
+  }
   
   [self showScore];
   

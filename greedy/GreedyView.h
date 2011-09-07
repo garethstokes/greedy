@@ -40,6 +40,7 @@
   
   //explosion
   CCSpriteBatchNode * _batchExplosion;
+  CCSpriteBatchNode * _batchExplosionSexy;
   cpCCSprite *_spriteExplosion1;
 }
 

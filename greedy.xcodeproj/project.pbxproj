@@ -169,6 +169,10 @@
 		AB045A7713714D3C001253D2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB045A7613714D3C001253D2 /* RootViewController.m */; };
 		AB045A9813715E31001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB045A9A13715E97001253D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		AB1D71D514178E8D00A703BC /* start_death-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1D71D114178E8D00A703BC /* start_death-hd.png */; };
+		AB1D71D614178E8D00A703BC /* start_death.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1D71D214178E8D00A703BC /* start_death.png */; };
+		AB1D71DB1417939500A703BC /* start_death-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB1D71D91417939500A703BC /* start_death-hd.plist */; };
+		AB1D71DC1417939500A703BC /* start_death.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB1D71DA1417939500A703BC /* start_death.plist */; };
 		AB395B8313DDB02000510C81 /* random_elements-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB395B7F13DDB02000510C81 /* random_elements-hd.plist */; };
 		AB395B8413DDB02000510C81 /* random_elements-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB395B8013DDB02000510C81 /* random_elements-hd.png */; };
 		AB395B8513DDB02000510C81 /* random_elements.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB395B8113DDB02000510C81 /* random_elements.plist */; };
@@ -598,6 +602,10 @@
 		AB045A7513714D3C001253D2 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AB045A7613714D3C001253D2 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		AB045A7B13714D3C001253D2 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
+		AB1D71D114178E8D00A703BC /* start_death-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start_death-hd.png"; path = "../meteor/start_death-hd.png"; sourceTree = "<group>"; };
+		AB1D71D214178E8D00A703BC /* start_death.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = start_death.png; path = ../meteor/start_death.png; sourceTree = "<group>"; };
+		AB1D71D91417939500A703BC /* start_death-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "start_death-hd.plist"; sourceTree = "<group>"; };
+		AB1D71DA1417939500A703BC /* start_death.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = start_death.plist; sourceTree = "<group>"; };
 		AB395B7F13DDB02000510C81 /* random_elements-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "random_elements-hd.plist"; sourceTree = "<group>"; };
 		AB395B8013DDB02000510C81 /* random_elements-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "random_elements-hd.png"; sourceTree = "<group>"; };
 		AB395B8113DDB02000510C81 /* random_elements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = random_elements.plist; sourceTree = "<group>"; };
@@ -1393,6 +1401,10 @@
 				AB52EAF0140A8DC0007E263B /* end_point-hd.png */,
 				E716F0A913AC67DE00F5F348 /* start_point.png */,
 				AB52EAF2140A8E06007E263B /* start_point-hd.png */,
+				AB1D71D114178E8D00A703BC /* start_death-hd.png */,
+				AB1D71D214178E8D00A703BC /* start_death.png */,
+				AB1D71D91417939500A703BC /* start_death-hd.plist */,
+				AB1D71DA1417939500A703BC /* start_death.plist */,
 			);
 			path = start_end_points;
 			sourceTree = "<group>";
@@ -1657,6 +1669,10 @@
 				AB52EAF3140A8E06007E263B /* start_point-hd.png in Resources */,
 				AB4EDD33140A96320072A2CF /* mainmenu_bg-hd.png in Resources */,
 				AB4EDD34140A96320072A2CF /* mainmenu_bg.png in Resources */,
+				AB1D71D514178E8D00A703BC /* start_death-hd.png in Resources */,
+				AB1D71D614178E8D00A703BC /* start_death.png in Resources */,
+				AB1D71DB1417939500A703BC /* start_death-hd.plist in Resources */,
+				AB1D71DC1417939500A703BC /* start_death.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

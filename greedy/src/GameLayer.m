@@ -18,6 +18,10 @@
 #import "SettingsManager.h"
 #import "AccelerometerSimulation.h"
 
+enum SpriteTags{
+  StartTag = 0
+};
+
 @implementation GameLayer
 @synthesize greedy = _greedy;
 
@@ -114,6 +118,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     // start and end points
     CCSprite *startPoint = [CCSprite spriteWithFile:@"start_point.png"];
+    [startPoint setTag:StartTag];
     [startPoint setPosition:ccpAdd([_greedy position], [level startPosition])];
     [self addChild:startPoint z:-1];
     
@@ -143,19 +148,38 @@ ccpAngleBetween(CGPoint a, CGPoint b)
                            [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
                         nil ] 
    ];
-  /*
-   [_greedy runAction:[CCSequence actions:
-                    [CCDelayTime actionWithDuration:1.4f],
-                    [CCFadeOut actionWithDuration:1.1f],
-                    nil]
-   ];
-   */
 }
 
 -(void) startGame:(id)sender
 {
   [_greedy stopAllActions];
   [_greedy applyThrust];
+  
+  //switch out the zone
+  [self removeChildByTag:StartTag cleanup:YES];
+  
+  //load in the masters files ... ie the PNG and zwoptex plist
+  _batchDeath = [CCSpriteBatchNode batchNodeWithFile:@"start_death.png" capacity:2]; 
+  [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"start_death.plist"]; 
+
+  //Body
+  CCSprite *spriteDeath = [CCSprite spriteWithSpriteFrameName:@"start_death.png"];
+  [spriteDeath setPosition:ccp(0, -912)];
+  [_batchDeath addChild:spriteDeath];
+  
+  //head wobble open
+  NSMutableArray *deathFrames = [NSMutableArray array];
+  
+  [deathFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"start_death.png"]];
+  [deathFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"start_death_2.png"]];
+  
+  CCAnimation *animationDeath = [CCAnimation animationWithFrames:deathFrames delay:1.0f];
+  _actionDeath = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animationDeath]];
+
+  [spriteDeath runAction:_actionDeath];
+  
+  [self addChild:_batchDeath z:-1];
+  
 	[self start];
 }
 
@@ -267,7 +291,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _cameraPosition = ccpAdd(_cameraPosition, delta);
     
     [self.camera setCenterX:-160 centerY:_cameraPosition.y - 240 centerZ:0];
-    [self.camera setEyeX:-160 eyeY:_cameraPosition.y - 240 eyeZ:90.0];
+    [self.camera setEyeX:-160 eyeY:_cameraPosition.y - 240 eyeZ:1.0];
   }
 }
 

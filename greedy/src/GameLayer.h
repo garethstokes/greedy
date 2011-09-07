@@ -22,6 +22,9 @@
   
   GameEnvironment *_environment;
   
+  CCAction *_actionDeath;
+  CCSpriteBatchNode *_batchDeath;
+  
   CCSprite *_endPoint;
   
   ccTime _timeleft;

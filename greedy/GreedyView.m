@@ -392,7 +392,34 @@
     }
   }
   
+  //load in the masters files ... ie the PNG and zwoptex plist
+  _batchExplosionSexy = [CCSpriteBatchNode batchNodeWithFile:@"random_elements.png" capacity:6]; 
+  [cache addSpriteFramesWithFile:@"random_elements.plist"];
+  
+  // choose some parts
+  for (NSString * objNameSexy in [NSArray arrayWithObjects: 
+                              @"bra.png", 
+                              @"foamfinger.png", 
+                              @"hammer.png", 
+                              @"heels.png", 
+                              @"rubber_ducky.png", 
+                              @"thong.png", 
+                              nil]) {
+    if (CCRANDOM_0_1() > 0.16) {
+      CCSpriteFrame* frame1 = [cache spriteFrameByName:objNameSexy];
+      CGPoint randPos = explosionPosition;
+      randPos.x += CCRANDOM_0_1() - CCRANDOM_0_1();
+      randPos.y += CCRANDOM_0_1()- CCRANDOM_0_1();
+      
+      cpShape* aShape = [_manager addRectAt:randPos mass:1.0 width:frame1.rectInPixels.size.width height:frame1.rectInPixels.size.height rotation:0.0 ];
+      aShape->layers = LAYER_RADAR;
+      _spriteExplosion1 = [cpCCSprite spriteWithShape:aShape spriteFrameName:objNameSexy];
+      [_batchExplosionSexy addChild:_spriteExplosion1];
+    }
+  }
+  
   [self addChild:_batchExplosion];
+  [self addChild:_batchExplosionSexy];
   
   [_manager applyLinearExplosionAt:explosionPosition radius:20 maxForce:50 layers:LAYER_RADAR group:CP_NO_GROUP];
 }

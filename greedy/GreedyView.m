@@ -287,8 +287,6 @@
   if(_radar == nil)
   {
     _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];    
-    [_radar setScaleX:0.5f];
-    [_radar setScaleY:0.5f];
     [_radar setPosition:[_sprite position]];  
     [_radar setRotation: _radarShape->body->a];
     

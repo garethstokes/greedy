@@ -11,12 +11,14 @@
 
 @implementation ChooseLevelLayer
 
-- (id)init
+- (id) initWithColor:(ccColor4B)color width:(GLfloat)w  height:(GLfloat) h
 {
-    self = [super init];
+    self = [super initWithColor:color width:w height:h];
+  
     if (self) {
+      
+      
       CCSprite *background = [CCSprite spriteWithFile:@"choose_level_bg.png"];
-      [background setScale:0.55f];
       [background setPosition:ccp(150, 245)];
       [self addChild:background];
       
@@ -31,11 +33,8 @@
                                                        selectedImage:@"level_ready.png"
                                                               target:self 
                                                             selector:@selector(buttonTapped:)];
-        [image setScale:0.55f];
         [image setTag:(i + 1)];
         [menu addChild:image];
-        
-        //[button setContentSize:CGSizeMake(100, 80)];
         
         int offset = (i + 1) % 4;
         if (offset == 0)

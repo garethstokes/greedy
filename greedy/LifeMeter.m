@@ -25,24 +25,24 @@
   CCSpriteFrame *frame;
   
   //Create the background grid
-  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 195, 21)] autorelease];
+  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 98, 11)] autorelease];
   [cache addSpriteFrame:frame name:@"lifeMeterGrid"];
   
 
   // create the frames
 
-  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 0, 0)] autorelease];
+  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(2, 12, 0, 0)] autorelease];
   [cache addSpriteFrame:frame name:@"lifeBar0"];  
   
   for(int i = 1; i <= 10; i++)
   {
-    frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(4, 24, 16 + (i * 19), 15)] autorelease];
+    frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(2, 12, 8 + (i * 9), 8)] autorelease];
     [cache addSpriteFrame:frame name:[NSString stringWithFormat:@"lifeBar%d", i]];
   };
   
   //Set to full bars
   _lifeBars = [[CCSprite spriteWithSpriteFrame:[cache spriteFrameByName:@"lifeBar10"]] retain];
-  _lifeBars.position = ccp(_lifeBars.contentSizeInPixels.width / 2 + 4, _lifeBars.contentSizeInPixels.height / 2 + 3);
+  _lifeBars.position = ccp(_lifeBars.contentSize.width / 2 + 2, _lifeBars.contentSize.height / 2);
   [_lifeMeterBatchNode addChild:_lifeBars];
 
   // add the sprite batch
@@ -62,7 +62,7 @@
   
   [_lifeBars setDisplayFrame: [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"lifeBar%d", level]]];
   
-  _lifeBars.position = ccp(_lifeBars.contentSizeInPixels.width / 2 + 4, _lifeBars.contentSizeInPixels.height / 2 + 3);
+  _lifeBars.position = ccp(_lifeBars.contentSize.width / 2 + 2, _lifeBars.contentSize.height / 2);
   
 }
 

@@ -20,6 +20,8 @@
 {
   if(!(self = [super init])) return nil;
   
+  
+  
   _convexHull = [[[ConvexHull alloc] initWithStaticSize:size]autorelease];
   _mass = (int)[_convexHull area];
   

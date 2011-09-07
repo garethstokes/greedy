@@ -11,16 +11,28 @@
 @implementation MenuScene
 
 @synthesize chooseLevel = _chooseLevel;
+@synthesize mainMenu = _mainMenu;
 
 + (id) scene
 {
   MenuScene *menu = [[MenuScene alloc] init];
   
-  ChooseLevelLayer *chooseLevel = [[ChooseLevelLayer alloc] init];
-  menu.chooseLevel = chooseLevel;
-  [menu addChild:chooseLevel];
+  menu.mainMenu = [[MainMenuLayer alloc] init];
+  [menu addChild:menu.mainMenu];
+  
+  //show main menu
+  //[menu showChooseLevel];
   
   return menu;
+}
+
+- (void) showMainMenu{
+  
+}
+
+- (void) showChooseLevel{
+
+
 }
 
 @end

@@ -308,7 +308,9 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/1.0f * delta) * -1),cpvzero);
       }
     }
-  } else{
+  } else
+  {
+    
   }
 
 }
@@ -357,6 +359,11 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 {
   if(!_exploded)
     [_view updateFeeding:value];
+}
+
+- (BOOL) hasExploded
+{
+  return _exploded;
 }
 
 

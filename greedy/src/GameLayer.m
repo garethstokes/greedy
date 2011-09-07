@@ -182,7 +182,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) endLevel
 {
-  
+  GameScene * scene = (GameScene*)(self->parent_);
+  [scene showScore:_greedy.score time:_timeleft];
 }
 
 - (BOOL) handleCollisionFinishline:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
@@ -230,6 +231,12 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   
   // now step the graphics
   [_greedy postStep:dt];
+  
+  if ([_greedy hasExploded])
+  {
+    [self schedule:@selector(endLevel) interval:3.0f];
+    return;
+  }
   
   //move the parallax backgrounds
   CGPoint diff = ccpSub(_lastPosition, [_greedy position]);

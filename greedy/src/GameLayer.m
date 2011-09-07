@@ -267,11 +267,20 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
   [_greedy removeThrust];
+  return;
+  
+  GreedyView* view = [_greedy view];
+  if ([view isThrusting])
+  {
+    [_greedy removeThrust];
+    return;
+  }
+  
+  [_greedy applyThrust];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
   [_greedy applyThrust];
 }
 

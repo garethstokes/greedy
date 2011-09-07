@@ -30,9 +30,9 @@ enum nodeTags
                                                         selectedImage:@"close_down.png"
                                                                target:self 
                                                              selector:@selector(menuCloseTapped:)];
-    //sound slider
+    //control direction
     controlSlider = [CCSlider sliderWithBackgroundFile: @"controlslider_bg.png" thumbFile: @"swtch_slide.png"];
-		int controlDirection = [[SettingsManager sharedSettingsManager] getInt:@"controlDirection" withDefault:1];
+		int controlDirection = [[SettingsManager sharedSettingsManager] getInt:@"controlDirection" withDefault:0];
     [controlSlider setValue:(controlDirection / 1.0)];
     [controlSlider setPosition:ccp(100, 306)];
     controlSlider.tag = kControlTag;

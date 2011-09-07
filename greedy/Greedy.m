@@ -302,10 +302,10 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
       cpVect velocity = _shape->body->v;
       NSLog(@"greedy velocity: %d", abs(velocity.y));
       
-      if (abs(velocity.y) > 25)
+      if (abs(velocity.y) > 5)
       {
         //add down force (not a gravity just a "forcy thing")
-        cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/3 * delta) * -1),cpvzero);
+        cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/1.0f * delta) * -1),cpvzero);
       }
     }
   } else{

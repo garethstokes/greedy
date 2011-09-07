@@ -16,6 +16,7 @@
 #import "World.h"
 #import "GreedyLevel.h"
 #import "SettingsManager.h"
+#import "AccelerometerSimulation.h"
 
 @implementation GameLayer
 @synthesize greedy = _greedy;

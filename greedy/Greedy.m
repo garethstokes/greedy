@@ -57,6 +57,8 @@
   shape->layers = LAYER_GREEDY;
   shape->collision_type = kGreedyCollisionType;
   
+  shape->u = 0.9f; //friction
+  
   // set physics
   cpBody *body = shape->body;
   cpBodySetVelLimit(body, 180);
@@ -281,9 +283,6 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
     //set angle of greedy
     cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
     
-    //add down force (not a gravity just a "forcy thing")
-    cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/3 * delta) * -1),cpvzero);
-    
     //Rotate the Radar
     static cpFloat ONEDEGREE = CC_DEGREES_TO_RADIANS(1);
     cpBodySetAngle(_radarShape->body, _radarShape->body->a - (ONEDEGREE * RADAR_SPIN_DEGREES_PER_SECOND) * delta);
@@ -294,12 +293,21 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
       cpVect force = cpvforangle(_shape->body->a);
       force = cpvmult(cpvperp(force), GREEDYTHRUST * delta);
       cpBodyApplyImpulse(_shape->body, force,cpvzero);
-
+      
       //reduce the fuel
       [self burnFuel:(FUELRATE * delta)];
     }
-
-
+    else
+    {
+      cpVect velocity = _shape->body->v;
+      NSLog(@"greedy velocity: %d", abs(velocity.y));
+      
+      if (abs(velocity.y) > 25)
+      {
+        //add down force (not a gravity just a "forcy thing")
+        cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/3 * delta) * -1),cpvzero);
+      }
+    }
   } else{
   }
 
@@ -315,7 +323,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 - (void) applyThrust
 {
   if(!_exploded){
-    if ([_view isThrusting]) return;
+    //if ([_view removingThrust]) return;
     
     if (_fuel <= 0.0) return;
     

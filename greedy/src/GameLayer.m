@@ -155,6 +155,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 -(void) startGame:(id)sender
 {
   [_greedy stopAllActions];
+  [_greedy applyThrust];
 	[self start];
 }
 
@@ -265,12 +266,13 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  [_greedy applyThrust];
+  [_greedy removeThrust];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  [_greedy removeThrust];
+
+  [_greedy applyThrust];
 }
 
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration

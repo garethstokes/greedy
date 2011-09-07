@@ -35,7 +35,7 @@
 
 //greedy stuff
 #define GREEDYMASS    2000.0f
-#define GREEDYTHRUST  200000.0f
+#define GREEDYTHRUST  100000.0f
 #define PUPILGRAVITY  -100.0f
 #define RADAR_SPIN_DEGREES_PER_SECOND 120
 

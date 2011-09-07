@@ -49,7 +49,7 @@
 
 -(void) restartLevel: (id) sender
 {
-  [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
+  [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:1]];
 }
 
 - (void) showBars {

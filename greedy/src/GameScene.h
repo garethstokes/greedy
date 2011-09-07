@@ -22,6 +22,7 @@
   GameLayer *_gameLayer;
   HudLayer *_hudLayer;
   ScoreCard *_scorecard;
+  GameScene *_scene;
 }
 
 @property (nonatomic, retain) GameEnvironment *environment;
@@ -29,8 +30,12 @@
 @property (nonatomic, retain) Background *background;
 @property (nonatomic, retain) GameLayer *gameLayer;
 @property (nonatomic, retain) HudLayer *hudLayer;
+@property (nonatomic, retain) GameScene *scene;
 
-+(id) sceneWithLevel:(int)level;
++ (id) sceneWithLevel:(int)level;
++ (GameScene *) current;
+
 - (void) showScore:(int) score time:(ccTime)time;
+- (void) restart;
 
 @end

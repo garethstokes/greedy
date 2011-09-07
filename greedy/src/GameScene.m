@@ -18,6 +18,7 @@
 @synthesize background = _background;
 @synthesize gameLayer = _gameLayer;
 @synthesize hudLayer = _hudLayer;
+@synthesize scene = _scene;
 
 +(id) sceneWithLevel:(int)level
 {

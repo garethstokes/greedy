@@ -32,14 +32,14 @@
 		<key>x</key>
 		<integer>0</integer>
 		<key>y</key>
-		<integer>100</integer>
+		<integer>50</integer>
 	</dict>
 	<key>StartPosition</key>
 	<dict>
 		<key>x</key>
 		<integer>0</integer>
 		<key>y</key>
-		<integer>-810</integer>
+		<integer>-730</integer>
 	</dict>
 	<key>StaticAsteroids</key>
 	<array>

@@ -150,16 +150,9 @@ ccpAngleBetween(CGPoint a, CGPoint b)
    ];
 }
 
--(void) startGame:(id)sender
-{
-  [_greedy stopAllActions];
-  [_greedy applyThrust];
-  
-  //switch out the zone
-  [self removeChildByTag:StartTag cleanup:YES];
-  
-  //load in the masters files ... ie the PNG and zwoptex plist
-  _batchDeath = [CCSpriteBatchNode batchNodeWithFile:@"start_death.png" capacity:2]; 
+- (void) createDeathZone {
+  //load in the master files ... ie the PNG and zwoptex plist
+    _batchDeath = [CCSpriteBatchNode batchNodeWithFile:@"start_death.png" capacity:2]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"start_death.plist"]; 
 
   //Body
@@ -167,7 +160,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [spriteDeath setPosition:ccp(0, -912)];
   [_batchDeath addChild:spriteDeath];
   
-  //head wobble open
+  //Create death zone
   NSMutableArray *deathFrames = [NSMutableArray array];
   
   [deathFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"start_death.png"]];
@@ -179,6 +172,18 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [spriteDeath runAction:_actionDeath];
   
   [self addChild:_batchDeath z:-1];
+
+}
+
+-(void) startGame:(id)sender
+{
+  [_greedy stopAllActions];
+  [_greedy applyThrust];
+  
+  //switch out the zone
+  [self removeChildByTag:StartTag cleanup:YES];
+  
+  [self createDeathZone];
   
 	[self start];
 }
@@ -209,6 +214,13 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   GameScene * scene = (GameScene*)(self->parent_);
   [scene showScore:_greedy.score time:_timeleft];
 }
+   
+   
+-(void) showScoreCard:(id)sender
+{
+  GameScene * scene = (GameScene*)(self->parent_);
+  [scene showScore:_greedy.score time:_timeleft];
+}
 
 - (void) endLevelWithDeath
 {
@@ -225,8 +237,18 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [_endPoint setPosition:p];
   [self addChild:_endPoint z:-1]; 
   
-  GameScene * scene = (GameScene*)(self->parent_);
-  [scene showScore:_greedy.score time:_timeleft];
+  CGPoint endPoint = ccp(_greedy.view.position.x, _greedy.view.position.y);
+  //endPoint.x = 160 - endPoint.x;
+  
+  // animate the greedy into view
+  [_greedy.view runAction:[CCSequence actions:
+                           //[CCFadeOut actionWithDuration:0.25f],
+                           //[CCFadeIn actionWithDuration:0.25f],
+                           //[CCRotateBy actionWithDuration:2.0f angle:90],
+                           //[CCDelayTime actionWithDuration:5.0],
+                           [CCMoveBy actionWithDuration:3.0f position:endPoint],
+                           [CCCallFuncN actionWithTarget:self selector:@selector(showScoreCard:)],
+                           nil ]];
   
   return YES;
 }

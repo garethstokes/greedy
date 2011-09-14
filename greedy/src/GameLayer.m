@@ -12,7 +12,7 @@
 #import "chipmunk.h"
 #import "SpaceManager.h"
 #import "GameScene.h"
-#import "WorldRepository.h";
+#import "WorldRepository.h"
 #import "World.h"
 #import "GreedyLevel.h"
 #import "SettingsManager.h"
@@ -210,6 +210,12 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [scene showScore:_greedy.score time:_timeleft];
 }
 
+- (void) endLevelWithDeath
+{
+  GameScene * scene = (GameScene*)(self->parent_);
+  [scene showDeath];
+}
+
 - (BOOL) handleCollisionFinishline:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
   NSLog(@"crossed the finish line");
@@ -258,7 +264,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   
   if ([_greedy hasExploded])
   {
-    [self schedule:@selector(endLevel) interval:3.0f];
+    [self schedule:@selector(endLevelWithDeath) interval:3.0f];
     return;
   }
   

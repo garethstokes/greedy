@@ -14,6 +14,7 @@
 #import "GameLayer.h"
 #import "HudLayer.h"
 #import "ScoreCard.h"
+#import "DeathCard.h"
 
 @interface GameScene : CCScene {
   GameEnvironment *_environment;
@@ -22,6 +23,7 @@
   GameLayer *_gameLayer;
   HudLayer *_hudLayer;
   ScoreCard *_scorecard;
+  DeathCard *_deathcard;
   GameScene *_scene;
 }
 
@@ -36,6 +38,7 @@
 + (GameScene *) current;
 
 - (void) showScore:(int) score time:(ccTime)time;
+- (void) showDeath;
 - (void) restart;
 
 @end

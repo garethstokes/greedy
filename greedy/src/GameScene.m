@@ -61,10 +61,21 @@
   [self addChild:_scorecard  z:100];
 }
 
+- (void) showDeath
+{
+  if(_deathcard != nil) return;
+  
+  _deathcard = [[DeathCard alloc] init];
+  
+  [self addChild:_deathcard  z:100];
+
+}
+
 - (void) dealloc
 {
   NSLog(@"Dealloc GameScene");
   [_scorecard release];
+  [_deathcard release];
   [_hudLayer release];
   [_gameLayer release];
   [_background release];

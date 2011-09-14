@@ -274,6 +274,25 @@
 		E747BB5013CD89DA0056281F /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E747BB4F13CD89DA0056281F /* MenuScene.m */; };
 		E747BB5313CD98EC0056281F /* ChooseLevelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E747BB5213CD98EC0056281F /* ChooseLevelLayer.m */; };
 		E75E38D213764ECB00464CED /* GDKaosEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E75E38D113764ECB00464CED /* GDKaosEngine.m */; };
+		E76966C81420AA5B007FCFDB /* DeathCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E76966C71420AA5B007FCFDB /* DeathCard.m */; };
+		E76966D81420B2B4007FCFDB /* death_skull-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966CA1420B2B4007FCFDB /* death_skull-hd.png */; };
+		E76966D91420B2B4007FCFDB /* death_skull.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966CB1420B2B4007FCFDB /* death_skull.png */; };
+		E76966DA1420B2B4007FCFDB /* example_death.PNG in Resources */ = {isa = PBXBuildFile; fileRef = E76966CC1420B2B4007FCFDB /* example_death.PNG */; };
+		E76966DB1420B2B4007FCFDB /* example.PNG in Resources */ = {isa = PBXBuildFile; fileRef = E76966CD1420B2B4007FCFDB /* example.PNG */; };
+		E76966DC1420B2B4007FCFDB /* lose_0-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966CE1420B2B4007FCFDB /* lose_0-hd.png */; };
+		E76966DD1420B2B4007FCFDB /* lose_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966CF1420B2B4007FCFDB /* lose_0.png */; };
+		E76966DE1420B2B4007FCFDB /* lose_1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D01420B2B4007FCFDB /* lose_1-hd.png */; };
+		E76966DF1420B2B4007FCFDB /* lose_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D11420B2B4007FCFDB /* lose_1.png */; };
+		E76966E01420B2B4007FCFDB /* lose_2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D21420B2B4007FCFDB /* lose_2-hd.png */; };
+		E76966E11420B2B4007FCFDB /* lose_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D31420B2B4007FCFDB /* lose_2.png */; };
+		E76966E21420B2B4007FCFDB /* lose_3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D41420B2B4007FCFDB /* lose_3-hd.png */; };
+		E76966E31420B2B4007FCFDB /* lose_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D51420B2B4007FCFDB /* lose_3.png */; };
+		E76966E41420B2B4007FCFDB /* lose_4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D61420B2B4007FCFDB /* lose_4-hd.png */; };
+		E76966E51420B2B4007FCFDB /* lose_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966D71420B2B4007FCFDB /* lose_4.png */; };
+		E76966EA1420B890007FCFDB /* deathcard-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = E76966E61420B890007FCFDB /* deathcard-hd.plist */; };
+		E76966EB1420B890007FCFDB /* deathcard-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966E71420B890007FCFDB /* deathcard-hd.png */; };
+		E76966EC1420B890007FCFDB /* deathcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E76966E81420B890007FCFDB /* deathcard.plist */; };
+		E76966ED1420B890007FCFDB /* deathcard.png in Resources */ = {isa = PBXBuildFile; fileRef = E76966E91420B890007FCFDB /* deathcard.png */; };
 		E76A26BF1377F0C400B24780 /* vinegarette.png in Resources */ = {isa = PBXBuildFile; fileRef = E76A26BE1377F0C400B24780 /* vinegarette.png */; };
 		E76A26C31377F0E600B24780 /* Balsamic.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A26C21377F0E600B24780 /* Balsamic.m */; };
 		E76AE4B313766A6A00A94EDA /* ConvexHull.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B213766A6A00A94EDA /* ConvexHull.m */; };
@@ -734,6 +753,26 @@
 		E747BB5213CD98EC0056281F /* ChooseLevelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLevelLayer.m; sourceTree = "<group>"; };
 		E75E38D013764ECB00464CED /* GDKaosEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDKaosEngine.h; path = src/GDKaosEngine.h; sourceTree = "<group>"; };
 		E75E38D113764ECB00464CED /* GDKaosEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDKaosEngine.m; path = src/GDKaosEngine.m; sourceTree = "<group>"; };
+		E76966C61420AA5A007FCFDB /* DeathCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathCard.h; sourceTree = "<group>"; };
+		E76966C71420AA5B007FCFDB /* DeathCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeathCard.m; sourceTree = "<group>"; };
+		E76966CA1420B2B4007FCFDB /* death_skull-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "death_skull-hd.png"; sourceTree = "<group>"; };
+		E76966CB1420B2B4007FCFDB /* death_skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = death_skull.png; sourceTree = "<group>"; };
+		E76966CC1420B2B4007FCFDB /* example_death.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example_death.PNG; sourceTree = "<group>"; };
+		E76966CD1420B2B4007FCFDB /* example.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.PNG; sourceTree = "<group>"; };
+		E76966CE1420B2B4007FCFDB /* lose_0-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lose_0-hd.png"; sourceTree = "<group>"; };
+		E76966CF1420B2B4007FCFDB /* lose_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lose_0.png; sourceTree = "<group>"; };
+		E76966D01420B2B4007FCFDB /* lose_1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lose_1-hd.png"; sourceTree = "<group>"; };
+		E76966D11420B2B4007FCFDB /* lose_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lose_1.png; sourceTree = "<group>"; };
+		E76966D21420B2B4007FCFDB /* lose_2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lose_2-hd.png"; sourceTree = "<group>"; };
+		E76966D31420B2B4007FCFDB /* lose_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lose_2.png; sourceTree = "<group>"; };
+		E76966D41420B2B4007FCFDB /* lose_3-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lose_3-hd.png"; sourceTree = "<group>"; };
+		E76966D51420B2B4007FCFDB /* lose_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lose_3.png; sourceTree = "<group>"; };
+		E76966D61420B2B4007FCFDB /* lose_4-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lose_4-hd.png"; sourceTree = "<group>"; };
+		E76966D71420B2B4007FCFDB /* lose_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lose_4.png; sourceTree = "<group>"; };
+		E76966E61420B890007FCFDB /* deathcard-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "deathcard-hd.plist"; sourceTree = "<group>"; };
+		E76966E71420B890007FCFDB /* deathcard-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deathcard-hd.png"; sourceTree = "<group>"; };
+		E76966E81420B890007FCFDB /* deathcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = deathcard.plist; sourceTree = "<group>"; };
+		E76966E91420B890007FCFDB /* deathcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deathcard.png; sourceTree = "<group>"; };
 		E76A26BE1377F0C400B24780 /* vinegarette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vinegarette.png; sourceTree = "<group>"; };
 		E76A26C11377F0E600B24780 /* Balsamic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Balsamic.h; sourceTree = "<group>"; };
 		E76A26C21377F0E600B24780 /* Balsamic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Balsamic.m; sourceTree = "<group>"; };
@@ -853,6 +892,8 @@
 				E747BB5213CD98EC0056281F /* ChooseLevelLayer.m */,
 				E76AE4B113766A6A00A94EDA /* ConvexHull.h */,
 				E76AE4B213766A6A00A94EDA /* ConvexHull.m */,
+				E76966C61420AA5A007FCFDB /* DeathCard.h */,
+				E76966C71420AA5B007FCFDB /* DeathCard.m */,
 				E75E38D013764ECB00464CED /* GDKaosEngine.h */,
 				E75E38D113764ECB00464CED /* GDKaosEngine.m */,
 				AB045A7B13714D3C001253D2 /* GameConfig.h */,
@@ -1288,6 +1329,24 @@
 		ABC883ED13C4B74B00EFBFC6 /* scorecard */ = {
 			isa = PBXGroup;
 			children = (
+				E76966E61420B890007FCFDB /* deathcard-hd.plist */,
+				E76966E71420B890007FCFDB /* deathcard-hd.png */,
+				E76966E81420B890007FCFDB /* deathcard.plist */,
+				E76966E91420B890007FCFDB /* deathcard.png */,
+				E76966CA1420B2B4007FCFDB /* death_skull-hd.png */,
+				E76966CB1420B2B4007FCFDB /* death_skull.png */,
+				E76966CC1420B2B4007FCFDB /* example_death.PNG */,
+				E76966CD1420B2B4007FCFDB /* example.PNG */,
+				E76966CE1420B2B4007FCFDB /* lose_0-hd.png */,
+				E76966CF1420B2B4007FCFDB /* lose_0.png */,
+				E76966D01420B2B4007FCFDB /* lose_1-hd.png */,
+				E76966D11420B2B4007FCFDB /* lose_1.png */,
+				E76966D21420B2B4007FCFDB /* lose_2-hd.png */,
+				E76966D31420B2B4007FCFDB /* lose_2.png */,
+				E76966D41420B2B4007FCFDB /* lose_3-hd.png */,
+				E76966D51420B2B4007FCFDB /* lose_3.png */,
+				E76966D61420B2B4007FCFDB /* lose_4-hd.png */,
+				E76966D71420B2B4007FCFDB /* lose_4.png */,
 				AB020C1D13C8A29D00D96276 /* btn_choose_level_off-hd.png */,
 				AB020C1E13C8A29D00D96276 /* btn_choose_level_on-hd.png */,
 				AB020C1F13C8A29D00D96276 /* btn_replay_off-hd.png */,
@@ -1673,6 +1732,24 @@
 				AB1D71D614178E8D00A703BC /* start_death.png in Resources */,
 				AB1D71DB1417939500A703BC /* start_death-hd.plist in Resources */,
 				AB1D71DC1417939500A703BC /* start_death.plist in Resources */,
+				E76966D81420B2B4007FCFDB /* death_skull-hd.png in Resources */,
+				E76966D91420B2B4007FCFDB /* death_skull.png in Resources */,
+				E76966DA1420B2B4007FCFDB /* example_death.PNG in Resources */,
+				E76966DB1420B2B4007FCFDB /* example.PNG in Resources */,
+				E76966DC1420B2B4007FCFDB /* lose_0-hd.png in Resources */,
+				E76966DD1420B2B4007FCFDB /* lose_0.png in Resources */,
+				E76966DE1420B2B4007FCFDB /* lose_1-hd.png in Resources */,
+				E76966DF1420B2B4007FCFDB /* lose_1.png in Resources */,
+				E76966E01420B2B4007FCFDB /* lose_2-hd.png in Resources */,
+				E76966E11420B2B4007FCFDB /* lose_2.png in Resources */,
+				E76966E21420B2B4007FCFDB /* lose_3-hd.png in Resources */,
+				E76966E31420B2B4007FCFDB /* lose_3.png in Resources */,
+				E76966E41420B2B4007FCFDB /* lose_4-hd.png in Resources */,
+				E76966E51420B2B4007FCFDB /* lose_4.png in Resources */,
+				E76966EA1420B890007FCFDB /* deathcard-hd.plist in Resources */,
+				E76966EB1420B890007FCFDB /* deathcard-hd.png in Resources */,
+				E76966EC1420B890007FCFDB /* deathcard.plist in Resources */,
+				E76966ED1420B890007FCFDB /* deathcard.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1845,6 +1922,7 @@
 				ABA71F04140A2A95006E3C19 /* OptionsMenuLayer.m in Sources */,
 				AB52EAAF140A4355007E263B /* CCSlider.m in Sources */,
 				AB501B0014175EF600C5B5F8 /* AccelerometerSimulation.m in Sources */,
+				E76966C81420AA5B007FCFDB /* DeathCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

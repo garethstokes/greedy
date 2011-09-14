@@ -48,5 +48,6 @@
 - (void) pause;
 - (void) stop;
 - (void) endLevel;
+- (void) endLevelWithDeath;
 
 @end

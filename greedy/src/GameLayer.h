@@ -34,6 +34,9 @@
   float accelZ;
   
   int ACCELORMETER_DIRECTION;
+  
+  int _height;
+  int _width;
 }
 
 @property (nonatomic, retain) Greedy *greedy;

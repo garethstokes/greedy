@@ -73,11 +73,10 @@ ccpAngleBetween(CGPoint a, CGPoint b)
                                     selector:@selector(handleCollisionFinishline:arbiter:space:)];
 
 }
+
 - (id) initWithEnvironment:(GameEnvironment *) environment level:(int)l
 {
   if( (self=[super init])) {
-
-    
     ACCELORMETER_DIRECTION = [[SettingsManager sharedSettingsManager] getInt:@"controlDirection" withDefault:1] == 0 ? -1 : 1;
     
     _environment = environment;
@@ -127,10 +126,12 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [self addChild:_endPoint z:-1];   
     
     [self createFinishLine: environment];
-
     
     _cameraPosition = ccp(0,0);
     [self moveCameraTo:_lastPosition];
+    
+    _height = [level.environment height];
+    _width = [level.environment width];
   }
   return self;
 }
@@ -152,12 +153,13 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) createDeathZone {
   //load in the master files ... ie the PNG and zwoptex plist
-    _batchDeath = [CCSpriteBatchNode batchNodeWithFile:@"start_death.png" capacity:2]; 
+  _batchDeath = [CCSpriteBatchNode batchNodeWithFile:@"start_death.png" capacity:2]; 
   [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"start_death.plist"]; 
 
   //Body
   CCSprite *spriteDeath = [CCSprite spriteWithSpriteFrameName:@"start_death.png"];
-  [spriteDeath setPosition:ccp(0, -912)];
+  int h = _height /2;
+  [spriteDeath setPosition:ccp(0, (0 - h))];
   [_batchDeath addChild:spriteDeath];
   
   //Create death zone
@@ -181,7 +183,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [_greedy applyThrust];
   
   //switch out the zone
-  [self removeChildByTag:StartTag cleanup:YES];
+  //[self removeChildByTag:StartTag cleanup:YES];
   
   [self createDeathZone];
   

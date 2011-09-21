@@ -35,10 +35,10 @@
 @property (nonatomic, retain) GameScene *scene;
 
 + (id) sceneWithLevel:(int)level;
-+ (GameScene *) current;
+//+ (GameScene *) current;
 
 - (void) showScore:(int) score time:(ccTime)time;
 - (void) showDeath;
-- (void) restart;
+//- (void) restart;
 
 @end

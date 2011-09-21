@@ -186,8 +186,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   //[self removeChildByTag:StartTag cleanup:YES];
   
   [self createDeathZone];
-  
-	[self start];
+  [self start];
 }
 
 - (void) start

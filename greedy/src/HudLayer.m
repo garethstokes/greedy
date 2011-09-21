@@ -14,16 +14,6 @@
 
 @synthesize lifeMeter = _lifeMeter;
 
-- (void) CreateLifeMeter: (CGSize) size  {
-  
-  //Create Life Meter art work
-  _lifeMeter = [[[LifeMeter alloc] initLifeMeter] retain];
-  _lifeMeter.position = ccp(320 - 58, 15);
-  [_lifeMeter setLifeLevel:10];
-  
-  [self addChild:_lifeMeter];
-}
-
 - (id) init
 {
   return [self initWithGameLayer:nil];
@@ -33,7 +23,8 @@
 {
   
   NSLog(@"HudLayer Init");
-  if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
+  //if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
+  if (!(self=[super init]))
   {
     return nil;
   }
@@ -42,29 +33,12 @@
   [self setPosition:ccp(0, size.height - 45)];
   [self setContentSize:CGSizeMake(size.width, 45)];
   
-  CCLabelTTF *restartLabel = [CCLabelTTF labelWithString:@"menu" 
-                                                fontName:@"Helvetica" 
-                                                fontSize:16];
+  // background sprite
+  CCSprite *background = [CCSprite spriteWithFile:@"hud_bg.png"];
+  [background setPosition:ccp(size.width /2,25)];
+  [self addChild:background z:-1];
   
-  CCMenuItem *restartButton = [CCMenuItemLabel
-                               itemWithLabel:restartLabel
-                               target:self 
-                               selector:@selector(restartGame:)];
-  
-  [restartButton setPosition:CGPointMake(45, 20)];
-  
-  _debugLabel = [CCLabelTTF labelWithString:@"Show Debug" 
-                                   fontName:@"Helvetica" 
-                                   fontSize:16];
-  
-  CCMenuItem *debugButton = [CCMenuItemLabel
-                             itemWithLabel:_debugLabel
-                             target:self 
-                             selector:@selector(debugGame:)];
-  
-  [debugButton setPosition:CGPointMake(145, 20)];
-  
-  _toggleLabel = [CCLabelTTF labelWithString:@"Toggle -->" 
+  _toggleLabel = [CCLabelTTF labelWithString:@"" 
                                     fontName:@"Helvetica" 
                                     fontSize:16];
   
@@ -75,15 +49,29 @@
   
   [toggleButton setPosition:CGPointMake(145, 0)];
   
-  CCMenu *menu = [CCMenu menuWithItems:restartButton, toggleButton, debugButton, nil];
-  [menu setPosition:CGPointMake(4, 0)];
+  CCMenuItemImage *pause = [CCMenuItemImage itemFromNormalImage:@"pause_btn_off.png" 
+                                                  selectedImage:@"pause_btn_down.png" 
+                                                         target:self 
+                                                       selector:@selector(openSettings:)];
+  
+  CCMenu *menu = [CCMenu menuWithItems: pause, toggleButton, nil];
+  [menu setPosition:CGPointMake(25, 25)];
   [self addChild:menu];
   
-  [self CreateLifeMeter: size];
-  
+  [self createLifeMeter: size];
   _gameLayer = gameLayer;
   
   return self;
+}
+
+- (void) createLifeMeter: (CGSize) size  {
+  
+  //Create Life Meter art work
+  _lifeMeter = [[[LifeMeter alloc] initLifeMeter] retain];
+  _lifeMeter.position = ccp(size.width /2, 25);
+  [_lifeMeter setLifeLevel:10];
+  
+  [self addChild:_lifeMeter];
 }
 
 - (void)restartGame:(id)sender
@@ -96,6 +84,12 @@
   if (_gameLayer != nil)
     [_gameLayer toggleDebug];
 }
+
+- (void)openSettings:(id)sender
+{
+  
+}
+
 
 - (void)toggleGame:(id)sender
 {
@@ -117,4 +111,5 @@
   [_lifeMeter release];
   [super dealloc];
 }
+
 @end

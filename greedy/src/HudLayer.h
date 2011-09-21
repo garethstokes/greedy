@@ -11,7 +11,7 @@
 #import "LifeMeter.h"
 #import "GameLayer.h"
 
-@interface HudLayer : CCLayerColor {
+@interface HudLayer : CCLayer {
   GameLayer *_gameLayer;
   LifeMeter *_lifeMeter;
   CCLabelTTF *_debugLabel;
@@ -23,6 +23,7 @@
 - (id) initWithGameLayer:(GameLayer*)gameLayer;
 
 - (void) restartGame:(id)sender;
+- (void) createLifeMeter: (CGSize)size;
 
 
 @end

@@ -61,7 +61,7 @@
   
   // set physics
   cpBody *body = shape->body;
-  cpBodySetVelLimit(body, 180);
+  cpBodySetVelLimit(body, 80);
   body->data = self;
     
   _lastPosition = shape->body->p;

@@ -56,8 +56,10 @@
 {
   if(_scorecard != nil) return;
   
-  _scorecard = [[ScoreCard alloc] initWithScore:score level:1 time:time];
+  GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
+  [self removeChild:scene->_hudLayer cleanup:YES];
   
+  _scorecard = [[ScoreCard alloc] initWithScore:score level:1 time:time];
   [self addChild:_scorecard  z:100];
 }
 
@@ -65,10 +67,11 @@
 {
   if(_deathcard != nil) return;
   
-  _deathcard = [[DeathCard alloc] init];
+  GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
+  [self removeChild:scene->_hudLayer cleanup:YES];
   
+  _deathcard = [[DeathCard alloc] init];
   [self addChild:_deathcard  z:100];
-
 }
 
 - (void) dealloc

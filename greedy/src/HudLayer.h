@@ -18,6 +18,7 @@
   CCLabelTTF *_debugLabel;
   CCLabelTTF *_toggleLabel;
   OptionsMenuLayer *_optionsMenu;
+  bool _settingsOpen;
 }
 
 @property (nonatomic, assign) LifeMeter *lifeMeter;

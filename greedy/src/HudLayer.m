@@ -49,7 +49,7 @@
   
   [self createLifeMeter: size];
   _gameLayer = gameLayer;
-  
+  _settingsOpen = NO;
   return self;
 }
 
@@ -76,17 +76,10 @@
 
 - (void)openSettings:(id)sender
 {
-  if (_optionsMenu == nil)
-  {
-    [[CCDirector sharedDirector] pause];
-    _optionsMenu = [[OptionsMenuLayer alloc] init];
-    [self.parent addChild:_optionsMenu z:100];
-    return;
-  }
-
-  [self.parent removeChild:_optionsMenu cleanup:YES];
-  _optionsMenu = nil;
-  [[CCDirector sharedDirector] resume];
+  if (_settingsOpen) return;
+  _optionsMenu = [[OptionsMenuLayer alloc] init];
+  [self.parent addChild:_optionsMenu z:100];
+  _settingsOpen = YES;
 }
 
 - (void) dealloc

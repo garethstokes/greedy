@@ -53,6 +53,8 @@ enum nodeTags
     [menu setPosition:ccp(250,90)];
     [menu alignItemsHorizontallyWithPadding:16];
     [self addChild:menu];
+    
+    [[CCDirector sharedDirector] pause];
   }
   
   return self;
@@ -60,6 +62,7 @@ enum nodeTags
 
 - (void)menuCloseTapped:(id)sender {
   [self.parent removeChild:self cleanup:YES];  
+  [[CCDirector sharedDirector] resume];
 }
 
 - (void) valueChanged: (float) value tag: (int) tag; 

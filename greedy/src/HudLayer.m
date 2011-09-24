@@ -9,6 +9,7 @@
 #import "HudLayer.h"
 #import "MenuScene.h"
 #import "GameConfig.h"
+#import "OptionsMenuLayer.h"
 
 @implementation HudLayer
 
@@ -21,7 +22,6 @@
 
 - (id) initWithGameLayer:(GameLayer*)gameLayer
 {
-  
   NSLog(@"HudLayer Init");
   //if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
   if (!(self=[super init]))
@@ -38,23 +38,12 @@
   [background setPosition:ccp(size.width /2,25)];
   [self addChild:background z:-1];
   
-  _toggleLabel = [CCLabelTTF labelWithString:@"" 
-                                    fontName:@"Helvetica" 
-                                    fontSize:16];
-  
-  CCMenuItem *toggleButton = [CCMenuItemLabel
-                              itemWithLabel:_toggleLabel
-                              target:self 
-                              selector:@selector(toggleGame:)];
-  
-  [toggleButton setPosition:CGPointMake(145, 0)];
-  
   CCMenuItemImage *pause = [CCMenuItemImage itemFromNormalImage:@"pause_btn_off.png" 
                                                   selectedImage:@"pause_btn_down.png" 
                                                          target:self 
                                                        selector:@selector(openSettings:)];
   
-  CCMenu *menu = [CCMenu menuWithItems: pause, toggleButton, nil];
+  CCMenu *menu = [CCMenu menuWithItems: pause, nil];
   [menu setPosition:CGPointMake(25, 25)];
   [self addChild:menu];
   
@@ -87,28 +76,24 @@
 
 - (void)openSettings:(id)sender
 {
-  
-}
-
-
-- (void)toggleGame:(id)sender
-{
-  static BOOL toggleSwitch = NO;
-  if(toggleSwitch)
+  if (_optionsMenu == nil)
   {
-    [_toggleLabel setString:@"Toggle <--"];
-    
-  }else{
-    [_toggleLabel setString:@"Toggle -->"];
-  };
-  toggleSwitch = !toggleSwitch;
-  [_gameLayer toggleController];
+    [[CCDirector sharedDirector] pause];
+    _optionsMenu = [[OptionsMenuLayer alloc] init];
+    [self.parent addChild:_optionsMenu z:100];
+    return;
+  }
+
+  [self.parent removeChild:_optionsMenu cleanup:YES];
+  _optionsMenu = nil;
+  [[CCDirector sharedDirector] resume];
 }
 
 - (void) dealloc
 {
   NSLog(@"Dealloc HudLayer");
   [_lifeMeter release];
+  [_optionsMenu release];
   [super dealloc];
 }
 

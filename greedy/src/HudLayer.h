@@ -10,12 +10,14 @@
 #import "cocos2d.h"
 #import "LifeMeter.h"
 #import "GameLayer.h"
+#import "OptionsMenuLayer.h"
 
 @interface HudLayer : CCLayer {
   GameLayer *_gameLayer;
   LifeMeter *_lifeMeter;
   CCLabelTTF *_debugLabel;
   CCLabelTTF *_toggleLabel;
+  OptionsMenuLayer *_optionsMenu;
 }
 
 @property (nonatomic, assign) LifeMeter *lifeMeter;
@@ -24,6 +26,5 @@
 
 - (void) restartGame:(id)sender;
 - (void) createLifeMeter: (CGSize)size;
-
 
 @end

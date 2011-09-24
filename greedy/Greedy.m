@@ -370,6 +370,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 - (void)dealloc
 {
   CCLOG(@"Dealloc Greedy");
+  _fuel = 0;
   [_view release];
   [self removeAllChildrenWithCleanup:YES];
   [super dealloc];

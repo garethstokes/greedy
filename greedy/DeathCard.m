@@ -35,7 +35,8 @@
 
 -(void) restartLevel: (id) sender
 {
-  [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:1]];
+  CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[GameScene sceneWithLevel:1]];
+  [[CCDirector sharedDirector] replaceScene:newScene];
 }
 
 -(void) gotoMainMenu: (id) sender
@@ -43,43 +44,11 @@
   [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
 }
 
-- (void) showBars {
-  CCSprite *sprite;
-  sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
-  [sprite setPosition:ccp(204.0, 284.0)];
-  [self addChild:sprite];
-  sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
-  [sprite setPosition:ccp(230.0, 308.0)];
-  [self addChild:sprite];
-  sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
-  [sprite setPosition:ccp(256.0, 332.0)];
-  [self addChild:sprite];
-}
-
-- (void) showHighScore {
-  CCSprite *sprite;
-  sprite = [[CCSprite alloc] initWithFile:@"highscore.png"];
-  [sprite setPosition:ccp(158.0, 140.0)];
-  [self addChild:sprite];
-}
-
-- (void) showExample:(BOOL) flag {
-  if(flag)
-  {
-    CCSprite *test;
-    test = [[CCSprite alloc] initWithFile:@"example.png"];
-    [test setScale:0.5];
-    [test setPosition:ccp(160,240)];
-    [self addChild:test];
-  }
-}
-
 - (id)init
 {
     self = [super init];
     if (self) {
       
-      [self showExample:false];
       [self createMenu];
 
       // load in background

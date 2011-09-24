@@ -10,6 +10,7 @@
 #import "MenuScene.h"
 #import "GameConfig.h"
 #import "OptionsMenuLayer.h"
+#import "MenuScene.h"
 
 @implementation HudLayer
 
@@ -63,10 +64,6 @@
   [self addChild:_lifeMeter];
 }
 
-- (void)restartGame:(id)sender
-{
-  [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
-}
 
 - (void)debugGame:(id)sender
 {
@@ -77,7 +74,7 @@
 - (void)openSettings:(id)sender
 {
   if (_settingsOpen) return;
-  _optionsMenu = [[OptionsMenuLayer alloc] init];
+  _optionsMenu = [[OptionsMenuLayer alloc] init:YES];
   [self.parent addChild:_optionsMenu z:100];
   _settingsOpen = YES;
 }

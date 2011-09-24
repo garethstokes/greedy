@@ -9,6 +9,8 @@
 #import "OptionsMenuLayer.h"
 #import "CCSlider.h"
 #import "SettingsManager.h"
+#import "GameScene.h"
+#import "MenuScene.h"
 
 enum nodeTags
 {
@@ -18,7 +20,7 @@ enum nodeTags
 
 @implementation OptionsMenuLayer
 
-- (id)init
+- (id)init:(bool)inGame
 {
   self = [super init];
   if (self) {
@@ -26,10 +28,6 @@ enum nodeTags
     [background setPosition:ccp(160, 240)];
     [self addChild:background];
     
-    CCMenuItemImage *menuClose = [CCMenuItemImage itemFromNormalImage:@"close.png" 
-                                                        selectedImage:@"close_down.png"
-                                                               target:self 
-                                                             selector:@selector(menuCloseTapped:)];
     //control direction
     controlSlider = [CCSlider sliderWithBackgroundFile: @"controlslider_bg.png" thumbFile: @"swtch_slide.png"];
 		int controlDirection = [[SettingsManager sharedSettingsManager] getInt:@"controlDirection" withDefault:0];
@@ -48,9 +46,36 @@ enum nodeTags
     [self addChild:soundSlider];
 		soundSlider.delegate = self;
     
+    
+    CCMenuItemImage *menuClose = [CCMenuItemImage itemFromNormalImage:@"close.png" 
+                                                        selectedImage:@"close_down.png"
+                                                               target:self 
+                                                             selector:@selector(menuCloseTapped:)];
+    
+    CCMenuItemImage *menuChooseLevel = [CCMenuItemImage itemFromNormalImage:@"btn_choose_level_off.png" 
+                                                              selectedImage:@"btn_choose_level_on.png"
+                                                                     target:self 
+                                                                   selector:@selector(menuChooseLevel:)];
+    
+    CCMenuItemImage *menuReplay = [CCMenuItemImage itemFromNormalImage:@"btn_replay_off.png" 
+                                                         selectedImage:@"btn_replay_on.png"
+                                                                target:self 
+                                                              selector:@selector(menuReplay:)];
+
+    
     //close button
-    CCMenu *menu = [CCMenu menuWithItems:menuClose,nil];
-    [menu setPosition:ccp(250,90)];
+    CCMenu *menu; 
+    if (inGame)
+    {
+      menu = [CCMenu menuWithItems:menuChooseLevel, menuReplay, menuClose,nil];
+      [menu setPosition:ccp(160,90)];
+    }
+    else
+    {
+      menu = [CCMenu menuWithItems:menuClose,nil];
+      [menu setPosition:ccp(250,90)];
+    }
+      
     [menu alignItemsHorizontallyWithPadding:16];
     [self addChild:menu];
     
@@ -63,6 +88,21 @@ enum nodeTags
 - (void)menuCloseTapped:(id)sender {
   [self.parent removeChild:self cleanup:YES];  
   [[CCDirector sharedDirector] resume];
+}
+
+- (void)menuChooseLevel:(id)sender {
+  [[CCDirector sharedDirector] resume];
+  
+  MenuScene *scene = [MenuScene scene];
+  [scene showChooseLevel];
+  [[CCDirector sharedDirector] replaceScene:scene];
+}
+
+- (void)menuReplay:(id)sender {
+  [[CCDirector sharedDirector] resume];
+  
+  GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
+  [[CCDirector sharedDirector] replaceScene:[scene sceneFromCurrent]];
 }
 
 - (void) valueChanged: (float) value tag: (int) tag; 

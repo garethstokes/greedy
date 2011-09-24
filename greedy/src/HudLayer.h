@@ -25,7 +25,6 @@
 
 - (id) initWithGameLayer:(GameLayer*)gameLayer;
 
-- (void) restartGame:(id)sender;
 - (void) createLifeMeter: (CGSize)size;
 
 @end

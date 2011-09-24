@@ -25,6 +25,7 @@
   ScoreCard *_scorecard;
   DeathCard *_deathcard;
   GameScene *_scene;
+  int _level;
 }
 
 @property (nonatomic, retain) GameEnvironment *environment;
@@ -39,6 +40,6 @@
 
 - (void) showScore:(int) score time:(ccTime)time;
 - (void) showDeath;
-//- (void) restart;
+- (GameScene *) sceneFromCurrent;
 
 @end

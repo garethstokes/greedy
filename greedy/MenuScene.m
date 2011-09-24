@@ -31,8 +31,7 @@
 }
 
 - (void) showChooseLevel{
-
-
+  [_mainMenu menuPlayTapped:self];
 }
 
 @end

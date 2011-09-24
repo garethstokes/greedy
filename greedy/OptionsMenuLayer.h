@@ -15,4 +15,11 @@
   CCSlider *soundSlider;  
 }
 
+- (id) init:(bool)inGame;
+
+- (void)menuCloseTapped:(id)sender;
+- (void)menuChooseLevel:(id)sender;
+- (void)menuReplay:(id)sender;
+
+
 @end

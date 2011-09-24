@@ -49,6 +49,7 @@
   [scene.gameLayer startLevel];
   
 	// return the scene
+  scene->_level = level;
 	return scene;
 }
 
@@ -72,6 +73,11 @@
   
   _deathcard = [[DeathCard alloc] init];
   [self addChild:_deathcard  z:100];
+}
+
+- (GameScene *) sceneFromCurrent
+{
+  return [GameScene sceneWithLevel:_level];
 }
 
 - (void) dealloc

@@ -42,6 +42,10 @@
   CCSpriteBatchNode * _batchExplosion;
   CCSpriteBatchNode * _batchExplosionSexy;
   cpCCSprite *_spriteExplosion1;
+  
+  //ring of death
+  CCSpriteBatchNode *_batchRingOfDeath;
+  CCSprite *spriteRingOfDeath;
 }
 
 - (void) createSprites;

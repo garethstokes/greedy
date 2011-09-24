@@ -233,6 +233,10 @@
 		ABA71EFE140A242F006E3C19 /* options_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA71EFC140A242F006E3C19 /* options_bg.png */; };
 		ABA71F04140A2A95006E3C19 /* OptionsMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA71F03140A2A95006E3C19 /* OptionsMenuLayer.m */; };
 		ABB5BEA213C45FDF00B06F68 /* ScoreCard.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5BEA113C45FDF00B06F68 /* ScoreCard.m */; };
+		ABBB7ED81429F99E0023F9DD /* ring_of_death-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBB7ED41429F99E0023F9DD /* ring_of_death-hd.png */; };
+		ABBB7ED91429F99E0023F9DD /* ring_of_death.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBB7ED51429F99E0023F9DD /* ring_of_death.png */; };
+		ABBB7EDA1429F99E0023F9DD /* ring_of_death-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABBB7ED61429F99E0023F9DD /* ring_of_death-hd.plist */; };
+		ABBB7EDB1429F99E0023F9DD /* ring_of_death.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABBB7ED71429F99E0023F9DD /* ring_of_death.plist */; };
 		ABC883FB13C4B74B00EFBFC6 /* btn_choose_level_off.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC883EE13C4B74B00EFBFC6 /* btn_choose_level_off.png */; };
 		ABC883FC13C4B74B00EFBFC6 /* btn_choose_level_on.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC883EF13C4B74B00EFBFC6 /* btn_choose_level_on.png */; };
 		ABC883FD13C4B74B00EFBFC6 /* btn_replay_off.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC883F013C4B74B00EFBFC6 /* btn_replay_off.png */; };
@@ -701,6 +705,10 @@
 		ABA71F03140A2A95006E3C19 /* OptionsMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsMenuLayer.m; sourceTree = "<group>"; };
 		ABB5BEA013C45FDF00B06F68 /* ScoreCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCard.h; sourceTree = "<group>"; };
 		ABB5BEA113C45FDF00B06F68 /* ScoreCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCard.m; sourceTree = "<group>"; };
+		ABBB7ED41429F99E0023F9DD /* ring_of_death-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ring_of_death-hd.png"; sourceTree = "<group>"; };
+		ABBB7ED51429F99E0023F9DD /* ring_of_death.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ring_of_death.png; sourceTree = "<group>"; };
+		ABBB7ED61429F99E0023F9DD /* ring_of_death-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ring_of_death-hd.plist"; sourceTree = "<group>"; };
+		ABBB7ED71429F99E0023F9DD /* ring_of_death.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ring_of_death.plist; sourceTree = "<group>"; };
 		ABC883EE13C4B74B00EFBFC6 /* btn_choose_level_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_choose_level_off.png; sourceTree = "<group>"; };
 		ABC883EF13C4B74B00EFBFC6 /* btn_choose_level_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_choose_level_on.png; sourceTree = "<group>"; };
 		ABC883F013C4B74B00EFBFC6 /* btn_replay_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_replay_off.png; sourceTree = "<group>"; };
@@ -1587,6 +1595,10 @@
 		E7FD0F4913DD8C120051E66B /* destruction */ = {
 			isa = PBXGroup;
 			children = (
+				ABBB7ED41429F99E0023F9DD /* ring_of_death-hd.png */,
+				ABBB7ED51429F99E0023F9DD /* ring_of_death.png */,
+				ABBB7ED61429F99E0023F9DD /* ring_of_death-hd.plist */,
+				ABBB7ED71429F99E0023F9DD /* ring_of_death.plist */,
 				AB395B8F13DDB78E00510C81 /* parts-hd.plist */,
 				AB395B9013DDB78E00510C81 /* parts-hd.png */,
 				AB395B9113DDB78E00510C81 /* parts.plist */,
@@ -1790,6 +1802,10 @@
 				E7475EA4142A0ADD002F3F80 /* pause_btn_off.png in Resources */,
 				E7475EA7142A0CE5002F3F80 /* oranges-hd.png in Resources */,
 				E7475EA8142A0CE5002F3F80 /* oranges.png in Resources */,
+				ABBB7ED81429F99E0023F9DD /* ring_of_death-hd.png in Resources */,
+				ABBB7ED91429F99E0023F9DD /* ring_of_death.png in Resources */,
+				ABBB7EDA1429F99E0023F9DD /* ring_of_death-hd.plist in Resources */,
+				ABBB7EDB1429F99E0023F9DD /* ring_of_death.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

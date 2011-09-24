@@ -46,7 +46,7 @@
     _iris[seg]->e = 0.5;
     _iris[seg]->u  = 0.5;
   }
-
+  
   float p = [self getEyePositionForCurrentSprite];
   _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(-1.0, p));
   _irisBoundingCircle->sensor = YES;
@@ -101,7 +101,7 @@
   [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_5.png"]];
   [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_6.png"]];
   [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_7.png"]];
-
+  
   CCAnimation *animation = [CCAnimation animationWithFrames:flameFrames delay:0.1f];
   [[CCAnimationCache sharedAnimationCache] addAnimation:animation name:@"flames"];
   _actionFlame = [CCAnimate actionWithDuration:0.1 animation:[[CCAnimationCache sharedAnimationCache] animationByName:@"flames"] restoreOriginalFrame:NO];
@@ -130,7 +130,7 @@
   CCAnimation *animationWobble = [CCAnimation animationWithFrames:wobbleFrames delay:0.1f];
   _actionWobble = [[CCRepeatForever actionWithAction:[CCAnimate actionWithDuration:0.2 animation:animationWobble restoreOriginalFrame:NO]] retain];
   
-
+  
 }
 
 - (id) initWithShape:(cpShape *)shape  manager:(SpaceManagerCocos2d *)manager radar:(cpShape *)radar
@@ -143,12 +143,12 @@
   
   _thrusting = kGreedyThrustNone;
   _feeding = kGreedyIdle;
-
+  
   [self createSprites];
   
   //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
   shape->layers = LAYER_GREEDY;
- 
+  
   //Body
   _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
   [_batch addChild:_sprite];
@@ -186,7 +186,7 @@
   //update the pupil to keep it clamped inside the iris
   CGPoint irisPos =  ((cpCircleShape *)(_irisBoundingCircle))->tc;
   CGPoint pupilPos = _eyeBall.position;
- 
+  
   if(!cpvnear(pupilPos, irisPos, 2.0))
   {
     cpVect dxdy = cpvnormalize_safe(cpvsub(pupilPos, irisPos));	
@@ -215,7 +215,7 @@
   if (value >= kGreedyThrustLittle)
   {
     NSLog(@"update thrusting: zomg flames!");    
-
+    
     NSMutableArray *flameFrames = [NSMutableArray array];
     [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_3.png"]];
     [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_4.png"]];
@@ -255,7 +255,7 @@
     [self removeCrazyEyeAndContainer];
     
     [self addEyeContainer:_manager shape:_shape];
-
+    
     [self addCrazyEye:_manager];
     
     [self closeDown];
@@ -297,7 +297,7 @@
 - (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
   NSLog(@"Radar detected asteroid");
-
+  
   return YES;
 }
 
@@ -347,7 +347,7 @@
   CGPoint explosionPosition = [_sprite position];
   CGPoint test = [self convertToWorldSpace:explosionPosition];
   CCLOG(@"test x:%f | y:%f",test.x, test.y);
-
+  
   //remove greedy
   [_sprite stopAllActions];
   [self removeChild:_sprite cleanup:NO];
@@ -361,7 +361,7 @@
   //load in the masters files ... ie the PNG and zwoptex plist
   _batchExplosion = [CCSpriteBatchNode batchNodeWithFile:@"parts.png" capacity:14]; 
   [cache addSpriteFramesWithFile:@"parts.plist"];
-
+  
   // choose some parts
   for (NSString * objName in [NSArray arrayWithObjects: 
                               @"bolt.png", 
@@ -390,6 +390,54 @@
       _spriteExplosion1 = [cpCCSprite spriteWithShape:aShape spriteFrameName:objName];
       [_batchExplosion addChild:_spriteExplosion1];
     }
+    
+    //ring of death
+    //load in the masters files ... ie the PNG and zwoptex plist
+    _batchRingOfDeath = [CCSpriteBatchNode batchNodeWithFile:@"ring_of_death.png" capacity:3]; 
+    [cache addSpriteFramesWithFile:@"ring_of_death.plist"]; 
+    
+    //Ring of death
+    NSMutableArray *explosionFrames = [NSMutableArray array];
+    [explosionFrames addObject:[cache spriteFrameByName:@"ring_of_death_1.png"]];
+    [explosionFrames addObject:[cache spriteFrameByName:@"ring_of_death_2.png"]];
+    [explosionFrames addObject:[cache spriteFrameByName:@"ring_of_death_3.png"]];
+    
+    spriteRingOfDeath = [CCSprite spriteWithSpriteFrameName:@"ring_of_death_1.png"];
+    [_batchRingOfDeath addChild:spriteRingOfDeath];
+    
+    spriteRingOfDeath = [CCSprite spriteWithSpriteFrameName:@"ring_of_death_2.png"];
+    [_batchRingOfDeath addChild:spriteRingOfDeath];
+    
+    spriteRingOfDeath = [CCSprite spriteWithSpriteFrameName:@"ring_of_death_3.png"];
+    [_batchRingOfDeath addChild:spriteRingOfDeath];
+    
+#define EXPLOSION_START_TIME 1.0f   // speed of explosion in seconds
+#define EXPLOSION_FADE_TIME  2.0f   // duration of fade out and second scale
+#define FLAME_FPS = 30.0f
+#define FLAME_SPEED ((30.0f / 3.0f) * 1.0f / 60.0f)
+#define FLAME_COUNT ((30.0f / 3.0f) * 1.0f / 60.0f) / 3.0
+#define FLAME_SCALE_START 0.1f      // start at 10%
+#define FLAME_SCALE_EXPLODE 2.0f    // explode out to 200%
+#define FLAME_SCALE_FADE 4.0f       // fade out to 400%
+    
+    CCAnimation *animation = [CCAnimation animationWithFrames:explosionFrames delay:FLAME_SPEED];
+    CCAnimate *action = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:animation] times:EXPLOSION_START_TIME / FLAME_COUNT];
+    CCSpawn *spawner1 = [CCSpawn actions:[CCScaleBy actionWithDuration:EXPLOSION_START_TIME scale:FLAME_SCALE_EXPLODE / FLAME_SCALE_START], action, nil];
+    
+    CCAnimate *action2 = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:animation] times:EXPLOSION_FADE_TIME / FLAME_COUNT];
+    CCSpawn *spawner2 = [CCSpawn actions:[CCScaleBy actionWithDuration:EXPLOSION_FADE_TIME scale:FLAME_SCALE_FADE / FLAME_SCALE_EXPLODE], [CCFadeOut actionWithDuration:EXPLOSION_FADE_TIME], action2,nil];
+    
+    
+    [spriteRingOfDeath setScale:FLAME_SCALE_START];
+    [spriteRingOfDeath setPosition:explosionPosition];
+    
+    [spriteRingOfDeath stopAllActions];
+    [spriteRingOfDeath runAction:[CCSequence actions:
+                                  spawner1,
+                                  spawner2,
+                                  nil]];
+    
+    
   }
   
   //load in the masters files ... ie the PNG and zwoptex plist
@@ -398,14 +446,14 @@
   
   // choose some parts
   for (NSString * objNameSexy in [NSArray arrayWithObjects: 
-                              @"bra.png", 
-                              @"foamfinger.png", 
-                              @"hammer.png", 
-                              @"heels.png", 
-                              @"rubber_ducky.png", 
-                              @"thong.png", 
-                              nil]) {
-    if (CCRANDOM_0_1() > 0.16) {
+                                  @"bra.png", 
+                                  @"foamfinger.png", 
+                                  @"hammer.png", 
+                                  @"heels.png", 
+                                  @"rubber_ducky.png", 
+                                  @"thong.png", 
+                                  nil]) {
+    if (CCRANDOM_0_1() < 0.16) {
       CCSpriteFrame* frame1 = [cache spriteFrameByName:objNameSexy];
       CGPoint randPos = explosionPosition;
       randPos.x += CCRANDOM_0_1() - CCRANDOM_0_1();
@@ -420,6 +468,7 @@
   
   [self addChild:_batchExplosion];
   [self addChild:_batchExplosionSexy];
+  [self addChild: _batchRingOfDeath];
   
   [_manager applyLinearExplosionAt:explosionPosition radius:20 maxForce:50 layers:LAYER_RADAR group:CP_NO_GROUP];
 }

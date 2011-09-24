@@ -270,11 +270,18 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
     if (_fuel < 0.0){
       [self removeThrust];
       _fuel = 0.0;
-      if(!_exploded)
-        cpSpaceAddPostStepCallback(_manager.space, explodeGreedy, self, _manager);
-      _exploded = YES;
+      [self explode];
     }
   }
+}
+
+- (void) explode
+{
+  if(!_exploded)
+  {
+    cpSpaceAddPostStepCallback(_manager.space, explodeGreedy, self, _manager);
+  }
+  _exploded = YES;
 }
 
 - (void) prestep:(ccTime) delta

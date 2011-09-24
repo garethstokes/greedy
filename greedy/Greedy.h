@@ -65,6 +65,7 @@ enum {
 - (void) setAngle:(cpFloat)value;
 - (void) setEatingStatusTo:(int) value;
 - (BOOL) hasExploded;
+- (void) explode;
 
 //radar
 - (void) createRadarLine:(SpaceManagerCocos2d *) manager;

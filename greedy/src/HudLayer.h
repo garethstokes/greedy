@@ -19,6 +19,8 @@
   CCLabelTTF *_toggleLabel;
   OptionsMenuLayer *_optionsMenu;
   bool _settingsOpen;
+  int _countdown;
+  CCLabelAtlas *_countdownLabel;
 }
 
 @property (nonatomic, assign) LifeMeter *lifeMeter;
@@ -26,5 +28,8 @@
 - (id) initWithGameLayer:(GameLayer*)gameLayer;
 
 - (void) createLifeMeter: (CGSize)size;
+- (void) updateCountdownClock:(id)sender;
+- (void) createCountdownLabel;
+
 
 @end

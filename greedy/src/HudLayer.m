@@ -11,6 +11,8 @@
 #import "GameConfig.h"
 #import "OptionsMenuLayer.h"
 #import "MenuScene.h"
+#import "GameScene.h"
+#import "Greedy.h"
 
 @implementation HudLayer
 
@@ -51,7 +53,36 @@
   [self createLifeMeter: size];
   _gameLayer = gameLayer;
   _settingsOpen = NO;
+  _countdown = 99;
+  [self createCountdownLabel];
+  [self schedule:@selector(updateCountdownClock:) interval:1.0f];
   return self;
+}
+
+- (void) createCountdownLabel {
+  CCTexture2DPixelFormat currentFormat = [CCTexture2D defaultAlphaPixelFormat];
+  [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+  _countdownLabel = [[CCLabelAtlas labelWithString:@"99" charMapFile:@"orange_numbers.png" itemWidth:10 itemHeight:16 startCharMap:'.'] retain];
+  [CCTexture2D setDefaultAlphaPixelFormat:currentFormat];	
+  [_countdownLabel setPosition:ccp(288,17)];
+  [self addChild:_countdownLabel];
+}
+
+
+- (void) updateCountdownClock:(id)sender
+{
+  if (_countdown == 0)
+  {
+    GameScene *scene = (GameScene *)self.parent;
+    GameLayer *layer = [scene gameLayer];
+    Greedy *greedy = [layer greedy];
+    [greedy explode];
+    //[scene.gameLayer endLevelWithDeath];
+    return;
+  }
+  
+  _countdown--;
+  [_countdownLabel setString:[NSString stringWithFormat:@"%.2d", _countdown]];
 }
 
 - (void) createLifeMeter: (CGSize) size  {

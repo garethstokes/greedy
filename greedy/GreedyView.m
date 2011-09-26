@@ -459,7 +459,7 @@
       CCSpriteFrame* frame1 = [cache spriteFrameByName:objNameSexy];
       CGPoint randPos = explosionPosition;
       randPos.x += CCRANDOM_0_1() - CCRANDOM_0_1();
-      randPos.y += CCRANDOM_0_1()- CCRANDOM_0_1();
+      randPos.y += CCRANDOM_0_1() - CCRANDOM_0_1();
       
       cpShape* aShape = [_manager addRectAt:randPos mass:1.0 width:frame1.rectInPixels.size.width height:frame1.rectInPixels.size.height rotation:0.0 ];
       aShape->layers = LAYER_RADAR;

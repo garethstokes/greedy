@@ -147,7 +147,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   [sparkle setDuration:0.1];
   
   [g addChild:sparkle];
-  
+  [sparkle release];
   free(p);
 }
 

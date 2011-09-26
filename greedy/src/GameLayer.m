@@ -76,6 +76,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (id) initWithEnvironment:(GameEnvironment *) environment level:(int)l
 {
+  CCLOG(@"GameLayer: initWithEnvironment");
+  
   if( (self=[super init])) {
     ACCELORMETER_DIRECTION = [[SettingsManager sharedSettingsManager] getInt:@"controlDirection" withDefault:1] == 0 ? -1 : 1;
     
@@ -272,6 +274,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 - (void) dealloc
 {
   NSLog(@"Dealloc GameLayer");
+  [self unschedule:@selector(endLevelWithDeath)];
   [ self removeAllChildrenWithCleanup:YES];
   [_asteroidField release];
   [_greedy release];
@@ -285,12 +288,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   
   // now step the graphics
   [_greedy postStep:dt];
-  
-  if ([_greedy hasExploded])
-  {
-    [self schedule:@selector(endLevelWithDeath) interval:3.0f];
-    return;
-  }
   
   //move the parallax backgrounds
   CGPoint diff = ccpSub(_lastPosition, [_greedy position]);

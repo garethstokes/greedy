@@ -144,6 +144,8 @@
 
 - (id) init
 {
+    CCLOG(@"GameEnvironment: init");
+  
     if( (self=[super init])) {
       
       //allocate our space manager

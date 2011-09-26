@@ -22,6 +22,8 @@
 
 +(id) sceneWithLevel:(int)level
 {
+  CCLOG(@" GameScene: sceneWithLevel");
+  
 	// 'scene' is an autorelease object.
 	GameScene *scene = [GameScene node];
   

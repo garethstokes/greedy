@@ -25,7 +25,7 @@
 
 - (id) initWithGameLayer:(GameLayer*)gameLayer
 {
-  NSLog(@"HudLayer Init");
+  NSLog(@"HudLayer: initWithGameLayer");
   //if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
   if (!(self=[super init]))
   {

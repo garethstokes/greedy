@@ -135,6 +135,8 @@
 
 - (id) initWithShape:(cpShape *)shape  manager:(SpaceManagerCocos2d *)manager radar:(cpShape *)radar
 {
+    CCLOG(@" GreedyView: initWithShape");
+  
   if(!(self = [super init])) return nil;
   
   _shape = shape;

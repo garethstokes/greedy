@@ -13,6 +13,8 @@
 
 - (id) initLifeMeter
 {
+  CCLOG(@"LifeMeter: initLifeMeter");
+  
   if(!(self = [super init])) return nil;
   
   // load the sprite sheet
@@ -25,12 +27,12 @@
   CCSpriteFrame *frame;
   
   // create the frames
-  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 0, 0)] autorelease];
+  frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 0, 0)] retain];
   [cache addSpriteFrame:frame name:@"lifeBar0"];  
   
   for(int i = 1; i <= 10; i++)
   {
-    frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 8 + (i *9), 8)] autorelease];
+    frame = [[[CCSpriteFrame alloc] initWithTexture:_lifeMeterBatchNode.textureAtlas.texture rect:CGRectMake(0, 0, 8 + (i *9), 8)] retain];
     [cache addSpriteFrame:frame name:[NSString stringWithFormat:@"lifeBar%d", i]];
   };
   

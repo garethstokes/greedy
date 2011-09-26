@@ -36,11 +36,13 @@
                                  otherType: kAsteroidCollisionType 
                                     target: self 
                                   selector: @selector(handleCollisionRadar:arbiter:space:)];
-
+  
 }
 
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos
 {
+  CCLOG(@" Greedy: initWith");
+  
   if(!(self = [super init])) return nil;
   
   SpaceManagerCocos2d *manager = [environment manager];
@@ -63,7 +65,7 @@
   cpBody *body = shape->body;
   cpBodySetVelLimit(body, 80);
   body->data = self;
-    
+  
   _lastPosition = shape->body->p;
   _shape        = shape;
   
@@ -72,13 +74,13 @@
   _exploded = NO;
   
   [self createRadarLine:manager];
-
+  
   //init collisions
 	[manager addCollisionCallbackBetweenType: kAsteroidCollisionType 
                                  otherType: kGreedyCollisionType 
                                     target: self 
                                   selector: @selector(handleCollisionWithAsteroid:arbiter:space:)];
-
+  
   //add radar
   [self addRadarSensor: body manager: manager];
   
@@ -114,7 +116,7 @@
     {
 #define FUELBUMP 1
       CCLOG(@"Asteroid Bump %f", bumpStrength);
-     // _fuel -= (FUELBUMP * bumpStrength);
+      // _fuel -= (FUELBUMP * bumpStrength);
       if (_fuel < 0.0){
         [self removeThrust];
         _fuel = 0.0;
@@ -139,7 +141,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 {
   Greedy *g = (Greedy*)(obj);
   cpVect *p = (cpVect *)data;
-    
+  
   CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
   [sparkle setPosition:p[0]];
   [sparkle setDuration:0.1];
@@ -257,7 +259,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
   
   cpBodyResetForces(g.shape->body);
   cpBodySleep(g.shape->body);
-
+  
   cpSpaceRemoveBody(manager.space, g.shape->body);
   
   [g.view explode];
@@ -280,6 +282,8 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
   if(!_exploded)
   {
     cpSpaceAddPostStepCallback(_manager.space, explodeGreedy, self, _manager);
+    
+    [self.parent schedule:@selector(endLevelWithDeath) interval:3.0f];
   }
   _exploded = YES;
 }
@@ -319,7 +323,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
   {
     
   }
-
+  
 }
 
 - (void) postStep:(ccTime) delta

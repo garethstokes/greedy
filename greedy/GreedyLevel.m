@@ -53,6 +53,7 @@
 
 - (id)init
 {
+    NSLog(@" GameLevel: init");
     self = [super init];
     if (self) {
         // Initialization code here.

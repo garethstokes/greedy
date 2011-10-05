@@ -128,7 +128,7 @@ static AccelerometerSimulation *sharedAccelerometer = NULL;
 + (AccelerometerSimulation *)getAccelerometer
 {
 	if( sharedAccelerometer == NULL )
-		sharedAccelerometer = [[AccelerometerSimulation alloc] initialize];
+		sharedAccelerometer = [[[AccelerometerSimulation alloc] initialize] autorelease];
 	
 	return sharedAccelerometer;
 }

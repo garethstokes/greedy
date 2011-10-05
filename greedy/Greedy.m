@@ -142,12 +142,14 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
   Greedy *g = (Greedy*)(obj);
   cpVect *p = (cpVect *)data;
   
+  
   CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
   [sparkle setPosition:p[0]];
   [sparkle setDuration:0.1];
   
   [g addChild:sparkle];
   [sparkle release];
+   
   free(p);
 }
 

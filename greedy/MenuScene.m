@@ -15,7 +15,7 @@
 
 + (id) scene
 {
-  MenuScene *menu = [[MenuScene alloc] init];
+  MenuScene *menu = [[[MenuScene alloc] init] autorelease];
   
   menu.mainMenu = [[MainMenuLayer alloc] init];
   [menu addChild:menu.mainMenu];

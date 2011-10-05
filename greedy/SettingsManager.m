@@ -70,7 +70,7 @@ static SettingsManager* _sharedSettingsManager = nil;
 	@synchronized([SettingsManager class])
 	{
 		if (!_sharedSettingsManager)
-			[[self alloc] init];
+			[[[self alloc] init] autorelease];
     
 		return _sharedSettingsManager;
 	}

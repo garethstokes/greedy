@@ -33,7 +33,7 @@
   
   for (int i = 1; i <= 12; i++)
   {
-    GreedyLevel *level = [[GreedyLevel alloc] init];
+    GreedyLevel *level = [[[GreedyLevel alloc] init] autorelease];
     NSString *levelPath = [NSString stringWithFormat:@"level_%i", i];
     NSString *subDirectory = [NSString stringWithFormat:@"%@/%@", directory, levelPath];
    
@@ -41,7 +41,7 @@
     NSString *configurationFilename = [NSString stringWithFormat:@"%@/level.plist", subDirectory];
     
     NSString *path = [CCFileUtils fullPathFromRelativePath:configurationFilename];
-    NSDictionary *dictLevel = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSDictionary *dictLevel = [[[NSDictionary alloc] initWithContentsOfFile:path] autorelease];
     
     if ([dictLevel count] == 0) continue;
     

@@ -45,11 +45,6 @@
   return self;
 }
 
-- (void)dealloc {
-  NSLog(@"Dealloc KaosEngine");
-  [super dealloc];
-}
-
 - (BOOL) hasRoom
 {
   return (_currentArea / _worldArea) * 100 < _density;
@@ -83,6 +78,11 @@
     
     return position;
   }
+}
+
+- (void)dealloc {
+  NSLog(@"Dealloc KaosEngine");
+  [super dealloc];
 }
 
 @end

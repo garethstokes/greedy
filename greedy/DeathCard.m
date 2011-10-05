@@ -121,13 +121,7 @@
 - (void)dealloc
 {
   CCLOG(@"Dealloc ScoreCare");
-  /*
-  [header release];
-  [skull release];
-  [message release];
-  */
   [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
-  
   [self removeAllChildrenWithCleanup:YES];
   [super dealloc];
 }

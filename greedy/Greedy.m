@@ -85,7 +85,7 @@
   [self addRadarSensor: body manager: manager];
   
   // view
-  _view = [[GreedyView alloc] initWithShape:shape manager:manager radar:_radarShape];
+  _view = [[[GreedyView alloc] initWithShape:shape manager:manager radar:_radarShape] retain];
   [self addChild:_view];
   
   return self;
@@ -393,7 +393,6 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 - (void)dealloc
 {
   CCLOG(@"Dealloc Greedy");
-  _fuel = 0;
   [_view release];
   [self removeAllChildrenWithCleanup:YES];
   [super dealloc];

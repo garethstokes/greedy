@@ -29,7 +29,7 @@
 }
 
 @property (nonatomic, retain) GameEnvironment *environment;
-@property (nonatomic, retain) GDKaosEngine *engine;
+//@property (nonatomic, retain) GDKaosEngine *engine;
 @property (nonatomic, retain) Background *background;
 @property (nonatomic, retain) GameLayer *gameLayer;
 @property (nonatomic, retain) HudLayer *hudLayer;

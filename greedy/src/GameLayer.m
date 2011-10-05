@@ -239,20 +239,13 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [self removeChild:_endPoint cleanup:YES];
   _endPoint = [CCSprite spriteWithFile:@"end_point_ready.png"];
   [_endPoint setPosition:p];
+  [_endPoint runAction:[CCFadeOut actionWithDuration:3.0f]];
   [self addChild:_endPoint z:-1]; 
   
   CGPoint endPoint = ccp(_greedy.view.position.x, _greedy.view.position.y);
-  //endPoint.x = 160 - endPoint.x;
+  endPoint.x = 0;
   
-  // animate the greedy into view
-  [_greedy.view runAction:[CCSequence actions:
-                           //[CCFadeOut actionWithDuration:0.25f],
-                           //[CCFadeIn actionWithDuration:0.25f],
-                           //[CCRotateBy actionWithDuration:2.0f angle:90],
-                           //[CCDelayTime actionWithDuration:5.0],
-                           [CCMoveBy actionWithDuration:3.0f position:endPoint],
-                           [CCCallFuncN actionWithTarget:self selector:@selector(showScoreCard:)],
-                           nil ]];
+  [_greedy moveManually:ccpAdd(ccp(0,300), endPoint) target:self selector:@selector(showScoreCard:)];
   
   return YES;
 }

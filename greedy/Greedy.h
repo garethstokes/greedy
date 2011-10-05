@@ -66,6 +66,7 @@ enum {
 - (void) setEatingStatusTo:(int) value;
 - (BOOL) hasExploded;
 - (void) explode;
+- (void) moveManually:(CGPoint)point target:(id)t selector:(SEL) s;
 
 //radar
 - (void) createRadarLine:(SpaceManagerCocos2d *) manager;

@@ -379,6 +379,16 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
   return _exploded;
 }
 
+- (void) moveManually:(CGPoint)point target:(id)t selector:(SEL)s
+{
+  [_view setThrusting:kGreedyThrustNone];
+  //[_manager stop];
+  
+  [_view runAction:[CCSequence actions:
+                           [CCMoveBy actionWithDuration:3.0f position:point],
+                           [CCCallFuncN actionWithTarget:t selector:s],
+                           nil ]];
+}
 
 - (void)dealloc
 {

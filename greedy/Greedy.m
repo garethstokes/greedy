@@ -13,6 +13,20 @@
 #import "GameScene.h"
 #import "AsteroidSprite.h"
 
+@implementation ScoreInfo
+
++(id) scoreWithPosition:(float)score position:(CGPoint)position
+{
+  if(!(self = [super init])) return nil;
+  
+  self._pos = position;
+  self._score = score;
+  
+  return self;
+};
+
+@end
+
 @implementation Greedy
 @synthesize shape = _shape;
 @synthesize feedingCount = _feedingCount;
@@ -140,15 +154,19 @@ static void setGreedyEatingState(cpSpace *space, void *obj, void *data)
 static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 {
   Greedy *g = (Greedy*)(obj);
-  cpVect *p = (cpVect *)data;
+  cpVect *p = (struct Score *)data;
   
+  if(){
   
-  CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
-  [sparkle setPosition:p[0]];
-  [sparkle setDuration:0.1];
+    
+    
+    CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
+    [sparkle setPosition:p[0]];
+    [sparkle setDuration:0.1];
   
-  [g addChild:sparkle];
-  [sparkle release];
+    [g addChild:sparkle];
+    [sparkle release];
+  }
    
   free(p);
 }
@@ -170,6 +188,8 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
     if( oreScore > 0)
     { 
       _score += oreScore;
+      
+      
       
       cpVect *p = malloc(sizeof(cpVect));
       p[0] = cpArbiterGetPoint(arb, 0);

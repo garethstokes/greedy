@@ -85,7 +85,7 @@
   [self addRadarSensor: body manager: manager];
   
   // view
-  _view = [[GreedyView alloc] initWithShape:shape manager:manager radar:_radarShape];
+  _view = [[[GreedyView alloc] initWithShape:shape manager:manager radar:_radarShape] retain];
   [self addChild:_view];
   
   return self;
@@ -140,15 +140,19 @@ static void setGreedyEatingState(cpSpace *space, void *obj, void *data)
 static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 {
   Greedy *g = (Greedy*)(obj);
-  cpVect *p = (cpVect *)data;
+  cpVect *p = (CGPoint *)data;
   
+  if(true){
   
-  CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
-  [sparkle setPosition:p[0]];
-  [sparkle setDuration:0.1];
+    
+    
+    CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
+    [sparkle setPosition:p[0]];
+    [sparkle setDuration:0.1];
   
-  [g addChild:sparkle];
-  [sparkle release];
+    [g addChild:sparkle];
+    [sparkle release];
+  }
    
   free(p);
 }
@@ -170,6 +174,8 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
     if( oreScore > 0)
     { 
       _score += oreScore;
+      
+      
       
       cpVect *p = malloc(sizeof(cpVect));
       p[0] = cpArbiterGetPoint(arb, 0);
@@ -393,7 +399,6 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 - (void)dealloc
 {
   CCLOG(@"Dealloc Greedy");
-  _fuel = 0;
   [_view release];
   [self removeAllChildrenWithCleanup:YES];
   [super dealloc];

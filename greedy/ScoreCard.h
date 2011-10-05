@@ -22,3 +22,4 @@
 - (id) initWithScore:(int)score level:(int)level time:(ccTime)time;
 
 @end
+	

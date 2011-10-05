@@ -57,7 +57,7 @@
 
 -(void) gotoMainMenu: (id) sender
 {
-  [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
+  [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MenuScene scene]]];
 }
 
 - (void) showBars {

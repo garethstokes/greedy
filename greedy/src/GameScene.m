@@ -14,7 +14,7 @@
 @implementation GameScene
 
 @synthesize environment = _environment;
-@synthesize engine = _engine;
+//@synthesize engine = _engine;
 @synthesize background = _background;
 @synthesize gameLayer = _gameLayer;
 @synthesize hudLayer = _hudLayer;
@@ -38,7 +38,7 @@
   [scene addChild:scene->_background z:0];
 
   //Game Layer
-  scene.gameLayer = [[GameLayer alloc] initWithEnvironment:scene->_environment level:level];
+  scene->_gameLayer = [[GameLayer alloc] initWithEnvironment:scene->_environment level:level];
   [scene addChild:scene.gameLayer z:10];
     
   //HUD
@@ -48,7 +48,7 @@
   //scene->_scorecard = [[ScoreCard alloc] initWithScore:1000 level:1 time:12.34];
   //[scene addChild:scene->_scorecard  z:100];
   
-  [scene.gameLayer startLevel];
+  [scene->_gameLayer startLevel];
   
 	// return the scene
   scene->_level = level;
@@ -90,7 +90,7 @@
   [_hudLayer release];
   [_gameLayer release];
   [_background release];
-  [_engine release];
+  //[_engine release];
   [_environment release];
   [self removeAllChildrenWithCleanup:YES];
   [super dealloc];

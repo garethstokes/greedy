@@ -33,8 +33,6 @@
       
       [self addChild:a];
     }
-    
-    [engine release];
   };
   
   return self;
@@ -43,8 +41,9 @@
 - (void)dealloc
 {
   NSLog(@"Dealloc AsteroidField");
-  [self removeAllChildrenWithCleanup:YES];
   [_asteroids removeAllObjects];
+  [_asteroids release];
+  [self removeAllChildrenWithCleanup:YES];
   [super dealloc];
 }
 

@@ -19,6 +19,8 @@
   cpShape *_shape;
 }
 
+@property (nonatomic) cpShape *shape;
+
 - (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer;
 
 - (id) initWithEnvironment:(GameEnvironment *)environment 

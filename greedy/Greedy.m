@@ -20,24 +20,6 @@
 @synthesize fuel = _fuel;
 @synthesize view = _view;
 
-- (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager  {
-  //Add radar
-  //Add the Radar sensor
-  cpShape *radarshape = cpCircleShapeNew(body, 120.0, cpvzero);  
-  radarshape->e = .5; 
-	radarshape->u = .5;
-  radarshape->group = 0;
-  radarshape->layers = LAYER_RADAR;
-	radarshape->collision_type = kGreedyRadarCollisionType;
-  radarshape->sensor = YES;
-	radarshape->data = nil;
-  cpSpaceAddShape(manager.space, radarshape);
-  [manager addCollisionCallbackBetweenType: kGreedyRadarCollisionType
-                                 otherType: kAsteroidCollisionType 
-                                    target: self 
-                                  selector: @selector(handleCollisionRadar:arbiter:space:)];
-  
-}
 
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos
 {
@@ -89,6 +71,25 @@
   [self addChild:_view];
   
   return self;
+}
+
+- (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager  {
+  //Add radar
+  //Add the Radar sensor
+  cpShape *radarshape = cpCircleShapeNew(body, 120.0, cpvzero);  
+  radarshape->e = .5; 
+	radarshape->u = .5;
+  radarshape->group = 0;
+  radarshape->layers = LAYER_RADAR;
+	radarshape->collision_type = kGreedyRadarCollisionType;
+  radarshape->sensor = YES;
+	radarshape->data = nil;
+  cpSpaceAddShape(manager.space, radarshape);
+  [manager addCollisionCallbackBetweenType: kGreedyRadarCollisionType
+                                 otherType: kAsteroidCollisionType 
+                                    target: self 
+                                  selector: @selector(handleCollisionRadar:arbiter:space:)];
+  
 }
 
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
@@ -319,7 +320,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
     else
     {
       cpVect velocity = _shape->body->v;
-      NSLog(@"greedy velocity: %d", abs(velocity.y));
+      //NSLog(@"greedy velocity: %d", abs(velocity.y));
       
       if (abs(velocity.y) > 5)
       {
@@ -327,11 +328,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         cpBodyApplyImpulse(_shape->body, ccp(0, (GREEDYTHRUST/1.0f * delta) * -1),cpvzero);
       }
     }
-  } else
-  {
-    
-  }
-  
+  } 
 }
 
 - (void) postStep:(ccTime) delta

@@ -13,6 +13,8 @@
 
 @implementation Asteroid
 
+@synthesize shape=_shape;
+
 - (id) initWithEnvironment:(GameEnvironment *)environment 
                  withLayer:(cpLayers)withLayer 
                   withSize:(float) size 
@@ -22,7 +24,7 @@
   
   
   
-  _convexHull = [[[ConvexHull alloc] initWithStaticSize:size]autorelease];
+  _convexHull = [[[ConvexHull alloc] initWithStaticSize:size] autorelease];
   _mass = (int)[_convexHull area];
   
   _shape = [environment.manager 
@@ -35,14 +37,16 @@
   _shape->collision_type = kAsteroidCollisionType;
   
   // push it in a random direction.
-  if(withLayer != LAYER_BACKGROUND || size < 100)
+  if(withLayer == LAYER_BACKGROUND || size > 99)
   {
-    CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
-    cpBodyApplyImpulse(_shape->body, 
-                       p, 
-                       ccp(rand() % 10000, rand() % 10000));
-  }else{
     cpBodySleep(_shape->body);
+  }else{
+    /*
+     CGPoint p = rand() % 2 == 0 ? ccp(CCRANDOM_0_1(),CCRANDOM_0_1()) : ccpNeg(ccp(CCRANDOM_0_1(),CCRANDOM_0_1()));
+     cpBodyApplyImpulse(_shape->body, 
+     p, 
+     ccp(rand() % 10000, rand() % 10000));
+     */
   };
   
   cpCCSprite *sprite = [[AsteroidSprite alloc] initWithPoints:[_convexHull points] 

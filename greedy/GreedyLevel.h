@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@interface ShooterConfig : NSObject {
+  int _rotation;
+  CGPoint _position;
+}
+
+@property int rotation;
+@property CGPoint position;
+- (void) importFromDictionary:(NSDictionary *)dictionary;
+@end
+
 @interface StaticAsteroidsConfig : NSObject {
   int _size;
   CGPoint _position;
@@ -37,6 +47,7 @@
   int _asteroidFieldWidth;
   
   NSMutableArray *_staticAsteroids;
+  NSMutableArray *_shooters;
   
   CGPoint _greedyPosition;
   
@@ -51,6 +62,7 @@
 @property int asteroidFieldWidth;
 
 @property (nonatomic, retain) NSMutableArray *staticAsteroids;
+@property (nonatomic, retain) NSMutableArray *shooters;
 
 @property CGPoint greedyPosition;
 

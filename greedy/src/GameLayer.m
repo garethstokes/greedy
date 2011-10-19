@@ -17,6 +17,7 @@
 #import "GreedyLevel.h"
 #import "SettingsManager.h"
 #import "AccelerometerSimulation.h"
+#import "AsteroidShooter.h"
 
 enum SpriteTags{
   StartTag = 0
@@ -49,30 +50,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   return offset;
 }
 
-// on "init" you need to initialize your instance
-- (id) initWithBackground:(Background *)background
-{
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super" return value
-	if( (self=[super init])) {
-		
-  }
-	return self;
-}
-
-- (void) createFinishLine: (GameEnvironment *) environment  {
-    // add event when greedy crosses the finish line. 
-      cpShape *finishlineshape = [environment.manager addSegmentAt:ccpAdd([_greedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
-    finishlineshape->group = 0;
-    finishlineshape->layers = LAYER_FINISHLINE;
-    finishlineshape->collision_type = kGreedyFinishLineCollisionType;
-    finishlineshape->sensor = YES;
-    [environment.manager addCollisionCallbackBetweenType:kGreedyCollisionType 
-                                   otherType:kGreedyFinishLineCollisionType
-                                      target:self 
-                                    selector:@selector(handleCollisionFinishline:arbiter:space:)];
-
-}
 
 - (id) initWithEnvironment:(GameEnvironment *) environment level:(int)l
 {
@@ -88,10 +65,26 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     World *w = [repository findWorldBy:1];
     GreedyLevel *level = [w.levels objectAtIndex:(l - 1)];
     
+    
     // asteroids.
     int asteroidFieldSize = [level asteroidFieldWidth] * [level asteroidFieldHeight];
     _asteroidField = [[[AsteroidField alloc] initWithEnvironment:environment totalArea:asteroidFieldSize density:2.0f Layer:LAYER_ASTEROID] retain];
     [self addChild:_asteroidField];
+    
+
+    // shooters
+    _shooters = [[NSMutableArray array] retain];
+    for (int i = 0; i < [level.shooters count]; i++)
+    {
+      ShooterConfig* config = [level.shooters objectAtIndex:i];
+      id shooter = [[[AsteroidShooter alloc] initWithEnvironment:environment position:[config position]] autorelease];
+      
+      [self addChild:shooter];
+      [_shooters addObject:shooter];
+    }
+    
+    
+    
     
     // static asteroids (big ones!)
     for (int i = 0; i < [level.staticAsteroids count]; i++)
@@ -136,6 +129,20 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     _width = [level.environment width];
   }
   return self;
+}
+
+- (void) createFinishLine: (GameEnvironment *) environment  {
+  // add event when greedy crosses the finish line. 
+  cpShape *finishlineshape = [environment.manager addSegmentAt:ccpAdd([_greedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
+  finishlineshape->group = 0;
+  finishlineshape->layers = LAYER_FINISHLINE;
+  finishlineshape->collision_type = kGreedyFinishLineCollisionType;
+  finishlineshape->sensor = YES;
+  [environment.manager addCollisionCallbackBetweenType:kGreedyCollisionType 
+                                             otherType:kGreedyFinishLineCollisionType
+                                                target:self 
+                                              selector:@selector(handleCollisionFinishline:arbiter:space:)];
+  
 }
 
 - (void) startLevel
@@ -269,8 +276,15 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   // add all the external forces , such as thrusts, asteraid attraction
   [_greedy prestep:dt];
   
+  for (id shooter in _shooters)
+  {
+    [shooter step:dt];
+  }
+  
   // now step the graphics
   [_greedy postStep:dt];
+  
+  
   
   //move the parallax backgrounds
   CGPoint diff = ccpSub(_lastPosition, [_greedy position]);
@@ -370,6 +384,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 {
   NSLog(@"Dealloc GameLayer");
   [_asteroidField release];
+  [_shooters release];
   [_greedy release];
   [ self removeAllChildrenWithCleanup:YES];
   [super dealloc];

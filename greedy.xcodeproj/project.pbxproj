@@ -321,6 +321,7 @@
 		E7CE9EDF13D6DC34009D9D6A /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EDE13D6DC34009D9D6A /* World.m */; };
 		E7CE9EE313D6DC99009D9D6A /* GreedyLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */; };
 		E7CE9EE613D6E890009D9D6A /* WorldRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE513D6E890009D9D6A /* WorldRepository.m */; };
+		E7D499EA143C6949006BEF1E /* AsteroidShooter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D499E9143C6949006BEF1E /* AsteroidShooter.m */; };
 		E7E3265613F2B04F0070C3F1 /* worlds in Resources */ = {isa = PBXBuildFile; fileRef = E7E3265513F2B04F0070C3F1 /* worlds */; };
 		E7E5D93313750430004283ED /* Greedy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E5D93213750430004283ED /* Greedy.m */; };
 		E7E5D94813750A0E004283ED /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E5D93E13750A0E004283ED /* eye.png */; };
@@ -826,6 +827,8 @@
 		E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyLevel.m; sourceTree = "<group>"; };
 		E7CE9EE413D6E890009D9D6A /* WorldRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldRepository.h; sourceTree = "<group>"; };
 		E7CE9EE513D6E890009D9D6A /* WorldRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldRepository.m; sourceTree = "<group>"; };
+		E7D499E8143C6949006BEF1E /* AsteroidShooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidShooter.h; sourceTree = "<group>"; };
+		E7D499E9143C6949006BEF1E /* AsteroidShooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidShooter.m; sourceTree = "<group>"; };
 		E7E3265513F2B04F0070C3F1 /* worlds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = worlds; sourceTree = "<group>"; };
 		E7E5D93113750430004283ED /* Greedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Greedy.h; sourceTree = "<group>"; };
 		E7E5D93213750430004283ED /* Greedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Greedy.m; sourceTree = "<group>"; };
@@ -909,6 +912,8 @@
 			children = (
 				E797951713750132005D0310 /* Protocols */,
 				AB045A7213714D3C001253D2 /* AppDelegate.h */,
+				E7D499E8143C6949006BEF1E /* AsteroidShooter.h */,
+				E7D499E9143C6949006BEF1E /* AsteroidShooter.m */,
 				AB045A7313714D3C001253D2 /* AppDelegate.m */,
 				E76AE4B51376757000A94EDA /* Asteroid.h */,
 				E76AE4B61376757100A94EDA /* Asteroid.m */,
@@ -1991,6 +1996,7 @@
 				AB52EAAF140A4355007E263B /* CCSlider.m in Sources */,
 				AB501B0014175EF600C5B5F8 /* AccelerometerSimulation.m in Sources */,
 				E76966C81420AA5B007FCFDB /* DeathCard.m in Sources */,
+				E7D499EA143C6949006BEF1E /* AsteroidShooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

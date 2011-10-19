@@ -8,6 +8,21 @@
 
 #import "GreedyLevel.h"
 
+@implementation ShooterConfig
+@synthesize rotation=_rotation;
+@synthesize position=_position;
+
+- (void) importFromDictionary:(NSDictionary *)dictionary
+{
+  _rotation = [[dictionary objectForKey: @"rotation"] intValue];
+  
+  float x = [[dictionary objectForKey: @"x"] floatValue];
+  float y = [[dictionary objectForKey: @"y"] floatValue];
+  _position = CGPointMake(x,y);
+}
+
+@end
+
 @implementation StaticAsteroidsConfig
 @synthesize size = _size;
 @synthesize position = _position;
@@ -50,6 +65,7 @@
 @synthesize environment           = _environment;
 @synthesize startPosition         = _startPosition;
 @synthesize finishPosition        = _finishPosition;
+@synthesize shooters              = _shooters;
 
 - (id)init
 {
@@ -78,6 +94,17 @@
     [a importFromDictionary:config];
     [_staticAsteroids addObject:a];
   }
+  
+  //shooters
+  NSArray *shooters = [dictionary valueForKey:@"AsteroidShooters"];
+  _shooters = [NSMutableArray array];
+  for (int i = 0; i < [shooters count]; i++)
+  {
+    id a = [[[ShooterConfig alloc] init] autorelease];
+    NSDictionary *config = [shooters objectAtIndex:i];
+    [a importFromDictionary:config];
+    [_shooters addObject:a];
+  }  
   
   NSDictionary *startPosition = [dictionary valueForKey: @"StartPosition"];
   _greedyPosition = CGPointMake([[startPosition objectForKey: @"x"] floatValue],[[startPosition objectForKey: @"y"] floatValue]);

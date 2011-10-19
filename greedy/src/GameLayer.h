@@ -10,11 +10,13 @@
 #import "chipmunk.h"
 #import "Greedy.h"
 #import "AsteroidField.h"
+#import "AsteroidShooter.h"
 
 @interface GameLayer : CCLayer
 {
   Greedy *_greedy;
   AsteroidField *_asteroidField;
+  NSMutableArray *_shooters;
   CGPoint _lastPosition;
   CGPoint _cameraPosition;
   
@@ -52,5 +54,6 @@
 - (void) stop;
 - (void) endLevel;
 - (void) endLevelWithDeath;
+- (void) createFinishLine:(GameEnvironment *)environment;
 
 @end

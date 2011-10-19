@@ -67,6 +67,7 @@ enum {
 - (BOOL) hasExploded;
 - (void) explode;
 - (void) moveManually:(CGPoint)point target:(id)t selector:(SEL) s;
+- (void) addRadarSensor: (cpBody *) body manager: (SpaceManagerCocos2d *) manager;
 
 //radar
 - (void) createRadarLine:(SpaceManagerCocos2d *) manager;
@@ -75,5 +76,6 @@ enum {
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
 - (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
 - (BOOL) handleCollisionRadarLine:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;
+
 
 @end

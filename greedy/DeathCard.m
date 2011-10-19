@@ -8,7 +8,7 @@
 
 #import "DeathCard.h"
 #import "GameScene.h"
-#import "MenuScene.h"
+#import "MainMenuLayer.h"
 #import "SettingsManager.h"
 
 
@@ -41,7 +41,7 @@
 
 -(void) gotoMainMenu: (id) sender
 {
-  [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
+  [[CCDirector sharedDirector] replaceScene:[MainMenuLayer scene]];
 }
 
 - (id)init

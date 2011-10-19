@@ -7,10 +7,8 @@
 //
 
 #import "HudLayer.h"
-#import "MenuScene.h"
 #import "GameConfig.h"
 #import "OptionsMenuLayer.h"
-#import "MenuScene.h"
 #import "GameScene.h"
 #import "Greedy.h"
 

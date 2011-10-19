@@ -10,7 +10,8 @@
 #import "CCSlider.h"
 #import "SettingsManager.h"
 #import "GameScene.h"
-#import "MenuScene.h"
+#import "MainMenuLayer.h"
+#import "ChooseLevelLayer.h"
 
 enum nodeTags
 {
@@ -91,11 +92,7 @@ enum nodeTags
 }
 
 - (void)menuChooseLevel:(id)sender {
-  [[CCDirector sharedDirector] resume];
-  
-  MenuScene *scene = [MenuScene scene];
-  [scene showChooseLevel];
-  [[CCDirector sharedDirector] replaceScene:scene];
+  [[CCDirector sharedDirector] replaceScene:[ChooseLevelLayer scene]];
 }
 
 - (void)menuReplay:(id)sender {

@@ -16,6 +16,21 @@
 
 @synthesize menuMain = _menuMain;
 
++(id) scene
+{
+	// 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+	
+	// 'layer' is an autorelease object.
+	MainMenuLayer *layer = [MainMenuLayer node];
+	
+	// add layer as a child to scene
+	[scene addChild: layer];
+	
+	// return the scene
+	return scene;
+}
+
 - (id)init
 {
   self = [super init];
@@ -56,8 +71,7 @@
 }
 
 - (void)menuPlayTapped:(id)sender {
-  ChooseLevelLayer *chooseLevel = [[ChooseLevelLayer alloc] initWithColor:ccc4(35,31,32,255) width:320 height:480];
-  [self addChild:chooseLevel];
+    [[CCDirector sharedDirector] replaceScene:[ChooseLevelLayer scene]];
 }
 
 @end

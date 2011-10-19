@@ -12,7 +12,7 @@
 #import "GameConfig.h"
 #import "RootViewController.h"
 #import "GameScene.h"
-#import "MenuScene.h"
+#import "MainMenuLayer.h"
 #import "SettingsManager.h"
 
 @implementation AppDelegate
@@ -117,7 +117,7 @@
 	
 	// Run the intro Scene
 	//[[CCDirector sharedDirector] runWithScene: [GameScene scene]];
-  [[CCDirector sharedDirector] runWithScene: [MenuScene scene]];
+  [[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
 }
 
 

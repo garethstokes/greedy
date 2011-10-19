@@ -8,8 +8,8 @@
 
 #import "ScoreCard.h"
 #import "GameScene.h"
-#import "MenuScene.h"
 #import "SettingsManager.h"
+#import "MainMenuLayer.h"
 
 
 @implementation ScoreCard
@@ -57,7 +57,7 @@
 
 -(void) gotoMainMenu: (id) sender
 {
-  [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MenuScene scene]]];
+  [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenuLayer scene]]];
 }
 
 - (void) showBars {

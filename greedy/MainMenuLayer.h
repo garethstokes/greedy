@@ -14,7 +14,6 @@
 
 @property (nonatomic, retain) CCMenu *menuMain;
 
-- (void)menuOptionTapped:(id)sender;
-- (void)menuPlayTapped:(id)sender;
++(id) scene;
 
 @end

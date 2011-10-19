@@ -7,9 +7,13 @@
 //
 
 #import "cocos2d.h"
+#import "SpriteHelperLoader.h"
+#import "SettingsManager.h"
 
-@interface ChooseLevelLayer : CCLayerColor
+@interface ChooseLevelLayer : CCLayerColor{
+    SpriteHelperLoader * _loader;
+}
 
-- (void)buttonTapped:(id)sender;
++(id) scene;
 
 @end

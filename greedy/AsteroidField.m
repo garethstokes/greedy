@@ -11,40 +11,36 @@
 #import "GDKaosEngine.h"
 
 @implementation AsteroidField
-@synthesize asteroids = _asteroids;
 
 - (id) initWithEnvironment:(GameEnvironment *)environment totalArea:(float)totalArea density:(float)density Layer:(cpLayers)Layer
 {
-  if((self=[super init])){
+    if((self=[super init])){
+        
+        
+        GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:density];
+        
+        while ([engine hasRoom])
+        {
+            Asteroid *a = [[Asteroid alloc] initWithEnvironment:environment 
+                                                    withPosition:[engine position]
+                                                       withLayer:Layer];
+            [engine addArea:[a area]];
+            
+            [self addChild:a];
+        
+            [a release];
+        }
+        
+        [engine release];
+    };
     
-    _asteroids = [[NSMutableArray alloc] init];
-    
-    GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:density];
-    
-    while ([engine hasRoom])
-    {
-      Asteroid *a = [[[Asteroid alloc] initWithEnvironment:environment 
-                                              withPosition:[engine position]
-                                                withLayer:Layer] autorelease];
-      [engine addArea:[a area]];
-      
-      [_asteroids addObject:a];
-      [a release];
-      
-      [self addChild:a];
-    }
-  };
-  
-  return self;
+    return self;
 }
 
 - (void)dealloc
 {
-  NSLog(@"Dealloc AsteroidField");
-  [_asteroids removeAllObjects];
-  [_asteroids release];
-  [self removeAllChildrenWithCleanup:YES];
-  [super dealloc];
+    NSLog(@"Dealloc AsteroidField");
+    [super dealloc];
 }
 
 @end

@@ -12,6 +12,8 @@
 
 @implementation ChooseLevelLayer
 
+SpriteHelperLoader * _loader;
+
 +(id) scene
 {
 	// 'scene' is an autorelease object.
@@ -47,6 +49,7 @@
     [self addChild:menu];
     
 }
+
 - (void)loadLevelBlocks {
   for (int i = 0; i < 4; i++)
         {
@@ -79,6 +82,8 @@
                                                                           selector:@selector(buttonBackToMainMenu:)], nil];
         [menu setPosition:ccp(54, 48)];
         [self addChild:menu];
+        
+        [_loader release];
     }
     
     return self;

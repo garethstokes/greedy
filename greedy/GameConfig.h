@@ -31,7 +31,7 @@
 
 // Fuel rate give is 10 bars * Fuel Rate = seconds of fuel
 // therefor 0.5 = 10 / 0.5 = 20 seconds of fuel
-#define FUELRATE 0.2
+#define FUELRATE 20
 
 //greedy stuff
 #define GREEDYMASS    2000.0f

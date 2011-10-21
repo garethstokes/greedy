@@ -66,7 +66,7 @@
 }
 
 - (void)menuOptionTapped:(id)sender { 
-  OptionsMenuLayer *optionsMenu = [[OptionsMenuLayer alloc]init:NO];
+  OptionsMenuLayer *optionsMenu = [[[OptionsMenuLayer alloc]init:NO] autorelease];
   [self addChild:optionsMenu];
 }
 

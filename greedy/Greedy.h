@@ -45,9 +45,7 @@ enum {
   float _score;
   float _fuel;
   BOOL  _exploded;
-  
-  GreedyView *_view;
-  
+    
   SpaceManagerCocos2d *_manager;
 }
 
@@ -55,7 +53,6 @@ enum {
 @property (nonatomic) int feedingCount;
 @property (nonatomic) float score;
 @property (nonatomic, assign) float fuel;
-@property (nonatomic, assign) GreedyView *view;
 
 - (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos;
 - (void) prestep:(ccTime) delta;

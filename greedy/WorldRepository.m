@@ -26,7 +26,7 @@
 - (World *) findWorldBy:(int) worldId
 {
   if (worldId > 12) worldId = 1;
-  World *world = [[World alloc] init];
+  World *world = [[[World alloc] init] autorelease];
   
   //Load in the plist and start processing the stuff
   NSString *directory = [NSString stringWithFormat:@"worlds/world_%i", worldId];

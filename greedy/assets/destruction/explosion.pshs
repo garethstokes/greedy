@@ -1,0 +1,2732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANIMATION_INFO</key>
+	<array>
+		<dict>
+			<key>Frames</key>
+			<array>
+				<string>ring2</string>
+				<string>ring3</string>
+				<string>ring1</string>
+			</array>
+			<key>Loop</key>
+			<true/>
+			<key>Repetitions</key>
+			<integer>1</integer>
+			<key>Speed</key>
+			<real>0.10000000149011612</real>
+			<key>StartAtLaunch</key>
+			<true/>
+			<key>UniqueName</key>
+			<string>ringoffire</string>
+		</dict>
+	</array>
+	<key>Author</key>
+	<string>Bogdan Vladu</string>
+	<key>BatchZOrder</key>
+	<integer>0</integer>
+	<key>CreatedWith</key>
+	<string>SpriteHelper</string>
+	<key>ImportedImages</key>
+	<array>
+		<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+	</array>
+	<key>ImportedImages-HD</key>
+	<array>
+		<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+	</array>
+	<key>ImportedImages-HD_relative</key>
+	<array>
+		<string>explosion-hd.png</string>
+	</array>
+	<key>ImportedImages_relative</key>
+	<array>
+		<string>explosion.png</string>
+	</array>
+	<key>SPRITES_INFO</key>
+	<array>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array/>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>3</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array/>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{0, 0}, {126.5, 129}}</string>
+				<key>Frame-HD</key>
+				<string>{{0, 0}, {253, 258}}</string>
+				<key>FrameUV</key>
+				<string>{{0, 0}, {0.49031007, 0.49615383}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>ring2</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array/>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>3</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array/>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{128, 0}, {129, 127}}</string>
+				<key>Frame-HD</key>
+				<string>{{256, 0}, {258, 254}}</string>
+				<key>FrameUV</key>
+				<string>{{0.49612403, 0}, {0.99612403, 0.48846152}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>ring3</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array/>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>3</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array/>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{0, 129}, {126.5, 131}}</string>
+				<key>Frame-HD</key>
+				<string>{{0, 258}, {253, 262}}</string>
+				<key>FrameUV</key>
+				<string>{{0, 0.49615383}, {0.49031007, 1}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>ring1</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{1.8464203, -7.7788391}</string>
+						<string>{8.833847, -14.607468}</string>
+						<string>{16.932922, -8.4140625}</string>
+						<string>{16.853516, -0.23558044}</string>
+						<string>{10.977722, 9.8485565}</string>
+						<string>{-2.7589417, 17.074203}</string>
+					</array>
+					<array>
+						<string>{-6.0938416, 10.721985}</string>
+						<string>{-2.7589417, 17.074203}</string>
+						<string>{-11.890244, 16.994797}</string>
+						<string>{-16.73381, 15.168533}</string>
+					</array>
+					<array>
+						<string>{-1.1708832, -16.989548}</string>
+						<string>{8.833847, -14.607468}</string>
+						<string>{1.8464203, -7.7788391}</string>
+					</array>
+					<array>
+						<string>{-6.0938416, 10.721985}</string>
+						<string>{-0.2180481, 3.1787262}</string>
+						<string>{-2.7589417, 17.074203}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{259.03238, 264.16293}</string>
+					<string>{268.71951, 260.51041}</string>
+					<string>{286.98212, 260.35159}</string>
+					<string>{314.45544, 274.80289}</string>
+					<string>{326.20703, 294.97116}</string>
+					<string>{326.36584, 311.32812}</string>
+					<string>{310.16769, 323.71494}</string>
+					<string>{290.15823, 328.4791}</string>
+					<string>{296.19284, 310.05768}</string>
+					<string>{292.0639, 288.14255}</string>
+					<string>{280.31232, 273.05603}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{129, 130}, {34.5, 34.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{258, 260}, {69, 69}}</string>
+				<key>FrameUV</key>
+				<string>{{0.5, 0.5}, {0.63372093, 0.63269234}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>shell_d-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{12.543839, -13.502106}</string>
+						<string>{17.546204, -11.437637}</string>
+						<string>{1.5068665, -5.1648254}</string>
+						<string>{-10.324127, -7.6263123}</string>
+						<string>{2.3008881, -13.660919}</string>
+					</array>
+					<array>
+						<string>{-10.324127, -7.6263123}</string>
+						<string>{1.5068665, -5.1648254}</string>
+						<string>{-6.1157837, 6.4279633}</string>
+						<string>{-17.073364, 13.41539}</string>
+						<string>{-17.232162, 3.807663}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{333.35327, 260.66922}</string>
+					<string>{355.26843, 274.64407}</string>
+					<string>{370.51373, 297.82965}</string>
+					<string>{402.59241, 310.37527}</string>
+					<string>{392.58768, 314.50421}</string>
+					<string>{372.10178, 314.82184}</string>
+					<string>{346.85175, 302.75262}</string>
+					<string>{333.03568, 279.88467}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{166, 130}, {35.5, 27.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{332, 260}, {71, 55}}</string>
+				<key>FrameUV</key>
+				<string>{{0.64341086, 0.5}, {0.78100777, 0.60576922}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>shell_a-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{1.5415802, 1.1529236}</string>
+						<string>{13.894104, 16.649734}</string>
+						<string>{4.6858521, 17.024048}</string>
+						<string>{-5.3458862, 11.783585}</string>
+						<string>{-11.559586, 4.5966644}</string>
+						<string>{-13.506042, -1.3924408}</string>
+					</array>
+					<array>
+						<string>{-3.4743042, -15.916016}</string>
+						<string>{1.2421265, -16.889236}</string>
+						<string>{1.9158936, -8.5045013}</string>
+						<string>{1.5415802, 1.1529236}</string>
+						<string>{-13.506042, -1.3924408}</string>
+						<string>{-13.431183, -9.1034088}</string>
+						<string>{-10.137177, -12.921463}</string>
+					</array>
+					<array>
+						<string>{1.2421265, -16.889236}</string>
+						<string>{6.4825897, -16.589783}</string>
+						<string>{1.9158936, -8.5045013}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{298.46518, 402.17957}</string>
+					<string>{289.33179, 386.009}</string>
+					<string>{288.58316, 366.69415}</string>
+					<string>{313.28821, 335.70053}</string>
+					<string>{294.8717, 334.9519}</string>
+					<string>{274.80823, 345.43283}</string>
+					<string>{262.38083, 359.80667}</string>
+					<string>{258.48792, 371.78488}</string>
+					<string>{258.63763, 387.20682}</string>
+					<string>{265.22565, 394.84293}</string>
+					<string>{278.55139, 400.83203}</string>
+					<string>{287.98425, 402.77847}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{129, 167}, {27.5, 35}}</string>
+				<key>Frame-HD</key>
+				<string>{{258, 334}, {55, 70}}</string>
+				<key>FrameUV</key>
+				<string>{{0.5, 0.6423077}, {0.60658914, 0.77692306}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>shell_c-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{-3.2092438, -13.636124}</string>
+						<string>{5.1811981, -11.779831}</string>
+						<string>{13.274643, -4.35466}</string>
+						<string>{-2.986496, -3.6121368}</string>
+						<string>{-9.2978821, -8.9582672}</string>
+						<string>{-13.158981, -13.636124}</string>
+					</array>
+					<array>
+						<string>{8.0027618, 8.8621521}</string>
+						<string>{13.274643, -4.35466}</string>
+						<string>{16.318954, 5.743576}</string>
+						<string>{15.947693, 13.837021}</string>
+					</array>
+					<array>
+						<string>{-13.158981, -13.636124}</string>
+						<string>{-9.2978821, -8.9582672}</string>
+						<string>{-16.129044, -12.522339}</string>
+					</array>
+					<array>
+						<string>{-2.986496, -3.6121368}</string>
+						<string>{13.274643, -4.35466}</string>
+						<string>{8.0027618, 8.8621521}</string>
+						<string>{0.72608948, 6.2633514}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{441.95218, 274.9733}</string>
+					<string>{456.50552, 269.7757}</string>
+					<string>{472.39539, 259.82596}</string>
+					<string>{473.13791, 276.01285}</string>
+					<string>{467.04929, 296.20932}</string>
+					<string>{450.8624, 311.05966}</string>
+					<string>{434.08151, 314.77225}</string>
+					<string>{414.18204, 314.77225}</string>
+					<string>{408.24191, 312.54468}</string>
+					<string>{421.90424, 305.41653}</string>
+					<string>{434.52701, 294.72427}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{204, 130}, {32.5, 27.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{408, 260}, {65, 55}}</string>
+				<key>FrameUV</key>
+				<string>{{0.79069769, 0.5}, {0.91666669, 0.60576922}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>shell_b-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{9.5267944, -11.040176}</string>
+						<string>{12.555023, -8.3904724}</string>
+						<string>{12.479309, 9.0974884}</string>
+						<string>{10.283859, 11.141525}</string>
+						<string>{7.2556305, 12.352814}</string>
+						<string>{-5.4628754, 12.504227}</string>
+						<string>{-5.6900024, -12.327164}</string>
+						<string>{5.0601807, -12.251465}</string>
+					</array>
+					<array>
+						<string>{-10.23233, -10.813049}</string>
+						<string>{-5.6900024, -12.327164}</string>
+						<string>{-5.4628754, 12.504227}</string>
+						<string>{-9.7780914, 11.217239}</string>
+						<string>{-12.352081, 8.8703613}</string>
+						<string>{-12.276367, -8.2390747}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{258.44727, 449.47815}</string>
+					<string>{258.29584, 415.25928}</string>
+					<string>{263.44382, 410.56552}</string>
+					<string>{272.07425, 407.99155}</string>
+					<string>{297.51126, 408.29437}</string>
+					<string>{303.56772, 410.71695}</string>
+					<string>{307.95862, 414.80502}</string>
+					<string>{308.11005, 449.78094}</string>
+					<string>{302.05359, 455.08035}</string>
+					<string>{293.12036, 457.50293}</string>
+					<string>{271.62, 457.65433}</string>
+					<string>{262.53534, 454.6261}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{129, 204}, {25, 25}}</string>
+				<key>Frame-HD</key>
+				<string>{{258, 408}, {50, 50}}</string>
+				<key>FrameUV</key>
+				<string>{{0.5, 0.7846154}, {0.59689921, 0.88076925}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>stem-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{-11.040863, -8.2297821}</string>
+						<string>{-8.3926697, -10.454254}</string>
+						<string>{-6.2741241, -10.030548}</string>
+						<string>{1.4585876, -1.9800568}</string>
+						<string>{-0.51095867, 3.1676157}</string>
+						<string>{-10.617142, -6.4290161}</string>
+					</array>
+					<array>
+						<string>{8.9794464, -0.81484985}</string>
+						<string>{11.521698, 2.4689026}</string>
+						<string>{4.2127075, 10.201599}</string>
+						<string>{1.9882202, 5.5407867}</string>
+						<string>{1.4585876, -1.9800568}</string>
+					</array>
+					<array>
+						<string>{1.9882202, 5.5407867}</string>
+						<string>{4.2127075, 10.201599}</string>
+						<string>{-3.2022247, 10.201599}</string>
+					</array>
+					<array>
+						<string>{1.4585876, -1.9800568}</string>
+						<string>{1.9882202, 5.5407867}</string>
+						<string>{-0.51095867, 3.1676157}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{267.45175, 505.0611}</string>
+					<string>{282.91718, 488.96011}</string>
+					<string>{297.95889, 486.6297}</string>
+					<string>{303.0434, 480.06219}</string>
+					<string>{288.42542, 464.5968}</string>
+					<string>{273.59555, 464.5968}</string>
+					<string>{283.97644, 473.91843}</string>
+					<string>{258.76572, 497.85803}</string>
+					<string>{257.91827, 501.45956}</string>
+					<string>{263.21466, 505.90851}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{129, 232}, {22, 21}}</string>
+				<key>Frame-HD</key>
+				<string>{{258, 464}, {44, 42}}</string>
+				<key>FrameUV</key>
+				<string>{{0.5, 0.8923077}, {0.5852713, 0.97307694}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>hammer-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{6.4092102, -1.2949829}</string>
+						<string>{3.2891388, -3.60112}</string>
+						<string>{3.5152283, -9.750824}</string>
+						<string>{7.8561859, -9.6151733}</string>
+						<string>{10.117111, -8.3490601}</string>
+						<string>{11.518875, -6.042923}</string>
+						<string>{11.473663, -2.4706573}</string>
+						<string>{9.8005829, 0.42330933}</string>
+					</array>
+					<array>
+						<string>{-8.2867737, 3.8146973}</string>
+						<string>{-6.0258484, 3.8599091}</string>
+						<string>{-6.5232544, 9.2409058}</string>
+						<string>{-7.9702454, 9.3313446}</string>
+					</array>
+					<array>
+						<string>{1.0734253, -8.0777435}</string>
+						<string>{3.5152283, -9.750824}</string>
+						<string>{3.2891388, -3.60112}</string>
+						<string>{-1.5944519, -3.5559082}</string>
+						<string>{-0.50921631, -6.3142242}</string>
+					</array>
+					<array>
+						<string>{-11.452057, -4.0533142}</string>
+						<string>{-10.366821, -5.9524841}</string>
+						<string>{-7.7441559, -7.8516541}</string>
+						<string>{-4.9858398, -0.25495911}</string>
+						<string>{-6.0258484, 3.8599091}</string>
+						<string>{-8.2867737, 3.8146973}</string>
+						<string>{-11.542496, 0.46853638}</string>
+					</array>
+					<array>
+						<string>{9.8005829, 0.42330933}</string>
+						<string>{11.428436, 4.3121033}</string>
+						<string>{11.473663, 6.4373627}</string>
+						<string>{10.117111, 6.3469238}</string>
+						<string>{6.4092102, -1.2949829}</string>
+					</array>
+					<array>
+						<string>{-1.9562073, -6.6759796}</string>
+						<string>{-0.50921631, -6.3142242}</string>
+						<string>{-1.5944519, -3.5559082}</string>
+					</array>
+					<array>
+						<string>{-1.9562073, -6.6759796}</string>
+						<string>{-1.5944519, -3.5559082}</string>
+						<string>{-4.9858398, -0.25495911}</string>
+						<string>{-7.7441559, -7.8516541}</string>
+						<string>{-3.6292877, -7.9420929}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{325.51169, 369.20331}</string>
+					<string>{320.26636, 365.40497}</string>
+					<string>{318.09589, 361.60663}</string>
+					<string>{317.91501, 352.56293}</string>
+					<string>{324.42645, 345.87061}</string>
+					<string>{325.05951, 334.83731}</string>
+					<string>{327.95349, 335.01819}</string>
+					<string>{328.9483, 345.78018}</string>
+					<string>{331.02832, 354.00992}</string>
+					<string>{337.8111, 360.61182}</string>
+					<string>{347.57828, 360.70224}</string>
+					<string>{353.81842, 356.08997}</string>
+					<string>{361.23422, 340.80615}</string>
+					<string>{363.94733, 340.62527}</string>
+					<string>{363.85687, 344.87579}</string>
+					<string>{360.60117, 352.65338}</string>
+					<string>{363.94733, 358.44131}</string>
+					<string>{364.03775, 365.58585}</string>
+					<string>{361.23422, 370.19812}</string>
+					<string>{356.71237, 372.73035}</string>
+					<string>{348.03046, 373.00165}</string>
+					<string>{343.14685, 369.65549}</string>
+					<string>{339.98157, 366.12845}</string>
+					<string>{337.08759, 366.85196}</string>
+					<string>{333.74142, 369.38419}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{159, 167}, {23, 19.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{318, 334}, {46, 39}}</string>
+				<key>FrameUV</key>
+				<string>{{0.61627907, 0.6423077}, {0.70542634, 0.71730769}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>bra-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{0.014953613, 11.213196}</string>
+						<string>{-2.6051636, 10.356613}</string>
+						<string>{-7.0895691, 1.236618}</string>
+						<string>{-7.4926605, -3.197403}</string>
+						<string>{7.9760437, -4.910553}</string>
+						<string>{8.0264282, 8.9457855}</string>
+						<string>{6.363678, 10.406998}</string>
+						<string>{4.4993591, 11.062027}</string>
+					</array>
+					<array>
+						<string>{-7.4926605, -3.197403}</string>
+						<string>{-7.0895691, 1.236618}</string>
+						<string>{-7.4926605, 0.4808197}</string>
+					</array>
+					<array>
+						<string>{7.4217987, -6.3213806}</string>
+						<string>{7.9760437, -4.910553}</string>
+						<string>{-7.4926605, -3.197403}</string>
+						<string>{-8.0469208, -4.457077}</string>
+						<string>{-6.1826172, -12.216614}</string>
+						<string>{-3.461731, -13.929764}</string>
+						<string>{3.4916382, -13.929764}</string>
+					</array>
+					<array>
+						<string>{-6.5857086, 6.628006}</string>
+						<string>{-2.6051636, 10.356613}</string>
+						<string>{-2.8570862, 11.213196}</string>
+						<string>{-5.729126, 13.228653}</string>
+						<string>{-6.5353241, 12.472855}</string>
+					</array>
+					<array>
+						<string>{6.9683228, -11.057724}</string>
+						<string>{7.7241211, -9.2941895}</string>
+						<string>{7.8248901, -7.177948}</string>
+						<string>{7.4217987, -6.3213806}</string>
+						<string>{3.4916382, -13.929764}</string>
+						<string>{4.5497589, -13.476288}</string>
+						<string>{6.0613556, -12.367783}</string>
+					</array>
+					<array>
+						<string>{-7.9965363, -9.4957428}</string>
+						<string>{-6.1826172, -12.216614}</string>
+						<string>{-8.0469208, -4.457077}</string>
+					</array>
+					<array>
+						<string>{-1.8997498, 13.127884}</string>
+						<string>{-1.8997498, 13.833298}</string>
+						<string>{-3.008255, 13.934067}</string>
+						<string>{-5.729126, 13.228653}</string>
+						<string>{-2.8570862, 11.213196}</string>
+					</array>
+					<array>
+						<string>{-7.0895691, 1.236618}</string>
+						<string>{-2.6051636, 10.356613}</string>
+						<string>{-6.5857086, 6.628006}</string>
+						<string>{-7.0895691, 4.8140869}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{487.07654, 315.85953}</string>
+					<string>{481.63477, 312.43323}</string>
+					<string>{478.00693, 306.99149}</string>
+					<string>{477.90616, 296.91415}</string>
+					<string>{479.01468, 294.39481}</string>
+					<string>{479.01468, 287.03836}</string>
+					<string>{479.82086, 285.52676}</string>
+					<string>{479.82086, 278.37183}</string>
+					<string>{480.82858, 274.74399}</string>
+					<string>{480.92935, 263.05429}</string>
+					<string>{482.54175, 261.54269}</string>
+					<string>{487.98349, 260.13187}</string>
+					<string>{490.2005, 260.3334}</string>
+					<string>{490.2005, 261.74423}</string>
+					<string>{488.28583, 265.57361}</string>
+					<string>{488.78967, 267.28677}</string>
+					<string>{494.02991, 265.57361}</string>
+					<string>{502.99872, 265.87595}</string>
+					<string>{506.72736, 267.186}</string>
+					<string>{510.05286, 270.10843}</string>
+					<string>{509.95209, 297.82111}</string>
+					<string>{508.8436, 300.64276}</string>
+					<string>{509.64978, 302.3559}</string>
+					<string>{509.44824, 306.58838}</string>
+					<string>{507.93665, 310.11545}</string>
+					<string>{506.12271, 312.73557}</string>
+					<string>{503.09952, 314.95258}</string>
+					<string>{500.98328, 315.85953}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{239, 130}, {16, 28}}</string>
+				<key>Frame-HD</key>
+				<string>{{478, 260}, {32, 56}}</string>
+				<key>FrameUV</key>
+				<string>{{0.92635661, 0.5}, {0.98837209, 0.6076923}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>spring-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{-0.022903442, 4.9543457}</string>
+						<string>{-8.1933594, -7.104126}</string>
+						<string>{-7.7989349, -9.4143982}</string>
+						<string>{7.5277405, -9.8088379}</string>
+						<string>{8.4856567, -7.104126}</string>
+						<string>{8.4856567, 4.7289581}</string>
+						<string>{2.4564209, 6.3630524}</string>
+						<string>{1.2167511, 5.9686127}</string>
+					</array>
+					<array>
+						<string>{2.5127563, 11.321686}</string>
+						<string>{2.4564209, 6.3630524}</string>
+						<string>{8.4856567, 4.7289581}</string>
+						<string>{8.0348663, 8.6169739}</string>
+						<string>{7.4713898, 10.701843}</string>
+						<string>{6.1753845, 12.674026}</string>
+						<string>{3.6397247, 12.730377}</string>
+					</array>
+					<array>
+						<string>{6.1190338, -12.682587}</string>
+						<string>{7.5277405, -9.8088379}</string>
+						<string>{-7.7989349, -9.4143982}</string>
+						<string>{-6.5029297, -12.795273}</string>
+					</array>
+					<array>
+						<string>{-8.1370239, -0.96218872}</string>
+						<string>{-8.1933594, -7.104126}</string>
+						<string>{-0.022903442, 4.9543457}</string>
+						<string>{-2.5585632, 4.1091309}</string>
+						<string>{-6.10849, 2.4750366}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{347.23807, 428.86517}</string>
+					<string>{321.99414, 429.09055}</string>
+					<string>{319.40213, 422.3288}</string>
+					<string>{318.61328, 417.70825}</string>
+					<string>{318.72595, 405.42438}</string>
+					<string>{322.78302, 398.54993}</string>
+					<string>{329.88287, 395.28174}</string>
+					<string>{334.95419, 393.59131}</string>
+					<string>{337.4335, 391.56277}</string>
+					<string>{339.91284, 390.7739}</string>
+					<string>{340.02551, 380.85663}</string>
+					<string>{342.27945, 378.03925}</string>
+					<string>{347.35077, 378.15195}</string>
+					<string>{349.94278, 382.09631}</string>
+					<string>{351.06973, 386.26605}</string>
+					<string>{351.97131, 394.04208}</string>
+					<string>{351.97131, 417.70825}</string>
+					<string>{350.05548, 423.11768}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{159, 189}, {17, 25.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{318, 378}, {34, 51}}</string>
+				<key>FrameUV</key>
+				<string>{{0.61627907, 0.72692305}, {0.68217057, 0.82499999}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>foamfinger-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{5.7683105, -9.2104187}</string>
+						<string>{10.964127, -0.64691162}</string>
+						<string>{10.916016, 1.2774658}</string>
+						<string>{5.9126282, 9.4079742}</string>
+					</array>
+					<array>
+						<string>{2.1119843, -9.5952911}</string>
+						<string>{5.9126282, 9.4079742}</string>
+						<string>{-6.8845062, 8.8787689}</string>
+						<string>{-10.925705, 0.79637146}</string>
+						<string>{-10.925705, -1.2242279}</string>
+						<string>{-6.5958405, -8.873642}</string>
+						<string>{-4.4309082, -9.6915131}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{326.23099, 435.74246}</string>
+					<string>{351.82526, 434.68405}</string>
+					<string>{361.83203, 450.94507}</string>
+					<string>{361.92825, 454.79382}</string>
+					<string>{351.53662, 471.92084}</string>
+					<string>{344.22397, 472.69058}</string>
+					<string>{331.13818, 472.88303}</string>
+					<string>{326.80832, 471.24728}</string>
+					<string>{318.14859, 455.94846}</string>
+					<string>{318.14859, 451.90726}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{159, 217}, {22, 19.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{318, 434}, {44, 39}}</string>
+				<key>FrameUV</key>
+				<string>{{0.61627907, 0.83461541}, {0.70155036, 0.9096154}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>nut-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{-4.4563446, -5.1566467}</string>
+						<string>{-3.7218018, -12.808121}</string>
+						<string>{-2.0690918, -15.072968}</string>
+						<string>{4.9090576, -15.195389}</string>
+						<string>{6.5005646, -13.726303}</string>
+						<string>{6.3781433, 4.8208771}</string>
+					</array>
+					<array>
+						<string>{-6.5375519, -2.0960541}</string>
+						<string>{-4.4563446, -5.1566467}</string>
+						<string>{6.3781433, 4.8208771}</string>
+						<string>{5.1539154, 11.554184}</string>
+						<string>{0.5018158, 15.16568}</string>
+						<string>{-4.8236237, 15.288101}</string>
+						<string>{-6.4763336, 12.411148}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{392.81812, 394.89078}</string>
+					<string>{378.86182, 394.64594}</string>
+					<string>{375.5564, 390.11624}</string>
+					<string>{374.08731, 374.81329}</string>
+					<string>{369.9249, 368.69211}</string>
+					<string>{370.04733, 339.6777}</string>
+					<string>{373.35275, 333.9238}</string>
+					<string>{384.00363, 334.16864}</string>
+					<string>{393.30783, 341.39163}</string>
+					<string>{395.75629, 354.85825}</string>
+					<string>{396.00113, 391.95261}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{185, 167}, {13, 30.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{370, 334}, {26, 61}}</string>
+				<key>FrameUV</key>
+				<string>{{0.71705425, 0.6423077}, {0.76744187, 0.75961536}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>thong-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{10.794815, -7.5785828}</string>
+						<string>{10.908264, -4.1749878}</string>
+						<string>{-6.6201935, -0.37432861}</string>
+						<string>{0.24369812, -8.7698364}</string>
+						<string>{6.1999664, -8.8833008}</string>
+					</array>
+					<array>
+						<string>{-8.7190857, -8.7698364}</string>
+						<string>{-6.6201935, -8.8265686}</string>
+						<string>{-6.6201935, -0.37432861}</string>
+						<string>{-8.7190857, -3.2106476}</string>
+					</array>
+					<array>
+						<string>{-10.931412, 6.6030273}</string>
+						<string>{-11.044861, 1.6678314}</string>
+						<string>{-6.6201935, -0.37432861}</string>
+						<string>{4.3280029, -2.6433716}</string>
+						<string>{-7.0740051, 8.9288177}</string>
+						<string>{-9.6266937, 9.0422668}</string>
+					</array>
+					<array>
+						<string>{-8.7190857, -3.2106476}</string>
+						<string>{-6.6201935, -0.37432861}</string>
+						<string>{-11.044861, 1.6678314}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{361.58963, 511.15717}</string>
+					<string>{352.39993, 513.7666}</string>
+					<string>{340.4874, 513.53967}</string>
+					<string>{326.75961, 496.74866}</string>
+					<string>{326.75961, 513.65314}</string>
+					<string>{322.56183, 513.53967}</string>
+					<string>{322.56183, 502.4213}</string>
+					<string>{317.91028, 492.66434}</string>
+					<string>{318.13718, 482.79395}</string>
+					<string>{320.74661, 477.91547}</string>
+					<string>{325.85199, 478.14236}</string>
+					<string>{348.65601, 501.28674}</string>
+					<string>{356.14389, 502.98856}</string>
+					<string>{361.81653, 504.34998}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{159, 239}, {22, 18}}</string>
+				<key>Frame-HD</key>
+				<string>{{318, 478}, {44, 36}}</string>
+				<key>FrameUV</key>
+				<string>{{0.61627907, 0.91923076}, {0.70155036, 0.98846155}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>heels-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{-9.532608, -8.1920929}</string>
+						<string>{-8.686615, -9.249588}</string>
+						<string>{-4.3509216, -9.249588}</string>
+						<string>{3.4039917, -1.6356812}</string>
+						<string>{-1.1079559, 2.4885254}</string>
+						<string>{-9.4973602, -6.3943634}</string>
+					</array>
+					<array>
+						<string>{3.4039917, -1.6356812}</string>
+						<string>{6.9289398, -1.5299377}</string>
+						<string>{8.6914215, -0.6839447}</string>
+						<string>{9.4669037, 0.7260437}</string>
+						<string>{9.3964081, 7.176712}</string>
+						<string>{8.6914215, 8.5161896}</string>
+						<string>{7.1051941, 9.1506805}</string>
+						<string>{2.0292511, 9.1859436}</string>
+					</array>
+					<array>
+						<string>{-1.5662079, 4.8149872}</string>
+						<string>{-1.495697, 3.2640076}</string>
+						<string>{-1.1079559, 2.4885254}</string>
+						<string>{3.4039917, -1.6356812}</string>
+						<string>{2.0292511, 9.1859436}</string>
+						<string>{-0.050476074, 8.3751984}</string>
+						<string>{-1.0727081, 6.8947144}</string>
+					</array>
+					<array>
+						<string>{-9.4973602, -6.3943634}</string>
+						<string>{3.4039917, -1.6356812}</string>
+						<string>{-1.495697, 3.2640076}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{410.29816, 370.99918}</string>
+					<string>{401.62677, 370.99918}</string>
+					<string>{399.93478, 368.88419}</string>
+					<string>{400.00528, 365.28873}</string>
+					<string>{416.78409, 347.52295}</string>
+					<string>{416.00861, 345.97198}</string>
+					<string>{415.86758, 342.87003}</string>
+					<string>{416.85458, 338.71057}</string>
+					<string>{418.89905, 335.7496}</string>
+					<string>{423.0585, 334.12811}</string>
+					<string>{433.21039, 334.19864}</string>
+					<string>{436.38284, 335.46762}</string>
+					<string>{437.79282, 338.14658}</string>
+					<string>{437.93381, 351.04791}</string>
+					<string>{436.38284, 353.86789}</string>
+					<string>{432.85788, 355.55988}</string>
+					<string>{425.80798, 355.77136}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{200, 167}, {19, 18.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{400, 334}, {38, 37}}</string>
+				<key>FrameUV</key>
+				<string>{{0.77519381, 0.6423077}, {0.8488372, 0.71346152}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>key-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array/>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<true/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array/>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{222, 167}, {19, 18.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{444, 334}, {38, 37}}</string>
+				<key>FrameUV</key>
+				<string>{{0.86046511, 0.6423077}, {0.93410856, 0.71346152}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>cog-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{5.255127, -2.3934174}</string>
+						<string>{-4.3424683, -1.8076477}</string>
+						<string>{-6.9559021, -10.18866}</string>
+						<string>{-4.9732971, -12.171265}</string>
+						<string>{4.3990021, -12.171265}</string>
+						<string>{6.1112671, -11.585495}</string>
+						<string>{6.9223328, -10.278778}</string>
+						<string>{6.9223328, -3.204483}</string>
+					</array>
+					<array>
+						<string>{-3.3511658, -0.63612366}</string>
+						<string>{5.255127, -2.3934174}</string>
+						<string>{4.5792389, -0.18553162}</string>
+						<string>{3.723114, 1.5717773}</string>
+						<string>{-3.1258698, 2.2026062}</string>
+						<string>{-5.0634155, 1.2113037}</string>
+					</array>
+					<array>
+						<string>{3.723114, 1.5717773}</string>
+						<string>{3.723114, 11.574921}</string>
+						<string>{-3.0357513, 11.574921}</string>
+						<string>{-3.1258698, 2.2026062}</string>
+					</array>
+					<array>
+						<string>{-6.9559021, -10.18866}</string>
+						<string>{-4.3424683, -1.8076477}</string>
+						<string>{-5.6942444, -2.3483582}</string>
+						<string>{-6.9559021, -3.7001343}</string>
+					</array>
+					<array>
+						<string>{-4.3424683, -1.8076477}</string>
+						<string>{5.255127, -2.3934174}</string>
+						<string>{-3.3511658, -0.63612366}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{508.798, 382.84253}</string>
+					<string>{490.05341, 382.84253}</string>
+					<string>{486.0882, 378.87732}</string>
+					<string>{486.0882, 365.90027}</string>
+					<string>{488.61151, 363.19672}</string>
+					<string>{491.31506, 362.1153}</string>
+					<string>{493.29767, 359.77225}</string>
+					<string>{489.87317, 356.07739}</string>
+					<string>{493.74826, 354.09479}</string>
+					<string>{493.9285, 335.35016}</string>
+					<string>{507.44623, 335.35016}</string>
+					<string>{507.44623, 355.35645}</string>
+					<string>{509.15848, 358.87106}</string>
+					<string>{510.51025, 363.28683}</string>
+					<string>{513.84467, 364.90897}</string>
+					<string>{513.84467, 379.05756}</string>
+					<string>{512.22253, 381.67099}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{243, 167}, {14, 24.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{486, 334}, {28, 49}}</string>
+				<key>FrameUV</key>
+				<string>{{0.94186044, 0.6423077}, {0.99612403, 0.73653847}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>bolt-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array/>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<true/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array/>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{185, 200}, {17, 16.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{370, 400}, {34, 33}}</string>
+				<key>FrameUV</key>
+				<string>{{0.71705425, 0.76923078}, {0.78294575, 0.83269233}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>eye-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{7.1241455, -7.6489258}</string>
+						<string>{9.000946, -5.7721252}</string>
+						<string>{8.9668121, -0.65356445}</string>
+						<string>{7.021759, 1.5303345}</string>
+						<string>{-1.6115112, 6.2052765}</string>
+						<string>{-5.5698547, 3.6460114}</string>
+						<string>{-9.0504761, 0.64312744}</string>
+						<string>{-5.6039886, -7.6830444}</string>
+					</array>
+					<array>
+						<string>{7.294754, 5.9322968}</string>
+						<string>{7.021759, 1.5303345}</string>
+						<string>{9.000946, 3.7142487}</string>
+						<string>{8.9326935, 5.6593018}</string>
+					</array>
+					<array>
+						<string>{-9.0504761, 0.64312744}</string>
+						<string>{-5.5698547, 3.6460114}</string>
+						<string>{-7.4807892, 3.6118774}</string>
+						<string>{-8.1291351, 2.8611603}</string>
+					</array>
+					<array>
+						<string>{-9.0504761, -4.7142792}</string>
+						<string>{-7.9243927, -6.7617035}</string>
+						<string>{-5.6039886, -7.6830444}</string>
+						<string>{-9.0504761, 0.64312744}</string>
+					</array>
+					<array>
+						<string>{7.021759, 1.5303345}</string>
+						<string>{7.294754, 5.9322968}</string>
+						<string>{5.2132111, 7.7749634}</string>
+						<string>{0.53826904, 7.7408447}</string>
+						<string>{-1.6115112, 6.2052765}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{440.24829, 430.79785}</string>
+					<string>{414.79202, 430.86609}</string>
+					<string>{410.15121, 429.02341}</string>
+					<string>{407.89905, 424.92856}</string>
+					<string>{407.89905, 414.21375}</string>
+					<string>{409.74173, 409.77768}</string>
+					<string>{411.03842, 408.27625}</string>
+					<string>{414.86029, 408.20798}</string>
+					<string>{422.77698, 403.08945}</string>
+					<string>{427.07654, 400.01831}</string>
+					<string>{436.42642, 399.95007}</string>
+					<string>{440.58951, 403.63541}</string>
+					<string>{443.86539, 404.1814}</string>
+					<string>{444.00189, 408.0715}</string>
+					<string>{440.04352, 412.43933}</string>
+					<string>{443.93362, 416.80713}</string>
+					<string>{444.00189, 427.04425}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{204, 200}, {18, 15.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{408, 400}, {36, 31}}</string>
+				<key>FrameUV</key>
+				<string>{{0.79069769, 0.76923078}, {0.86046511, 0.82884616}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>rubber_ducky-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{-8.3894196, 0.87666321}</string>
+						<string>{-10.487503, 0.9311676}</string>
+						<string>{-10.56926, -3.4830017}</string>
+						<string>{-9.779068, -4.3004456}</string>
+						<string>{-6.4548035, -3.0470428}</string>
+						<string>{-7.5447235, 0.63143921}</string>
+					</array>
+					<array>
+						<string>{9.4307556, 1.1763916}</string>
+						<string>{10.248199, 3.0292511}</string>
+						<string>{8.8858032, 3.8739471}</string>
+						<string>{5.9430237, 3.9284363}</string>
+						<string>{-7.5447235, 0.63143921}</string>
+						<string>{-6.4548035, -3.0470428}</string>
+						<string>{7.8503723, 0.41345215}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{457.7634, 416.8284}</string>
+					<string>{451.44186, 417.10089}</string>
+					<string>{449.86148, 415.466}</string>
+					<string>{450.02499, 406.63766}</string>
+					<string>{454.22116, 406.74667}</string>
+					<string>{455.91055, 407.23712}</string>
+					<string>{482.88605, 400.64313}</string>
+					<string>{488.77161, 400.75211}</string>
+					<string>{491.4964, 402.4415}</string>
+					<string>{489.86151, 406.14722}</string>
+					<string>{486.70074, 407.6731}</string>
+					<string>{458.09039, 414.59409}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{225, 200}, {21, 8.5}}</string>
+				<key>Frame-HD</key>
+				<string>{{450, 400}, {42, 17}}</string>
+				<key>FrameUV</key>
+				<string>{{0.87209302, 0.76923078}, {0.95348835, 0.8019231}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>nail-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array>
+					<array>
+						<string>{3.4913483, -3.2861786}</string>
+						<string>{3.5921478, -0.16136169}</string>
+						<string>{3.08815, 4.0722504}</string>
+						<string>{1.5257416, 6.9954681}</string>
+						<string>{-1.5990753, 6.9954681}</string>
+						<string>{-1.9014893, -0.11096191}</string>
+						<string>{2.3321381, -5.7557983}</string>
+					</array>
+					<array>
+						<string>{0.41693115, -6.9654083}</string>
+						<string>{2.3321381, -5.7557983}</string>
+						<string>{-1.9014893, -0.11096191}</string>
+						<string>{-3.5142975, -5.2014008}</string>
+						<string>{-3.5142975, -6.814209}</string>
+					</array>
+				</array>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<false/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array>
+					<string>{377.83386, 465.93082}</string>
+					<string>{369.97141, 465.62842}</string>
+					<string>{369.97141, 462.4028}</string>
+					<string>{373.19702, 452.22192}</string>
+					<string>{373.80185, 438.00906}</string>
+					<string>{380.05148, 438.00906}</string>
+					<string>{383.1763, 443.8555}</string>
+					<string>{384.1843, 452.32272}</string>
+					<string>{383.9827, 458.57236}</string>
+					<string>{381.66428, 463.5116}</string>
+				</array>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{185, 219}, {7, 14}}</string>
+				<key>Frame-HD</key>
+				<string>{{370, 438}, {14, 28}}</string>
+				<key>FrameUV</key>
+				<string>{{0.71705425, 0.84230769}, {0.74418604, 0.89615387}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>tooth-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>PhysicProperties</key>
+			<dict>
+				<key>AngularDamping</key>
+				<real>0.0</real>
+				<key>AngularVelocity</key>
+				<real>0.0</real>
+				<key>CanSleep</key>
+				<true/>
+				<key>Category</key>
+				<integer>1</integer>
+				<key>Density</key>
+				<real>0.20000000298023224</real>
+				<key>Fixtures</key>
+				<array/>
+				<key>Friction</key>
+				<real>0.20000000298023224</real>
+				<key>Group</key>
+				<integer>0</integer>
+				<key>IsBullet</key>
+				<false/>
+				<key>IsCircle</key>
+				<true/>
+				<key>IsFixedRot</key>
+				<false/>
+				<key>IsSensor</key>
+				<false/>
+				<key>LinearDamping</key>
+				<real>0.0</real>
+				<key>LinearVelocityX</key>
+				<real>0.0</real>
+				<key>LinearVelocityY</key>
+				<real>0.0</real>
+				<key>Mask</key>
+				<integer>65535</integer>
+				<key>PhysicType</key>
+				<integer>2</integer>
+				<key>Restitution</key>
+				<real>0.20000000298023224</real>
+				<key>SHHolesPoints</key>
+				<array/>
+				<key>SHShapePoints</key>
+				<array/>
+				<key>ShapeBorderH</key>
+				<integer>0</integer>
+				<key>ShapeBorderW</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetX</key>
+				<integer>0</integer>
+				<key>ShapePositionOffsetY</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextureProperties</key>
+			<dict>
+				<key>Color</key>
+				<string>{{1, 1}, {1, 0}}</string>
+				<key>Frame</key>
+				<string>{{200, 188}, {6, 6}}</string>
+				<key>Frame-HD</key>
+				<string>{{400, 376}, {12, 12}}</string>
+				<key>FrameUV</key>
+				<string>{{0.77519381, 0.72307694}, {0.79844964, 0.74615383}}</string>
+				<key>HD_ImageSize</key>
+				<string>{516, 520}</string>
+				<key>Image</key>
+				<string>explosion.png</string>
+				<key>Image-HD</key>
+				<string>explosion-hd.png</string>
+				<key>ImageURL</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion.png</string>
+				<key>ImageURL-HD</key>
+				<string>/Users/richardowen/Projects/greedy/greedy/assets/destruction/explosion-hd.png</string>
+				<key>Name</key>
+				<string>wheel-hd</string>
+				<key>Opacity</key>
+				<real>1</real>
+				<key>SD_ImageSize</key>
+				<string>{258, 260}</string>
+				<key>Scale</key>
+				<string>{1, 1}</string>
+				<key>ZOrder</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+	</array>
+	<key>ScenePreference</key>
+	<dict>
+		<key>BackgroundColor</key>
+		<string>{{0.89399999, 0.89399999}, {0.89399999, 1}}</string>
+		<key>GridSize</key>
+		<integer>32</integer>
+	</dict>
+	<key>Version</key>
+	<string>1.7.2</string>
+</dict>
+</plist>

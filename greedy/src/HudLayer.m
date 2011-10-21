@@ -11,6 +11,7 @@
 #import "OptionsMenuLayer.h"
 #import "GameScene.h"
 #import "Greedy.h"
+#import "GameObjectCache.h"
 
 @implementation HudLayer
 
@@ -71,11 +72,9 @@
 {
   if (_countdown == 0)
   {
-    GameScene *scene = (GameScene *)self.parent;
-    GameLayer *layer = [scene gameLayer];
+    GameLayer *layer = [[GameObjectCache sharedGameObjectCache] gameLayer];
     Greedy *greedy = [layer greedy];
     [greedy explode];
-    //[scene.gameLayer endLevelWithDeath];
     return;
   }
   
@@ -89,6 +88,8 @@
   _lifeMeter = [[[LifeMeter alloc] initLifeMeter] retain];
   _lifeMeter.position = ccp(size.width /2, 25);
   [_lifeMeter setLifeLevel:10];
+    
+  [[GameObjectCache sharedGameObjectCache] addLifeMeter:_lifeMeter];
   
   [self addChild:_lifeMeter];
 }

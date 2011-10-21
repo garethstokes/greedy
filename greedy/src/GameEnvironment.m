@@ -14,6 +14,7 @@
 #import "AsteroidSprite.h"
 #import "ConvexHull.h"
 #import "GameScene.h"
+#import "GameObjectCache.h"
 
 @implementation GameEnvironment
 
@@ -150,6 +151,7 @@
       
       //allocate our space manager
       _spaceManager = [[SpaceManagerCocos2d alloc] init];
+        [[GameObjectCache sharedGameObjectCache] addSpaceManager:_spaceManager];
       [_spaceManager setGravity:ccp(0,0)];
     }
     return self;

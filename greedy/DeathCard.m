@@ -35,8 +35,8 @@
 
 -(void) restartLevel: (id) sender
 {
-  CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[GameScene sceneWithLevel:1]];
-  [[CCDirector sharedDirector] replaceScene:newScene];
+  //CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[GameScene sceneWithLevel:1]];
+  [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:1]];
 }
 
 -(void) gotoMainMenu: (id) sender

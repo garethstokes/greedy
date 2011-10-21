@@ -10,90 +10,88 @@
 #import "Background.h"
 #import "Balsamic.h"
 #import "ScoreCard.h"
+#import "GameObjectCache.h"
 
 @implementation GameScene
 
-@synthesize environment = _environment;
-//@synthesize engine = _engine;
-@synthesize background = _background;
-@synthesize gameLayer = _gameLayer;
-@synthesize hudLayer = _hudLayer;
-@synthesize scene = _scene;
+@synthesize environment;
+@synthesize scene;
 
 +(id) sceneWithLevel:(int)level
 {
-  CCLOG(@" GameScene: sceneWithLevel");
-  
+    CCLOG(@" GameScene: sceneWithLevel");
+    
 	// 'scene' is an autorelease object.
 	GameScene *scene = [GameScene node];
-  
-  //Create the environment
-  scene->_environment = [[GameEnvironment alloc] init];
-  
-  //create the engine
-  scene->_engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:10.0f];  
-  
-  // star layer background
-  scene->_background = [[Background alloc] initWithEnvironment:scene->_environment];
-  [scene addChild:scene->_background z:0];
-
-  //Game Layer
-  scene->_gameLayer = [[GameLayer alloc] initWithEnvironment:scene->_environment level:level];
-  [scene addChild:scene.gameLayer z:10];
     
-  //HUD
-  scene->_hudLayer = [[HudLayer alloc] initWithGameLayer:scene.gameLayer];
-  [scene addChild:scene->_hudLayer z:50];
-  
-  //scene->_scorecard = [[ScoreCard alloc] initWithScore:1000 level:1 time:12.34];
-  //[scene addChild:scene->_scorecard  z:100];
-  
-  [scene->_gameLayer startLevel];
-  
+    //Create the environment
+    scene.environment = [[[GameEnvironment alloc] init] autorelease];
+    
+    //create the engine
+    scene->_engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:10.0f];  
+    
+    // star layer background
+    [[GameObjectCache sharedGameObjectCache] addBackground:[[[Background alloc] initWithEnvironment:scene.environment] autorelease]];
+    [scene addChild:[[GameObjectCache sharedGameObjectCache] background] z:0];
+    
+    //Game Layer
+    [[GameObjectCache sharedGameObjectCache] addGameLayer:[[[GameLayer alloc] initWithEnvironment:scene.environment level:level] autorelease]];
+    [scene addChild:[[GameObjectCache sharedGameObjectCache] gameLayer] z:10];
+    
+    //HUD
+    //scene.hudLayer = [[[HudLayer alloc] initWithGameLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease];
+    [scene addChild:[[[HudLayer alloc] initWithGameLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease] z:50];
+    
+    scene->_scorecard = [[ScoreCard alloc] initWithScore:1000 level:1 time:12.34];
+    //[scene addChild:scene->_scorecard  z:100];
+    
+    [[[GameObjectCache sharedGameObjectCache] gameLayer] startLevel];
+    
+    [[GameObjectCache sharedGameObjectCache] addGameScene: scene];
+    
+    
 	// return the scene
-  scene->_level = level;
+    scene->_level = level;
 	return scene;
 }
 
 - (void) showScore:(int) score time:(ccTime)time
 {
-  if(_scorecard != nil) return;
-  
-  GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
-  [self removeChild:scene->_hudLayer cleanup:YES];
-  
-  _scorecard = [[ScoreCard alloc] initWithScore:score level:1 time:time];
-  [self addChild:_scorecard  z:100];
+    if(_scorecard != nil) return;
+    
+    //[self removeChild:self.hudLayer cleanup:YES];
+    
+    _scorecard = [[ScoreCard alloc] initWithScore:score level:1 time:time];
+    [self addChild:_scorecard  z:100];
 }
 
 - (void) showDeath
 {
-  if(_deathcard != nil) return;
-  
-  GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
-  [self removeChild:scene->_hudLayer cleanup:YES];
-  
-  _deathcard = [[DeathCard alloc] init];
-  [self addChild:_deathcard  z:100];
+    if(_deathcard != nil) return;
+    
+    //[self removeChild:self.hudLayer cleanup:YES];
+    
+    _deathcard = [[DeathCard alloc] init];
+    [self addChild:_deathcard  z:100];
 }
 
 - (GameScene *) sceneFromCurrent
 {
-  return [GameScene sceneWithLevel:_level];
+    return [GameScene sceneWithLevel:_level];
 }
 
 - (void) dealloc
 {
-  NSLog(@"Dealloc GameScene");
-  [_scorecard release];
-  [_deathcard release];
-  [_hudLayer release];
-  [_gameLayer release];
-  [_background release];
-  //[_engine release];
-  [_environment release];
-  [self removeAllChildrenWithCleanup:YES];
-  [super dealloc];
+    NSLog(@"Dealloc GameScene");
+    
+    //[[GameObjectCache sharedGameObjectCache] addBackground:nil];
+    //[[GameObjectCache sharedGameObjectCache] addGameLayer:nil];
+    //[[GameObjectCache sharedGameObjectCache] addGameScene:nil];
+    
+    [self removeAllChildrenWithCleanup:YES];
+    
+    [super dealloc];
+    
 }
 
 @end

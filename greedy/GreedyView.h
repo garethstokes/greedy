@@ -18,9 +18,7 @@
   cpShape *_radarShape;
   
   cpShape *_shape;
-  cpShape *_iris[16];
-  cpShape *_irisBoundingCircle;
-  cpShapeNode  *_eyeBall;
+
   int _thrusting;
   int _feeding;
   CCAction *_thrustAction;
@@ -54,9 +52,6 @@
 - (void) setThrusting:(int)value;
 - (void) updateFeeding:(int) value;
 - (BOOL) isThrusting;
-- (float) getEyePositionForCurrentSprite;
-- (void) addCrazyEye:(SpaceManagerCocos2d *)manager;
-- (void) removeCrazyEyeAndContainer;
 
 //radar stuff
 - (void) startRadar;

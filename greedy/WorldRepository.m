@@ -25,31 +25,42 @@
 
 - (World *) findWorldBy:(int) worldId
 {
-  if (worldId > 12) worldId = 1;
-  World *world = [[[World alloc] init] autorelease];
-  
-  //Load in the plist and start processing the stuff
-  NSString *directory = [NSString stringWithFormat:@"worlds/world_%i", worldId];
-  
-  for (int i = 1; i <= 12; i++)
-  {
-    GreedyLevel *level = [[[GreedyLevel alloc] init] autorelease];
-    NSString *levelPath = [NSString stringWithFormat:@"level_%i", i];
-    NSString *subDirectory = [NSString stringWithFormat:@"%@/%@", directory, levelPath];
-   
-    //NSString *configurationFilename = [[NSBundle mainBundle] pathForResource:@"level" ofType:@"plist" inDirectory:subDirectory];
-    NSString *configurationFilename = [NSString stringWithFormat:@"%@/level.plist", subDirectory];
+    if (worldId > 12) worldId = 1;
+    World *world = [[World alloc] init];
     
-    NSString *path = [CCFileUtils fullPathFromRelativePath:configurationFilename];
-    NSDictionary *dictLevel = [[[NSDictionary alloc] initWithContentsOfFile:path] autorelease];
+    //Load in the plist and start processing the stuff
+    NSString *directory = [NSString stringWithFormat:@"worlds/world_%i", worldId];
     
-    if ([dictLevel count] == 0) continue;
+    for (int i = 1; i <= 12; i++)
+    {
+        GreedyLevel *level = [[GreedyLevel alloc] init];
+        
+        NSString *levelPath = [NSString stringWithFormat:@"level_%i", i];
+        NSString *subDirectory = [NSString stringWithFormat:@"%@/%@", directory, levelPath];
+        
+        //NSString *configurationFilename = [[NSBundle mainBundle] pathForResource:@"level" ofType:@"plist" inDirectory:subDirectory];
+        NSString *configurationFilename = [NSString stringWithFormat:@"%@/level.plist", subDirectory];
+        
+        NSString *path = [CCFileUtils fullPathFromRelativePath:configurationFilename];
+        NSDictionary *dictLevel = [[NSDictionary alloc] initWithContentsOfFile:path];
+        
+        if ([dictLevel count] != 0)
+        { 
+            [level importFromDictionary:dictLevel];
+            
+            [world.levels addObject:level];
+        }
+        
+        [level release];
+        [dictLevel release];
+    }
     
-    [level importFromDictionary:dictLevel];
-    [world.levels addObject:level];
-  }
-  
-  return world;
+    return world;
+}
+
+- (void)dealloc {
+    CCLOG(@"dealloc world repository");
+    [super dealloc];
 }
 
 @end

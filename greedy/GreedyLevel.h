@@ -6,15 +6,12 @@
 //  Copyright 2011 Spacehip Studio. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
 @interface ShooterConfig : NSObject {
-  int _rotation;
-  CGPoint _position;
 }
-
-@property int rotation;
-@property CGPoint position;
+@property (assign) int rotation;
+@property (assign) CGPoint position;
 - (void) importFromDictionary:(NSDictionary *)dictionary;
 @end
 
@@ -47,7 +44,6 @@
   int _asteroidFieldWidth;
   
   NSMutableArray *_staticAsteroids;
-  NSMutableArray *_shooters;
   
   CGPoint _greedyPosition;
   

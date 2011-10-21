@@ -11,10 +11,7 @@
 
 @interface DeathCard : CCLayer {
 @private
-  CCSprite *header;
-  CCSprite *skull;
-  CCSprite *message;
-  
+    CCSprite *message;
 }
 
 @end

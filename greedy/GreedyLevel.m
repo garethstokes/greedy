@@ -9,16 +9,21 @@
 #import "GreedyLevel.h"
 
 @implementation ShooterConfig
-@synthesize rotation=_rotation;
-@synthesize position=_position;
+@synthesize rotation;
+@synthesize position;
 
 - (void) importFromDictionary:(NSDictionary *)dictionary
 {
-    _rotation = [[dictionary objectForKey: @"rotation"] intValue];
+    rotation = [[dictionary objectForKey: @"rotation"] intValue];
     
     float x = [[dictionary objectForKey: @"x"] floatValue];
     float y = [[dictionary objectForKey: @"y"] floatValue];
-    _position = CGPointMake(x,y);
+    position = CGPointMake(x,y);
+}
+
+- (void)dealloc {
+    CCLOG(@"dealloc ShooterConfig");
+    [super dealloc];
 }
 
 @end
@@ -65,7 +70,7 @@
 @synthesize environment           = _environment;
 @synthesize startPosition         = _startPosition;
 @synthesize finishPosition        = _finishPosition;
-@synthesize shooters              = _shooters;
+@synthesize shooters;
 
 - (id)init
 {
@@ -96,17 +101,19 @@
     }
     
     //shooters
-    NSArray *shooters = [dictionary valueForKey:@"AsteroidShooters"];
-    _shooters = [NSMutableArray array];
-    for (int i = 0; i < [shooters count]; i++)
+    NSArray *newShooters = [dictionary valueForKey:@"AsteroidShooters"];
+    self.shooters = [NSMutableArray array];
+    CCLOG(@"sh rc : %d", [self.shooters retainCount]);
+    for (int i = 0; i < [newShooters count]; i++)
     {
-        id a = [[[ShooterConfig alloc] init] autorelease];
-        NSDictionary *config = [shooters objectAtIndex:i];
-        [a importFromDictionary:config];
-        [_shooters addObject:a];
+        ShooterConfig *aShot = [[ShooterConfig alloc] init];
+            NSDictionary *config = [newShooters objectAtIndex:i];
+            [aShot importFromDictionary:config];
+            [self.shooters addObject:aShot];
+        [aShot release];
     }  
     
-    NSLog(@"_shooters retain count : %d", [_shooters retainCount]);
+    NSLog(@"_shooters retain count : %d", [self.shooters retainCount]);
     
     NSDictionary *startPosition = [dictionary valueForKey: @"StartPosition"];
     _greedyPosition = CGPointMake([[startPosition objectForKey: @"x"] floatValue],[[startPosition objectForKey: @"y"] floatValue]);
@@ -120,6 +127,14 @@
     
     NSDictionary *endPosition = [dictionary valueForKey: @"EndPosition"];
     _finishPosition = CGPointMake([[endPosition objectForKey: @"x"] floatValue],[[endPosition objectForKey: @"y"] floatValue]);
+}
+
+- (void)dealloc {
+    CCLOG(@"dealloc GreedyLevel");
+
+    [self.shooters release];
+    
+    [super dealloc];
 }
 
 @end

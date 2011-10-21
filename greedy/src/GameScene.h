@@ -18,7 +18,6 @@
 
 @interface GameScene : CCScene {
   GameEnvironment *environment;
-  GDKaosEngine *_engine;
   Background *background;
   GameLayer *gameLayer;
   HudLayer *hudLayer;
@@ -29,9 +28,6 @@
 }
 
 @property (nonatomic, retain) GameEnvironment *environment;
-//@property (nonatomic, retain) GDKaosEngine *engine;
-//@property (nonatomic, retain) Background *background;
-//@property (nonatomic, retain) HudLayer *hudLayer;
 @property (nonatomic, retain) GameScene *scene;
 
 + (id) sceneWithLevel:(int)level;

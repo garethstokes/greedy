@@ -62,8 +62,9 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         _environment = environment;
         _debugLayer = nil;
         
-        WorldRepository *repository = [[[WorldRepository alloc] init] autorelease];
-        World *w1 = [repository findWorldBy:1];
+        WorldRepository *repository = [[WorldRepository alloc] init];
+            World *w1 = [repository findWorldBy:1];
+        [repository release];
         GreedyLevel *level = [w1.levels objectAtIndex:(l - 1)];        
         
         // asteroids.

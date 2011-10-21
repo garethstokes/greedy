@@ -77,7 +77,7 @@ PartData sexyParts[] = {
         [self setPosition:position];
         
         //load in the animation
-        SpriteHelperLoader *loader = [[[SpriteHelperLoader alloc] initWithContentOfFile:@"explosion"] autorelease];
+        SpriteHelperLoader *loader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"explosion"];
         
         [self addRingOfFire: loader position: position inLayer: inLayer];
         
@@ -87,9 +87,12 @@ PartData sexyParts[] = {
             PartData part = normalParts[i];
             if ((arc4random() %100 + 1) <= part.percentageChanceOfEmmiting)
             {
-                [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:position inLayer:inLayer world: [[GameObjectCache sharedGameObjectCache] space]];
+                NSArray * ary = [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:position inLayer:inLayer world: [[GameObjectCache sharedGameObjectCache] space]];
+                [ary release];
             }
         }
+        
+        [loader release];
     }
     
     return self;

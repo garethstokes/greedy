@@ -12,7 +12,6 @@
 #import "SpaceManagerCocos2d.h"
 
 @interface GameEnvironment : CCNode {
-    SpaceManagerCocos2d *_spaceManager;
 }
 
 @property (nonatomic, retain) SpaceManagerCocos2d *manager;

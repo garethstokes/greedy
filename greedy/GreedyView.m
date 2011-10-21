@@ -257,8 +257,10 @@
 
 -(void) explode
 {
-    Explosion *exp = [[[Explosion alloc] initWithPosition:[_sprite position] inLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease];
-    [self addChild:exp];
+    //Explosion *exp = 
+    [[[Explosion alloc] initWithPosition:[_sprite position] inLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease];
+    //[self addChild:exp];
+    //[exp release];
 }
 
 
@@ -266,11 +268,8 @@
 {
     NSLog(@"Dealloc GreedyView");
     [_actionCloseDown release];
-    //[_actionFlame release];
     [_actionOpenUp release];
     [_actionWobble release];
-    //[self removeCrazyEyeAndContainer];
-	//[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [self removeAllChildrenWithCleanup:YES];
 	[super dealloc];
 }

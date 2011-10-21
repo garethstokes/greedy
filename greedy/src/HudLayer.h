@@ -13,7 +13,6 @@
 #import "OptionsMenuLayer.h"
 
 @interface HudLayer : CCLayer {
-  GameLayer *_gameLayer;
   LifeMeter *_lifeMeter;
   CCLabelTTF *_debugLabel;
   CCLabelTTF *_toggleLabel;

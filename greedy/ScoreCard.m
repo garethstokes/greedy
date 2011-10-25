@@ -137,7 +137,7 @@
 
 - (id) initWithScore:(int)score level:(int)level time:(ccTime)time
 {
-    if([self init] == nil) return nil;
+    if((self = [self init]) == nil) return nil;
     
     _level = level;
     

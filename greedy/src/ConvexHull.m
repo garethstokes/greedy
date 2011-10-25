@@ -15,11 +15,13 @@
 const int SKIN_WIDTH = 250;
 const int SKIN_HEIGHT = 250;
 
-const int POINTS_PER_QUADRANT = 9;
+const int POINTS_PER_QUADRANT = 8;
 const int SIZE_SMALL = 30;
 const int SIZE_MEDIUM = 60;
 const int SIZE_LARGE = 90;
 const int SIZE_ENORMOUS = 250;
+
+#define RADIUS_VARIANT 5
 
 
 int pointLocation(CGPoint A, CGPoint B, CGPoint P) {
@@ -176,6 +178,48 @@ NSMutableArray *createAsteroidShape(int width, int height)
   
   return points; 
 }
+NSMutableArray *createAsteroidShapeRound(int width, int height)
+{
+    NSMutableArray *points = [[[NSMutableArray alloc] init] autorelease];
+    
+    int halfWidth = width / 2;
+    int halfHeight = height / 2;
+    
+    CGPoint q1, q2, q3, q4;
+    
+    for(int i = 0 ; i < POINTS_PER_QUADRANT; i ++){
+        //lt
+        int a = 180 + (arc4random() % 90);
+        int x = halfWidth * cos(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        int y = halfHeight * sin(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        q1 = ccp(x, y); 
+        [points addObject:[NSValue valueWithCGPoint:q1]];
+        
+        //rt
+        a = 270 + (arc4random() % 90);
+        x = halfWidth * cos(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        y = halfHeight * sin(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        q2 = ccp(x, y);
+        [points addObject:[NSValue valueWithCGPoint:q2]];
+        
+        
+        //rb
+        a = 0 + (arc4random() % 90);
+        x = halfWidth * cos(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        y = halfHeight * sin(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        q3 = ccp(x, y);
+        [points addObject:[NSValue valueWithCGPoint:q3]];
+        
+        //lb
+        a = 90 + (arc4random() % 90);
+        x = halfWidth * cos(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        y = halfHeight * sin(a) + (arc4random() % RADIUS_VARIANT * CCRANDOM_MINUS1_1());
+        q4 = ccp(x, y);;
+        [points addObject:[NSValue valueWithCGPoint:q4]];
+    }
+    
+    return points; 
+}
 
 - (id) initWithStaticSize:(int)size;
 {
@@ -209,7 +253,7 @@ NSMutableArray *createAsteroidShape(int width, int height)
   _size = thisSize;
   
   //Random gen points for asteroids
-  spriteHull = createAsteroidShape(thisSize, thisSize);
+  spriteHull = createAsteroidShapeRound(thisSize, thisSize);
   _points = quickHull(spriteHull);
   return self;
 }

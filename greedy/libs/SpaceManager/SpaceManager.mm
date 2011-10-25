@@ -327,17 +327,17 @@ static void removeCollision(cpSpace *space, void *collision, void *inv_list)
 
 -(id) initWithSize:(int)size count:(int)count
 {
-	id me = [self initWithSpace:cpSpaceNew()];
+	self = [self initWithSpace:cpSpaceNew()];
 	
 	cpSpaceResizeStaticHash(_space, size, count);
 	cpSpaceResizeActiveHash(_space, size, count);
 	
-	return me;
+	return self;
 }
 
 -(id) initWithSpace:(cpSpace*)space
 {	
-	[super init];
+	self = [super init];
 	
 	static BOOL initialized = NO;	
 	if (!initialized)

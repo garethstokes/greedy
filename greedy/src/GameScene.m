@@ -42,6 +42,8 @@
     
     [[GameObjectCache sharedGameObjectCache] addGameScene: scene];
     
+    scene->level = level;
+    
 	return scene;
 }
 
@@ -63,7 +65,7 @@
 
 - (GameScene *) sceneFromCurrent
 {
-    return [GameScene sceneWithLevel:_level];
+    return [GameScene sceneWithLevel:level];
 }
 
 - (void) dealloc

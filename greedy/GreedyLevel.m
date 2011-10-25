@@ -21,6 +21,14 @@
     position = CGPointMake(x,y);
 }
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)dealloc {
     CCLOG(@"dealloc ShooterConfig");
     [super dealloc];
@@ -132,7 +140,7 @@
 - (void)dealloc {
     CCLOG(@"dealloc GreedyLevel");
 
-    [self.shooters release];
+    [shooters release];
     
     [super dealloc];
 }

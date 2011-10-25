@@ -77,11 +77,7 @@
 {  
 	if ((self = [super init]))  
 	{   
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 		self.isTouchEnabled = YES;  
-#else if (__MAC_OS_X_VERSION_MAX_ALLOWED)
-		self.isMouseEnabled = YES;
-#endif
 		value = 0;  
 		
 		// add the slider background  

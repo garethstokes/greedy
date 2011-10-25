@@ -372,33 +372,33 @@
 {	
 	if(nil != shapes && 0 != space)
 	{
-        cpBody* body = 0;
         for(NSValue* value in shapes)
         {
             
             cpShape* shape = (cpShape*)[value pointerValue];
-            body = shape->body;
+            
+            cpBody* body = shape->body;
             
             cpSpaceRemoveShape(space, shape);
             cpShapeFree(shape);
+
+            CCSprite* ccsprite = (CCSprite*)body->data;
+            
+            if([ccsprite usesBatchNode])
+            {
+                CCSpriteBatchNode* node = [ccsprite batchNode];
+                [node removeChild:ccsprite cleanup:YES];
+            }
+            else
+            {
+                [layer removeChild:ccsprite cleanup:YES];
+            }
+            
+            cpSpaceRemoveBody(space, body);
+            cpBodyFree(body);
+            
+            return true;
         }
-        
-        CCSprite* ccsprite = (CCSprite*)body->data;
-        
-        if([ccsprite usesBatchNode])
-        {
-            CCSpriteBatchNode* node = [ccsprite batchNode];
-            [node removeChild:ccsprite cleanup:YES];
-        }
-        else
-        {
-            [layer removeChild:ccsprite cleanup:YES];
-        }
-		
-        cpSpaceRemoveBody(space, body);
-        cpBodyFree(body);
-        
-        return true;
 	}
 	
 	return false;

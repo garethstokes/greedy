@@ -31,7 +31,7 @@
   //animation
   CCAnimation *_animationOpenUp;
   CCAnimate *_actionOpenUp;
-  CCAnimate *_actionCloseDown;
+  CCActionInterval *_actionCloseDown;
   CCAnimate *_actionFlame;
   CCAnimate *_actionWobble;
   

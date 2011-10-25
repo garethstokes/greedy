@@ -106,7 +106,7 @@ static const GLfloat SMGR_cPt[CP_CIRCLE_PT_COUNT+CP_CIRCLE_PT_COUNT] = {
 
 - (id) initWithShape:(cpShape*)shape;
 {
-	[super initWithShape:shape];
+	self = [super initWithShape:shape];
 	
 	_color = ccBLACK;
 	_opacity = 255;
@@ -381,7 +381,7 @@ static const GLfloat SMGR_cPt[CP_CIRCLE_PT_COUNT+CP_CIRCLE_PT_COUNT] = {
 
 - (id) initWithShape:(cpShape*)shape texture:(CCTexture2D*)texture
 {
-	[super initWithShape:shape];
+	self = [super initWithShape:shape];
 	
 	_color = ccWHITE;
 	_textureOffset = ccp(0,0);

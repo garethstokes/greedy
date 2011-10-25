@@ -24,14 +24,13 @@
   ScoreCard *_scorecard;
   DeathCard *_deathcard;
   GameScene *scene;
-  int _level;
+  int level;
 }
 
 @property (nonatomic, retain) GameEnvironment *environment;
 @property (nonatomic, retain) GameScene *scene;
 
 + (id) sceneWithLevel:(int)level;
-//+ (GameScene *) current;
 
 - (void) showScore:(int) score time:(ccTime)time;
 - (void) showDeath;

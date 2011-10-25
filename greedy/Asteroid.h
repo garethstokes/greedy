@@ -13,22 +13,34 @@
 #import "ConvexHull.h"
 #import "GameConfig.h"
 
+typedef struct _ccV2F_T2F
+{
+	//! vertices (2F)
+	ccVertex2F		vertices;
+	//! tex coords (2F)
+	ccTex2F			texCoords;
+} ccV2F_T2F;
+
 @interface Asteroid : CCNode {
-  ConvexHull *_convexHull;
-  int _mass;
-  cpShape *_shape;
+    int _size;
+    CGFloat _area;
+    int _mass;
+    float _ore;
+    
+    //physics
+    cpShape *_shape;
+    
+    //variables to hold the opengl rendering structure
+    int  vertexCount;
+    ccV2F_T2F *fan;
 }
 
 @property (nonatomic) cpShape *shape;
 
-- (id) initWithEnvironment:(GameEnvironment *)environment withPosition:(cpVect)position withLayer:(cpLayers)withLayer;
-
-- (id) initWithEnvironment:(GameEnvironment *)environment 
-                 withLayer:(cpLayers)withLayer 
-                  withSize:(float) size 
-              withPosition:(cpVect) withPosition;
+-(id) initWithRadius:(int)size atPosition:(CGPoint)position;
 
 - (cpFloat) area; 
 - (int) mass;
+- (float) mineOre:(float)time length:(float)length;
 
 @end

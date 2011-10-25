@@ -23,7 +23,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape)
 
-	[self init];
+	self = [self init];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	

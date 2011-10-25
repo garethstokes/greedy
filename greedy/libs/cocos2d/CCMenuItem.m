@@ -61,7 +61,7 @@ const uint32_t	kZoomActionTag = 0xc0c05002;
 
 -(id) initWithTarget:(id) rec selector:(SEL) cb
 {
-	if((self=[super init]) ) {
+	if((self = [super init]) != nil) {
 	
 		anchorPoint_ = ccp(0.5f, 0.5f);
 		NSMethodSignature * sig = nil;

@@ -11,8 +11,9 @@
 #import "CCSlider.h"
 
 @interface OptionsMenuLayer : CCLayer <CCSliderControlDelegate> {
-  CCSlider *controlSlider;
-  CCSlider *soundSlider;  
+    CCSlider *controlSlider;
+    CCSlider *controlDebug;
+    CCSlider *soundSlider;  
 }
 
 - (id) init:(bool)inGame;

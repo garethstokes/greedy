@@ -69,7 +69,7 @@ static void drawCircle(cpVect center, float r, int segs)
 
 - (id) initWithConstraint:(cpConstraint*)c
 {
-	[super init];
+	self = [super init];
 	
 	_constraint = c;
 	_color = ccBLACK;

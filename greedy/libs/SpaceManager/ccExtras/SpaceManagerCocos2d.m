@@ -84,7 +84,7 @@ void smgrEachShapeAsChildren(void *ptr, void* data)
 
 -(id) initWithSpace:(cpSpace*)space
 {
-	[super initWithSpace:space];
+	self = [super initWithSpace:space];
 	
 	_iterateFunc = &smgrDefaultEachShape;
 	

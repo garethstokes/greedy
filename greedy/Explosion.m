@@ -87,10 +87,11 @@ PartData sexyParts[] = {
             PartData part = normalParts[i];
             if ((arc4random() %100 + 1) <= part.percentageChanceOfEmmiting)
             {
-                NSArray * ary = [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:position inLayer:inLayer world: [[GameObjectCache sharedGameObjectCache] space]];
-                [ary release];
+                [[loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:position inLayer:inLayer world: [[GameObjectCache sharedGameObjectCache] space]] autorelease];
             }
         }
+        
+        //[[[GameObjectCache sharedGameObjectCache] spaceManager] applyLinearExplosionAt:position radius:20 maxForce:50 layers:LAYER_RADAR group:CP_NO_GROUP];
         
         [loader release];
     }

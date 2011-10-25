@@ -12,32 +12,33 @@
 
 @implementation ChooseLevelLayer
 
-SpriteHelperLoader * _loader;
-
 +(id) scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	ChooseLevelLayer *layer = [[[ChooseLevelLayer alloc] initWithColor:ccc4(35,31,32,255) width:320 height:480] autorelease];
+	ChooseLevelLayer *layer = [[ChooseLevelLayer alloc] initWithColor:ccc4(35,31,32,255) width:320 height:480];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
+    
+    [layer release];
 	
 	// return the scene
 	return scene;
 }
 
-- (void)loadLevelButtons {
+- (void)loadLevelButtons:(SpriteHelperLoader *) loader
+{
     // ADD MENU ITEMS
     
     CCMenu *menu = [CCMenu menuWithItems:nil];
 
     for (int i = 0; i < 4; i++)
     {
-        CCMenuItemImage *image = [CCMenuItemImage itemFromNormalSprite:[_loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
-                                                        selectedSprite:[_loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
+        CCMenuItemImage *image = [CCMenuItemImage itemFromNormalSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
+                                                        selectedSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
                                                                 target:self 
                                                               selector:@selector(buttonTapped:)];
         
@@ -50,14 +51,15 @@ SpriteHelperLoader * _loader;
     
 }
 
-- (void)loadLevelBlocks {
+- (void)loadLevelBlocks:(SpriteHelperLoader *) loader
+{
   for (int i = 0; i < 4; i++)
         {
             int blocks = [[SettingsManager sharedSettingsManager] getInt:@"Level1_Block_count" withDefault:(arc4random() % 4)];
             
             for(int j = 0; j < blocks; j++)
             {
-                [_loader spriteWithUniqueName:@"scoreBlock" atPosition:ccp(58 + (i * 65) + (j * 8), 325 + (j * 8)) inLayer:self];
+                [loader spriteWithUniqueName:@"scoreBlock" atPosition:ccp(58 + (i * 65) + (j * 8), 325 + (j * 8)) inLayer:self];
             }
         }
 
@@ -68,22 +70,23 @@ SpriteHelperLoader * _loader;
     self = [super initWithColor:color width:w height:h];
     
     if (self) {
-        _loader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"chooselevel"];
+        SpriteHelperLoader * newLoader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"chooselevel"];
         
-        [_loader spriteWithUniqueName:@"background" atPosition:ccp(150, 245) inLayer:self];
+        [newLoader spriteWithUniqueName:@"background" atPosition:ccp(150, 245) inLayer:self];
         
-        [self loadLevelButtons];
+        [self loadLevelButtons: newLoader];
         
-        [self loadLevelBlocks];
+        [self loadLevelBlocks: newLoader];
 
-        CCMenu *menu = [CCMenu menuWithItems:[CCMenuItemImage itemFromNormalSprite:[_loader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
-                                                                    selectedSprite:[_loader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
+        CCMenu *menu = [CCMenu menuWithItems:[CCMenuItemImage itemFromNormalSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
+                                                                    selectedSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
                                                                             target:self 
                                                                           selector:@selector(buttonBackToMainMenu:)], nil];
         [menu setPosition:ccp(54, 48)];
+
         [self addChild:menu];
         
-        [_loader release];
+        [newLoader release];
     }
     
     return self;
@@ -98,4 +101,10 @@ SpriteHelperLoader * _loader;
 - (void)buttonBackToMainMenu:(id)sender {
     [[CCDirector sharedDirector] replaceScene:[MainMenuLayer scene]];
 }
+
+- (void)dealloc {
+    [self removeAllChildrenWithCleanup:YES];
+    [super dealloc];
+}
+
 @end

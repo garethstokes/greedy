@@ -24,16 +24,19 @@
   
   for(int i=0; i < _total; i++)
   {
-    Asteroid *a = [[[Asteroid alloc] initWithEnvironment:_environment 
-                                               withLayer:LAYER_ASTEROID
-                                                withSize:4
-                                            withPosition:pos] autorelease];
+//    Asteroid *a = [[[Asteroid alloc] initWithEnvironment:_environment 
+//                                               withLayer:LAYER_ASTEROID
+//                                                withSize:4
+//                                            withPosition:pos] autorelease];
+
+      //Asteroid *a = [[[Asteroid alloc] initWithRadius:9 atPosition:pos] autorelease];
+      
+      
+   // cpShape *shape = [a shape];
+   // cpBodyApplyImpulse(shape->body, cpv(300000,0), cpv(0,0));
     
-    cpShape *shape = [a shape];
-    cpBodyApplyImpulse(shape->body, cpv(300000,0), cpv(0,0));
-    
-    [_asteroids addObject:a];
-    [self addChild:a];
+   // [_asteroids addObject:a];
+   // [self addChild:a];
   }
   
   _time = 0;

@@ -11,7 +11,6 @@
 #import "chipmunk.h"
 #import "GameConfig.h"
 #import "GameScene.h"
-#import "AsteroidSprite.h"
 #import "GameObjectCache.h"
 
 @implementation Greedy
@@ -167,7 +166,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
         //CCLOG(@"Line Meets asteroid begin");
         
         CP_ARBITER_GET_SHAPES(arb, a, b);
-        AsteroidSprite * ast = (AsteroidSprite *)(b->data);
+        Asteroid * ast = (Asteroid *)(b->data);
         cpFloat len = cpArbiterGetDepth(arb, 0);
         
         float oreScore = [ast mineOre:1.0 length:len];
@@ -189,7 +188,7 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
 	{
         //CCLOG(@"Line Meets asteroid post solve");
         CP_ARBITER_GET_SHAPES(arb, a, b);
-        AsteroidSprite * ast = (AsteroidSprite *)(b->data);
+        Asteroid * ast = (Asteroid *)(b->data);
         cpFloat len = cpArbiterGetDepth(arb, 0);
         
         float oreScore = [ast mineOre:1.0 length:len];

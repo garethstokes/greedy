@@ -10,9 +10,7 @@
 #import "SpriteHelperLoader.h"
 #import "SettingsManager.h"
 
-@interface ChooseLevelLayer : CCLayerColor{
-    //SpriteHelperLoader * _loader;
-}
+@interface ChooseLevelLayer : CCLayerColor
 
 +(id) scene;
 

@@ -11,7 +11,6 @@
 #import "chipmunk.h"
 #import "SpaceManagerCocos2d.h"
 #import "GDKaosEngine.h"
-#import "AsteroidSprite.h"
 #import "ConvexHull.h"
 #import "GameScene.h"
 #import "GameObjectCache.h"
@@ -150,7 +149,7 @@
     if( (self=[super init])) {
         
         //allocate our space manager
-        self.manager = [[SpaceManagerCocos2d alloc] init];
+        self.manager = [[[SpaceManagerCocos2d alloc] init] autorelease];
         [[GameObjectCache sharedGameObjectCache] addSpaceManager:self.manager];
         [self.manager setGravity:ccp(0,0)];
     }
@@ -160,7 +159,6 @@
 - (void) dealloc
 {
     NSLog(@"Dealloc GameEnvironment");
-    [self.manager release];
     CCLOG(@"manager refCount: %d", [self.manager retainCount]);
     
     [self removeAllChildrenWithCleanup:YES];

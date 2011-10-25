@@ -70,6 +70,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         // asteroids.
         int asteroidFieldSize = [level asteroidFieldWidth] * [level asteroidFieldHeight];
         _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:asteroidFieldSize density:2.0f Layer:LAYER_ASTEROID];
+        [_asteroidField setPosition:ccp(160, 300)];
         [self addChild:_asteroidField];
         [_asteroidField release];
         
@@ -92,12 +93,15 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         for (int i = 0; i < [level.staticAsteroids count]; i++)
         {
             StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
-            Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
-                                                                    withLayer:LAYER_ASTEROID 
-                                                                     withSize:[config size]
-                                                                 withPosition:[config position]];
-            [self addChild:staticAsteroid1];
-            [staticAsteroid1 release];
+//            Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
+//                                                                    withLayer:LAYER_ASTEROID 
+//                                                                     withSize:[config size]
+//                                                                 withPosition:[config position]];
+            
+            //Asteroid* staticAsteroid1= [[Asteroid alloc] initWithRadius:[config size] atPosition:[config position]];
+            
+            //[self addChild:staticAsteroid1];
+            //[staticAsteroid1 release];
         }
         
         // greedy!
@@ -383,7 +387,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 {
     NSLog(@"Dealloc GameLayer");
     [_environment.manager stop];
-    //[_asteroidField release];
     //[_shooters release];
     //[_greedy release];
     [ self removeAllChildrenWithCleanup:YES];

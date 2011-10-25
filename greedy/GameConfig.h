@@ -9,6 +9,8 @@
 #ifndef __GAME_CONFIG_H
 #define __GAME_CONFIG_H
 
+#define CCLOGRETAINCOUNT(obj) CCLOG(@"%@ retain count[%d]", @"obj", [obj retainCount])
+
 //
 // Supported Autorotations:
 //		None,
@@ -22,7 +24,7 @@
 //
 // Define here the type of autorotation that you want for your game
 //
-#define GAME_AUTOROTATION kGameAutorotationNone
+#define GAME_AUTOROTATION kGameAutorotationUIViewController
 
 // turns on debug messages and such
 #define kDebugFalse 0
@@ -31,7 +33,11 @@
 
 // Fuel rate give is 10 bars * Fuel Rate = seconds of fuel
 // therefor 0.5 = 10 / 0.5 = 20 seconds of fuel
-#define FUELRATE 20
+#define FUELRATE 0.25
+
+
+//Factor to multuple the area of an asteroid to get the ore size inside
+#define ORE_FACTOR 25.0
 
 //greedy stuff
 #define GREEDYMASS    2000.0f

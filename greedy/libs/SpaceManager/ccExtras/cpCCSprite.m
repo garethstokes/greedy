@@ -62,7 +62,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithFile:filename];
+	self = [super initWithFile:filename];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	
@@ -73,7 +73,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithBatchNode:spriteSheet rect:rect];
+	self = [super initWithBatchNode:spriteSheet rect:rect];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	
@@ -84,7 +84,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithTexture:texture];
+	self = [super initWithTexture:texture];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	
@@ -95,7 +95,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithTexture:texture rect:rect];
+	self = [super initWithTexture:texture rect:rect];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	
@@ -106,7 +106,7 @@
 {	
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithSpriteFrameName:spriteFrameName];
+	self = [super initWithSpriteFrameName:spriteFrameName];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	
@@ -117,7 +117,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithSpriteFrame:spriteFrame];
+	self = [super initWithSpriteFrame:spriteFrame];
 
 	CPCCNODE_SYNC_POS_ROT(self);
 	
@@ -128,7 +128,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithBatchNode:batchNode rect:rect];
+	self = [super initWithBatchNode:batchNode rect:rect];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	
@@ -139,7 +139,7 @@
 {
 	CPCCNODE_MEM_VARS_INIT(shape);
 	
-	[super initWithBatchNode:batchNode rectInPixels:rect];
+	self = [super initWithBatchNode:batchNode rectInPixels:rect];
 	
 	CPCCNODE_SYNC_POS_ROT(self);
 	

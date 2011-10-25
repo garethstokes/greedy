@@ -10,11 +10,21 @@
 #import "SpaceManagerCocos2d.h"
 #import "GameConfig.h"
 #import "GameEnvironment.h"
+#import "utlist.h"
+#import "Asteroid.h"
 
-@interface AsteroidField : CCNode {
+//This fan object to create a DL of
+typedef struct AsteroidElement{
+    Asteroid *asteroid;
+    struct AsteroidElement *prev; /* needed for a doubly-linked list only */
+    struct AsteroidElement *next; /* needed for singly- or doubly-linked lists */
+}AsteroidElement;
+
+@interface AsteroidField : CCLayer {
+    CCSprite *_asteroidSkin;
+    AsteroidElement *asteroids_;
+    CCSprite *_noise;
 }
-
-//@property (nonatomic, retain) NSMutableArray *asteroids;
 
 - (id) initWithEnvironment:(GameEnvironment *)environment totalArea:(float)totalArea density:(float)density  Layer:(cpLayers)Layer;
 

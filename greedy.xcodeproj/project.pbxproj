@@ -205,7 +205,6 @@
 		AB52EAE7140A8B17007E263B /* eye-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52EAE6140A8B16007E263B /* eye-hd.png */; };
 		AB52EAE9140A8B63007E263B /* bg_stars-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52EAE8140A8B63007E263B /* bg_stars-hd.png */; };
 		AB52EAEB140A8B92007E263B /* nebula-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52EAEA140A8B92007E263B /* nebula-hd.png */; };
-		AB52EAED140A8CEB007E263B /* Meteor1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52EAEC140A8CEB007E263B /* Meteor1-hd.png */; };
 		AB52EAEF140A8D9C007E263B /* end_point_ready-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52EAEE140A8D9C007E263B /* end_point_ready-hd.png */; };
 		AB52EAF1140A8DC0007E263B /* end_point-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52EAF0140A8DC0007E263B /* end_point-hd.png */; };
 		AB52EAF3140A8E06007E263B /* start_point-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52EAF2140A8E06007E263B /* start_point-hd.png */; };
@@ -216,6 +215,7 @@
 		AB8633A413A5E7FA00CB8E31 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB86339D13A5E7FA00CB8E31 /* Icon-Small@2x.png */; };
 		AB87A1D913A63C5100675796 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = AB87A1D813A63C5000675796 /* AsteroidField.m */; };
 		AB97EAF913C3493400A72AE5 /* sparkle.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB97EAF813C3493400A72AE5 /* sparkle.plist */; };
+		AB9E6D981453032A005CF458 /* asteroidSkins.pshs in Resources */ = {isa = PBXBuildFile; fileRef = AB9E6D951453032A005CF458 /* asteroidSkins.pshs */; };
 		ABA532181429E32C006222B3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA532161429E32C006222B3 /* Icon.png */; };
 		ABA532191429E32C006222B3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA532171429E32C006222B3 /* Icon@2x.png */; };
 		ABA71EFD140A242F006E3C19 /* options_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA71EFB140A242F006E3C19 /* options_bg-hd.png */; };
@@ -226,6 +226,9 @@
 		ABC0B67D144FB1E60044EF94 /* explosion-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B67A144FB1E60044EF94 /* explosion-hd.png */; };
 		ABC0B67E144FB1E60044EF94 /* explosion.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B67B144FB1E60044EF94 /* explosion.png */; };
 		ABC0B67F144FB1E60044EF94 /* explosion.pshs in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B67C144FB1E60044EF94 /* explosion.pshs */; };
+		ABC5D55A1455A5AC00271C97 /* asteroidSkins-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC5D5581455A5AC00271C97 /* asteroidSkins-hd.png */; };
+		ABC5D55B1455A5AC00271C97 /* asteroidSkins.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC5D5591455A5AC00271C97 /* asteroidSkins.png */; };
+		ABC5D55D1455A9F800271C97 /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC5D55C1455A9F800271C97 /* noise.png */; };
 		ABC883FB13C4B74B00EFBFC6 /* btn_choose_level_off.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC883EE13C4B74B00EFBFC6 /* btn_choose_level_off.png */; };
 		ABC883FC13C4B74B00EFBFC6 /* btn_choose_level_on.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC883EF13C4B74B00EFBFC6 /* btn_choose_level_on.png */; };
 		ABC883FD13C4B74B00EFBFC6 /* btn_replay_off.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC883F013C4B74B00EFBFC6 /* btn_replay_off.png */; };
@@ -265,7 +268,6 @@
 		E716F0AB13AC67DE00F5F348 /* start_point.png in Resources */ = {isa = PBXBuildFile; fileRef = E716F0A913AC67DE00F5F348 /* start_point.png */; };
 		E7188B8313964A41005A1E81 /* GreedyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7188B8213964A41005A1E81 /* GreedyView.m */; };
 		E722C706139F791900A757A0 /* BackgroundAsteroids.m in Sources */ = {isa = PBXBuildFile; fileRef = E722C705139F791900A757A0 /* BackgroundAsteroids.m */; };
-		E73C9AC91375023000A7DF8D /* AsteroidSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AC61375023000A7DF8D /* AsteroidSprite.m */; };
 		E73C9AD31375024300A7DF8D /* GameEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACC1375024300A7DF8D /* GameEnvironment.m */; };
 		E73C9AD41375024300A7DF8D /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9ACE1375024300A7DF8D /* GameLayer.m */; };
 		E73C9AD51375024300A7DF8D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E73C9AD01375024300A7DF8D /* GameScene.m */; };
@@ -308,7 +310,6 @@
 		E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DB137684ED0092DDA6 /* bg_stars.png */; };
 		E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DC137684ED0092DDA6 /* nebula.png */; };
 		E7B6D5E11376852D0092DDA6 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6D5E01376852D0092DDA6 /* Background.m */; };
-		E7CE21711371780600A700EA /* Meteor1.png in Resources */ = {isa = PBXBuildFile; fileRef = E7CE21701371780600A700EA /* Meteor1.png */; };
 		E7CE9EDF13D6DC34009D9D6A /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EDE13D6DC34009D9D6A /* World.m */; };
 		E7CE9EE313D6DC99009D9D6A /* GreedyLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE213D6DC99009D9D6A /* GreedyLevel.m */; };
 		E7CE9EE613D6E890009D9D6A /* WorldRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE9EE513D6E890009D9D6A /* WorldRepository.m */; };
@@ -671,7 +672,6 @@
 		AB52EAE6140A8B16007E263B /* eye-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye-hd.png"; sourceTree = "<group>"; };
 		AB52EAE8140A8B63007E263B /* bg_stars-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_stars-hd.png"; sourceTree = "<group>"; };
 		AB52EAEA140A8B92007E263B /* nebula-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nebula-hd.png"; sourceTree = "<group>"; };
-		AB52EAEC140A8CEB007E263B /* Meteor1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Meteor1-hd.png"; sourceTree = "<group>"; };
 		AB52EAEE140A8D9C007E263B /* end_point_ready-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end_point_ready-hd.png"; sourceTree = "<group>"; };
 		AB52EAF0140A8DC0007E263B /* end_point-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end_point-hd.png"; sourceTree = "<group>"; };
 		AB52EAF2140A8E06007E263B /* start_point-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_point-hd.png"; sourceTree = "<group>"; };
@@ -683,6 +683,7 @@
 		AB87A1D713A63C5000675796 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		AB87A1D813A63C5000675796 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
 		AB97EAF813C3493400A72AE5 /* sparkle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sparkle.plist; path = ../backgrounds/sparkle.plist; sourceTree = "<group>"; };
+		AB9E6D951453032A005CF458 /* asteroidSkins.pshs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = asteroidSkins.pshs; sourceTree = "<group>"; };
 		ABA532161429E32C006222B3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		ABA532171429E32C006222B3 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		ABA71EFB140A242F006E3C19 /* options_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "options_bg-hd.png"; sourceTree = "<group>"; };
@@ -696,6 +697,9 @@
 		ABC0B67A144FB1E60044EF94 /* explosion-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion-hd.png"; sourceTree = "<group>"; };
 		ABC0B67B144FB1E60044EF94 /* explosion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion.png; sourceTree = "<group>"; };
 		ABC0B67C144FB1E60044EF94 /* explosion.pshs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = explosion.pshs; sourceTree = "<group>"; };
+		ABC5D5581455A5AC00271C97 /* asteroidSkins-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asteroidSkins-hd.png"; sourceTree = "<group>"; };
+		ABC5D5591455A5AC00271C97 /* asteroidSkins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroidSkins.png; sourceTree = "<group>"; };
+		ABC5D55C1455A9F800271C97 /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
 		ABC883EE13C4B74B00EFBFC6 /* btn_choose_level_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_choose_level_off.png; sourceTree = "<group>"; };
 		ABC883EF13C4B74B00EFBFC6 /* btn_choose_level_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_choose_level_on.png; sourceTree = "<group>"; };
 		ABC883F013C4B74B00EFBFC6 /* btn_replay_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_replay_off.png; sourceTree = "<group>"; };
@@ -749,8 +753,6 @@
 		E7188B8213964A41005A1E81 /* GreedyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreedyView.m; sourceTree = "<group>"; };
 		E722C704139F791900A757A0 /* BackgroundAsteroids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAsteroids.h; sourceTree = "<group>"; };
 		E722C705139F791900A757A0 /* BackgroundAsteroids.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundAsteroids.m; sourceTree = "<group>"; };
-		E73C9AC51375023000A7DF8D /* AsteroidSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsteroidSprite.h; path = src/AsteroidSprite.h; sourceTree = "<group>"; };
-		E73C9AC61375023000A7DF8D /* AsteroidSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsteroidSprite.m; path = src/AsteroidSprite.m; sourceTree = "<group>"; };
 		E73C9ACB1375024300A7DF8D /* GameEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameEnvironment.h; path = src/GameEnvironment.h; sourceTree = "<group>"; };
 		E73C9ACC1375024300A7DF8D /* GameEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameEnvironment.m; path = src/GameEnvironment.m; sourceTree = "<group>"; };
 		E73C9ACD1375024300A7DF8D /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = src/GameLayer.h; sourceTree = "<group>"; };
@@ -805,7 +807,6 @@
 		E7B6D5DC137684ED0092DDA6 /* nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nebula.png; sourceTree = "<group>"; };
 		E7B6D5DF1376852D0092DDA6 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		E7B6D5E01376852D0092DDA6 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
-		E7CE21701371780600A700EA /* Meteor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meteor1.png; sourceTree = "<group>"; };
 		E7CE9EDD13D6DC34009D9D6A /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		E7CE9EDE13D6DC34009D9D6A /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
 		E7CE9EE113D6DC99009D9D6A /* GreedyLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreedyLevel.h; sourceTree = "<group>"; };
@@ -897,15 +898,13 @@
 			children = (
 				E797951713750132005D0310 /* Protocols */,
 				AB045A7213714D3C001253D2 /* AppDelegate.h */,
+				AB045A7313714D3C001253D2 /* AppDelegate.m */,
 				E7D499E8143C6949006BEF1E /* AsteroidShooter.h */,
 				E7D499E9143C6949006BEF1E /* AsteroidShooter.m */,
-				AB045A7313714D3C001253D2 /* AppDelegate.m */,
 				E76AE4B51376757000A94EDA /* Asteroid.h */,
 				E76AE4B61376757100A94EDA /* Asteroid.m */,
 				AB87A1D713A63C5000675796 /* AsteroidField.h */,
 				AB87A1D813A63C5000675796 /* AsteroidField.m */,
-				E73C9AC51375023000A7DF8D /* AsteroidSprite.h */,
-				E73C9AC61375023000A7DF8D /* AsteroidSprite.m */,
 				E7B6D5DF1376852D0092DDA6 /* Background.h */,
 				E7B6D5E01376852D0092DDA6 /* Background.m */,
 				E722C704139F791900A757A0 /* BackgroundAsteroids.h */,
@@ -1570,10 +1569,12 @@
 		E7CE216F1371780600A700EA /* meteor */ = {
 			isa = PBXGroup;
 			children = (
+				ABC5D55C1455A9F800271C97 /* noise.png */,
+				ABC5D5581455A5AC00271C97 /* asteroidSkins-hd.png */,
+				ABC5D5591455A5AC00271C97 /* asteroidSkins.png */,
+				AB9E6D951453032A005CF458 /* asteroidSkins.pshs */,
 				AB97EAF813C3493400A72AE5 /* sparkle.plist */,
 				AB3E0F3813B2067D00702DA2 /* AsteroidPuff.plist */,
-				AB52EAEC140A8CEB007E263B /* Meteor1-hd.png */,
-				E7CE21701371780600A700EA /* Meteor1.png */,
 			);
 			path = meteor;
 			sourceTree = "<group>";
@@ -1630,6 +1631,7 @@
 		AB0458B413714D3A001253D2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Spacehip Studio";
 			};
 			buildConfigurationList = AB0458B713714D3A001253D2 /* Build configuration list for PBXProject "greedy" */;
@@ -1657,7 +1659,6 @@
 				AB0458E513714D3A001253D2 /* iTunesArtwork in Resources */,
 				AB045A9813715E31001253D2 /* (null) in Resources */,
 				AB045A9A13715E97001253D2 /* (null) in Resources */,
-				E7CE21711371780600A700EA /* Meteor1.png in Resources */,
 				E7E5D94813750A0E004283ED /* eye.png in Resources */,
 				E7E5D94913750A0E004283ED /* eyebrow.png in Resources */,
 				E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */,
@@ -1739,7 +1740,6 @@
 				AB52EAE7140A8B17007E263B /* eye-hd.png in Resources */,
 				AB52EAE9140A8B63007E263B /* bg_stars-hd.png in Resources */,
 				AB52EAEB140A8B92007E263B /* nebula-hd.png in Resources */,
-				AB52EAED140A8CEB007E263B /* Meteor1-hd.png in Resources */,
 				AB52EAEF140A8D9C007E263B /* end_point_ready-hd.png in Resources */,
 				AB52EAF1140A8DC0007E263B /* end_point-hd.png in Resources */,
 				AB52EAF3140A8E06007E263B /* start_point-hd.png in Resources */,
@@ -1790,6 +1790,10 @@
 				ABC0B67D144FB1E60044EF94 /* explosion-hd.png in Resources */,
 				ABC0B67E144FB1E60044EF94 /* explosion.png in Resources */,
 				ABC0B67F144FB1E60044EF94 /* explosion.pshs in Resources */,
+				AB9E6D981453032A005CF458 /* asteroidSkins.pshs in Resources */,
+				ABC5D55A1455A5AC00271C97 /* asteroidSkins-hd.png in Resources */,
+				ABC5D55B1455A5AC00271C97 /* asteroidSkins.png in Resources */,
+				ABC5D55D1455A9F800271C97 /* noise.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1936,7 +1940,6 @@
 				E708BE6A137166C000E45FDD /* tinyxmlerror.cpp in Sources */,
 				E708BE6B137166C000E45FDD /* tinyxmlparser.cpp in Sources */,
 				E708BE6C137166C000E45FDD /* SpaceManager.mm in Sources */,
-				E73C9AC91375023000A7DF8D /* AsteroidSprite.m in Sources */,
 				E73C9AD31375024300A7DF8D /* GameEnvironment.m in Sources */,
 				E73C9AD41375024300A7DF8D /* GameLayer.m in Sources */,
 				E73C9AD51375024300A7DF8D /* GameScene.m in Sources */,
@@ -2018,6 +2021,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = greedy/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = greedy/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2034,6 +2038,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = greedy/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = greedy/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -13,11 +13,10 @@
 
 @implementation AsteroidField
 
-
--(void) createAsteroid:(int) size position:(CGPoint)position
+-(Asteroid *) createAsteroid:(int) size position:(CGPoint)position Layer:(cpLayers)Layer
 {
     //create the object to add to the array
-    Asteroid *newAsteroid = [[[Asteroid alloc] initWithRadius:size atPosition:position] retain];
+    Asteroid *newAsteroid = [[[Asteroid alloc] initWithRadius:size atPosition:position inLayer:Layer] retain];
     
     AsteroidElement *asteroidItem = malloc(sizeof(AsteroidElement));
     
@@ -26,9 +25,11 @@
     asteroidItem->prev = NULL;
     
     DL_APPEND(asteroids_, asteroidItem);
+    
+    return  newAsteroid;
 }
 
-- (id) initWithEnvironment:(GameEnvironment *)environment totalArea:(float)totalArea density:(float)density Layer:(cpLayers)Layer
+- (id) initWithSize:(CGSize)size density:(float)density Layer:(cpLayers)Layer
 {
     if((self=[super init])){
         
@@ -36,21 +37,25 @@
         
         _asteroidSkin = [[spriteLoader spriteWithUniqueName:@"normal" atPosition:ccp(0,0) inLayer:nil] retain];
         
-        _noise = [[CCSprite spriteWithFile:@"noise.png"] retain];
+        if(Layer == LAYER_BACKGROUND)
+            _noise = [[CCSprite spriteWithFile:@"noise.png"] retain];
+        else
+            _noise = [[CCSprite spriteWithFile:@"noise_game.png"] retain];
+        
+        _layer = Layer;
+        
+        _size = size;
         
         [spriteLoader release];
         
-        GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:CGSizeMake(500.0, 1800.0) withDensity:density];
+        GDKaosEngine *engine = [[GDKaosEngine alloc] initWorldSize:size withDensity:density];
         
         asteroids_ = NULL;
 
         //while we have space lets add an asteroid
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 15; i++)
         {
-            int x = (arc4random() % (500 / 2)) * (CCRANDOM_MINUS1_1());
-            int y = (arc4random() % (1800 / 2)) * (CCRANDOM_MINUS1_1());
-            
-            [self createAsteroid:(arc4random() % 10) position:ccp(x, y)];
+            [self addAsteroid:arc4random() % ((Layer == LAYER_BACKGROUND) ? 8 : 10)];
         }
         
         [engine release];
@@ -59,7 +64,19 @@
     return self;
 }
 
+- (Asteroid *) addAsteroid:(int)size
+{
+    int x = (arc4random() % (int)(_size.width / 2.0f));
+    x = x * RANDOM_NEG1_OR_1();
+    int y = (arc4random() % (int)(_size.height / 2.0f)) * (RANDOM_NEG1_OR_1());
+        
+    return [self createAsteroid:size position:ccp(x, y) Layer:_layer];
+};
 
+- (Asteroid *) addAsteroid:(CGPoint)position size:(int)size
+{
+    return [self createAsteroid:size position:position Layer:_layer]; 
+}
 
 -(void) draw
 {
@@ -68,14 +85,14 @@
     AsteroidElement *elem;
     AsteroidElement *temp;
     
-    // Now blend in the gradient
+    // load in the main skin
     glBindTexture(GL_TEXTURE_2D, _asteroidSkin.texture.name);
     DL_FOREACH_SAFE(asteroids_, elem, temp)
     {
         [elem->asteroid visit];
     }
     
-    //for each asteroid in this field render it
+    //blend in the gradient
     glBindTexture(GL_TEXTURE_2D, _noise.texture.name);
     glBlendFunc(GL_DST_COLOR, GL_ZERO);
     DL_FOREACH_SAFE(asteroids_, elem, temp)

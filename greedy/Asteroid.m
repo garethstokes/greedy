@@ -13,8 +13,6 @@
 
 @implementation Asteroid
 
-@synthesize shape=_shape;
-
 //- (id) initWithEnvironment:(GameEnvironment *)environment 
 //                 withLayer:(cpLayers)withLayer 
 //                  withSize:(float) size 
@@ -56,20 +54,26 @@
 //    return self;
 //}
 
--(void) createAsteroid:(float) radius
+-(void) createAsteroid:(cpLayers)inLayer
 {
     ConvexHull *_convexHull = [[[ConvexHull alloc] initWithStaticSize:_size] autorelease];
     _area = [_convexHull area];
     
-    vertexCount = [[_convexHull points] count] + 2;
+    int radius = [_convexHull size];
     
-    fan = (ccV2F_T2F *)malloc(sizeof(ccV2F_T2F) * vertexCount);
+    _vertexCount = [[_convexHull points] count] + 2;
+    
+    _fan = (ccV2F_T2F *)malloc(sizeof(ccV2F_T2F) * _vertexCount);
     
     //center point
-    fan[0].vertices.x = 0;
-    fan[0].vertices.y = 0;
-    fan[0].texCoords.u = 0.5;
-    fan[0].texCoords.v = 0.5;
+    _fan[0].vertices.x = 0;
+    _fan[0].vertices.y = 0;
+    
+    float uOffset = (128 + ((radius < 128) ? ((arc4random() % (128 - 90)) * RANDOM_NEG1_OR_1()) : 0)) * CC_CONTENT_SCALE_FACTOR();
+    float vOffset = (128 + ((radius < 128) ? ((arc4random() % (128 - 90)) * RANDOM_NEG1_OR_1()) : 0)) * CC_CONTENT_SCALE_FACTOR();
+    
+    _fan[0].texCoords.u = uOffset / (256.0 * CC_CONTENT_SCALE_FACTOR());//0.5;
+    _fan[0].texCoords.v = vOffset / (256.0 * CC_CONTENT_SCALE_FACTOR());//0.5;
     //CCLOG(@"fan[%d] x:%f y:%f u:%f v:%f", 0, fan[0].vertices.x, fan[0].vertices.y, fan[0].texCoords.u , fan[0].texCoords.v );
     
     int index = 1;
@@ -77,10 +81,10 @@
     {
         CGPoint p = [point CGPointValue];
         
-        fan[index].vertices.x = p.x;
-        fan[index].vertices.y = p.y;
-        fan[index].texCoords.u = ((128.0 * CC_CONTENT_SCALE_FACTOR()) + p.x) / (256.0 * CC_CONTENT_SCALE_FACTOR());
-        fan[index].texCoords.v = ((128.0 * CC_CONTENT_SCALE_FACTOR()) + p.y) / (256.0 * CC_CONTENT_SCALE_FACTOR());
+        _fan[index].vertices.x = p.x;
+        _fan[index].vertices.y = p.y;
+        _fan[index].texCoords.u = (uOffset + p.x * CC_CONTENT_SCALE_FACTOR()) / (256.0 * CC_CONTENT_SCALE_FACTOR());
+        _fan[index].texCoords.v = (vOffset + p.y * CC_CONTENT_SCALE_FACTOR()) / (256.0 * CC_CONTENT_SCALE_FACTOR());
         
         //CCLOG(@"fan[%d] x:%f y:%f u:%f v:%f", index, fan[index].vertices.x, fan[index].vertices.y, fan[index].texCoords.u , fan[index].texCoords.v );
         
@@ -89,10 +93,10 @@
     
     //copy the first point again to close the last triangle
     CGPoint p = [[[_convexHull points] objectAtIndex:0] CGPointValue];
-    fan[index].vertices.x = p.x;
-    fan[index].vertices.y = p.y;
-    fan[index].texCoords.u = ((128.0 * CC_CONTENT_SCALE_FACTOR()) + p.x) / (256.0 * CC_CONTENT_SCALE_FACTOR());
-    fan[index].texCoords.v = ((128.0 * CC_CONTENT_SCALE_FACTOR()) + p.y) / (256.0 * CC_CONTENT_SCALE_FACTOR());
+    _fan[index].vertices.x = p.x;
+    _fan[index].vertices.y = p.y;
+    _fan[index].texCoords.u = (uOffset + p.x * CC_CONTENT_SCALE_FACTOR()) / (256.0 * CC_CONTENT_SCALE_FACTOR());
+    _fan[index].texCoords.v = (vOffset + p.y * CC_CONTENT_SCALE_FACTOR()) / (256.0 * CC_CONTENT_SCALE_FACTOR());
     
     //CCLOG(@"fan[%d] x:%f y:%f u:%f v:%f", index, fan[index].vertices.x, fan[index].vertices.y, fan[index].texCoords.u , fan[index].texCoords.v );
     
@@ -102,14 +106,19 @@
               rotation:CCRANDOM_0_1()
               points:[_convexHull points]];
     
-    _shape->layers = LAYER_ASTEROID;
+    _shape->layers = inLayer;
     _shape->collision_type = kAsteroidCollisionType;
     _shape->body->p = positionInPixels_;
+    cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(arc4random() % 360)); 
     
+    if(inLayer == LAYER_BACKGROUND || radius > 99)
+    {
+       // cpBodySleep(_shape->body);
+    };
 }
 
 
--(id) initWithRadius:(int)size atPosition:(CGPoint)position
+-(id) initWithRadius:(int)size atPosition:(CGPoint)position inLayer:(cpLayers)inLayer
 {
     if(!(self = [super init])) return nil;
     
@@ -117,20 +126,20 @@
     _mass = size * 100;
     _ore = size * ORE_FACTOR;
     
+    [self setPositionInPixels:position];
     
-    [self setPosition:position];
-    
-    [self createAsteroid:size];
-    
+    [self createAsteroid:inLayer];
+
     CPCCNODE_MEM_VARS_INIT(_shape);
-    
+   
     CPCCNODE_SYNC_POS_ROT(self);
     
     return self;
 }
 
--(void) draw{
-    NSUInteger offset = (NSUInteger)fan;
+-(void) draw
+{
+    NSUInteger offset = (NSUInteger)_fan;
     
     glColor4f(1, 1, 1, 1);
     
@@ -140,7 +149,7 @@
     diff = offsetof( ccV2F_T2F, texCoords);
     glTexCoordPointer(2, GL_FLOAT, 16, (GLvoid*) (offset+diff));
     
-    glDrawArrays(GL_TRIANGLE_FAN, 0, (GLsizei)(vertexCount));
+    glDrawArrays(GL_TRIANGLE_FAN, 0, (GLsizei)(_vertexCount));
 }
 
 - (CGPoint) position
@@ -177,13 +186,6 @@
     
     return extracted;
 }
-
-//- (void)dealloc
-//{
-//    NSLog(@"Dealloc Asteroid");
-//    [self removeAllChildrenWithCleanup:YES];
-//    [super dealloc];
-//}
 
 CPCCNODE_FUNC_SRC
 

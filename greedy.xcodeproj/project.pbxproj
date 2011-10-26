@@ -182,6 +182,7 @@
 		AB3E0F3913B2067D00702DA2 /* AsteroidPuff.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB3E0F3813B2067D00702DA2 /* AsteroidPuff.plist */; };
 		AB44442013927F07006BA256 /* LifeMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB44441F13927F07006BA256 /* LifeMeter.m */; };
 		AB448800144FD31D00FE17C7 /* GameObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4487FF144FD31D00FE17C7 /* GameObjectCache.m */; };
+		AB4E17C714584B600031F889 /* noise_game.png in Resources */ = {isa = PBXBuildFile; fileRef = AB4E17C614584B600031F889 /* noise_game.png */; };
 		AB4EDD33140A96320072A2CF /* mainmenu_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB4EDD31140A96320072A2CF /* mainmenu_bg-hd.png */; };
 		AB4EDD34140A96320072A2CF /* mainmenu_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AB4EDD32140A96320072A2CF /* mainmenu_bg.png */; };
 		AB501B0014175EF600C5B5F8 /* AccelerometerSimulation.m in Sources */ = {isa = PBXBuildFile; fileRef = AB501AFF14175EF600C5B5F8 /* AccelerometerSimulation.m */; };
@@ -647,6 +648,7 @@
 		AB44441F13927F07006BA256 /* LifeMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeMeter.m; sourceTree = "<group>"; };
 		AB4487FE144FD31D00FE17C7 /* GameObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectCache.h; sourceTree = "<group>"; };
 		AB4487FF144FD31D00FE17C7 /* GameObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObjectCache.m; sourceTree = "<group>"; };
+		AB4E17C614584B600031F889 /* noise_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise_game.png; sourceTree = "<group>"; };
 		AB4EDD31140A96320072A2CF /* mainmenu_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainmenu_bg-hd.png"; sourceTree = "<group>"; };
 		AB4EDD32140A96320072A2CF /* mainmenu_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu_bg.png; sourceTree = "<group>"; };
 		AB501AFE14175EF600C5B5F8 /* AccelerometerSimulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerSimulation.h; sourceTree = "<group>"; };
@@ -1569,6 +1571,7 @@
 		E7CE216F1371780600A700EA /* meteor */ = {
 			isa = PBXGroup;
 			children = (
+				AB4E17C614584B600031F889 /* noise_game.png */,
 				ABC5D55C1455A9F800271C97 /* noise.png */,
 				ABC5D5581455A5AC00271C97 /* asteroidSkins-hd.png */,
 				ABC5D5591455A5AC00271C97 /* asteroidSkins.png */,
@@ -1794,6 +1797,7 @@
 				ABC5D55A1455A5AC00271C97 /* asteroidSkins-hd.png in Resources */,
 				ABC5D55B1455A5AC00271C97 /* asteroidSkins.png in Resources */,
 				ABC5D55D1455A9F800271C97 /* noise.png in Resources */,
+				AB4E17C714584B600031F889 /* noise_game.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

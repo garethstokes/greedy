@@ -33,6 +33,8 @@ typedef struct _ccV2F_T2F
     //variables to hold the opengl rendering structure
     int  vertexCount;
     ccV2F_T2F *fan;
+    
+    CPCCNODE_MEM_VARS
 }
 
 @property (nonatomic) cpShape *shape;

@@ -45,7 +45,7 @@
         asteroids_ = NULL;
 
         //while we have space lets add an asteroid
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 30; i++)
         {
             int x = (arc4random() % (500 / 2)) * (CCRANDOM_MINUS1_1());
             int y = (arc4random() % (1800 / 2)) * (CCRANDOM_MINUS1_1());

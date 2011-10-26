@@ -117,9 +117,14 @@
     _mass = size * 100;
     _ore = size * ORE_FACTOR;
     
-    [self createAsteroid:size];
     
     [self setPosition:position];
+    
+    [self createAsteroid:size];
+    
+    CPCCNODE_MEM_VARS_INIT(_shape);
+    
+    CPCCNODE_SYNC_POS_ROT(self);
     
     return self;
 }
@@ -173,11 +178,13 @@
     return extracted;
 }
 
-- (void)dealloc
-{
-    NSLog(@"Dealloc Asteroid");
-    [self removeAllChildrenWithCleanup:YES];
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+//    NSLog(@"Dealloc Asteroid");
+//    [self removeAllChildrenWithCleanup:YES];
+//    [super dealloc];
+//}
+
+CPCCNODE_FUNC_SRC
 
 @end

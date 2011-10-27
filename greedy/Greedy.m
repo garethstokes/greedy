@@ -67,7 +67,7 @@
     [self addRadarSensor: body manager: manager];
     
     // view
-    GreedyView *aview = [[GreedyView alloc] initWithShape:shape manager:manager radar:_radarShape];
+    GreedyView *aview = [[GreedyView alloc] initWithShape:shape radar:_radarShape];
     [[GameObjectCache sharedGameObjectCache] addGreedyView:aview];
     [self addChild:aview];
     [aview release];

@@ -13,6 +13,7 @@
 #import "Explosion.h"
 #import "GameObjectCache.h"
 #import "GreedyEye.h"
+#import "SpriteHelperLoader.h"
 
 @implementation GreedyView
 
@@ -74,20 +75,30 @@
     
 }
 
-- (id) initWithShape:(cpShape *)shape  manager:(SpaceManagerCocos2d *)manager radar:(cpShape *)radar
+-(void) createSpriteObjects
+{
+    loaderGreedySprite = [[SpriteHelperLoader alloc] initWithContentOfFile:@"greedysprite"];
+    
+    //[loader spriteWithUniqueName:@"flamestart" atPosition:CGPointZero inLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]];
+    
+    [loaderGreedySprite release];
+}
+
+- (id) initWithShape:(cpShape *)shape  radar:(cpShape *)radar
 {
     CCLOG(@" GreedyView: initWithShape");
     
     if(!(self = [super init])) return nil;
     
     _shape = shape;
-    _manager = manager;
     _radarShape = radar;
     
     _thrusting = kGreedyThrustNone;
     _feeding = kGreedyIdle;
     
     [self createSprites];
+    
+    [self createSpriteObjects];
     
     //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
     shape->layers = LAYER_GREEDY;
@@ -126,43 +137,30 @@
     }
 }
 
+-(void) updateThrustingAnimation
+{
+    
+}
+
 - (void) setThrusting:(int)value
 {
     if (value == kGreedyThrustNone)
     {
         NSLog(@"update thrusting: nil");
         
-        [_batch removeChild:_flames cleanup:YES];
-        _flames = nil;
+        [loaderGreedySprite runAnimationWithUniqueName:@"flameon" onBody:_shape->body];
         
-        _thrusting = value;
-        return;
     }
     
     if (value >= kGreedyThrustLittle)
     {
         NSLog(@"update thrusting: zomg flames!");    
         
-        NSMutableArray *flameFrames = [NSMutableArray array];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_3.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_4.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_5.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_6.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_7.png"]];
-        
-        CCAnimation *animation = [CCAnimation animationWithFrames:flameFrames delay:0.1f];
-        CCAnimate *action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]];
-        
-        _flames = [CCSprite spriteWithSpriteFrameName:@"flames_3.png"];
-        _flames.position = ccp(50, 90);
-        [_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  
-        [_flames runAction:action];
-        
-        [_batch addChild:_flames z:-1];
-        
-        _thrusting = value;
-        return;
+
     }
+    
+    _thrusting = value;
+    return;
 }
 
 - (BOOL) isThrusting

@@ -10,48 +10,45 @@
 #import "SpaceManager.h"
 #import "SpaceManagerCocos2d.h"
 #import "GameConfig.h"
+#import "SpriteHelperLoader.h"
+#import "Radar.h"
 
-@interface GreedyView : CCNode {
-  CCSprite *_radar;
-  cpCCSprite *_sprite;
-  CCSprite *_flames;
-  cpShape *_radarShape;
-  
-  cpShape *_shape;
-
-  int _thrusting;
-  int _feeding;
-  CCAction *_thrustAction;
-  
-  NSMutableArray *_flameFrames;
-  CCSpriteBatchNode *_batch;
-  
-  SpaceManagerCocos2d *_manager;
-  
-  //animation
-  CCAnimation *_animationOpenUp;
-  CCAnimate *_actionOpenUp;
-  CCActionInterval *_actionCloseDown;
-  CCAnimate *_actionFlame;
-  CCAnimate *_actionWobble;
-  
-  
-  //explosion
-  CCSpriteBatchNode * _batchExplosion;
-  CCSpriteBatchNode * _batchExplosionSexy;
-  cpCCSprite *_spriteExplosion1;
-  
-  //ring of death
-  CCSpriteBatchNode *_batchRingOfDeath;
-  CCSprite *spriteRingOfDeath;
+@interface GreedyView : CCNode<cpCCNodeProtocol> {
+    cpShape *_shape;
+    
+    int _thrusting;
+    int _feeding;
+    CCAction *_thrustAction;
+    
+    NSMutableArray *_flameFrames;
+    CCSpriteBatchNode *_batch;
+        
+    //animation
+    CCAnimation *_animationOpenUp;
+    CCAnimate *_actionOpenUp;
+    CCActionInterval *_actionCloseDown;
+    CCAnimate *_actionFlame;
+    CCAnimate *_actionWobble;
+    
+    //spritehelper objects
+    SpriteHelperLoader * loaderGreedySprite;
+    CCSprite* spriteFlame;
+    CCSprite* spriteGreedy;
+    Radar* spriteRadar;
+    
+    CCAction* animFlameStart;
+    CCAction* animFlameOn;
+    CCAction* animFlameStop;
+    
+    CPCCNODE_MEM_VARS;
 }
 
-- (void) createSprites;
-- (id) initWithShape:(cpShape *)shape manager:(SpaceManagerCocos2d *)manager radar:(cpShape *)radar;
-- (void) step:(ccTime) delta;
+- (id) initWithShape:(cpShape *)shape radar:(cpShape *)radar;
 - (void) setThrusting:(int)value;
 - (void) updateFeeding:(int) value;
 - (BOOL) isThrusting;
+
+-(void) animationEndedFlameStart:(CCSprite*)sprite;
 
 //radar stuff
 - (void) startRadar;

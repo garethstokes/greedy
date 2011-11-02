@@ -35,6 +35,8 @@
 // therefor 0.5 = 10 / 0.5 = 20 seconds of fuel
 #define FUELRATE 0.25
 
+// randomly select -1 or +1
+#define RANDOM_NEG1_OR_1() ((CCRANDOM_MINUS1_1() > 0) ? 1 : -1)
 
 //Factor to multuple the area of an asteroid to get the ore size inside
 #define ORE_FACTOR 25.0

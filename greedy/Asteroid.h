@@ -6,11 +6,9 @@
 //  Copyright 2011 Spacehip Studio. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "chipmunk.h"
-#import "GameEnvironment.h"
-#import "ConvexHull.h"
+#import "SpaceManagerCocos2d.h"
 #import "GameConfig.h"
 
 typedef struct _ccV2F_T2F
@@ -21,23 +19,22 @@ typedef struct _ccV2F_T2F
 	ccTex2F			texCoords;
 } ccV2F_T2F;
 
-@interface Asteroid : CCNode {
+@interface Asteroid : CCNode<cpCCNodeProtocol> {
     int _size;
     CGFloat _area;
     int _mass;
     float _ore;
     
-    //physics
-    cpShape *_shape;
-    
+    cpShape * _shape;
+        
     //variables to hold the opengl rendering structure
-    int  vertexCount;
-    ccV2F_T2F *fan;
+    int  _vertexCount;
+    ccV2F_T2F *_fan;
+    
+    CPCCNODE_MEM_VARS;
 }
 
-@property (nonatomic) cpShape *shape;
-
--(id) initWithRadius:(int)size atPosition:(CGPoint)position;
+-(id) initWithRadius:(int)size atPosition:(CGPoint)position inLayer:(cpLayers)inLayer;
 
 - (cpFloat) area; 
 - (int) mass;

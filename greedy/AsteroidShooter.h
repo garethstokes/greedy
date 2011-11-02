@@ -6,9 +6,8 @@
 //  Copyright 2011 Spacehip Studio. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "GameEnvironment.h"
+#import "AsteroidField.h"
 
 @interface AsteroidShooter : CCNode {
   NSMutableArray *_asteroids;
@@ -19,7 +18,7 @@
   CGPoint _position;
 }
 
-- (id) initWithEnvironment:(GameEnvironment *)environment position:(CGPoint) pos;
+- (id) initWithAsteroidField:(AsteroidField *)field position:(CGPoint) pos;
 - (void) step:(ccTime)delta;
 
 @end

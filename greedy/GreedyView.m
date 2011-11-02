@@ -13,6 +13,7 @@
 #import "Explosion.h"
 #import "GameObjectCache.h"
 #import "GreedyEye.h"
+#import "SpriteHelperLoader.h"
 
 @implementation GreedyView
 
@@ -23,107 +24,62 @@
     return 15.0f;
 }
 
-
-
-- (void) createSprites
+-(void) createSpriteObjects
 {
-    //load in the masters files ... ie the PNG and zwoptex plist
-    _batch = [CCSpriteBatchNode batchNodeWithFile:@"greedy.png" capacity:15]; 
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"greedy.plist"]; 
+    loaderGreedySprite = [[SpriteHelperLoader alloc] initWithContentOfFile:@"greedysprite"];
     
+    spriteFlame = [[loaderGreedySprite spriteWithUniqueName:@"flames_1-hd" atPosition:ccp(0,-35) inLayer:nil] retain];
+    [self addChild:spriteFlame z:-1]; 
     
-    //Create sequences
+    spriteGreedy = [[loaderGreedySprite spriteWithUniqueName:@"greedy_close_body-hd" atPosition:ccp(0,0) inLayer:nil] retain];
+    [self addChild:spriteGreedy];
     
-    
-    //flame
-    NSMutableArray *flameFrames = [NSMutableArray array];
-    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_3.png"]];
-    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_4.png"]];
-    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_5.png"]];
-    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_6.png"]];
-    [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_7.png"]];
-    
-    CCAnimation *animation = [CCAnimation animationWithFrames:flameFrames delay:0.1f];
-    [[CCAnimationCache sharedAnimationCache] addAnimation:animation name:@"flames"];
-    _actionFlame = [CCAnimate actionWithDuration:0.1 animation:[[CCAnimationCache sharedAnimationCache] animationByName:@"flames"] restoreOriginalFrame:NO];
-    
-    //openUp
-    NSMutableArray *_aryOpenUp = [NSMutableArray array];
-    [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_1.png"]];
-    [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_2.png"]];
-    [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_3.png"]];
-    [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_4.png"]];
-    [_aryOpenUp addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5.png"]];
-    
-    _animationOpenUp = [CCAnimation animationWithFrames:_aryOpenUp];
-    _actionOpenUp    = [[CCAnimate actionWithDuration:0.05 animation:_animationOpenUp restoreOriginalFrame:NO] retain];
-    
-    //closeDown
-    _actionCloseDown = [[_actionOpenUp reverse] retain];
-    [_actionCloseDown setDuration:0.2];
-    
-    //head wobble open
-    NSMutableArray *wobbleFrames = [NSMutableArray array];
-    
-    [wobbleFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_a.png"]];
-    [wobbleFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_open_5_offset_b.png"]];
-    
-    CCAnimation *animationWobble = [CCAnimation animationWithFrames:wobbleFrames delay:0.1f];
-    _actionWobble = [[CCRepeatForever actionWithAction:[CCAnimate actionWithDuration:0.2 animation:animationWobble restoreOriginalFrame:NO]] retain];
-    
+    CCSprite *spriteTemp = [loaderGreedySprite spriteWithUniqueName:@"radar_sweep-hd" atPosition:ccp(0,0) inLayer:nil];
+    spriteRadar = [[[Radar alloc] initWithTexture:spriteTemp.texture
+                                             rect:spriteTemp.textureRect] retain];
+    [self addChild:spriteRadar z:1];
+    [self stopRadar];
     
 }
 
-- (id) initWithShape:(cpShape *)shape  manager:(SpaceManagerCocos2d *)manager radar:(cpShape *)radar
+- (id) initWithShape:(cpShape *)shape  radar:(cpShape *)radar
 {
     CCLOG(@" GreedyView: initWithShape");
     
-    if(!(self = [super init])) return nil;
+    CPCCNODE_MEM_VARS_INIT(shape);
     
-    _shape = shape;
-    _manager = manager;
-    _radarShape = radar;
+    if(!(self = [super init])) return nil;
     
     _thrusting = kGreedyThrustNone;
     _feeding = kGreedyIdle;
     
-    [self createSprites];
+    [self createSpriteObjects];
     
     //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
     shape->layers = LAYER_GREEDY;
-    
-    //Body
-    _sprite = [cpCCSprite spriteWithShape:shape spriteFrameName:@"greedy_open_1.png"];
-    [_batch addChild:_sprite];
-    
-    //_sprites
-    [self addChild:_batch];
-    [self goIdle:_sprite];
-    
-    //add crazy eye container
-    //[self addChild:[[[GreedyEye alloc] init] autorelease]];
-    
+
     [self startRadar];
+    
+    CPCCNODE_SYNC_POS_ROT(self);
     
     return self;
 } 
 
-- (void) step:(ccTime) delta
+#pragma mark Thrusting
+
+-(void) updateThrustingAnimation
 {
-    if (_radar != nil)
-    {
-        CGPoint pos = [_sprite position];
-        [_radar setPosition:pos];
-        [_radar setRotation: CC_RADIANS_TO_DEGREES( - _radarShape->body->a)];
-    }
     
-    if (_flames != nil)
-    {
-        [_flames setRotation:[_sprite rotation]];
-        cpFloat angle = _sprite.shape->body->a;
-        cpVect offset = cpvrotate(cpvforangle(angle), ccp(0, -40));
-        [_flames setPosition:cpvadd([_sprite position], offset)];
-    }
+}
+
+-(void) animationEndedFlameStart:(CCSprite*)sprite
+{
+    [loaderGreedySprite runAnimationWithUniqueName:@"flameon" onSprite:sprite];
+}
+
+-(void) animationEndedFlameStop:(CCSprite*)sprite
+{
+    [sprite stopAllActions];
 }
 
 - (void) setThrusting:(int)value
@@ -132,37 +88,27 @@
     {
         NSLog(@"update thrusting: nil");
         
-        [_batch removeChild:_flames cleanup:YES];
-        _flames = nil;
-        
-        _thrusting = value;
-        return;
+        [loaderGreedySprite runAnimationWithUniqueName:@"flamestop" 
+                                              onSprite:spriteFlame
+                                    endNotificationSEL:@selector(animationEndedFlameStop:) 
+                                    endNotificationObj:self]; 
+         
     }
     
     if (value >= kGreedyThrustLittle)
     {
         NSLog(@"update thrusting: zomg flames!");    
         
-        NSMutableArray *flameFrames = [NSMutableArray array];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_3.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_4.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_5.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_6.png"]];
-        [flameFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"flames_7.png"]];
-        
-        CCAnimation *animation = [CCAnimation animationWithFrames:flameFrames delay:0.1f];
-        CCAnimate *action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]];
-        
-        _flames = [CCSprite spriteWithSpriteFrameName:@"flames_3.png"];
-        _flames.position = ccp(50, 90);
-        [_flames setPosition:ccpAdd([_sprite position], ccp(0, -100))];  
-        [_flames runAction:action];
-        
-        [_batch addChild:_flames z:-1];
-        
-        _thrusting = value;
-        return;
+
+        [loaderGreedySprite runAnimationWithUniqueName:@"flamestart" 
+                                              onSprite:spriteFlame
+                                    endNotificationSEL:@selector(animationEndedFlameStart:) 
+                                    endNotificationObj:self]; 
+         
     }
+    
+    _thrusting = value;
+    return;
 }
 
 - (BOOL) isThrusting
@@ -193,18 +139,12 @@
     }
 }
 
+#pragma mark Radar
 
 - (void) startRadar
 {
-    // radar
-    if(_radar == nil)
-    {
-        _radar = [CCSprite spriteWithFile:@"radio_sweep.png"];    
-        [_radar setPosition:[_sprite position]];  
-        [_radar setRotation: _radarShape->body->a];
-        
-        [self addChild:_radar];
-    }
+    [spriteRadar setVisible:YES];
+    [spriteRadar runAction:[CCRepeatForever actionWithAction:[CCRadarRotateBy actionWithDuration:10.0f angle:360]]];
 }
 
 - (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
@@ -216,62 +156,117 @@
 
 - (void) stopRadar
 {
-    if(_radar != nil)
-    {
-        [self stopAllActions]; //remove the radar updater
-        
-        [self removeChild:_radar cleanup:YES];
-        
-        _radar = nil;  
-    }
+    [spriteRadar setVisible:NO];
 }
 
+#pragma mark Greedy Animations
 -(void) openUp
 {
-    [_sprite stopAllActions];
-    [_sprite runAction:[CCSequence actions:_actionOpenUp, 
-                        [CCCallFuncN actionWithTarget:self selector:@selector(wobbleHead:)],
-                        nil]];
+    CCAction * action = [loaderGreedySprite runAnimationWithUniqueName:@"openup" onSprite:spriteGreedy];
+    [spriteGreedy runAction:action];
 }
 
 -(void) closeDown
 { 
-    [_sprite stopAllActions];
-    [_sprite runAction:[CCSequence actions:_actionCloseDown,
-                        [CCCallFuncN actionWithTarget:self selector:@selector(goIdle:)],
-                        nil]];
+    CCAction * action = [loaderGreedySprite runAnimationWithUniqueName:@"closedown" onSprite:spriteGreedy];
+    [spriteGreedy runAction:action];
 }
 
 -(void) wobbleHead:(id)sender
 {
-    [_sprite stopAllActions];
-	[sender runAction:_actionWobble];
+    [loaderGreedySprite runAnimationWithUniqueName:@"headwobble" onSprite:spriteGreedy];
 }
 
 -(void) goIdle:(id)sender
 {
-    _feeding = kGreedyIdle;
-    [sender stopAllActions];
-	[sender setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"greedy_close_body.png"]];
+
 }
 
 -(void) explode
 {
-    //Explosion *exp = 
-    [[[Explosion alloc] initWithPosition:[_sprite position] inLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease];
-    //[self addChild:exp];
-    //[exp release];
+    [[[Explosion alloc] initWithPosition:[self position] inLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease];
+    [self setVisible:NO];
+    //disbale shape in world here -TODO
 }
 
+#pragma mark Spacemanager helpers
 
--(void) dealloc
+- (void) dealloc
 {
-    NSLog(@"Dealloc GreedyView");
-    [_actionCloseDown release];
-    [_actionOpenUp release];
-    [_actionWobble release];
+	[_implementation release];
     [self removeAllChildrenWithCleanup:YES];
 	[super dealloc];
 }
+-(void)setRotation:(float)rot
+{
+	if([_implementation setRotation:rot])
+		[super setRotation:rot];
+}
+-(void)setPosition:(cpVect)pos
+{
+	[_implementation setPosition:pos];
+	[super setPosition:pos];
+}
+-(void) applyImpulse:(cpVect)impulse
+{
+	[_implementation applyImpulse:impulse offset:cpvzero];
+}
+-(void) applyForce:(cpVect)force
+{
+	[_implementation applyForce:force offset:cpvzero];
+}
+-(void) applyImpulse:(cpVect)impulse offset:(cpVect)offset
+{
+	[_implementation applyImpulse:impulse offset:offset];
+}
+-(void) applyForce:(cpVect)force offset:(cpVect)offset
+{
+	[_implementation applyForce:force offset:offset];
+}
+-(void) resetForces
+{
+	[_implementation resetForces];
+}
+-(void) setIgnoreRotation:(BOOL)ignore
+{
+	_implementation.ignoreRotation = ignore;
+}
+-(BOOL) ignoreRotation
+{
+	return _implementation.ignoreRotation;
+}
+-(void) setIntegrationDt:(cpFloat)dt
+{
+	_implementation.integrationDt = dt;
+}
+-(cpFloat) integrationDt
+{
+	return _implementation.integrationDt;
+}
+-(void) setShape:(cpShape*)shape
+{
+	_implementation.shape = shape;
+}
+-(cpShape*) shape
+{
+	return _implementation.shape;
+}
+-(void) setSpaceManager:(SpaceManager*)spaceManager
+{
+	_implementation.spaceManager = spaceManager;
+}
+-(SpaceManager*) spaceManager
+{
+	return _implementation.spaceManager;
+}
+-(void) setAutoFreeShape:(BOOL)autoFree
+{
+	_implementation.autoFreeShape = autoFree;
+}
+-(BOOL) autoFreeShape
+{
+	return _implementation.autoFreeShape;
+}
+
 
 @end

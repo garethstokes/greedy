@@ -12,11 +12,10 @@
 
 @implementation AsteroidShooter
 
-- (id) initWithEnvironment:(GameEnvironment *)environment position:(CGPoint) pos
+- (id) initWithAsteroidField:(AsteroidField *)field position:(CGPoint) pos
 {
   if(!(self = [super init])) return nil;
   
-  _environment = environment;
   _position = pos;
   
   _total = 7;
@@ -24,19 +23,13 @@
   
   for(int i=0; i < _total; i++)
   {
-//    Asteroid *a = [[[Asteroid alloc] initWithEnvironment:_environment 
-//                                               withLayer:LAYER_ASTEROID
-//                                                withSize:4
-//                                            withPosition:pos] autorelease];
-
-      //Asteroid *a = [[[Asteroid alloc] initWithRadius:9 atPosition:pos] autorelease];
-      
-      
-   // cpShape *shape = [a shape];
-   // cpBodyApplyImpulse(shape->body, cpv(300000,0), cpv(0,0));
+    Asteroid *a = [field addAsteroid:4];
+     
+    cpShape *shape = [a shape];
+    cpBodyApplyImpulse(shape->body, cpv(300000,0), cpv(0,0));
     
-   // [_asteroids addObject:a];
-   // [self addChild:a];
+    [_asteroids addObject:a];
+    [self addChild:a];
   }
   
   _time = 0;

@@ -21,7 +21,13 @@ static void createShapeNode(void *ptr, void *layer)
 		cpShapeNode *node = [cpShapeNode nodeWithShape:shape];
 		node.color = color;
 		[(CCLayer*)layer addChild:node];
-	}
+	} else
+    {
+        ccColor3B color = ccc3(rand()%256, rand()%256, rand()%256);
+        cpShapeNode *node = [cpShapeNode nodeWithShape:shape];
+		node.color = color;
+		[(CCLayer*)layer addChild:node];
+    }
 }
 
 //Debug Function!

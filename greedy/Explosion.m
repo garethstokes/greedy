@@ -87,7 +87,7 @@ PartData sexyParts[] = {
             PartData part = normalParts[i];
             if ((arc4random() %100 + 1) <= part.percentageChanceOfEmmiting)
             {
-                [[loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:position inLayer:inLayer world: [[GameObjectCache sharedGameObjectCache] space]] autorelease];
+                [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:position inLayer:inLayer world: [[GameObjectCache sharedGameObjectCache] space]];
             }
         }
         

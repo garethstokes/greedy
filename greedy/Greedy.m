@@ -67,7 +67,7 @@
     [self addRadarSensor: body manager: manager];
     
     // view
-    GreedyView *aview = [[GreedyView alloc] initWithShape:shape manager:manager radar:_radarShape];
+    GreedyView *aview = [[GreedyView alloc] initWithShape:shape radar:_radarShape];
     [[GameObjectCache sharedGameObjectCache] addGreedyView:aview];
     [self addChild:aview];
     [aview release];
@@ -169,18 +169,20 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
         Asteroid * ast = (Asteroid *)(b->data);
         cpFloat len = cpArbiterGetDepth(arb, 0);
         
-        float oreScore = [ast mineOre:1.0 length:len];
-        
-        if( oreScore > 0)
-        { 
-            _score += oreScore;
+        if([ast isKindOfClass:[Asteroid class]]){
+            float oreScore = [ast mineOre:1.0 length:len];
             
-            
-            
-            cpVect *p = malloc(sizeof(cpVect));
-            p[0] = cpArbiterGetPoint(arb, 0);
-            
-            cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
+            if( oreScore > 0)
+            { 
+                _score += oreScore;
+                
+                
+                
+                cpVect *p = malloc(sizeof(cpVect));
+                p[0] = cpArbiterGetPoint(arb, 0);
+                
+                cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
+            }
         }
     }
     
@@ -191,16 +193,18 @@ static void addGreedyPoint(cpSpace *space, void *obj, void *data)
         Asteroid * ast = (Asteroid *)(b->data);
         cpFloat len = cpArbiterGetDepth(arb, 0);
         
-        float oreScore = [ast mineOre:1.0 length:len];
-        
-        if( oreScore > 0)
-        { 
-            _score += oreScore;
+        if([ast isKindOfClass:[Asteroid class]]){
+            float oreScore = [ast mineOre:1.0 length:len];
             
-            cpVect *p = malloc(sizeof(cpVect));
-            p[0] = cpArbiterGetPoint(arb, 0);
-            
-            cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
+            if( oreScore > 0)
+            { 
+                _score += oreScore;
+                
+                cpVect *p = malloc(sizeof(cpVect));
+                p[0] = cpArbiterGetPoint(arb, 0);
+                
+                cpSpaceAddPostStepCallback(space, addGreedyPoint, self, p);
+            }
         }
     }
     
@@ -333,8 +337,8 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 - (void) postStep:(ccTime) delta
 {
     //update the view
-    if(!_exploded)
-        [[[GameObjectCache sharedGameObjectCache] greedyView] step:delta];
+   // if(!_exploded)
+   //     [[[GameObjectCache sharedGameObjectCache] greedyView] step:delta];
 }
 
 - (void) applyThrust
@@ -387,9 +391,9 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
     //[_manager stop];
     
     [[[GameObjectCache sharedGameObjectCache] greedyView] runAction:[CCSequence actions:
-                      [CCMoveBy actionWithDuration:3.0f position:point],
-                      [CCCallFuncN actionWithTarget:t selector:s],
-                      nil ]];
+                                                                     [CCMoveBy actionWithDuration:3.0f position:point],
+                                                                     [CCCallFuncN actionWithTarget:t selector:s],
+                                                                     nil ]];
 }
 
 - (void)dealloc

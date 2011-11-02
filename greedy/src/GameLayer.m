@@ -68,9 +68,9 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         GreedyLevel *level = [w1.levels objectAtIndex:(l - 1)];        
         
         // asteroids.
-        int asteroidFieldSize = [level asteroidFieldWidth] * [level asteroidFieldHeight];
-        _asteroidField = [[AsteroidField alloc] initWithEnvironment:environment totalArea:asteroidFieldSize density:2.0f Layer:LAYER_ASTEROID];
-        [_asteroidField setPosition:ccp(160, 300)];
+        _asteroidField = [[AsteroidField alloc] initWithSize:CGSizeMake([level asteroidFieldWidth], [level asteroidFieldHeight]) density:2.0f Layer:LAYER_ASTEROID];
+        [_asteroidField setPositionInPixels:ccp(0,0)];
+        //[_asteroidField setPositionInPixels:ccp([level.environment width] / 2.0f, [level.environment height] / 2.0f)];
         [self addChild:_asteroidField];
         [_asteroidField release];
         
@@ -80,7 +80,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         for (int i = 0; i < [level.shooters count]; i++)
         {
             ShooterConfig* config = [level.shooters objectAtIndex:i];
-            id shooter = [[[AsteroidShooter alloc] initWithEnvironment:environment position:[config position]] autorelease];
+            id shooter = [[[AsteroidShooter alloc] initWithAsteroidField:_asteroidField position:[config position]] autorelease];
             
             [self addChild:shooter];
             [_shooters addObject:shooter];
@@ -92,6 +92,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         // static asteroids (big ones!)
         for (int i = 0; i < [level.staticAsteroids count]; i++)
         {
+<<<<<<< HEAD
             //StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
 //            Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
 //                                                                    withLayer:LAYER_ASTEROID 
@@ -102,6 +103,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
             
             //[self addChild:staticAsteroid1];
             //[staticAsteroid1 release];
+=======
+            StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
+            Asteroid* staticAsteroid1 = [_asteroidField addAsteroid:[config position] size:[config size]];
+            //[self addChild:staticAsteroid1];           
+>>>>>>> e84b4714bc615d91d5ca82957056974d27be4e26
         }
         
         // add limits
@@ -215,12 +221,14 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) pause
 {
-    
+    [_environment.manager stop];
+    [self unschedule: @selector(step:)];    
 }
 
 - (void) stop
 {
-    
+    [_environment.manager stop];
+    [self unschedule: @selector(step:)];  
 }
 
 - (void) endLevel
@@ -382,8 +390,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 {
     NSLog(@"Dealloc GameLayer");
     [_environment.manager stop];
-    //[_shooters release];
-    //[_greedy release];
     [ self removeAllChildrenWithCleanup:YES];
     [super dealloc];
 }

@@ -24,8 +24,12 @@ typedef struct AsteroidElement{
     CCSprite *_asteroidSkin;
     AsteroidElement *asteroids_;
     CCSprite *_noise;
+    cpLayers _layer;
+    CGSize _size;
 }
 
-- (id) initWithEnvironment:(GameEnvironment *)environment totalArea:(float)totalArea density:(float)density  Layer:(cpLayers)Layer;
+- (id) initWithSize:(CGSize)size density:(float)density  Layer:(cpLayers)Layer;
+- (Asteroid *) addAsteroid:(CGPoint)position size:(int)size; //position an asteroid of size
+- (Asteroid *) addAsteroid:(int)size; //Randomly place an asteroid
 
 @end

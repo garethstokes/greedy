@@ -11,13 +11,9 @@
 #import "SpaceManagerCocos2d.h"
 #import "GameConfig.h"
 #import "SpriteHelperLoader.h"
+#import "Radar.h"
 
-@interface GreedyView : CCNode {
-    CCSprite *_radar;
-    cpCCSprite *_sprite;
-    CCSprite *_flames;
-    cpShape *_radarShape;
-    
+@interface GreedyView : CCNode<cpCCNodeProtocol> {
     cpShape *_shape;
     
     int _thrusting;
@@ -34,26 +30,25 @@
     CCAnimate *_actionFlame;
     CCAnimate *_actionWobble;
     
-    
-    //explosion
-    CCSpriteBatchNode * _batchExplosion;
-    CCSpriteBatchNode * _batchExplosionSexy;
-    cpCCSprite *_spriteExplosion1;
-    
-    //ring of death
-    CCSpriteBatchNode *_batchRingOfDeath;
-    CCSprite *spriteRingOfDeath;
-    
     //spritehelper objects
     SpriteHelperLoader * loaderGreedySprite;
+    CCSprite* spriteFlame;
+    CCSprite* spriteGreedy;
+    Radar* spriteRadar;
+    
+    CCAction* animFlameStart;
+    CCAction* animFlameOn;
+    CCAction* animFlameStop;
+    
+    CPCCNODE_MEM_VARS;
 }
 
-- (void) createSprites;
 - (id) initWithShape:(cpShape *)shape radar:(cpShape *)radar;
-- (void) step:(ccTime) delta;
 - (void) setThrusting:(int)value;
 - (void) updateFeeding:(int) value;
 - (BOOL) isThrusting;
+
+-(void) animationEndedFlameStart:(CCSprite*)sprite;
 
 //radar stuff
 - (void) startRadar;

@@ -225,6 +225,7 @@
 		ABA71EFD140A242F006E3C19 /* options_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA71EFB140A242F006E3C19 /* options_bg-hd.png */; };
 		ABA71EFE140A242F006E3C19 /* options_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA71EFC140A242F006E3C19 /* options_bg.png */; };
 		ABA71F04140A2A95006E3C19 /* OptionsMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA71F03140A2A95006E3C19 /* OptionsMenuLayer.m */; };
+		ABB125C1145AE65B001657C6 /* Radar.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB125C0145AE65A001657C6 /* Radar.m */; };
 		ABB5BEA213C45FDF00B06F68 /* ScoreCard.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5BEA113C45FDF00B06F68 /* ScoreCard.m */; };
 		ABC0B678144FAC830044EF94 /* Explosion.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0B677144FAC830044EF94 /* Explosion.m */; };
 		ABC0B67D144FB1E60044EF94 /* explosion-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B67A144FB1E60044EF94 /* explosion-hd.png */; };
@@ -698,6 +699,8 @@
 		ABA71EFC140A242F006E3C19 /* options_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options_bg.png; sourceTree = "<group>"; };
 		ABA71F02140A2A95006E3C19 /* OptionsMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsMenuLayer.h; sourceTree = "<group>"; };
 		ABA71F03140A2A95006E3C19 /* OptionsMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsMenuLayer.m; sourceTree = "<group>"; };
+		ABB125BF145AE65A001657C6 /* Radar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radar.h; sourceTree = "<group>"; };
+		ABB125C0145AE65A001657C6 /* Radar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Radar.m; sourceTree = "<group>"; };
 		ABB5BEA013C45FDF00B06F68 /* ScoreCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCard.h; sourceTree = "<group>"; };
 		ABB5BEA113C45FDF00B06F68 /* ScoreCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCard.m; sourceTree = "<group>"; };
 		ABC0B676144FAC830044EF94 /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Explosion.h; sourceTree = "<group>"; };
@@ -954,6 +957,8 @@
 				AB0246501409F32300E704FA /* MainMenuLayer.m */,
 				ABA71F02140A2A95006E3C19 /* OptionsMenuLayer.h */,
 				ABA71F03140A2A95006E3C19 /* OptionsMenuLayer.m */,
+				ABB125BF145AE65A001657C6 /* Radar.h */,
+				ABB125C0145AE65A001657C6 /* Radar.m */,
 				AB045A7513714D3C001253D2 /* RootViewController.h */,
 				AB045A7613714D3C001253D2 /* RootViewController.m */,
 				ABB5BEA013C45FDF00B06F68 /* ScoreCard.h */,
@@ -1986,6 +1991,7 @@
 				ABC0B678144FAC830044EF94 /* Explosion.m in Sources */,
 				AB448800144FD31D00FE17C7 /* GameObjectCache.m in Sources */,
 				ABC8F9761451ADA600415542 /* GreedyEye.m in Sources */,
+				ABB125C1145AE65B001657C6 /* Radar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -337,8 +337,8 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 - (void) postStep:(ccTime) delta
 {
     //update the view
-    if(!_exploded)
-        [[[GameObjectCache sharedGameObjectCache] greedyView] step:delta];
+   // if(!_exploded)
+   //     [[[GameObjectCache sharedGameObjectCache] greedyView] step:delta];
 }
 
 - (void) applyThrust

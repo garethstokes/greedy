@@ -14,12 +14,11 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 + (GameObjectCache *) sharedGameObjectCache
 {
-	if (!sharedGameObjectCache_){
-        CCLOG(@"Create Game Object Cache");
-		sharedGameObjectCache_ = [[GameObjectCache alloc] init];
-    }
-    
-	return sharedGameObjectCache_;
+  static dispatch_once_t pred;
+  dispatch_once(&pred, ^{
+    sharedGameObjectCache_ = [[GameObjectCache alloc] init];
+  });
+  return sharedGameObjectCache_;
 }
 
 +(void)purgeGameObjectCache

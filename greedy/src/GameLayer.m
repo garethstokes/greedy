@@ -86,28 +86,17 @@ ccpAngleBetween(CGPoint a, CGPoint b)
             [_shooters addObject:shooter];
         }
         
-        
-        
+        // greedy!
+        _greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition]];
+        [self addChild:_greedy];
+        [_greedy release];
         
         // static asteroids (big ones!)
         for (int i = 0; i < [level.staticAsteroids count]; i++)
         {
-<<<<<<< HEAD
-            //StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
-//            Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
-//                                                                    withLayer:LAYER_ASTEROID 
-//                                                                     withSize:[config size]
-//                                                                 withPosition:[config position]];
-            
-            //Asteroid* staticAsteroid1= [[Asteroid alloc] initWithRadius:[config size] atPosition:[config position]];
-            
-            //[self addChild:staticAsteroid1];
-            //[staticAsteroid1 release];
-=======
-            StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
-            Asteroid* staticAsteroid1 = [_asteroidField addAsteroid:[config position] size:[config size]];
-            //[self addChild:staticAsteroid1];           
->>>>>>> e84b4714bc615d91d5ca82957056974d27be4e26
+          StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
+          Asteroid* staticAsteroid1 = [_asteroidField addAsteroid:[config position] size:[config size]];
+          [self addChild:staticAsteroid1];
         }
         
         // add limits
@@ -156,16 +145,17 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) startLevel
 {
-    [[[GameObjectCache sharedGameObjectCache] greedyView] setPosition:ccp([[GameObjectCache sharedGameObjectCache] greedyView].position.x, [[GameObjectCache sharedGameObjectCache] greedyView].position.y - 250)];
+    GreedyView *view = [[GameObjectCache sharedGameObjectCache] greedyView];
+    [view setPosition:ccp(view.position.x, view.position.y - 250)];
     
     // animate the greedy into view
-    [[[GameObjectCache sharedGameObjectCache] greedyView] runAction:[CCSequence actions:
-                             //[CCFadeOut actionWithDuration:0.25f],
-                             //[CCFadeIn actionWithDuration:0.25f],
-                             //[CCRotateBy actionWithDuration:2.0f angle:90],
-                             [CCMoveBy actionWithDuration:1.5f position:ccp(0, +250)],
-                             [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
-                             nil ] 
+    [view runAction:[CCSequence actions:
+                     //[CCFadeOut actionWithDuration:0.25f],
+                     //[CCFadeIn actionWithDuration:0.25f],
+                     //[CCRotateBy actionWithDuration:2.0f angle:90],
+                     [CCMoveBy actionWithDuration:1.5f position:ccp(0, +250)],
+                     [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
+                     nil ] 
      ];
 }
 

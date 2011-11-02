@@ -31,8 +31,8 @@
 
 - (void) createButton:(SpriteHelperLoader *)loader atPosition:(CGPoint)position withTag:(int)tag
 {
-  int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level"];
-  if (tag > currentLevel + 1) return;
+  int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level" withDefault:1];
+  if (tag > currentLevel) return;
   
   CCMenuItemImage *image = [CCMenuItemImage itemFromNormalSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
                                                   selectedSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]

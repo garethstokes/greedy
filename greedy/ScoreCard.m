@@ -41,7 +41,10 @@
     
     CCSprite *btnSkipOn = [CCSprite spriteWithFile:@"btn_skip_on.png"];
     CCSprite *btnSkipOff = [CCSprite spriteWithFile:@"btn_skip_off.png"];
-    CCMenuItemSprite * btnSkip = [CCMenuItemSprite itemFromNormalSprite:btnSkipOff selectedSprite:btnSkipOn];
+    CCMenuItemSprite * btnSkip = [CCMenuItemSprite itemFromNormalSprite:btnSkipOff 
+                                                         selectedSprite:btnSkipOn
+                                                                 target:self 
+                                                               selector:@selector(skipLevel:)];
     
     CCMenu *top_menu = [CCMenu menuWithItems:btnChooseLevel, btnReplay, btnSkip, nil];
     [top_menu  alignItemsHorizontallyWithPadding:32.0];
@@ -51,8 +54,22 @@
 
 -(void) restartLevel: (id) sender
 {
-    CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[GameScene sceneWithLevel:1]];
-    [[CCDirector sharedDirector] replaceScene:newScene];
+  int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level"];
+  if (currentLevel == 0) currentLevel = 1;
+  
+  CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[GameScene sceneWithLevel:currentLevel]];
+  [[CCDirector sharedDirector] replaceScene:newScene];
+}
+
+-(void) skipLevel: (id) sender
+{
+  int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level"];
+  if (currentLevel == 0) currentLevel = 1;
+  currentLevel++;
+  [[SettingsManager sharedSettingsManager] setValue:@"current_level" newInt:currentLevel];
+  
+  CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[GameScene sceneWithLevel:currentLevel]];
+  [[CCDirector sharedDirector] replaceScene:newScene];
 }
 
 -(void) gotoMainMenu: (id) sender

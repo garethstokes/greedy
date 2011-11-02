@@ -29,26 +29,39 @@
 	return scene;
 }
 
+- (void) createButton:(SpriteHelperLoader *)loader atPosition:(CGPoint)position withTag:(int)tag
+{
+  int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level"];
+  if (tag > currentLevel + 1) return;
+  
+  CCMenuItemImage *image = [CCMenuItemImage itemFromNormalSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
+                                                  selectedSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
+                                                          target:self 
+                                                        selector:@selector(buttonTapped:)];
+  [image setTag:tag];
+  
+  CCMenu *starMenu = [CCMenu menuWithItems:image, nil];
+  starMenu.positionInPixels = position;
+  [self addChild:starMenu];
+}
+
 - (void)loadLevelButtons:(SpriteHelperLoader *) loader
 {
-    // ADD MENU ITEMS
+  // set a button for each level
+  [self createButton:loader atPosition:ccp(59, 331) withTag:1];
+  [self createButton:loader atPosition:ccp(124, 331) withTag:2];
+  [self createButton:loader atPosition:ccp(189, 331) withTag:3];
+  [self createButton:loader atPosition:ccp(253, 331) withTag:4];
     
-    CCMenu *menu = [CCMenu menuWithItems:nil];
-
-    for (int i = 0; i < 4; i++)
-    {
-        CCMenuItemImage *image = [CCMenuItemImage itemFromNormalSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
-                                                        selectedSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
-                                                                target:self 
-                                                              selector:@selector(buttonTapped:)];
-        
-        [image setTag:(i + 1)];
-        [menu addChild:image];
-    }
-    [menu setPosition:ccp(156, 331)];
-    [menu alignItemsHorizontallyWithPadding:4];
-    [self addChild:menu];
-    
+  [self createButton:loader atPosition:ccp(59, 223) withTag:5];
+  [self createButton:loader atPosition:ccp(124, 223) withTag:6];
+  [self createButton:loader atPosition:ccp(189, 223) withTag:7];
+  [self createButton:loader atPosition:ccp(253, 223) withTag:8];
+  
+  [self createButton:loader atPosition:ccp(59, 114) withTag:9];
+  [self createButton:loader atPosition:ccp(124, 114) withTag:10];
+  [self createButton:loader atPosition:ccp(189, 114) withTag:11];
+  [self createButton:loader atPosition:ccp(253, 114) withTag:12];
 }
 
 - (void)loadLevelBlocks:(SpriteHelperLoader *) loader

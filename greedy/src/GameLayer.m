@@ -92,7 +92,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         // static asteroids (big ones!)
         for (int i = 0; i < [level.staticAsteroids count]; i++)
         {
-            StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
+            //StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
 //            Asteroid* staticAsteroid1 = [[Asteroid alloc] initWithEnvironment:environment 
 //                                                                    withLayer:LAYER_ASTEROID 
 //                                                                     withSize:[config size]
@@ -103,11 +103,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
             //[self addChild:staticAsteroid1];
             //[staticAsteroid1 release];
         }
-        
-        // greedy!
-        _greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition]];
-        [self addChild:_greedy];
-        [_greedy release];
         
         // add limits
         //[environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:350.0];

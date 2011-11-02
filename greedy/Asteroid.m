@@ -105,7 +105,6 @@
     _shape->layers = LAYER_ASTEROID;
     _shape->collision_type = kAsteroidCollisionType;
     _shape->body->p = positionInPixels_;
-    
 }
 
 

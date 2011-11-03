@@ -7,96 +7,154 @@
 //
 
 #import "Radar.h"
-
-
+#import "GameObjectCache.h"
 
 @implementation Radar
 
--(id) initWithTexture:(CCTexture2D *)texture rect:(CGRect)rect
+- (void) addRadarCircumferanceSensor: (cpBody *) body {
+    //Add radar
+    //Add the Radar sensor
+    _shapeRadarCircle = cpCircleShapeNew(body, 120.0, cpvzero);  
+    _shapeRadarCircle->e = .5; 
+	_shapeRadarCircle->u = .5;
+    _shapeRadarCircle->group = 0;
+    _shapeRadarCircle->layers = LAYER_RADAR;
+	_shapeRadarCircle->collision_type = kGreedyRadarCollisionType;
+    _shapeRadarCircle->sensor = YES;
+	_shapeRadarCircle->data = nil;
+    cpSpaceAddShape([[GameObjectCache sharedGameObjectCache] space], _shapeRadarCircle);
+    [[[GameObjectCache sharedGameObjectCache] spaceManager] addCollisionCallbackBetweenType: kGreedyRadarCollisionType
+                                                                                  otherType: kAsteroidCollisionType 
+                                                                                     target: self 
+                                                                                   selector: @selector(handleCollisionRadar:arbiter:space:)]; 
+}
+
+- (void) createRadarLine: (cpBody *) body
 {
-    self = [super initWithTexture:texture rect:rect];
+    if(_radarShape == nil)
+    {
+        _radarShape = [[[GameObjectCache sharedGameObjectCache] spaceManager] addSegmentAt:body->p fromLocalAnchor:ccp(0,0) toLocalAnchor:ccp(130, 0) mass:1.0 radius:2.0];
+        _radarShape->sensor = YES;
+        _radarShape->layers = LAYER_RADARLINE;
+        _radarShape->collision_type = kGreedyRadarlineCollisionType;
+        
+        [[[GameObjectCache sharedGameObjectCache] spaceManager] addPinToBody:body fromBody:_radarShape->body toBodyAnchor:ccp(0,0) fromBodyAnchor:ccp(0,0)];
+        
+        [[[GameObjectCache sharedGameObjectCache] spaceManager] addCollisionCallbackBetweenType: kGreedyRadarlineCollisionType
+                                                                                      otherType: kAsteroidCollisionType 
+                                                                                         target: self 
+                                                                                       selector: @selector(handleCollisionRadarLine:arbiter:space:)];
+    }
+}
+
+-(id) initWithBody:(cpBody*)body
+{     
     
-    radarAngle = rotation_;
-    userData_ = [NSValue valueWithCGPoint:ccp(0,0)];
+    self = [super initWithFile:@"radio_sweep.png"];
+    
+    [self addRadarCircumferanceSensor: body];
+    
+    [self createRadarLine: body];   
+    
+    CPCCNODE_MEM_VARS_INIT(_radarShape);
+    
+    CPCCNODE_SYNC_POS_ROT(self);
     
     return self;
 }
 
--(void)setRadarRotation:(float)rot
+- (void) stop
 {
-    radarAngle = rot;
+    [self setVisible:NO];
+}
+
+- (void) start
+{
+    [self setVisible:YES];
+}
+
+- (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
+{
+	if (moment == COLLISION_BEGIN)
+	{
+		CCLOG(@"You are within radar range... woot!!!");
+        
+        [[[GameObjectCache sharedGameObjectCache] greedyView] incrementEating];
+	}
     
-    userData_ = [NSValue valueWithCGPoint:ccp(rot,0)];
+    if (moment == COLLISION_SEPARATE)
+    {
+        CCLOG(@"You are no longer in radar range... :( !!!");
+        
+        [[[GameObjectCache sharedGameObjectCache] greedyView] decrementEating];
+    }
     
-    rotation_ = rot;
+	return YES;
+}
+
+- (BOOL) handleCollisionRadarLine:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
+{
+	//if (_exploded) return YES;
     
-    [self setRotation:radarAngle];
-}
-
--(void)setRotation:(float)rot
-{
-    float angle = [(NSValue *)(userData_) CGPointValue].x;
+    if (moment == COLLISION_BEGIN)
+	{
+        //CCLOG(@"Line Meets asteroid begin");
+        
+        CP_ARBITER_GET_SHAPES(arb, a, b);
+        Asteroid * ast = (Asteroid *)(b->data);
+        cpFloat len = cpArbiterGetDepth(arb, 0);
+        
+        if([ast isKindOfClass:[Asteroid class]]){
+            float oreScore = [ast mineOre:1.0 length:len];
+            
+            if( oreScore > 0)
+            { 
+                ///_score += oreScore;
+                
+                CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
+                [sparkle setPosition:cpArbiterGetPoint(arb, 0)];
+                [sparkle setDuration:0.1];
+                [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
+            }
+        }
+    }
     
-    [super setRotation:angle];
+    if (moment == COLLISION_PRESOLVE)
+	{
+        //CCLOG(@"Line Meets asteroid post solve");
+        CP_ARBITER_GET_SHAPES(arb, a, b);
+        Asteroid * ast = (Asteroid *)(b->data);
+        cpFloat len = cpArbiterGetDepth(arb, 0);
+        
+        if([ast isKindOfClass:[Asteroid class]]){
+            float oreScore = [ast mineOre:1.0 length:len];
+            
+            if( oreScore > 0)
+            { 
+                //_score += oreScore;
+                
+                CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
+                [sparkle setPosition:cpArbiterGetPoint(arb, 0)];
+                [sparkle setDuration:0.1];
+                [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
+            }
+        }
+    }
+    
+    if (moment == COLLISION_SEPARATE)
+    {
+        //CCLOG(@"Line Leaves asteroid end");
+    }
+    
+    return YES;
 }
 
-
-#pragma mark CCSprite - CCNode overrides
-
-
-
-@end
-
-//@implementation CCSprite(MySpriteRadar)
-//-(void)setRotation:(float)rot
-//{
-//    float angle = [(NSValue *)(userData_) CGPointValue].x;
-//    
-//    [super setRotation:angle];
-//}
-//@end
-
-//
-// RotateBy
-//
-#pragma mark -
-#pragma mark RotateBy
-
-@implementation CCRadarRotateBy
-+(id) actionWithDuration: (ccTime) t angle:(float) a
-{	
-	return [[[self alloc] initWithDuration:t angle:a ] autorelease];
-}
-
--(id) initWithDuration: (ccTime) t angle:(float) a
+-(void) step:(ccTime) delta
 {
-	if( (self=[super initWithDuration: t]) )
-		angle_ = a;
-	
-	return self;
+    static cpFloat ONEDEGREE = CC_DEGREES_TO_RADIANS(1);
+    cpBodySetAngle(_radarShape->body, _radarShape->body->a - (ONEDEGREE * RADAR_SPIN_DEGREES_PER_SECOND) * delta);
 }
 
--(id) copyWithZone: (NSZone*) zone
-{
-	CCAction *copy = [[[self class] allocWithZone: zone] initWithDuration: [self duration] angle: angle_];
-	return copy;
-}
-
--(void) startWithTarget:(id)aTarget
-{
-	[super startWithTarget:aTarget];
-	startAngle_ = [target_ rotation];
-}
-
--(void) update: (ccTime) t
-{	
-	// XXX: shall I add % 360
-	[(Radar *)target_ setRadarRotation: (startAngle_ +angle_ * t )];
-}
-
--(CCActionInterval*) reverse
-{
-	return [[self class] actionWithDuration:duration_ angle:-angle_];
-}
+CPCCNODE_FUNC_SRC;
 
 @end

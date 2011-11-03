@@ -7,7 +7,6 @@
 //
 
 #import "cocos2d.h"
-#import "SpaceManager.h"
 #import "SpaceManagerCocos2d.h"
 #import "GameConfig.h"
 #import "SpriteHelperLoader.h"
@@ -34,25 +33,23 @@
     SpriteHelperLoader * loaderGreedySprite;
     CCSprite* spriteFlame;
     CCSprite* spriteGreedy;
-    Radar* spriteRadar;
     
     CCAction* animFlameStart;
     CCAction* animFlameOn;
     CCAction* animFlameStop;
     
+    int _eatCount;
+    
     CPCCNODE_MEM_VARS;
 }
 
-- (id) initWithShape:(cpShape *)shape radar:(cpShape *)radar;
+- (id) initWithShape:(cpShape *)shape;
 - (void) setThrusting:(int)value;
-- (void) updateFeeding:(int) value;
 - (BOOL) isThrusting;
+-(void) incrementEating;
+-(void) decrementEating;
 
 -(void) animationEndedFlameStart:(CCSprite*)sprite;
-
-//radar stuff
-- (void) startRadar;
-- (void) stopRadar;
 
 //animation commands
 -(void) goIdle:(id)sender;

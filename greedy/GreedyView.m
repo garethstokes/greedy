@@ -32,17 +32,10 @@
     [self addChild:spriteFlame z:-1]; 
     
     spriteGreedy = [[loaderGreedySprite spriteWithUniqueName:@"greedy_close_body-hd" atPosition:ccp(0,0) inLayer:nil] retain];
-    [self addChild:spriteGreedy];
-    
-    CCSprite *spriteTemp = [loaderGreedySprite spriteWithUniqueName:@"radar_sweep-hd" atPosition:ccp(0,0) inLayer:nil];
-    spriteRadar = [[[Radar alloc] initWithTexture:spriteTemp.texture
-                                             rect:spriteTemp.textureRect] retain];
-    [self addChild:spriteRadar z:1];
-    [self stopRadar];
-    
+    [self addChild:spriteGreedy];    
 }
 
-- (id) initWithShape:(cpShape *)shape  radar:(cpShape *)radar
+- (id) initWithShape:(cpShape *)shape
 {
     CCLOG(@" GreedyView: initWithShape");
     
@@ -52,13 +45,12 @@
     
     _thrusting = kGreedyThrustNone;
     _feeding = kGreedyIdle;
+    _eatCount = 0;
     
     [self createSpriteObjects];
     
     //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
     shape->layers = LAYER_GREEDY;
-
-    [self startRadar];
     
     CPCCNODE_SYNC_POS_ROT(self);
     
@@ -116,47 +108,27 @@
     return (_thrusting > 1);
 }
 
-- (void) updateFeeding:(int)value
+-(void) incrementEating
 {
-    _feeding = value;
-    
-    if (value == kGreedyIdle)
-    {
-        NSLog(@"update feeding: idle");
-        
-        [self closeDown];
-        
-        return;
-    }
-    
-    if (value >= kGreedyEating)
-    {
-        NSLog(@"update feeding: eating");
-        
+    if(_eatCount == 0){
         [self openUp];
-        
-        return;
+         NSLog(@"update feeding: eating");
     }
-}
-
-#pragma mark Radar
-
-- (void) startRadar
-{
-    [spriteRadar setVisible:YES];
-    [spriteRadar runAction:[CCRepeatForever actionWithAction:[CCRadarRotateBy actionWithDuration:10.0f angle:360]]];
-}
-
-- (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
-{
-    NSLog(@"Radar detected asteroid");
+    _eatCount++;
     
-    return YES;
+    NSLog(@"Inc eat: %d", _eatCount);
+    
 }
 
-- (void) stopRadar
+-(void) decrementEating
 {
-    [spriteRadar setVisible:NO];
+    _eatCount--;
+    if(_eatCount == 0)
+    {
+        [self closeDown];
+         NSLog(@"update feeding: idle");
+    }
+    NSLog(@"Dec eat: %d", _eatCount);
 }
 
 #pragma mark Greedy Animations

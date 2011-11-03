@@ -165,90 +165,6 @@
 				<key>IsBullet</key>
 				<false/>
 				<key>IsCircle</key>
-				<true/>
-				<key>IsFixedRot</key>
-				<true/>
-				<key>IsSensor</key>
-				<true/>
-				<key>LinearDamping</key>
-				<real>0.0</real>
-				<key>LinearVelocityX</key>
-				<real>0.0</real>
-				<key>LinearVelocityY</key>
-				<real>0.0</real>
-				<key>Mask</key>
-				<integer>65535</integer>
-				<key>PhysicType</key>
-				<integer>0</integer>
-				<key>Restitution</key>
-				<real>0.20000000298023224</real>
-				<key>SHHolesPoints</key>
-				<array/>
-				<key>SHShapePoints</key>
-				<array/>
-				<key>ShapeBorderH</key>
-				<integer>0</integer>
-				<key>ShapeBorderW</key>
-				<integer>0</integer>
-				<key>ShapePositionOffsetX</key>
-				<integer>0</integer>
-				<key>ShapePositionOffsetY</key>
-				<integer>0</integer>
-			</dict>
-			<key>TextureProperties</key>
-			<dict>
-				<key>Color</key>
-				<string>{{1, 1}, {1, 0}}</string>
-				<key>Frame</key>
-				<string>{{0, 0}, {293, 293}}</string>
-				<key>Frame-HD</key>
-				<string>{{0, 0}, {586, 586}}</string>
-				<key>FrameUV</key>
-				<string>{{0, 0}, {0.76302081, 0.78763443}}</string>
-				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
-				<key>Image</key>
-				<string>greedysprite.png</string>
-				<key>Image-HD</key>
-				<string>greedysprite-hd.png</string>
-				<key>ImageURL</key>
-				<string>/Users/richardowen/Projects/greedy/greedy/assets/greedy/greedysprite.png</string>
-				<key>ImageURL-HD</key>
-				<string>/Users/richardowen/Projects/greedy/greedy/assets/greedy/greedysprite-hd.png</string>
-				<key>Name</key>
-				<string>radar_sweep-hd</string>
-				<key>Opacity</key>
-				<real>1</real>
-				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
-				<key>Scale</key>
-				<string>{1, 1}</string>
-				<key>ZOrder</key>
-				<integer>0</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>PhysicProperties</key>
-			<dict>
-				<key>AngularDamping</key>
-				<real>0.0</real>
-				<key>AngularVelocity</key>
-				<real>0.0</real>
-				<key>CanSleep</key>
-				<true/>
-				<key>Category</key>
-				<integer>1</integer>
-				<key>Density</key>
-				<real>0.20000000298023224</real>
-				<key>Fixtures</key>
-				<array/>
-				<key>Friction</key>
-				<real>0.20000000298023224</real>
-				<key>Group</key>
-				<integer>0</integer>
-				<key>IsBullet</key>
-				<false/>
-				<key>IsCircle</key>
 				<false/>
 				<key>IsFixedRot</key>
 				<false/>
@@ -284,13 +200,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{0, 296}, {51, 74}}</string>
+				<string>{{0, 0}, {51, 74}}</string>
 				<key>Frame-HD</key>
-				<string>{{0, 592}, {102, 148}}</string>
+				<string>{{0, 0}, {102, 148}}</string>
 				<key>FrameUV</key>
-				<string>{{0, 0.79569894}, {0.1328125, 0.99462366}}</string>
+				<string>{{0, 0}, {0.2361111, 0.3425926}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -304,7 +220,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -368,13 +284,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{54, 296}, {51, 74}}</string>
+				<string>{{0, 77}, {51, 74}}</string>
 				<key>Frame-HD</key>
-				<string>{{108, 592}, {102, 148}}</string>
+				<string>{{0, 154}, {102, 148}}</string>
 				<key>FrameUV</key>
-				<string>{{0.140625, 0.79569894}, {0.2734375, 0.99462366}}</string>
+				<string>{{0, 0.35648149}, {0.2361111, 0.69907409}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -388,7 +304,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -493,34 +409,34 @@
 				<array/>
 				<key>SHShapePoints</key>
 				<array>
-					<string>{300.68906, 729.59918}</string>
-					<string>{292.62006, 728.55804}</string>
-					<string>{277.00272, 734.28442}</string>
-					<string>{260.34418, 735.32556}</string>
-					<string>{256.96042, 738.44904}</string>
-					<string>{249.9326, 738.70935}</string>
-					<string>{247.32971, 732.72266}</string>
-					<string>{230.67119, 721.00964}</string>
-					<string>{219.21844, 705.39227}</string>
-					<string>{214.79353, 691.07635}</string>
-					<string>{215.05382, 675.7193}</string>
-					<string>{228.32858, 668.1709}</string>
-					<string>{226.50656, 656.97845}</string>
-					<string>{215.05382, 644.74487}</string>
-					<string>{214.01266, 628.34662}</string>
-					<string>{224.68454, 608.56464}</string>
-					<string>{246.54884, 593.9884}</string>
-					<string>{276.22183, 592.94727}</string>
-					<string>{298.08615, 603.87939}</string>
-					<string>{312.14178, 622.09967}</string>
-					<string>{314.74466, 637.19647}</string>
-					<string>{306.67569, 651.77264}</string>
-					<string>{302.51108, 666.60913}</string>
-					<string>{312.92264, 677.02075}</string>
-					<string>{313.44324, 698.3645}</string>
-					<string>{307.71686, 712.4201}</string>
-					<string>{303.55222, 718.92737}</string>
-					<string>{304.3331, 725.69489}</string>
+					<string>{194.68906, 137.59918}</string>
+					<string>{186.62006, 136.55804}</string>
+					<string>{171.00272, 142.28442}</string>
+					<string>{154.34418, 143.32556}</string>
+					<string>{150.96042, 146.44904}</string>
+					<string>{143.9326, 146.70935}</string>
+					<string>{141.32971, 140.72266}</string>
+					<string>{124.67119, 129.00964}</string>
+					<string>{113.21844, 113.39227}</string>
+					<string>{108.79353, 99.076355}</string>
+					<string>{109.05382, 83.719299}</string>
+					<string>{122.32858, 76.170898}</string>
+					<string>{120.50656, 64.978455}</string>
+					<string>{109.05382, 52.744873}</string>
+					<string>{108.01266, 36.346619}</string>
+					<string>{118.68454, 16.564636}</string>
+					<string>{140.54884, 1.9884033}</string>
+					<string>{170.22183, 0.94726562}</string>
+					<string>{192.08615, 11.879395}</string>
+					<string>{206.14178, 30.09967}</string>
+					<string>{208.74466, 45.196472}</string>
+					<string>{200.67569, 59.772644}</string>
+					<string>{196.51108, 74.609131}</string>
+					<string>{206.92264, 85.020752}</string>
+					<string>{207.44324, 106.3645}</string>
+					<string>{201.71686, 120.4201}</string>
+					<string>{197.55222, 126.92737}</string>
+					<string>{198.3331, 133.69489}</string>
 				</array>
 				<key>ShapeBorderH</key>
 				<integer>0</integer>
@@ -536,13 +452,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{107, 296}, {50.5, 73.5}}</string>
+				<string>{{54, 0}, {50.5, 73.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{214, 592}, {101, 147}}</string>
+				<string>{{108, 0}, {101, 147}}</string>
 				<key>FrameUV</key>
-				<string>{{0.27864584, 0.79569894}, {0.41015625, 0.99327958}}</string>
+				<string>{{0.25, 0}, {0.4837963, 0.34027779}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -556,7 +472,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -620,13 +536,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{160, 296}, {50.5, 71.5}}</string>
+				<string>{{107, 0}, {50.5, 71.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{320, 592}, {101, 143}}</string>
+				<string>{{214, 0}, {101, 143}}</string>
 				<key>FrameUV</key>
-				<string>{{0.41666666, 0.79569894}, {0.54817706, 0.98790324}}</string>
+				<string>{{0.49537036, 0}, {0.72916669, 0.33101851}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -640,7 +556,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -704,13 +620,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{213, 296}, {50.5, 67.5}}</string>
+				<string>{{160, 0}, {50.5, 67.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{426, 592}, {101, 135}}</string>
+				<string>{{320, 0}, {101, 135}}</string>
 				<key>FrameUV</key>
-				<string>{{0.5546875, 0.79569894}, {0.68619794, 0.97715056}}</string>
+				<string>{{0.74074072, 0}, {0.97453701, 0.3125}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -724,7 +640,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -788,13 +704,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{296, 0}, {50.5, 63.5}}</string>
+				<string>{{54, 76}, {50.5, 63.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{592, 0}, {101, 127}}</string>
+				<string>{{108, 152}, {101, 127}}</string>
 				<key>FrameUV</key>
-				<string>{{0.77083331, 0}, {0.90234375, 0.17069893}}</string>
+				<string>{{0.25, 0.35185185}, {0.4837963, 0.64583331}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -808,7 +724,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -872,13 +788,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{296, 66}, {50.5, 59.5}}</string>
+				<string>{{0, 153}, {50.5, 59.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{592, 132}, {101, 119}}</string>
+				<string>{{0, 306}, {101, 119}}</string>
 				<key>FrameUV</key>
-				<string>{{0.77083331, 0.17741935}, {0.90234375, 0.3373656}}</string>
+				<string>{{0, 0.70833331}, {0.2337963, 0.9837963}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -892,7 +808,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -956,13 +872,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{296, 128}, {50.5, 55.5}}</string>
+				<string>{{54, 142}, {50.5, 55.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{592, 256}, {101, 111}}</string>
+				<string>{{108, 284}, {101, 111}}</string>
 				<key>FrameUV</key>
-				<string>{{0.77083331, 0.34408602}, {0.90234375, 0.49327958}}</string>
+				<string>{{0.25, 0.6574074}, {0.4837963, 0.91435188}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -976,7 +892,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1040,13 +956,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{296, 186}, {42.5, 44.5}}</string>
+				<string>{{107, 76}, {42.5, 44.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{592, 372}, {85, 89}}</string>
+				<string>{{214, 152}, {85, 89}}</string>
 				<key>FrameUV</key>
-				<string>{{0.77083331, 0.5}, {0.88151044, 0.61962366}}</string>
+				<string>{{0.49537036, 0.35185185}, {0.69212961, 0.55787039}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1060,7 +976,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1124,13 +1040,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{341, 186}, {42, 44.5}}</string>
+				<string>{{152, 76}, {42, 44.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{682, 372}, {84, 89}}</string>
+				<string>{{304, 152}, {84, 89}}</string>
 				<key>FrameUV</key>
-				<string>{{0.88802081, 0.5}, {0.99739581, 0.61962366}}</string>
+				<string>{{0.7037037, 0.35185185}, {0.89814812, 0.55787039}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1144,7 +1060,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1208,13 +1124,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{296, 233}, {42, 44.5}}</string>
+				<string>{{107, 123}, {42, 44.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{592, 466}, {84, 89}}</string>
+				<string>{{214, 246}, {84, 89}}</string>
 				<key>FrameUV</key>
-				<string>{{0.77083331, 0.62634408}, {0.88020831, 0.74596775}}</string>
+				<string>{{0.49537036, 0.56944442}, {0.68981481, 0.77546299}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1228,7 +1144,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1292,13 +1208,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{340, 233}, {42, 44.5}}</string>
+				<string>{{107, 170}, {42, 44.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{680, 466}, {84, 89}}</string>
+				<string>{{214, 340}, {84, 89}}</string>
 				<key>FrameUV</key>
-				<string>{{0.88541669, 0.62634408}, {0.99479169, 0.74596775}}</string>
+				<string>{{0.49537036, 0.78703701}, {0.68981481, 0.99305558}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1312,7 +1228,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1376,13 +1292,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{296, 280}, {41, 43}}</string>
+				<string>{{151, 123}, {41, 43}}</string>
 				<key>Frame-HD</key>
-				<string>{{592, 560}, {82, 86}}</string>
+				<string>{{302, 246}, {82, 86}}</string>
 				<key>FrameUV</key>
-				<string>{{0.77083331, 0.75268817}, {0.87760419, 0.86827958}}</string>
+				<string>{{0.69907409, 0.56944442}, {0.8888889, 0.76851851}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1396,7 +1312,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1460,13 +1376,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{349, 0}, {33.5, 34.5}}</string>
+				<string>{{151, 169}, {33.5, 34.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{698, 0}, {67, 69}}</string>
+				<string>{{302, 338}, {67, 69}}</string>
 				<key>FrameUV</key>
-				<string>{{0.90885419, 0}, {0.99609375, 0.092741936}}</string>
+				<string>{{0.69907409, 0.7824074}, {0.85416669, 0.94212961}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1480,7 +1396,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1544,13 +1460,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{349, 66}, {29, 27.5}}</string>
+				<string>{{187, 169}, {29, 27.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{698, 132}, {58, 55}}</string>
+				<string>{{374, 338}, {58, 55}}</string>
 				<key>FrameUV</key>
-				<string>{{0.90885419, 0.17741935}, {0.984375, 0.25134408}}</string>
+				<string>{{0.86574072, 0.7824074}, {1, 0.90972221}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1564,7 +1480,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1628,13 +1544,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{266, 296}, {12, 7}}</string>
+				<string>{{54, 200}, {12, 7}}</string>
 				<key>Frame-HD</key>
-				<string>{{532, 592}, {24, 14}}</string>
+				<string>{{108, 400}, {24, 14}}</string>
 				<key>FrameUV</key>
-				<string>{{0.69270831, 0.79569894}, {0.72395831, 0.81451613}}</string>
+				<string>{{0.25, 0.92592591}, {0.30555555, 0.95833331}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1648,7 +1564,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>
@@ -1712,13 +1628,13 @@
 				<key>Color</key>
 				<string>{{1, 1}, {1, 0}}</string>
 				<key>Frame</key>
-				<string>{{213, 366}, {5, 4.5}}</string>
+				<string>{{54, 210}, {5, 4.5}}</string>
 				<key>Frame-HD</key>
-				<string>{{426, 732}, {10, 9}}</string>
+				<string>{{108, 420}, {10, 9}}</string>
 				<key>FrameUV</key>
-				<string>{{0.5546875, 0.98387098}, {0.56770831, 0.99596775}}</string>
+				<string>{{0.25, 0.97222221}, {0.27314815, 0.99305558}}</string>
 				<key>HD_ImageSize</key>
-				<string>{768, 744}</string>
+				<string>{432, 432}</string>
 				<key>Image</key>
 				<string>greedysprite.png</string>
 				<key>Image-HD</key>
@@ -1732,7 +1648,7 @@
 				<key>Opacity</key>
 				<real>1</real>
 				<key>SD_ImageSize</key>
-				<string>{384, 372}</string>
+				<string>{216, 216}</string>
 				<key>Scale</key>
 				<string>{1, 1}</string>
 				<key>ZOrder</key>

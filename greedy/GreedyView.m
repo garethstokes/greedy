@@ -17,19 +17,14 @@
 
 @implementation GreedyView
 
-- (float) getEyePositionForCurrentSprite
-{
-    if (_feeding == kGreedyIdle) return 7.0f;
-    if (_feeding == kGreedyEating) return 15.0f;
-    return 15.0f;
-}
-
 -(void) greedyFrameChanged
 {
     CCLOG(@"Frame Changed!");
     CGRect rect = [[spriteGreedy displayedFrame] rectInPixels];
     
     [spriteFlame setPosition:ccp(0, -(rect.size.height / 2.0f) - 8)]; //magic numbers woot!
+    
+    [greedyEye setPosition:ccp(0, (rect.size.height / 2.0f)-22)];
 }
 
 -(void) createSpriteObjects
@@ -42,6 +37,9 @@
     spriteGreedy = [[loaderGreedySprite spriteWithUniqueName:@"greedy_close_body-hd" atPosition:ccp(0,0) inLayer:nil] retain];
     [spriteGreedy setCallback:self sel:@selector(greedyFrameChanged)];
     [self addChild:spriteGreedy];    
+    
+    greedyEye = [[[GreedyEye alloc] init] retain];
+    [self addChild:greedyEye z:1];
 }
 
 - (id) initWithShape:(cpShape *)shape
@@ -52,14 +50,16 @@
     
     if(!(self = [super init])) return nil;
     
+    //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
+    shape->layers = LAYER_GREEDY;
+    
     _thrusting = kGreedyThrustNone;
     _feeding = kGreedyIdle;
     _eatCount = 0;
     
     [self createSpriteObjects];
     
-    //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
-    shape->layers = LAYER_GREEDY;
+    [self greedyFrameChanged];
     
     CPCCNODE_SYNC_POS_ROT(self);
     

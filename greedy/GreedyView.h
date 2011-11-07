@@ -11,6 +11,7 @@
 #import "GameConfig.h"
 #import "SpriteHelperLoader.h"
 #import "Radar.h"
+#import "GreedyEye.h"
 
 @interface GreedyView : CCNode<cpCCNodeProtocol> {
     cpShape *_shape;
@@ -26,6 +27,7 @@
     SpriteHelperLoader * loaderGreedySprite;
     CCSprite* spriteFlame;
     CCMagicSprite* spriteGreedy;
+    GreedyEye *greedyEye;
     
     CCAction* animFlameStart;
     CCAction* animFlameOn;

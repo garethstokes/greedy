@@ -33,6 +33,16 @@
 #import "cocos2d.h"
 #import "chipmunk.h"
 
+@interface CCMagicSprite : CCSprite{
+    id  _target;
+    SEL _sel;
+}
+
+-(void) setCallback:(id)target sel:(SEL)sel;
+-(void) setDisplayFrame:(CCSpriteFrame*)frame;
+
+@end
+
 @interface SpriteHelperLoader : NSObject {
 	
 	NSMutableDictionary* shSprites;
@@ -54,7 +64,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
--(CCSprite*) spriteWithUniqueName:(NSString*)name 
+-(CCMagicSprite*) spriteWithUniqueName:(NSString*)name 
                        atPosition:(CGPoint)point 
                           inLayer:(CCLayer*)layer;
 
@@ -74,7 +84,7 @@ for(NSValue* val in returnedArray)
 
 ////////////////////////////////////////////////////////////////////////////////
 
--(CCSprite*) spriteInBatchWithUniqueName:(NSString*)name 
+-(CCMagicSprite*) spriteInBatchWithUniqueName:(NSString*)name 
                               atPosition:(CGPoint)point 
                                  inLayer:(CCLayer*)layer;
 
@@ -139,6 +149,6 @@ for(NSValue* val in returnedArray)
                spriteLayer:(CCLayer*)layer;
 
 //"shapes" is the same array returned by bodyWithUniqueName or bodyInBatchWithUniqueName 
-+(CCSprite*) spriteForBody:(NSArray*)shapes;
++(CCMagicSprite*) spriteForBody:(NSArray*)shapes;
 @end
 

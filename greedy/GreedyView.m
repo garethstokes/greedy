@@ -24,6 +24,14 @@
     return 15.0f;
 }
 
+-(void) greedyFrameChanged
+{
+    CCLOG(@"Frame Changed!");
+    CGRect rect = [[spriteGreedy displayedFrame] rectInPixels];
+    
+    [spriteFlame setPosition:ccp(0, -(rect.size.height / 2.0f) - 8)]; //magic numbers woot!
+}
+
 -(void) createSpriteObjects
 {
     loaderGreedySprite = [[SpriteHelperLoader alloc] initWithContentOfFile:@"greedysprite"];
@@ -32,6 +40,7 @@
     [self addChild:spriteFlame z:-1]; 
     
     spriteGreedy = [[loaderGreedySprite spriteWithUniqueName:@"greedy_close_body-hd" atPosition:ccp(0,0) inLayer:nil] retain];
+    [spriteGreedy setCallback:self sel:@selector(greedyFrameChanged)];
     [self addChild:spriteGreedy];    
 }
 

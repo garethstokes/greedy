@@ -21,18 +21,11 @@
     
     NSMutableArray *_flameFrames;
     CCSpriteBatchNode *_batch;
-        
-    //animation
-    CCAnimation *_animationOpenUp;
-    CCAnimate *_actionOpenUp;
-    CCActionInterval *_actionCloseDown;
-    CCAnimate *_actionFlame;
-    CCAnimate *_actionWobble;
     
     //spritehelper objects
     SpriteHelperLoader * loaderGreedySprite;
     CCSprite* spriteFlame;
-    CCSprite* spriteGreedy;
+    CCMagicSprite* spriteGreedy;
     
     CCAction* animFlameStart;
     CCAction* animFlameOn;

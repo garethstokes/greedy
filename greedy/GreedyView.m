@@ -81,6 +81,7 @@
 -(void) animationEndedFlameStop:(CCSprite*)sprite
 {
     [sprite stopAllActions];
+    [sprite setVisible:NO];
 }
 
 - (void) setThrusting:(int)value
@@ -101,6 +102,7 @@
         NSLog(@"update thrusting: zomg flames!");    
         
 
+        [spriteFlame setVisible:YES];
         [loaderGreedySprite runAnimationWithUniqueName:@"flamestart" 
                                               onSprite:spriteFlame
                                     endNotificationSEL:@selector(animationEndedFlameStart:) 

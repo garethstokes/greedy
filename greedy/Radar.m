@@ -92,6 +92,18 @@
 	return YES;
 }
 
+- (void)addGoldCollectionAnimation:(cpArbiter *)arb
+{
+    ///_score += oreScore;
+    
+    CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
+    [sparkle setPosition:cpArbiterGetPoint(arb, 0)];
+    [sparkle setDuration:0.1];
+    [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
+    
+    
+}
+
 - (BOOL) handleCollisionRadarLine:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
 	//if (_exploded) return YES;
@@ -109,12 +121,7 @@
             
             if( oreScore > 0)
             { 
-                ///_score += oreScore;
-                
-                CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
-                [sparkle setPosition:cpArbiterGetPoint(arb, 0)];
-                [sparkle setDuration:0.1];
-                [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
+                [self addGoldCollectionAnimation:arb];
             }
         }
     }
@@ -133,10 +140,7 @@
             { 
                 //_score += oreScore;
                 
-                CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
-                [sparkle setPosition:cpArbiterGetPoint(arb, 0)];
-                [sparkle setDuration:0.1];
-                [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
+               [self addGoldCollectionAnimation:arb];
             }
         }
     }

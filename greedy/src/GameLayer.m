@@ -86,15 +86,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
             [_shooters addObject:shooter];
         }
         
-        
-        
-        
         // static asteroids (big ones!)
         for (int i = 0; i < [level.staticAsteroids count]; i++)
         {
             StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
-            [_asteroidField addAsteroid:[config position] size:[config size]];
-            //[self addChild:staticAsteroid1];           
+            [_asteroidField addAsteroid:[config position] size:[config size]];    
         }
         
         // greedy!

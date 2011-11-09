@@ -58,7 +58,7 @@
     [self createRadarLine:manager];
     
     //init collisions
-	[manager addCollisionCallbackBetweenType: kAsteroidCollisionType 
+    [manager addCollisionCallbackBetweenType: kAsteroidCollisionType 
                                    otherType: kGreedyCollisionType 
                                       target: self 
                                     selector: @selector(handleCollisionWithAsteroid:arbiter:space:)];
@@ -95,11 +95,11 @@
 
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
-    if (_exploded) return YES;
+  if (_exploded) return YES;
     
 	if (moment == COLLISION_POSTSOLVE)
 	{
-		//NSLog(@"You hit an asteroid!!!");
+		NSLog(@"You hit an asteroid!!!");
         
         CP_ARBITER_GET_SHAPES(arb,a,b);
         
@@ -111,17 +111,16 @@
         //[puff setDuration:2.0];
         //[self addChild:puff];
         
-        float bumpStrength = cpvlength(cpArbiterTotalImpulse(arb));
+        float bumpStrength = 0.020; //cpvlength(cpArbiterTotalImpulse(arb)) / 100;
         
         //reduce the fuel
-        if ((bumpStrength > 1.0) && (_fuel > 0.0))
+        if ((bumpStrength >= 0.020) && (_fuel > 0.0))
         {
 #define FUELBUMP 1
             CCLOG(@"Asteroid Bump %f", bumpStrength);
-            // _fuel -= (FUELBUMP * bumpStrength);
+            _fuel -= (FUELBUMP * bumpStrength);
             if (_fuel < 0.0){
-                [self removeThrust];
-                _fuel = 0.0;
+              [self explode];
             }
         }
 	}

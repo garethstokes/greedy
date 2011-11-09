@@ -17,11 +17,14 @@
 
 @implementation GreedyView
 
-- (float) getEyePositionForCurrentSprite
+-(void) greedyFrameChanged
 {
-    if (_feeding == kGreedyIdle) return 7.0f;
-    if (_feeding == kGreedyEating) return 15.0f;
-    return 15.0f;
+    CCLOG(@"Frame Changed!");
+    CGRect rect = [[spriteGreedy displayedFrame] rectInPixels];
+    
+    [spriteFlame setPosition:ccp(0, -(rect.size.height / 2.0f) - 8)]; //magic numbers woot!
+    
+    [greedyEye setPosition:ccp(0, (rect.size.height / 2.0f)-22)];
 }
 
 -(void) createSpriteObjects
@@ -32,17 +35,14 @@
     [self addChild:spriteFlame z:-1]; 
     
     spriteGreedy = [[loaderGreedySprite spriteWithUniqueName:@"greedy_close_body-hd" atPosition:ccp(0,0) inLayer:nil] retain];
-    [self addChild:spriteGreedy];
+    [spriteGreedy setCallback:self sel:@selector(greedyFrameChanged)];
+    [self addChild:spriteGreedy];    
     
-    CCSprite *spriteTemp = [loaderGreedySprite spriteWithUniqueName:@"radar_sweep-hd" atPosition:ccp(0,0) inLayer:nil];
-    spriteRadar = [[[Radar alloc] initWithTexture:spriteTemp.texture
-                                             rect:spriteTemp.textureRect] retain];
-    [self addChild:spriteRadar z:1];
-    [self stopRadar];
-    
+    greedyEye = [[[GreedyEye alloc] init] retain];
+    [self addChild:greedyEye z:1];
 }
 
-- (id) initWithShape:(cpShape *)shape  radar:(cpShape *)radar
+- (id) initWithShape:(cpShape *)shape
 {
     CCLOG(@" GreedyView: initWithShape");
     
@@ -50,15 +50,16 @@
     
     if(!(self = [super init])) return nil;
     
+    //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
+    shape->layers = LAYER_GREEDY;
+    
     _thrusting = kGreedyThrustNone;
     _feeding = kGreedyIdle;
+    _eatCount = 0;
     
     [self createSpriteObjects];
     
-    //Move greedy into layer Greedy so its shape doesn't impact eyeball or background asteroids
-    shape->layers = LAYER_GREEDY;
-
-    [self startRadar];
+    [self greedyFrameChanged];
     
     CPCCNODE_SYNC_POS_ROT(self);
     
@@ -80,6 +81,7 @@
 -(void) animationEndedFlameStop:(CCSprite*)sprite
 {
     [sprite stopAllActions];
+    [sprite setVisible:NO];
 }
 
 - (void) setThrusting:(int)value
@@ -100,6 +102,7 @@
         NSLog(@"update thrusting: zomg flames!");    
         
 
+        [spriteFlame setVisible:YES];
         [loaderGreedySprite runAnimationWithUniqueName:@"flamestart" 
                                               onSprite:spriteFlame
                                     endNotificationSEL:@selector(animationEndedFlameStart:) 
@@ -116,47 +119,27 @@
     return (_thrusting > 1);
 }
 
-- (void) updateFeeding:(int)value
+-(void) incrementEating
 {
-    _feeding = value;
-    
-    if (value == kGreedyIdle)
-    {
-        NSLog(@"update feeding: idle");
-        
-        [self closeDown];
-        
-        return;
-    }
-    
-    if (value >= kGreedyEating)
-    {
-        NSLog(@"update feeding: eating");
-        
+    if(_eatCount == 0){
         [self openUp];
-        
-        return;
+         NSLog(@"update feeding: eating");
     }
-}
-
-#pragma mark Radar
-
-- (void) startRadar
-{
-    [spriteRadar setVisible:YES];
-    [spriteRadar runAction:[CCRepeatForever actionWithAction:[CCRadarRotateBy actionWithDuration:10.0f angle:360]]];
-}
-
-- (BOOL) handleCollisionRadar:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
-{
-    NSLog(@"Radar detected asteroid");
+    _eatCount++;
     
-    return YES;
+    NSLog(@"Inc eat: %d", _eatCount);
+    
 }
 
-- (void) stopRadar
+-(void) decrementEating
 {
-    [spriteRadar setVisible:NO];
+    _eatCount--;
+    if(_eatCount == 0)
+    {
+        [self closeDown];
+         NSLog(@"update feeding: idle");
+    }
+    NSLog(@"Dec eat: %d", _eatCount);
 }
 
 #pragma mark Greedy Animations

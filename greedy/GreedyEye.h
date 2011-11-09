@@ -9,9 +9,12 @@
 #import "cocos2d.h"
 #import "SpaceManagerCocos2d.h"
 
-@interface GreedyEye : cpShapeNode {
+
+#define DEBUG_EYE false
+
+@interface GreedyEye : CCNode {
+    cpShapeNode  *_eyeBall;
     cpShape *_iris[16];
-    cpShape *_irisBoundingCircle;
 }
 
 @end

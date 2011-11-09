@@ -86,17 +86,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
             [_shooters addObject:shooter];
         }
         
-        // greedy!
-        _greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition]];
-        [self addChild:_greedy];
-        [_greedy release];
-        
         // static asteroids (big ones!)
         for (int i = 0; i < [level.staticAsteroids count]; i++)
         {
-          StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
-          Asteroid* staticAsteroid1 = [_asteroidField addAsteroid:[config position] size:[config size]];
-          [self addChild:staticAsteroid1];
+            StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
+            [_asteroidField addAsteroid:[config position] size:[config size]];    
         }
         
         // add limits
@@ -149,13 +143,10 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [view setPosition:ccp(view.position.x, view.position.y - 250)];
     
     // animate the greedy into view
-    [view runAction:[CCSequence actions:
-                     //[CCFadeOut actionWithDuration:0.25f],
-                     //[CCFadeIn actionWithDuration:0.25f],
-                     //[CCRotateBy actionWithDuration:2.0f angle:90],
-                     [CCMoveBy actionWithDuration:1.5f position:ccp(0, +250)],
-                     [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
-                     nil ] 
+    [[[GameObjectCache sharedGameObjectCache] greedyView] runAction:[CCSequence actions:
+                             [CCMoveBy actionWithDuration:1.5f position:ccp(0, +250)],
+                             [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
+                             nil ] 
      ];
 }
 
@@ -188,11 +179,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 -(void) startGame:(id)sender
 {
     [_greedy stopAllActions];
+    
     [_greedy applyThrust];
     
-    //switch out the zone
-    //[self removeChildByTag:StartTag cleanup:YES];
-    
+    [_greedy start];
+        
     [self createDeathZone];
     
 	[self start];
@@ -206,7 +197,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     self.isAccelerometerEnabled = YES;
     
     [_environment.manager start:(1.0/60.0)];
-    [self schedule: @selector(step:)];
+    [self schedule: @selector(step:) interval:(1.0/60.0)];
 }
 
 - (void) pause
@@ -282,11 +273,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         [shooter step:dt];
     }
     
-    // now step the graphics
-    [_greedy postStep:dt];
-    
-    
-    
     //move the parallax backgrounds
     CGPoint diff = ccpSub(_lastPosition, [_greedy position]);
     
@@ -301,8 +287,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) moveCameraTo:(CGPoint)point
 {
-    float magnitude = abs(_cameraPosition.y - point.y); //ccpDistance(_cameraPosition, point);
-    //NSLog(@"magnitude: %f", magnitude);
+    float magnitude = abs(_cameraPosition.y - point.y); 
     
     if (magnitude > 100) 
     {

@@ -12,7 +12,7 @@
 
 @implementation GreedyEye
 
--(void) addEyeContainer:(SpaceManagerCocos2d *)manager shape:(cpShape *) shape
+-(void) addEyeContainer
 {  
     float segCount = 16.0;
     float segAngle = 360.0 / segCount;
@@ -22,6 +22,10 @@
     float fromX, fromY = 0.0;
     float toX, toY = 0.0;
     
+    cpBody *body = cpBodyNewStatic();
+    //cpBody *body = cpBodyNew(mass, cpMomentForBox(mass, width, height));
+    //cpSpaceAddBody(space, body);
+    
     for(int seg = 0; seg < segCount; seg++)
     {
         fromX = pos.x + (radius * cos( CC_DEGREES_TO_RADIANS(seg * segAngle) ) );
@@ -30,17 +34,21 @@
         toX = pos.x + (radius * cos( CC_DEGREES_TO_RADIANS((seg + 1) * segAngle )) );
         toY = pos.y + (radius * sin( CC_DEGREES_TO_RADIANS((seg + 1) * segAngle) ) );
         
-        _iris[seg] = cpSpaceAddShape([[GameObjectCache sharedGameObjectCache] space], cpSegmentShapeNew(shape->body, cpv(fromX, fromY), cpv(toX, toY), 1.0f));
+        //_iris[seg] = [[[GameObjectCache sharedGameObjectCache] spaceManager] addSegmentAtWorldAnchor:cpv(fromX, fromY) toWorldAnchor:cpv(toX, toY) mass:STATIC_MASS radius:1.0];
+        _iris[seg] = cpSpaceAddShape([[GameObjectCache sharedGameObjectCache] space], cpSegmentShapeNew(body, cpv(fromX, fromY), cpv(toX, toY), 1.0f));
+        
         
         _iris[seg]->layers = LAYER_EYEBALL;
         _iris[seg]->e = 0.5;
-        _iris[seg]->u  = 0.5;
+        _iris[seg]->u = 0.5;
+        
+        if(DEBUG_EYE){
+            ccColor3B color = ccc3(rand()%256, rand()%256, rand()%256);
+            cpShapeNode *node = [cpShapeNode nodeWithShape:_iris[seg]];
+            node.color = color;
+            [self addChild:node];
+        }
     }
-    
-    _irisBoundingCircle = cpCircleShapeNew(shape->body, 2.0, ccp(0,0));
-    _irisBoundingCircle->sensor = YES;
-    _irisBoundingCircle->layers = LAYER_EYEBALL;
-    cpSpaceAddShape(manager.space, _irisBoundingCircle);
 }
 
 -(id) init
@@ -48,34 +56,50 @@
     
     if(!(self = [super init])) return nil;
     
-    //add crazy eye
-    cpShape *sh1 = [[[GameObjectCache sharedGameObjectCache] spaceManager] addCircleAt:ccp(0,0) mass:10.0 radius:3.0];
-    sh1->layers = LAYER_EYEBALL;
-    cpShapeNode  *_eyeBall = [[cpShapeNode alloc] initWithShape:sh1];
+    [self addEyeContainer];
+    
+    //    //add crazy eye
+    //[[[GameObjectCache sharedGameObjectCache] spaceManager] setGravity:ccp(0, -2)];
+    cpShape *shapeEye = [[[GameObjectCache sharedGameObjectCache] spaceManager] addCircleAt:ccp(0,0) mass:2.0 radius:3.0];
+    shapeEye->layers = LAYER_EYEBALL;
+    
+    //Add eyeball
+    _eyeBall = [[cpShapeNode alloc] initWithShape:shapeEye];
     static const ccColor3B ccGreedyEye = {33,33,33};
     _eyeBall.color = ccGreedyEye;
     [self addChild:_eyeBall];
     [_eyeBall release];
+    
+    if(DEBUG_EYE){
+        ccColor3B color = ccc3(255, 0, 0);
+        cpShapeNode *node = [cpShapeNode nodeWithShape:shapeEye];
+        node.color = color;
+        [self addChild:node];
+    }
+    
+    [self schedule:@selector(update:)];
     
     return self;
 }
 
 -(void) update:(ccTime) delta
 {
-    //update the pupil to keep it clamped inside the iris
-    CGPoint irisPos =  ((cpCircleShape *)(_irisBoundingCircle))->tc;
-    CGPoint pupilPos = self.position;
+    //[[GameObjectCache sharedGameObjectCache] spaceManager].rehashStaticEveryStep = YES;
     
-    if(!cpvnear(pupilPos, irisPos, 2.0))
-    {
-        cpVect dxdy = cpvnormalize_safe(cpvsub(pupilPos, irisPos));	
-        CGPoint newPos = cpvadd(irisPos, cpvmult(dxdy, 2.0));
-        cpBodySetPos(self.shape->body, newPos);
-        cpBodyResetForces(self.shape->body);
-    }
+    cpvforangle(self.rotation);
+    
     
     //add down force (not a gravity just a "forcy thing")
-    cpBodyApplyImpulse(self.shape->body, ccp(0, (-100 * delta)),cpvzero); 
+    cpBodyApplyImpulse(_eyeBall.shape->body, cpvforangle(self.parent.rotation), cpvzero); 
+}
+
+- (void) dealloc
+{
+    NSLog(@"Dealloc GreedyEye");
+    
+    [self removeAllChildrenWithCleanup:YES];
+    
+    [super dealloc];
 }
 
 @end

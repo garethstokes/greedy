@@ -333,7 +333,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 	accelY = (float) acceleration.y * kFilterFactor + ((1.0 - kFilterFactor)*accelY);
 	accelZ = (float) acceleration.z * kFilterFactor + ((1.0 - kFilterFactor)*accelZ);
     
-    //high pass filter
+    //high pass filter	
     //accelX = (acceleration.x * kFilterFactor) + (accelX * (1.0 - kFilterFactor));
     //accelY = (acceleration.y * kFilterFactor) + (accelY * (1.0 - kFilterFactor));
     

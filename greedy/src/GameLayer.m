@@ -63,7 +63,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         _debugLayer = nil;
         
         WorldRepository *repository = [[WorldRepository alloc] init];
-            World *w1 = [repository findWorldBy:1];
+        World *w1 = [repository findWorldBy:1];
         [repository release];
         GreedyLevel *level = [w1.levels objectAtIndex:(l - 1)];        
         
@@ -144,13 +144,15 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 - (void) startLevel
 {
+    _followGreedy = YES;
+    
     [[[GameObjectCache sharedGameObjectCache] greedyView] setPosition:ccp([[GameObjectCache sharedGameObjectCache] greedyView].position.x, [[GameObjectCache sharedGameObjectCache] greedyView].position.y - 250)];
     
     // animate the greedy into view
     [[[GameObjectCache sharedGameObjectCache] greedyView] runAction:[CCSequence actions:
-                             [CCMoveBy actionWithDuration:1.5f position:ccp(0, +250)],
-                             [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
-                             nil ] 
+                                                                     [CCMoveBy actionWithDuration:1.5f position:ccp(0, +250)],
+                                                                     [CCCallFuncN actionWithTarget:self selector:@selector(startGame:)],
+                                                                     nil ] 
      ];
 }
 
@@ -187,7 +189,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [_greedy applyThrust];
     
     [_greedy start];
-        
+    
     [self createDeathZone];
     
 	[self start];
@@ -248,6 +250,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     CGPoint endPoint = ccp([[GameObjectCache sharedGameObjectCache] greedyView].position.x, [[GameObjectCache sharedGameObjectCache] greedyView].position.y);
     endPoint.x = 0;
     
+    _followGreedy = NO;
+    
     [_greedy moveManually:ccpAdd(ccp(0,300), endPoint) target:self selector:@selector(showScoreCard:)];
     
     return YES;
@@ -277,16 +281,20 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         [shooter step:dt];
     }
     
-    //move the parallax backgrounds
-    CGPoint diff = ccpSub(_lastPosition, [_greedy position]);
     
-    [[[GameObjectCache sharedGameObjectCache] background] setPosition: ccpAdd([[[GameObjectCache sharedGameObjectCache] background] position], diff)];
-    
-    _lastPosition = [_greedy position];
-    
+    //Update fuel level
     [[[GameObjectCache sharedGameObjectCache] lifeMeter] setLifeLevel:floor(_greedy.fuel)];
     
-    [self moveCameraTo:_lastPosition];
+    if (_followGreedy){
+        
+        //move the parallax backgrounds
+        CGPoint diff = ccpSub(_lastPosition, [_greedy position]);
+        [[[GameObjectCache sharedGameObjectCache] background] setPosition: ccpAdd([[[GameObjectCache sharedGameObjectCache] background] position], diff)];
+        
+        //update camera position
+        _lastPosition = [_greedy position];
+        [self moveCameraTo:_lastPosition];
+    }
 }
 
 - (void) moveCameraTo:(CGPoint)point

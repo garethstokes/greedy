@@ -12,19 +12,19 @@
 #import "GameLayer.h"
 #import "OptionsMenuLayer.h"
 
+#define kOptionsMenu 10000
+
 @interface HudLayer : CCLayer {
   LifeMeter *_lifeMeter;
   CCLabelTTF *_debugLabel;
   CCLabelTTF *_toggleLabel;
-  OptionsMenuLayer *_optionsMenu;
-  bool _settingsOpen;
   int _countdown;
   CCLabelAtlas *_countdownLabel;
 }
 
 @property (nonatomic, assign) LifeMeter *lifeMeter;
 
-- (id) initWithGameLayer:(GameLayer*)gameLayer;
+- (id) initWithGameLayer;
 
 - (void) createLifeMeter: (CGSize)size;
 - (void) updateCountdownClock:(id)sender;

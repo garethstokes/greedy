@@ -36,13 +36,13 @@
     [scene addChild:[[GameObjectCache sharedGameObjectCache] gameLayer] z:10];
     
     //HUD
-    [scene addChild:[[[HudLayer alloc] initWithGameLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease] z:50];
-    
-    [[[GameObjectCache sharedGameObjectCache] gameLayer] startLevel];
+    [scene addChild:[[[HudLayer alloc] initWithGameLayer] autorelease] z:50];
     
     [[GameObjectCache sharedGameObjectCache] addGameScene: scene];
     
     scene->level = level;
+    
+    [[[GameObjectCache sharedGameObjectCache] gameLayer] startLevel];
     
 	return scene;
 }

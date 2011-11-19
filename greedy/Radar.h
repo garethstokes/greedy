@@ -18,9 +18,12 @@
     CPCCNODE_MEM_VARS;
     cpShape *_shapeRadarCircle;
     cpShape *_radarShape;
+    float _score;
 }
 -(id) initWithBody:(cpBody*)body;
 - (void) step:(ccTime) delta;
 - (void) stop;
 - (void) start;
+-(float) score;
+	
 @end

@@ -228,6 +228,11 @@
                                                                      nil ]];
 }
 
+-(float) score
+{
+    return spriteRadar.score;
+}
+
 - (void)dealloc
 {
     CCLOG(@"Dealloc Greedy");

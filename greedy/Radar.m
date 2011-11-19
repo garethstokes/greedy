@@ -29,6 +29,11 @@
                                                                                    selector: @selector(handleCollisionRadar:arbiter:space:)]; 
 }
 
+-(float) score
+{
+    return _score;
+}
+
 - (void) createRadarLine: (cpBody *) body
 {
     if(_radarShape == nil)
@@ -121,6 +126,7 @@
             
             if( oreScore > 0)
             { 
+                 _score += oreScore;
                 [self addGoldCollectionAnimation:arb];
             }
         }
@@ -138,7 +144,7 @@
             
             if( oreScore > 0)
             { 
-                //_score += oreScore;
+                _score += oreScore;
                 
                [self addGoldCollectionAnimation:arb];
             }

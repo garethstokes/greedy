@@ -19,13 +19,13 @@
 
 - (id) init
 {
-    return [self initWithGameLayer:nil];
+    return [self initWithGameLayer];
 }
 
-- (id) initWithGameLayer:(GameLayer*)gameLayer
+- (id) initWithGameLayer
 {
     NSLog(@"HudLayer: initWithGameLayer");
-    //if (!(self=[super initWithColor:(ccColor4B){64, 64, 128, 64}]))
+    
     if (!(self=[super init]))
     {
         return nil;
@@ -49,11 +49,15 @@
     [menu setPosition:CGPointMake(25, 25)];
     [self addChild:menu];
     
+    //create life meter
     [self createLifeMeter: size];
-    _settingsOpen = NO;
+    
+    
+    //create clock
     _countdown = 99;
     [self createCountdownLabel];
     [self schedule:@selector(updateCountdownClock:) interval:1.0f];
+    
     return self;
 }
 
@@ -107,11 +111,15 @@
 
 - (void)openSettings:(id)sender
 {
-    if (_settingsOpen) return;
-    _settingsOpen = YES;
-    _optionsMenu = [[[OptionsMenuLayer alloc] init:YES] retain];
-        [self.parent addChild:_optionsMenu z:100];
-    [_optionsMenu release];
+    if([[[GameObjectCache sharedGameObjectCache] gameScene] getChildByTag:kOptionsMenu] == nil)
+    {
+        OptionsMenuLayer *_optionsMenu;
+
+        _optionsMenu = [[[OptionsMenuLayer alloc] init:YES] retain];
+        _optionsMenu.tag = kOptionsMenu;
+            [[[GameObjectCache sharedGameObjectCache] gameScene] addChild:_optionsMenu z:100];
+        [_optionsMenu release];
+    };
 }
 
 - (void) dealloc

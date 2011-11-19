@@ -91,7 +91,7 @@ PartData sexyParts[] = {
             }
         }
         
-        //[[[GameObjectCache sharedGameObjectCache] spaceManager] applyLinearExplosionAt:position radius:20 maxForce:50 layers:LAYER_RADAR group:CP_NO_GROUP];
+        [[[GameObjectCache sharedGameObjectCache] spaceManager] applyLinearExplosionAt:position radius:20 maxForce:50 layers:LAYER_RADAR group:CP_NO_GROUP];
         
         [loader release];
     }

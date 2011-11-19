@@ -14,31 +14,34 @@
 
 @interface GameLayer : CCLayer
 {
-  Greedy *_greedy;
-  AsteroidField *_asteroidField;
-  NSMutableArray *_shooters;
-  CGPoint _lastPosition;
-  CGPoint _cameraPosition;
-  
-  CCLayer* _debugLayer;
-  
-  GameEnvironment *_environment;
-  
-  CCAction *_actionDeath;
-  CCSpriteBatchNode *_batchDeath;
-  
-  CCSprite *_endPoint;
-  
-  ccTime _timeleft;
-  
-  float accelX;
-  float accelY;
-  float accelZ;
-  
-  int ACCELORMETER_DIRECTION;
-  
-  int _height;
-  int _width;
+    Greedy *_greedy;
+    AsteroidField *_asteroidField;
+    NSMutableArray *_shooters;
+    
+    //camera follow variables
+    bool _followGreedy;
+    CGPoint _lastPosition;
+    CGPoint _cameraPosition;
+    
+    CCLayer* _debugLayer;
+    
+    GameEnvironment *_environment;
+    
+    CCAction *_actionDeath;
+    CCSpriteBatchNode *_batchDeath;
+    
+    CCSprite *_endPoint;
+    
+    ccTime _timeleft;
+    
+    float accelX;
+    float accelY;
+    float accelZ;
+    
+    int ACCELORMETER_DIRECTION;
+    
+    int _height;
+    int _width;
 }
 
 @property (nonatomic, retain) Greedy *greedy;

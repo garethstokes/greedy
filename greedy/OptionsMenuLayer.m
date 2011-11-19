@@ -58,12 +58,6 @@ enum nodeTags
         [self addChild:soundSlider];
 		soundSlider.delegate = self;
         
-        
-        CCMenuItemImage *menuClose = [CCMenuItemImage itemFromNormalImage:@"close.png" 
-                                                            selectedImage:@"close_down.png"
-                                                                   target:self 
-                                                                 selector:@selector(menuCloseTapped:)];
-        
         CCMenuItemImage *menuChooseLevel = [CCMenuItemImage itemFromNormalImage:@"btn_choose_level_off.png" 
                                                                   selectedImage:@"btn_choose_level_on.png"
                                                                          target:self 
@@ -73,6 +67,12 @@ enum nodeTags
                                                              selectedImage:@"btn_replay_on.png"
                                                                     target:self 
                                                                   selector:@selector(menuReplay:)];
+        
+        CCMenuItemImage *menuClose = [CCMenuItemImage itemFromNormalImage:@"close.png" 
+                                                            selectedImage:@"close_down.png"
+                                                                   target:self 
+                                                                 selector:@selector(menuCloseTapped:)];
+
         
         
         //close button
@@ -98,19 +98,19 @@ enum nodeTags
 }
 
 - (void)menuCloseTapped:(id)sender {
-    [self.parent removeChild:self cleanup:YES];  
+    [self.parent removeChild:self cleanup:YES];
     [[CCDirector sharedDirector] resume];
 }
 
 - (void)menuChooseLevel:(id)sender {
     [[CCDirector sharedDirector] replaceScene:[ChooseLevelLayer scene]];
+    [[CCDirector sharedDirector] resume];
 }
 
 - (void)menuReplay:(id)sender {
-    [[CCDirector sharedDirector] resume];
-    
     GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
     [[CCDirector sharedDirector] replaceScene:[scene sceneFromCurrent]];
+    [[CCDirector sharedDirector] resume];
 }
 
 - (void) valueChanged: (float) value tag: (int) tag; 

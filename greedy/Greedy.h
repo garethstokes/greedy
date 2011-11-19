@@ -58,6 +58,7 @@ enum {
 - (void) setAngle:(cpFloat)value;
 - (BOOL) hasExploded;
 - (void) explode;
+-(float) score;
 - (void) moveManually:(CGPoint)point target:(id)t selector:(SEL) s;
 -(void) start;
 

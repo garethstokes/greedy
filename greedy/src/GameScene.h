@@ -17,9 +17,6 @@
 #import "DeathCard.h"
 
 @interface GameScene : CCScene {
-  GameEnvironment *environment;
-  Background *background;
-  GameLayer *gameLayer;
   HudLayer *hudLayer;
   ScoreCard *_scorecard;
   DeathCard *_deathcard;
@@ -28,7 +25,8 @@
 }
 
 @property (nonatomic, retain) GameEnvironment *environment;
-@property (nonatomic, retain) GameScene *scene;
+@property (nonatomic, retain) HudLayer *hudLayer;
+@property (nonatomic, readonly) int Level;
 
 + (id) sceneWithLevel:(int)level;
 

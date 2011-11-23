@@ -25,6 +25,7 @@ enum SpriteTags{
 };
 
 @implementation GameLayer
+
 @synthesize greedy = _greedy;
 
 // using law of cosines, we can calculate the vector between the player and
@@ -59,7 +60,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     if( (self=[super init])) {
         ACCELORMETER_DIRECTION = [[SettingsManager sharedSettingsManager] getInt:@"controlDirection" withDefault:1] == 0 ? -1 : 1;
         
-        _environment = environment;
         _debugLayer = nil;
         
         WorldRepository *repository = [[WorldRepository alloc] init];
@@ -70,7 +70,6 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         // asteroids.
         _asteroidField = [[AsteroidField alloc] initWithSize:CGSizeMake([level asteroidFieldWidth], [level asteroidFieldHeight]) density:2.0f Layer:LAYER_ASTEROID];
         [_asteroidField setPositionInPixels:ccp(0,0)];
-        //[_asteroidField setPositionInPixels:ccp([level.environment width] / 2.0f, [level.environment height] / 2.0f)];
         [self addChild:_asteroidField];
         [_asteroidField release];
         
@@ -92,6 +91,11 @@ ccpAngleBetween(CGPoint a, CGPoint b)
             StaticAsteroidsConfig *config = [level.staticAsteroids objectAtIndex:i];
             [_asteroidField addAsteroid:[config position] size:[config size]];    
         }
+        
+        // greedy!
+        _greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition]];
+        [self addChild:_greedy];
+        [_greedy release];
         
         // add limits
         //[environment addTopDownWorldContainmentWithFriction:1.0f elasticity:0.1f height:1800.0 width:350.0];
@@ -199,39 +203,36 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     self.isTouchEnabled = YES;
     self.isAccelerometerEnabled = YES;
     
-    [_environment.manager start:(1.0/60.0)];
+    [[[GameObjectCache sharedGameObjectCache] spaceManager] start:(1.0/60.0)];
     [self schedule: @selector(step:) interval:(1.0/60.0)];
 }
 
 - (void) pause
 {
-    [_environment.manager stop];
+    [[[GameObjectCache sharedGameObjectCache] spaceManager] stop];
     [self unschedule: @selector(step:)];    
 }
 
 - (void) stop
 {
-    [_environment.manager stop];
+    [[[GameObjectCache sharedGameObjectCache] spaceManager] stop];
     [self unschedule: @selector(step:)];  
 }
 
 - (void) endLevel
 {
-    GameScene * scene = (GameScene*)(self->parent_);
-    [scene showScore:_greedy.score time:_timeleft];
+    [[[GameObjectCache sharedGameObjectCache] gameScene] showScore:_greedy.score time:_timeleft];
 }
 
 
 -(void) showScoreCard:(id)sender
 {
-    GameScene * scene = (GameScene*)(self->parent_);
-    [scene showScore:_greedy.score time:_timeleft];
+    [[[GameObjectCache sharedGameObjectCache] gameScene] showScore:_greedy.score time:_timeleft];
 }
 
 - (void) endLevelWithDeath
 {
-    GameScene * scene = (GameScene*)(self->parent_);
-    [scene showDeath];
+    [[[GameObjectCache sharedGameObjectCache] gameScene] showDeath];
 }
 
 - (BOOL) handleCollisionFinishline:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
@@ -244,12 +245,18 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     [_endPoint runAction:[CCFadeOut actionWithDuration:3.0f]];
     [self addChild:_endPoint z:-1]; 
     
+    [[[[GameObjectCache sharedGameObjectCache] gameScene] hudLayer] stop];
+    
     CGPoint endPoint = ccp([[GameObjectCache sharedGameObjectCache] greedyView].position.x, [[GameObjectCache sharedGameObjectCache] greedyView].position.y);
     endPoint.x = 0;
     
     _followGreedy = NO;
     
+<<<<<<< HEAD
     [_greedy moveManually:ccpAdd(ccp(0,300), endPoint) target:self selector:@selector(showScoreCard:)];
+=======
+    [_greedy moveManually:ccpAdd(ccp(0,200), endPoint) target:self selector:@selector(showScoreCard:)];
+>>>>>>> - Added greedy back in
     
     return YES;
 }
@@ -258,7 +265,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 {  
     // debug layer
     if(_debugLayer == nil){
-        _debugLayer = [_environment.manager createDebugLayer];
+        _debugLayer = [[[GameObjectCache sharedGameObjectCache] spaceManager] createDebugLayer];
         _debugLayer.visible = YES;
         [self addChild: _debugLayer];
     } else
@@ -373,7 +380,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 - (void) dealloc
 {
     NSLog(@"Dealloc GameLayer");
-    [_environment.manager stop];
+    [[[GameObjectCache sharedGameObjectCache] spaceManager] stop];
     [ self removeAllChildrenWithCleanup:YES];
     [super dealloc];
 }

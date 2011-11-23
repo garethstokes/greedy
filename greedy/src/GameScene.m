@@ -15,7 +15,8 @@
 @implementation GameScene
 
 @synthesize environment;
-@synthesize scene;
+@synthesize hudLayer;
+@synthesize Level = level;
 
 +(id) sceneWithLevel:(int)level
 {
@@ -36,7 +37,12 @@
     [scene addChild:[[GameObjectCache sharedGameObjectCache] gameLayer] z:10];
     
     //HUD
+<<<<<<< HEAD
     [scene addChild:[[[HudLayer alloc] initWithGameLayer] autorelease] z:50];
+=======
+    scene.hudLayer = [[[HudLayer alloc] initWithGameLayer] autorelease];
+    [scene addChild:scene.hudLayer z:50];
+>>>>>>> - Added greedy back in
     
     [[GameObjectCache sharedGameObjectCache] addGameScene: scene];
     
@@ -51,7 +57,8 @@
 {
     if(_scorecard != nil) return;
     
-    _scorecard = [[[ScoreCard alloc] initWithScore:score level:1 time:time] autorelease];
+    _scorecard = [[[ScoreCard alloc] initWithScore:score level:1 time:[[self hudLayer] CountDown]] autorelease];
+    
     [self addChild:_scorecard  z:100];
 }
 

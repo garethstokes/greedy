@@ -127,7 +127,7 @@
     _greedyPosition = CGPointMake([[startPosition objectForKey: @"x"] floatValue],[[startPosition objectForKey: @"y"] floatValue]);
     
     NSDictionary *environment = [dictionary valueForKey: @"Environment"];
-    _environment = [[EnvironmentConfig alloc] init];
+    _environment = [[[EnvironmentConfig alloc] init] autorelease];
     [_environment importFromDictionary:environment];
     
     NSDictionary *startLine = [dictionary valueForKey: @"StartLine"];

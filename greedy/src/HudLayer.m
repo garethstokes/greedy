@@ -16,6 +16,7 @@
 @implementation HudLayer
 
 @synthesize lifeMeter = _lifeMeter;
+@synthesize CountDown = _countdown;
 
 - (id) init
 {
@@ -59,6 +60,11 @@
     [self schedule:@selector(updateCountdownClock:) interval:1.0f];
     
     return self;
+}
+
+- (void) stop
+{
+    [self unschedule:@selector(updateCountdownClock:)];
 }
 
 - (void) createCountdownLabel {
@@ -115,10 +121,16 @@
     {
         OptionsMenuLayer *_optionsMenu;
 
+<<<<<<< HEAD
         _optionsMenu = [[[OptionsMenuLayer alloc] init:YES] retain];
         _optionsMenu.tag = kOptionsMenu;
             [[[GameObjectCache sharedGameObjectCache] gameScene] addChild:_optionsMenu z:100];
         [_optionsMenu release];
+=======
+        _optionsMenu = [[[OptionsMenuLayer alloc] init:YES] autorelease];
+        _optionsMenu.tag = kOptionsMenu;
+        [[[GameObjectCache sharedGameObjectCache] gameScene] addChild:_optionsMenu z:100];
+>>>>>>> - Added greedy back in
     };
 }
 

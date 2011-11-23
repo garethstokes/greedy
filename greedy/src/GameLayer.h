@@ -25,8 +25,11 @@
     
     CCLayer* _debugLayer;
     
+<<<<<<< HEAD
     GameEnvironment *_environment;
     
+=======
+>>>>>>> - Added greedy back in
     CCAction *_actionDeath;
     CCSpriteBatchNode *_batchDeath;
     

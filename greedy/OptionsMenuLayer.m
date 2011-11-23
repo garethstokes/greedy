@@ -41,13 +41,13 @@ enum nodeTags
 		controlSlider.delegate = self;
         
         //Debug toggle switch
-        controlDebug = [CCSlider sliderWithBackgroundFile: @"controlslider_bg.png" thumbFile: @"swtch_slide.png"];
-		
-        [controlDebug setValue:(controlDirection / 1.0)];
-        [controlDebug setPosition:ccp(222, 306)];
-        controlDebug.tag = kDebugTag;
-        [self addChild:controlDebug];
-		controlDebug.delegate = self;        
+//        controlDebug = [CCSlider sliderWithBackgroundFile: @"controlslider_bg.png" thumbFile: @"swtch_slide.png"];
+//		
+//        [controlDebug setValue:(controlDirection / 1.0)];
+//        [controlDebug setPosition:ccp(222, 306)];
+//        controlDebug.tag = kDebugTag;
+//        [self addChild:controlDebug];
+//		controlDebug.delegate = self;        
         
         //sound slider
         soundSlider = [CCSlider sliderWithBackgroundFile: @"slider_bg.png" thumbFile: @"slider.png"];

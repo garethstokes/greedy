@@ -23,12 +23,14 @@
 }
 
 @property (nonatomic, assign) LifeMeter *lifeMeter;
+@property (nonatomic, readonly) int CountDown;
 
 - (id) initWithGameLayer;
 
 - (void) createLifeMeter: (CGSize)size;
 - (void) updateCountdownClock:(id)sender;
 - (void) createCountdownLabel;
+- (void) stop;
 
 
 @end

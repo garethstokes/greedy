@@ -84,6 +84,7 @@
     
     if (self) {
         SpriteHelperLoader * newLoader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"chooselevel"];
+        CCLOG(@"chooseLevelSpriteLoader retainCount:%d", [newLoader retainCount]);
         
         [newLoader spriteWithUniqueName:@"background" atPosition:ccp(150, 245) inLayer:self];
         
@@ -100,6 +101,7 @@
         [self addChild:menu];
         
         [newLoader release];
+        CCLOG(@"chooseLevelSpriteLoader retainCount:%d", [newLoader retainCount]);
     }
     
     return self;

@@ -37,12 +37,8 @@
     [scene addChild:[[GameObjectCache sharedGameObjectCache] gameLayer] z:10];
     
     //HUD
-<<<<<<< HEAD
-    [scene addChild:[[[HudLayer alloc] initWithGameLayer] autorelease] z:50];
-=======
     scene.hudLayer = [[[HudLayer alloc] initWithGameLayer] autorelease];
     [scene addChild:scene.hudLayer z:50];
->>>>>>> - Added greedy back in
     
     [[GameObjectCache sharedGameObjectCache] addGameScene: scene];
     

@@ -120,17 +120,9 @@
     if([[[GameObjectCache sharedGameObjectCache] gameScene] getChildByTag:kOptionsMenu] == nil)
     {
         OptionsMenuLayer *_optionsMenu;
-
-<<<<<<< HEAD
-        _optionsMenu = [[[OptionsMenuLayer alloc] init:YES] retain];
-        _optionsMenu.tag = kOptionsMenu;
-            [[[GameObjectCache sharedGameObjectCache] gameScene] addChild:_optionsMenu z:100];
-        [_optionsMenu release];
-=======
         _optionsMenu = [[[OptionsMenuLayer alloc] init:YES] autorelease];
         _optionsMenu.tag = kOptionsMenu;
         [[[GameObjectCache sharedGameObjectCache] gameScene] addChild:_optionsMenu z:100];
->>>>>>> - Added greedy back in
     };
 }
 

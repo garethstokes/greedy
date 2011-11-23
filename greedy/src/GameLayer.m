@@ -252,11 +252,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     _followGreedy = NO;
     
-<<<<<<< HEAD
-    [_greedy moveManually:ccpAdd(ccp(0,300), endPoint) target:self selector:@selector(showScoreCard:)];
-=======
     [_greedy moveManually:ccpAdd(ccp(0,200), endPoint) target:self selector:@selector(showScoreCard:)];
->>>>>>> - Added greedy back in
     
     return YES;
 }

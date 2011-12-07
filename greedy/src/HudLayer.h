@@ -20,6 +20,7 @@
   CCLabelTTF *_toggleLabel;
   int _countdown;
   CCLabelAtlas *_countdownLabel;
+  SpriteHelperLoader *_loader;
 }
 
 @property (nonatomic, assign) LifeMeter *lifeMeter;

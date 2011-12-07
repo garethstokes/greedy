@@ -12,6 +12,7 @@
 #import "GameScene.h"
 #import "Greedy.h"
 #import "GameObjectCache.h"
+#import "SpriteHelperLoader.h"
 
 @implementation HudLayer
 
@@ -36,15 +37,15 @@
     [self setPosition:ccp(0, size.height - 45)];
     [self setContentSize:CGSizeMake(size.width, 45)];
     
+    _loader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"hud"];
+    [_loader spriteWithUniqueName:@"hud_bg" atPosition:ccp(size.width /2,25) inLayer:self];
+  
     // background sprite
-    CCSprite *background = [CCSprite spriteWithFile:@"hud_bg.png"];
-    [background setPosition:ccp(size.width /2,25)];
-    [self addChild:background z:-1];
-    
-    CCMenuItemImage *pause = [CCMenuItemImage itemFromNormalImage:@"pause_btn_off.png" 
-                                                    selectedImage:@"pause_btn_down.png" 
-                                                           target:self 
-                                                         selector:@selector(openSettings:)];
+    CCMenuItemImage *pause = [CCMenuItemImage 
+                              itemFromNormalSprite:[_loader spriteWithUniqueName:@"pause_btn_off" atPosition:ccp(0,0) inLayer:nil] 
+                              selectedSprite:[_loader spriteWithUniqueName:@"pause_btn_down" atPosition:ccp(0,0) inLayer:nil]
+                              target:self 
+                              selector:@selector(openSettings:)];
     
     CCMenu *menu = [CCMenu menuWithItems: pause, nil];
     [menu setPosition:CGPointMake(25, 25)];
@@ -70,7 +71,12 @@
 - (void) createCountdownLabel {
     CCTexture2DPixelFormat currentFormat = [CCTexture2D defaultAlphaPixelFormat];
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
-    _countdownLabel = [[CCLabelAtlas labelWithString:@"99" charMapFile:@"orange_numbers.png" itemWidth:10 itemHeight:16 startCharMap:'.'] retain];
+    _countdownLabel = [[CCLabelAtlas 
+                          labelWithString:@"99" 
+                          charMapFile:@"orange_numbers.png" 
+                          itemWidth:10 
+                          itemHeight:16 
+                          startCharMap:'.'] retain];
     [CCTexture2D setDefaultAlphaPixelFormat:currentFormat];	
     [_countdownLabel setPosition:ccp(288,17)];
     [self addChild:_countdownLabel];

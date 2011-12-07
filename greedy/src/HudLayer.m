@@ -13,6 +13,7 @@
 #import "Greedy.h"
 #import "GameObjectCache.h"
 #import "SpriteHelperLoader.h"
+#import "SettingsManager.h"
 
 @implementation HudLayer
 
@@ -40,6 +41,13 @@
     _loader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"hud"];
     [_loader spriteWithUniqueName:@"hud_bg" atPosition:ccp(size.width /2,25) inLayer:self];
   
+    // help screens
+    int level = [[[GameObjectCache sharedGameObjectCache] gameScene] Level];
+    if (level == 1 && [[SettingsManager sharedSettingsManager] getInt:@"HelpScreenShown"] != 1) {
+        _helpScreenStatus = @"help_screens_tilt";
+        [self schedule:@selector(showHelp:) interval:3];
+    }
+  
     // background sprite
     CCMenuItemImage *pause = [CCMenuItemImage 
                               itemFromNormalSprite:[_loader spriteWithUniqueName:@"pause_btn_off" atPosition:ccp(0,0) inLayer:nil] 
@@ -61,6 +69,37 @@
     [self schedule:@selector(updateCountdownClock:) interval:1.0f];
     
     return self;
+}
+
+- (void) showHelp:(id)sender
+{
+    NSLog(@"help status: %@", _helpScreenStatus);
+    [[CCDirector sharedDirector] pause];
+    if (_helpScreenStatus == @"") 
+    {
+        [[CCDirector sharedDirector] resume];
+        [self unschedule:@selector(showHelp:)];
+        [[SettingsManager sharedSettingsManager] setValue:@"HelpScreenShown" newInt:1];
+    }
+    
+    CCMenuItemImage *tilt = [CCMenuItemImage 
+                              itemFromNormalSprite:[_loader spriteWithUniqueName:_helpScreenStatus atPosition:ccp(0,0) inLayer:nil] 
+                              selectedSprite:[_loader spriteWithUniqueName:_helpScreenStatus atPosition:ccp(0,0) inLayer:nil]
+                              target:self 
+                              selector:@selector(unPause:)];
+    CCMenu *menu = [CCMenu menuWithItems: tilt, nil];
+    [menu setPosition:CGPointMake(160, -180)];
+    [menu setTag:kHelpButtonTag];
+    [self addChild:menu];
+    
+    if (_helpScreenStatus == @"help_screens_press") _helpScreenStatus = @"";
+    if (_helpScreenStatus == @"help_screens_tilt") _helpScreenStatus = @"help_screens_press";
+}
+
+- (void) unPause:(id)sender
+{
+    [self removeChildByTag:kHelpButtonTag cleanup:YES];
+    [[CCDirector sharedDirector] resume];
 }
 
 - (void) stop

@@ -25,6 +25,9 @@
 	// 'scene' is an autorelease object.
 	GameScene *scene = [GameScene node];
     
+    [[GameObjectCache sharedGameObjectCache] addGameScene: scene];
+    scene->level = level;
+    
     //Create the environment
     scene.environment = [[[GameEnvironment alloc] init] autorelease];
     
@@ -39,10 +42,6 @@
     //HUD
     scene.hudLayer = [[[HudLayer alloc] initWithGameLayer] autorelease];
     [scene addChild:scene.hudLayer z:50];
-    
-    [[GameObjectCache sharedGameObjectCache] addGameScene: scene];
-    
-    scene->level = level;
     
     [[[GameObjectCache sharedGameObjectCache] gameLayer] startLevel];
     

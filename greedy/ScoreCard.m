@@ -15,6 +15,26 @@
 
 @implementation ScoreCard
 
+@synthesize time = _timeleft;
+@synthesize score = _score;
+
+
+- (void) setTime:(int)time {
+    _timeleft = time;
+    
+    [_TimeLabel setString:[NSString stringWithFormat:@"%d", _timeleft]];
+    
+    CCLOG(@"Time set in score card: %d", time);
+}
+
+- (void) setScore:(int)score {
+    _score = score;
+    
+    [_ScoreLabel setString:[NSString stringWithFormat:@"%d", _score]];
+    
+    CCLOG(@"Score set in score card: %d", score);
+}
+
 - (void) createScoreLabel {
     CCTexture2DPixelFormat currentFormat = [CCTexture2D defaultAlphaPixelFormat];
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
@@ -109,11 +129,18 @@
     [_ScoreLabel setString:[NSString stringWithFormat:@"%d", _score]];
     [self addChild:_ScoreLabel];
 }
+
 - (void) showTimeLeft {
     [self createTimeLabel];
     [_TimeLabel setString:[NSString stringWithFormat:@"%d", _timeleft]];
     [self addChild:_TimeLabel];
+    
+    id modifyTime = [CCActionTween actionWithDuration:2 key:@"time" from:_timeleft to:0];
+    id modifyScore = [CCActionTween actionWithDuration:2 key:@"score" from:_score to:(_score + (_timeleft * 100))];
+	[self runAction:[CCSpawn actions:modifyTime, modifyScore, nil]];
 }
+
+
 
 - (id)init
 {

@@ -108,8 +108,13 @@ enum nodeTags
 }
 
 - (void)menuReplay:(id)sender {
+   // GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
+   // [[CCDirector sharedDirector] replaceScene:[scene sceneFromCurrent]];
+   // [[CCDirector sharedDirector] resume];
+    
     GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
-    [[CCDirector sharedDirector] replaceScene:[scene sceneFromCurrent]];
+    int lev = [scene Level];
+    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:lev]];
     [[CCDirector sharedDirector] resume];
 }
 

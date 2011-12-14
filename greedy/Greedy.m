@@ -117,6 +117,8 @@
         if (_fuel < 0.0){
             [self removeThrust];
             _fuel = 0.0;
+            
+            //schedule post solve perhaps?
             [self explode];
         }
     }
@@ -142,6 +144,8 @@
 
 - (void) prestep:(ccTime) delta
 {
+    //CCLOG(@"Greedy prestep");
+    
     if(!_exploded){
         //set angle of greedy
         cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));

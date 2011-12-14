@@ -69,8 +69,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         
         // asteroids.
         _asteroidField = [[AsteroidField alloc] initWithSize:CGSizeMake([level asteroidFieldWidth], [level asteroidFieldHeight]) density:2.0f Layer:LAYER_ASTEROID];
-        [_asteroidField setPositionInPixels:ccp(0,0)];
-        [self addChild:_asteroidField];
+          [_asteroidField setPositionInPixels:ccp(0,0)];
+          [self addChild:_asteroidField];
         [_asteroidField release];
         
         
@@ -274,6 +274,8 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 
 -(void) step: (ccTime) dt
 {
+    //CCLOG(@"GameLayer step");
+    
     // add all the external forces , such as thrusts, asteraid attraction
     [_greedy prestep:dt];
     
@@ -377,7 +379,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 - (void) dealloc
 {
     NSLog(@"Dealloc GameLayer");
-    [[[GameObjectCache sharedGameObjectCache] spaceManager] stop];
+    //[[[GameObjectCache sharedGameObjectCache] spaceManager] stop];
     [ self removeAllChildrenWithCleanup:YES];
     [super dealloc];
 }

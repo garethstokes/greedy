@@ -83,22 +83,21 @@
     self = [super initWithColor:color width:w height:h];
     
     if (self) {
-        SpriteHelperLoader * newLoader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"chooselevel"];
-        CCLOG(@"chooseLevelSpriteLoader retainCount:%d", [newLoader retainCount]);
-        
-        [newLoader spriteWithUniqueName:@"background" atPosition:ccp(150, 245) inLayer:self];
-        
-        [self loadLevelButtons: newLoader];
-        
-        [self loadLevelBlocks: newLoader];
+        SpriteHelperLoader *newLoader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"chooselevel"];
+           CCLOG(@"chooseLevelSpriteLoader retainCount:%d", [newLoader retainCount]);            
+            [newLoader spriteWithUniqueName:@"background" atPosition:ccp(150, 245) inLayer:self];
+            
+            [self loadLevelButtons: newLoader];
+           
+            [self loadLevelBlocks: newLoader];
 
-        CCMenu *menu = [CCMenu menuWithItems:[CCMenuItemImage itemFromNormalSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
-                                                                    selectedSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
-                                                                            target:self 
-                                                                          selector:@selector(buttonBackToMainMenu:)], nil];
-        [menu setPosition:ccp(54, 48)];
+            CCMenu *menu = [CCMenu menuWithItems:[CCMenuItemImage itemFromNormalSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
+                                                                        selectedSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
+                                                                                target:self 
+                                                                              selector:@selector(buttonBackToMainMenu:)], nil];
+            [menu setPosition:ccp(54, 48)];
 
-        [self addChild:menu];
+            [self addChild:menu];
         
         [newLoader release];
         CCLOG(@"chooseLevelSpriteLoader retainCount:%d", [newLoader retainCount]);

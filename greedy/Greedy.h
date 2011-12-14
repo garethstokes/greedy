@@ -34,7 +34,7 @@ enum {
     kGreedyThrustMassive = 3
 };
 
-@interface Greedy : CCLayer {
+@interface Greedy : CCNode {
     cpShape *_shape;
     
     Radar* spriteRadar;

@@ -8,6 +8,7 @@
 
 #import "Radar.h"
 #import "GameObjectCache.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Radar
 
@@ -99,14 +100,10 @@
 
 - (void)addGoldCollectionAnimation:(cpArbiter *)arb
 {
-    ///_score += oreScore;
-    
     CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
     [sparkle setPosition:cpArbiterGetPoint(arb, 0)];
     [sparkle setDuration:0.1];
     [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
-    
-    
 }
 
 - (BOOL) handleCollisionRadarLine:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
@@ -126,8 +123,15 @@
             
             if( oreScore > 0)
             { 
-                 _score += oreScore;
+                _score += oreScore;
+                
                 [self addGoldCollectionAnimation:arb];
+                
+                if((arc4random() % 100) <= 10)
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"greedy_laugh.mp3"];
+                else
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"gold_small.mp3"];
+
             }
         }
     }
@@ -140,13 +144,14 @@
         cpFloat len = cpArbiterGetDepth(arb, 0);
         
         if([ast isKindOfClass:[Asteroid class]]){
+            
             float oreScore = [ast mineOre:1.0 length:len];
             
             if( oreScore > 0)
             { 
                 _score += oreScore;
                 
-               [self addGoldCollectionAnimation:arb];
+                [self addGoldCollectionAnimation:arb];
             }
         }
     }

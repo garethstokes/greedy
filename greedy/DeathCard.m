@@ -10,6 +10,7 @@
 #import "GameScene.h"
 #import "MainMenuLayer.h"
 #import "SettingsManager.h"
+#import "GameObjectCache.h"
 
 
 @implementation DeathCard
@@ -25,7 +26,7 @@
     
     CCSprite *btnSkipOn = [CCSprite spriteWithFile:@"btn_skip_on.png"];
     CCSprite *btnSkipOff = [CCSprite spriteWithFile:@"btn_skip_off.png"];
-    CCMenuItemSprite * btnSkip = [CCMenuItemSprite itemFromNormalSprite:btnSkipOff selectedSprite:btnSkipOn];
+    CCMenuItemSprite * btnSkip = [CCMenuItemSprite itemFromNormalSprite:btnSkipOff selectedSprite:btnSkipOn target:self selector:@selector(skipLevel:)];
     
     CCMenu *top_menu = [CCMenu menuWithItems:btnChooseLevel, btnReplay, btnSkip, nil];
     [top_menu  alignItemsHorizontallyWithPadding:32.0];
@@ -35,8 +36,16 @@
 
 -(void) restartLevel: (id) sender
 {
-    //CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[GameScene sceneWithLevel:1]];
-    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:1]];
+    GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
+    int lev = [scene Level];
+    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:lev]];
+}
+
+-(void) skipLevel: (id) sender
+{
+    GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
+    int lev = [scene Level];
+    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:lev + 1]];
 }
 
 -(void) gotoMainMenu: (id) sender

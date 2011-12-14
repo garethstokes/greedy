@@ -66,6 +66,7 @@
 {
     if(_deathcard != nil) return;
     
+    [self removeHud];
     _deathcard = [[[DeathCard alloc] init] autorelease];
     [self addChild:_deathcard  z:100];
 }

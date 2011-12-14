@@ -33,5 +33,6 @@
 - (void) showScore:(int) score time:(ccTime)time;
 - (void) showDeath;
 - (GameScene *) sceneFromCurrent;
+- (void) removeHud;
 
 @end

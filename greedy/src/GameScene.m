@@ -48,6 +48,11 @@
 	return scene;
 }
 
+- (void) removeHud
+{
+    [self removeChild:hudLayer cleanup:YES];
+}
+
 - (void) showScore:(int) score time:(ccTime)time
 {
     if(_scorecard != nil) return;

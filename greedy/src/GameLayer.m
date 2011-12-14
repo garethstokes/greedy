@@ -228,6 +228,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 -(void) showScoreCard:(id)sender
 {
     [[[GameObjectCache sharedGameObjectCache] gameScene] showScore:_greedy.score time:_timeleft];
+    [[[GameObjectCache sharedGameObjectCache] gameScene] removeHud];
 }
 
 - (void) endLevelWithDeath

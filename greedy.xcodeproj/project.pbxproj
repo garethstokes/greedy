@@ -256,6 +256,7 @@
 		ABFB27EC1498915800177F9C /* engine_loop_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E81498915800177F9C /* engine_loop_small.mp3 */; };
 		ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */; };
 		ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27EA1498915800177F9C /* gold_small.mp3 */; };
+		ABFB27F01498962700177F9C /* greedy_laugh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */; };
 		E704A62F13BB447100577C13 /* end_point_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = E704A62E13BB447100577C13 /* end_point_ready.png */; };
 		E705F5E7143C571F00ACAA4D /* company_log0_fs.png in Resources */ = {isa = PBXBuildFile; fileRef = E705F5E6143C571F00ACAA4D /* company_log0_fs.png */; };
 		E705F5EC143C57B800ACAA4D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E705F5EA143C57B800ACAA4D /* Default@2x.png */; };
@@ -731,6 +732,7 @@
 		ABFB27E81498915800177F9C /* engine_loop_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = engine_loop_small.mp3; path = audio/engine_loop_small.mp3; sourceTree = "<group>"; };
 		ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = epic_greedy_death_small.mp3; path = audio/epic_greedy_death_small.mp3; sourceTree = "<group>"; };
 		ABFB27EA1498915800177F9C /* gold_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gold_small.mp3; path = audio/gold_small.mp3; sourceTree = "<group>"; };
+		ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = greedy_laugh.mp3; path = "../../../../Dropbox/retrolander/choosen sounds/greedy_laugh.mp3"; sourceTree = "<group>"; };
 		E704A62E13BB447100577C13 /* end_point_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end_point_ready.png; sourceTree = "<group>"; };
 		E705F5E6143C571F00ACAA4D /* company_log0_fs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = company_log0_fs.png; sourceTree = "<group>"; };
 		E705F5EA143C57B800ACAA4D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1422,6 +1424,7 @@
 				ABFB27E71498915800177F9C /* collision_dc_small.mp3 */,
 				ABFB27E81498915800177F9C /* engine_loop_small.mp3 */,
 				ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */,
+				ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */,
 				ABFB27EA1498915800177F9C /* gold_small.mp3 */,
 			);
 			name = audio;
@@ -1811,6 +1814,7 @@
 				ABFB27EC1498915800177F9C /* engine_loop_small.mp3 in Resources */,
 				ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */,
 				ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */,
+				ABFB27F01498962700177F9C /* greedy_laugh.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

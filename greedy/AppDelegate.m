@@ -117,6 +117,8 @@
     
     //preload all sounds
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"epic_greedy_death_small.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"gold_small.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"greedy_laugh.mp3"];
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.5];
 	
 	// Run the intro Scene

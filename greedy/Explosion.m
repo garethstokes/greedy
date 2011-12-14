@@ -114,6 +114,14 @@ PartData sexyParts[] = {
     }
 }
 
+- (void)dealloc{
+    CCLOG(@"Dealloc explosion");
+    
+    [self removeAllChildrenWithCleanup:YES];
+    
+    [super dealloc];
+}
+
 /*
  
  CGPoint explosionPosition = [_sprite position];

@@ -14,6 +14,7 @@
 #import "GameScene.h"
 #import "MainMenuLayer.h"
 #import "SettingsManager.h"
+#import "SimpleAudioEngine.h"
 
 @implementation AppDelegate
 
@@ -113,6 +114,10 @@
 	
 	// Removes the startup flicker
 	[self removeStartupFlicker];
+    
+    //preload all sounds
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"epic_greedy_death_small.mp3"];
+    [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.5];
 	
 	// Run the intro Scene
 	//[[CCDirector sharedDirector] runWithScene: [GameScene scene]];

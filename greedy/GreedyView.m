@@ -14,6 +14,7 @@
 #import "GameObjectCache.h"
 #import "GreedyEye.h"
 #import "SpriteHelperLoader.h"
+#import "SimpleAudioEngine.h"
 
 @implementation GreedyView
 
@@ -167,17 +168,19 @@
 
 -(void) explode
 {
-    [[[Explosion alloc] initWithPosition:[self position] inLayer:[[GameObjectCache sharedGameObjectCache] gameLayer]] autorelease];
-    [self setVisible:NO];
-    //disbale shape in world here -TODO
+    CCLayer * layer = [[GameObjectCache sharedGameObjectCache] gameLayer];
+    
+    [[[Explosion alloc] initWithPosition:[self position] inLayer:layer] autorelease];
+
+    [[SimpleAudioEngine sharedEngine] playEffect:@"epic_greedy_death_small.mp3"];
 }
 
 #pragma mark Spacemanager helpers
 
 - (void) dealloc
 {
-	[_implementation release];
     [self removeAllChildrenWithCleanup:YES];
+	[_implementation release];
 	[super dealloc];
 }
 -(void)setRotation:(float)rot

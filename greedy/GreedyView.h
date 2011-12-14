@@ -13,9 +13,7 @@
 #import "Radar.h"
 #import "GreedyEye.h"
 
-@interface GreedyView : CCNode<cpCCNodeProtocol> {
-    cpShape *_shape;
-    
+@interface GreedyView : CCNode<cpCCNodeProtocol> {    
     int _thrusting;
     int _feeding;
     CCAction *_thrustAction;

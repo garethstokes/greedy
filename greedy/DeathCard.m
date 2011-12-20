@@ -39,6 +39,9 @@
     GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
     int lev = [scene Level];
     [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:lev]];
+    
+    //CCScene *newScene = [CCTransitionFade transitionWithDuration:1.0f scene:[[[GameObjectCache sharedGameObjectCache] gameScene] sceneFromCurrent]];
+    //[[CCDirector sharedDirector] replaceScene:newScene];
 }
 
 -(void) skipLevel: (id) sender

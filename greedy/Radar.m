@@ -9,6 +9,7 @@
 #import "Radar.h"
 #import "GameObjectCache.h"
 #import "SimpleAudioEngine.h"
+#import "OreAnimation.h"
 
 @implementation Radar
 
@@ -100,10 +101,10 @@
 
 - (void)addGoldCollectionAnimation:(cpArbiter *)arb
 {
-    CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
-    [sparkle setPosition:cpArbiterGetPoint(arb, 0)];
-    [sparkle setDuration:0.1];
-    [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
+    //CCParticleSystemQuad *sparkle = [CCParticleSystemQuad particleWithFile:@"sparkle.plist"];
+    //[sparkle setPosition:cpArbiterGetPoint(arb, 0)];
+    //[sparkle setDuration:0.1];
+    //[[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:sparkle];
 }
 
 - (BOOL) handleCollisionRadarLine:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
@@ -112,7 +113,7 @@
     
     if (moment == COLLISION_BEGIN)
 	{
-        //CCLOG(@"Line Meets asteroid begin");
+        CCLOG(@"Line Meets asteroid begin");
         
         CP_ARBITER_GET_SHAPES(arb, a, b);
         Asteroid * ast = (Asteroid *)(b->data);
@@ -125,23 +126,29 @@
             { 
                 _score += oreScore;
                 
-                [self addGoldCollectionAnimation:arb];
+                //[self addGoldCollectionAnimation:arb];
+                
+                [ast setOreAnim:[[[OreAnimation alloc] initWithPosition:cpArbiterGetPoint(arb, 0)] autorelease]];
+                
+                [[ast oreAnim] addScore:oreScore];
                 
                 if((arc4random() % 100) <= 10)
                     [[SimpleAudioEngine sharedEngine] playEffect:@"greedy_laugh.mp3"];
                 else
                     [[SimpleAudioEngine sharedEngine] playEffect:@"gold_small.mp3"];
-
+                
             }
         }
     }
     
     if (moment == COLLISION_PRESOLVE)
 	{
-        //CCLOG(@"Line Meets asteroid post solve");
+        CCLOG(@"Line Meets asteroid post solve");
         CP_ARBITER_GET_SHAPES(arb, a, b);
+        int size = cpArbiterGetCount(arb) - 1;
+        
         Asteroid * ast = (Asteroid *)(b->data);
-        cpFloat len = cpArbiterGetDepth(arb, 0);
+        cpFloat len = cpArbiterGetDepth(arb, size);
         
         if([ast isKindOfClass:[Asteroid class]]){
             
@@ -151,14 +158,25 @@
             { 
                 _score += oreScore;
                 
-                [self addGoldCollectionAnimation:arb];
+                [[ast oreAnim] addScore:oreScore];
+                
+                for(int i = 0; i < size+1;i++){
+                    CCLOG(@"Asteroid Collision Details: i:%d size:%d point:%f,%f", i, size, cpArbiterGetPoint(arb, i).x, cpArbiterGetPoint(arb, i).y);
+                    [[ast oreAnim] addPoint:cpArbiterGetPoint(arb, i)];
+                }
             }
         }
     }
     
     if (moment == COLLISION_SEPARATE)
     {
-        //CCLOG(@"Line Leaves asteroid end");
+        CCLOG(@"Line Leaves asteroid end");
+        CP_ARBITER_GET_SHAPES(arb, a, b);
+        Asteroid * ast = (Asteroid *)(b->data);
+        
+        if([ast isKindOfClass:[Asteroid class]]){
+            [[ast oreAnim] endAnimation];
+        };
     }
     
     return YES;

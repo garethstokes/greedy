@@ -14,10 +14,14 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 + (GameObjectCache *) sharedGameObjectCache
 {
-  static dispatch_once_t pred;
-  dispatch_once(&pred, ^{
-    sharedGameObjectCache_ = [[GameObjectCache alloc] init];
-  });
+//  static dispatch_once_t pred;
+//  dispatch_once(&pred, ^{
+//    sharedGameObjectCache_ = [[GameObjectCache alloc] init];
+//  });
+    
+    if(!sharedGameObjectCache_)
+        sharedGameObjectCache_ = [[GameObjectCache alloc] init];
+    
   return sharedGameObjectCache_;
 }
 
@@ -38,6 +42,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 -(void) addGameScene:(GameScene*)newGameScene
 {
+    CCLOG(@"GameObjectCache addGameScene");
    // NSAssert(gameScene_ == nil, @"gameScene member has already been set in GameObjectCache object ");
     
     if(gameScene_ != nil)
@@ -49,6 +54,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 -(void) addGameLayer:(GameLayer*)newGameLayer
 {
+    CCLOG(@"GameObjectCache addGameLayer");
    // NSAssert(gameLayer_ == nil, @"gameLayer member has already been set in GameObjectCache object ");
     
     if(gameLayer_ != nil)
@@ -60,6 +66,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 -(void) addBackground:(Background*)newBackground
 {
+    CCLOG(@"GameObjectCache addBackGround");
     // NSAssert(background_ == nil, @"Background member has already been set in GameObjectCache object ");
     
     if(background_ != nil)
@@ -71,6 +78,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 -(void) addGreedyView:(GreedyView*)newGreedyView
 {
+    CCLOG(@"GameObjectCache addGreedyView");
     // NSAssert(greedyView_ == nil, @"Background member has already been set in GameObjectCache object ");
     
     if(greedyView_ != nil)
@@ -82,6 +90,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 -(void) addLifeMeter:(LifeMeter*)newLifeMeter
 {
+    CCLOG(@"GameObjectCache addLifeMeter");
     // NSAssert(lifemeter_ == nil, @"Background member has already been set in GameObjectCache object ");
     
     if(lifemeter_ != nil)
@@ -94,6 +103,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 -(void) addSpaceManager:(SpaceManagerCocos2d *)newSpaceManager
 {
    // NSAssert(spaceManager_ == nil, @"spaceManager member has already been set in GameObjectCache object ");
+    CCLOG(@"GameObjectCache addSpaceManager");
     
     if(spaceManager_ != nil)
         [spaceManager_ release];
@@ -158,6 +168,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 - (id)init
 {
+    CCLOG(@"GameObjectCache Init");
 	if( (self=[super init]) ) {
         spaceManager_ = nil;
         gameScene_ = nil;
@@ -170,6 +181,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 }
 
 - (void)dealloc {
+    CCLOG(@"GameObjectCache Dealloc");
     [lifemeter_ release];
     [background_ release];
     [gameLayer_ release];

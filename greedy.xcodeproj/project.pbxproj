@@ -257,6 +257,8 @@
 		ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */; };
 		ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27EA1498915800177F9C /* gold_small.mp3 */; };
 		ABFB27F01498962700177F9C /* greedy_laugh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */; };
+		ABFF83D5149EF59700D2E4B0 /* TestLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFF83D4149EF59700D2E4B0 /* TestLayer.m */; };
+		ABFF83DD149EF6A400D2E4B0 /* OreAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFF83DC149EF6A400D2E4B0 /* OreAnimation.m */; };
 		E704A62F13BB447100577C13 /* end_point_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = E704A62E13BB447100577C13 /* end_point_ready.png */; };
 		E705F5E7143C571F00ACAA4D /* company_log0_fs.png in Resources */ = {isa = PBXBuildFile; fileRef = E705F5E6143C571F00ACAA4D /* company_log0_fs.png */; };
 		E705F5EC143C57B800ACAA4D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E705F5EA143C57B800ACAA4D /* Default@2x.png */; };
@@ -733,6 +735,10 @@
 		ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = epic_greedy_death_small.mp3; path = audio/epic_greedy_death_small.mp3; sourceTree = "<group>"; };
 		ABFB27EA1498915800177F9C /* gold_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gold_small.mp3; path = audio/gold_small.mp3; sourceTree = "<group>"; };
 		ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = greedy_laugh.mp3; path = "../../../../Dropbox/retrolander/choosen sounds/greedy_laugh.mp3"; sourceTree = "<group>"; };
+		ABFF83D3149EF59700D2E4B0 /* TestLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLayer.h; sourceTree = "<group>"; };
+		ABFF83D4149EF59700D2E4B0 /* TestLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLayer.m; sourceTree = "<group>"; };
+		ABFF83DB149EF6A400D2E4B0 /* OreAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OreAnimation.h; sourceTree = "<group>"; };
+		ABFF83DC149EF6A400D2E4B0 /* OreAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OreAnimation.m; sourceTree = "<group>"; };
 		E704A62E13BB447100577C13 /* end_point_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end_point_ready.png; sourceTree = "<group>"; };
 		E705F5E6143C571F00ACAA4D /* company_log0_fs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = company_log0_fs.png; sourceTree = "<group>"; };
 		E705F5EA143C57B800ACAA4D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -953,6 +959,8 @@
 				AB0246501409F32300E704FA /* MainMenuLayer.m */,
 				ABA71F02140A2A95006E3C19 /* OptionsMenuLayer.h */,
 				ABA71F03140A2A95006E3C19 /* OptionsMenuLayer.m */,
+				ABFF83DB149EF6A400D2E4B0 /* OreAnimation.h */,
+				ABFF83DC149EF6A400D2E4B0 /* OreAnimation.m */,
 				ABB125BF145AE65A001657C6 /* Radar.h */,
 				ABB125C0145AE65A001657C6 /* Radar.m */,
 				AB045A7513714D3C001253D2 /* RootViewController.h */,
@@ -963,6 +971,8 @@
 				AB0246481409E29E00E704FA /* SettingsManager.m */,
 				AB01BE34144EF50000A75B6B /* SpriteHelperLoader.h */,
 				AB01BE35144EF50000A75B6B /* SpriteHelperLoader.mm */,
+				ABFF83D3149EF59700D2E4B0 /* TestLayer.h */,
+				ABFF83D4149EF59700D2E4B0 /* TestLayer.m */,
 				E7CE9EDD13D6DC34009D9D6A /* World.h */,
 				E7CE9EDE13D6DC34009D9D6A /* World.m */,
 				E7CE9EE413D6E890009D9D6A /* WorldRepository.h */,
@@ -1992,6 +2002,8 @@
 				AB448800144FD31D00FE17C7 /* GameObjectCache.m in Sources */,
 				ABC8F9761451ADA600415542 /* GreedyEye.m in Sources */,
 				ABB125C1145AE65B001657C6 /* Radar.m in Sources */,
+				ABFF83D5149EF59700D2E4B0 /* TestLayer.m in Sources */,
+				ABFF83DD149EF6A400D2E4B0 /* OreAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

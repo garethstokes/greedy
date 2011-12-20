@@ -12,6 +12,7 @@
 #import "GameConfig.h"
 #import "RootViewController.h"
 #import "GameScene.h"
+#import "TestLayer.h"
 #import "MainMenuLayer.h"
 #import "SettingsManager.h"
 #import "SimpleAudioEngine.h"
@@ -123,7 +124,11 @@
 	
 	// Run the intro Scene
 	//[[CCDirector sharedDirector] runWithScene: [GameScene scene]];
-    [[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
+    if(false)
+        [[CCDirector sharedDirector] runWithScene: [TestLayer scene]];
+    else
+        [[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
+
 }
 
 

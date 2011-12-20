@@ -22,6 +22,8 @@
 {
     CCLOG(@" GameScene: sceneWithLevel");
     
+    [GameObjectCache purgeGameObjectCache]; 
+    
 	// 'scene' is an autorelease object.
 	GameScene *scene = [GameScene node];
     

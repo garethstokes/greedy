@@ -10,6 +10,7 @@
 #import "chipmunk.h"
 #import "SpaceManagerCocos2d.h"
 #import "GameConfig.h"
+#import "OreAnimation.h"
 
 typedef struct _ccV2F_T2F
 {
@@ -23,7 +24,10 @@ typedef struct _ccV2F_T2F
     int _size;
     CGFloat _area;
     int _mass;
+    
+    //Ore stuff
     float _ore;
+    OreAnimation *_oreAnim;
     
     cpShape * _shape;
         
@@ -33,6 +37,8 @@ typedef struct _ccV2F_T2F
     
     CPCCNODE_MEM_VARS;
 }
+
+@property (nonatomic, assign) OreAnimation *oreAnim;
 
 -(id) initWithRadius:(int)size atPosition:(CGPoint)position inLayer:(cpLayers)inLayer;
 

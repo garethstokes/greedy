@@ -13,6 +13,18 @@
 
 @implementation Asteroid
 
+@synthesize oreAnim = _oreAnim;
+
+
+-(void) setOreAnim:(OreAnimation *)oreAnim
+{
+    if(_oreAnim != nil)
+        [_oreAnim removeFromParentAndCleanup:YES];
+    
+    [[[GameObjectCache sharedGameObjectCache] gameLayer] addChild:oreAnim z:100];    
+    _oreAnim = oreAnim;
+}
+
 -(void) createAsteroid:(cpLayers)inLayer
 {
     ConvexHull *_convexHull = [[[ConvexHull alloc] initWithStaticSize:_size] autorelease];

@@ -123,6 +123,9 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         
         _height = [level.environment height];
         _width = [level.environment width];
+        
+        // log settings for fun a profit
+        [[SettingsManager sharedSettingsManager] logSettings];
     }
     return self;
 }
@@ -229,6 +232,14 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 {
     [[[GameObjectCache sharedGameObjectCache] gameScene] showScore:_greedy.score time:_timeleft];
     [[[GameObjectCache sharedGameObjectCache] gameScene] removeHud];
+    
+    int level = [[SettingsManager sharedSettingsManager] getInt:@"current_level"];
+    NSString* key = [NSString stringWithFormat:@"high_score_%i", level];
+    int highScore = [[SettingsManager sharedSettingsManager] getInt:key withDefault:0];
+    if (_greedy.score > highScore)
+    {
+        [[SettingsManager sharedSettingsManager] setValue:key newInt:highScore];
+    }
 }
 
 - (void) endLevelWithDeath

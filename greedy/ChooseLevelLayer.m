@@ -31,8 +31,27 @@
 
 - (void) createButton:(SpriteHelperLoader *)loader atPosition:(CGPoint)position withTag:(int)tag
 {
-  int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level" withDefault:1];
-  if (tag > currentLevel) return;
+    int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level" withDefault:1];
+    if (tag > currentLevel) return;
+    
+    for( int j = 0; j<3; j++)
+    {
+        NSString* markerKey = [NSString stringWithFormat:@"gold_for_level_%i_%i", currentLevel, j + 1];
+        NSString* scoreKey = [NSString stringWithFormat:@"high_score_%i", currentLevel];
+        
+        int marker = [[SettingsManager sharedSettingsManager] getInt:markerKey withDefault:0];
+        int score = [[SettingsManager sharedSettingsManager] getInt:scoreKey withDefault:0];
+        
+        if (score >= marker)
+        {
+            CGPoint offset = ccpAdd(position, ccp(-3,-6));
+            offset = ccpAdd(offset, ccp(j * 9,j * 9));
+            CCMagicSprite *gold = [loader spriteWithUniqueName:@"scoreBlock" atPosition:offset inLayer:self];
+            [self reorderChild:gold z:100 + j];
+        }
+    }
+    
+
   
   CCMenuItemImage *image = [CCMenuItemImage itemFromNormalSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
                                                   selectedSprite:[loader spriteWithUniqueName:@"levelReady" atPosition:ccp(0,0) inLayer:nil]
@@ -89,7 +108,7 @@
             
             [self loadLevelButtons: newLoader];
            
-            [self loadLevelBlocks: newLoader];
+            //[self loadLevelBlocks: newLoader];
 
             CCMenu *menu = [CCMenu menuWithItems:[CCMenuItemImage itemFromNormalSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]
                                                                         selectedSprite:[newLoader spriteWithUniqueName:@"btnBackDown" atPosition:ccp(0,0) inLayer:nil]

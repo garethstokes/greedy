@@ -24,7 +24,6 @@
   int level;
 }
 
-@property (nonatomic, retain) GameEnvironment *environment;
 @property (nonatomic, retain) HudLayer *hudLayer;
 @property (nonatomic, readonly) int Level;
 

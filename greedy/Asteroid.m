@@ -71,7 +71,7 @@
     
     //CCLOG(@"fan[%d] x:%f y:%f u:%f v:%f", index, fan[index].vertices.x, fan[index].vertices.y, fan[index].texCoords.u , fan[index].texCoords.v );
     
-    _shape = [[[GameObjectCache sharedGameObjectCache] spaceManager] 
+    _shape = [sharedSpaceManager
               addPolyAt:positionInPixels_
               mass:(_size == 100 ? 1000000 : _mass)
               rotation:CCRANDOM_0_1()

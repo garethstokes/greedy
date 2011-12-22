@@ -126,9 +126,7 @@
     if (_countdown == 0)
     {
         CCLOG(@"layer count: %d", [[[GameObjectCache sharedGameObjectCache] gameLayer] retainCount]);
-        GameLayer *layer = [[GameObjectCache sharedGameObjectCache] gameLayer];
-        Greedy *greedy = [layer greedy];
-        [greedy explode];
+        GameLayer *layer = [[GameObjectCache sharedGameObjectCache] gameLayer];        [sharedGreedy explode];
         return;
     }
     

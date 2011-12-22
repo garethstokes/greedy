@@ -168,11 +168,11 @@
 
 -(void) explode
 {
-    CCLayer * layer = [[GameObjectCache sharedGameObjectCache] gameLayer];
-    
-    [[[Explosion alloc] initWithPosition:[self position] inLayer:layer] autorelease];
+   [[[Explosion alloc] initWithPosition:[self position] inLayer:sharedGameLayer] autorelease];
 
     [[SimpleAudioEngine sharedEngine] playEffect:@"epic_greedy_death_small.mp3"];
+    
+    [self removeFromParentAndCleanup:NO];
 }
 
 #pragma mark Spacemanager helpers

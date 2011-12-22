@@ -37,7 +37,7 @@ enum {
 @interface Greedy : CCNode {
     cpShape *_shape;
     
-    Radar* spriteRadar;
+    Radar* _spriteRadar;
     
     cpFloat _angle;
         

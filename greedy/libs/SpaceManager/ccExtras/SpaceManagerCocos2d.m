@@ -22,12 +22,12 @@ static void createShapeNode(void *ptr, void *layer)
 		node.color = color;
 		[(CCLayer*)layer addChild:node];
 	} else
-    {
-        ccColor3B color = ccc3(rand()%256, rand()%256, rand()%256);
-        cpShapeNode *node = [cpShapeNode nodeWithShape:shape];
+  {
+    ccColor3B color = ccc3(rand()%256, rand()%256, rand()%256);
+    cpShapeNode *node = [cpShapeNode nodeWithShape:shape];
 		node.color = color;
 		[(CCLayer*)layer addChild:node];
-    }
+  }
 }
 
 //Debug Function!
@@ -90,6 +90,8 @@ void smgrEachShapeAsChildren(void *ptr, void* data)
 
 -(id) initWithSpace:(cpSpace*)space
 {
+  CCLOG(@"Init SpaceManager");
+  
 	self = [super initWithSpace:space];
 	
 	_iterateFunc = &smgrDefaultEachShape;
@@ -99,6 +101,8 @@ void smgrEachShapeAsChildren(void *ptr, void* data)
 
 -(void) dealloc
 {
+  CCLOG(@"Dealloc SpaceManager");
+  
 	[self stop];
 	
 	[super dealloc];

@@ -18,6 +18,7 @@
     CPCCNODE_MEM_VARS;
     cpShape *_shapeRadarCircle;
     cpShape *_radarShape;
+    cpConstraint *_radarPin;
     float _score;
 }
 -(id) initWithBody:(cpBody*)body;

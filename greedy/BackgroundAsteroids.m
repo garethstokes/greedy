@@ -11,7 +11,7 @@
 
 @implementation BackgroundAsteroids
 
--(id) initWithEnvironment:(GameEnvironment *)environment
+-(id) init
 {
   if(!(self = [super init])) return nil;
   

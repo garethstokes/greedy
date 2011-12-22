@@ -25,7 +25,7 @@
     
     if(!(self = [super init])) return nil;
     
-    cpShape *shape = [[[GameObjectCache sharedGameObjectCache] spaceManager] 
+  cpShape *shape = [sharedSpaceManager
                       addRectAt:startPos 
                       mass:GREEDYMASS 
                       width:50 
@@ -49,11 +49,10 @@
     
     
     //init collisions
-	[[[GameObjectCache sharedGameObjectCache] spaceManager]  addCollisionCallbackBetweenType: kAsteroidCollisionType 
+	[sharedSpaceManager  addCollisionCallbackBetweenType: kAsteroidCollisionType 
                                                                                    otherType: kGreedyCollisionType 
                                                                                       target: self 
                                                                                     selector: @selector(handleCollisionWithAsteroid:arbiter:space:)];
-    
     
     // view
     GreedyView *aview = [[GreedyView alloc] initWithShape:shape];
@@ -62,16 +61,15 @@
     [aview release];
     
     //Radar    
-    spriteRadar = [[[Radar alloc] initWithBody:body] retain];
-    [self addChild:spriteRadar z:100];
-    [spriteRadar stop];
+  _spriteRadar = [[[Radar alloc] initWithBody:body] autorelease];
+  [self addChild:_spriteRadar z:100];
     
     return self;
 }
 
 -(void) start
 {
-    [spriteRadar start];
+  [_spriteRadar start];
 }
 
 
@@ -128,9 +126,9 @@
 {
     if(!_exploded)
     {
-        [spriteRadar stop];
+    [_spriteRadar stop];
         
-        [[[GameObjectCache sharedGameObjectCache] greedyView] explode];
+    [sharedGreedyView explode];
         
         //[[[GameObjectCache sharedGameObjectCache] spaceManager] removeAndFreeShape:_shape];
         //remove all thrusts
@@ -151,9 +149,9 @@
         cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
         
         //Rotate the Radar
-        [spriteRadar step:delta];
+    [_spriteRadar step:delta];
         
-        if ([[[GameObjectCache sharedGameObjectCache] greedyView] isThrusting])
+    if ([sharedGreedyView isThrusting])
         {
             //add force to greedy
             cpVect force = cpvforangle(_shape->body->a);
@@ -188,7 +186,7 @@
         
         NSLog(@"applying thrust...");
         
-        [[[GameObjectCache sharedGameObjectCache] greedyView] setThrusting:kGreedyThrustLittle];
+    [sharedGreedyView setThrusting:kGreedyThrustLittle];
     }
 }
 
@@ -196,7 +194,7 @@
 {
     NSLog(@"removing thrust...");
     if(!_exploded)
-        [[[GameObjectCache sharedGameObjectCache] greedyView] setThrusting:kGreedyThrustNone];
+    [sharedGreedyView setThrusting:kGreedyThrustNone];
     else {
     }
 }
@@ -224,9 +222,9 @@
 
 - (void) moveManually:(CGPoint)point target:(id)t selector:(SEL)s
 {
-    [[[GameObjectCache sharedGameObjectCache] greedyView] setThrusting:kGreedyThrustNone];
+  [sharedGreedyView setThrusting:kGreedyThrustNone];
     
-    [[[GameObjectCache sharedGameObjectCache] greedyView] runAction:[CCSequence actions:
+  [sharedGreedyView runAction:[CCSequence actions:
                                                                      [CCMoveBy actionWithDuration:3.0f position:point],
                                                                      [CCCallFuncN actionWithTarget:t selector:s],
                                                                      nil ]];
@@ -234,13 +232,15 @@
 
 -(float) score
 {
-    return spriteRadar.score;
+  return _spriteRadar.score;
 }
 
 - (void)dealloc
 {
     CCLOG(@"Dealloc Greedy");
+  
     [self removeAllChildrenWithCleanup:YES];
+  
     [super dealloc];
 }
 

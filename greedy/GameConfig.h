@@ -100,5 +100,6 @@
 #define kGreedyFinishLineCollisionType    5
 #define kGreedyRadarlineCollisionType     6
 #define kOutOfBoundsCollisionType         7
+#define kGreedyDeathZoneCollisionType     8
 
 #endif // __GAME_CONFIG_H

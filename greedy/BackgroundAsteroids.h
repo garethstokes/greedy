@@ -7,13 +7,12 @@
 //
 
 #import "cocos2d.h"
-#import "GameEnvironment.h"
 #import "AsteroidField.h"
 
 @interface BackgroundAsteroids : CCNode {
   AsteroidField *_asteroidField;
 }
 
--(id) initWithEnvironment:(GameEnvironment *)environment;
+-(id) init;
 
 @end

@@ -87,11 +87,16 @@ PartData sexyParts[] = {
             PartData part = normalParts[i];
             if ((arc4random() %100 + 1) <= part.percentageChanceOfEmmiting)
             {
-                [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:position inLayer:inLayer world: [[GameObjectCache sharedGameObjectCache] space]];
+                CGPoint randPos = position;
+                
+                randPos.x += CCRANDOM_0_1() - CCRANDOM_0_1();
+                randPos.y += CCRANDOM_0_1() - CCRANDOM_0_1();
+                
+                //[loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:randPos inLayer:inLayer world: sharedSpace];
             }
         }
         
-        [[[GameObjectCache sharedGameObjectCache] spaceManager] applyLinearExplosionAt:position radius:20 maxForce:50 layers:LAYER_RADAR group:CP_NO_GROUP];
+        [sharedSpaceManager applyLinearExplosionAt:position radius:10 maxForce:5 layers:LAYER_RADAR group:CP_NO_GROUP];
         
         [loader release];
     }

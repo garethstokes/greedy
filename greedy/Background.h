@@ -7,12 +7,11 @@
 //
 
 #import "cocos2d.h"
-#import "GameEnvironment.h"
 
 @interface Background : CCLayer {
   CCParallaxNode *_parallax;  
 }
 
-- (id) initWithEnvironment:(GameEnvironment *)environment;
+- (id) init;
 
 @end

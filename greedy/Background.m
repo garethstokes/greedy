@@ -12,7 +12,7 @@
 
 @implementation Background
 
-- (id) initWithEnvironment:(GameEnvironment *)environment
+- (id) init
 {
     // star layer background
     CCLOG(@"  self ref count alloc 1: %d", [self retainCount]);
@@ -27,7 +27,7 @@
   
   CCSprite *stars = [CCSprite spriteWithFile:@"bg_stars.png"];
   CCSprite *nebula = [CCSprite spriteWithFile:@"nebula.png"];
-  BackgroundAsteroids *background = [[[BackgroundAsteroids alloc] initWithEnvironment:environment] autorelease];
+  BackgroundAsteroids *background = [[[BackgroundAsteroids alloc] init] autorelease];
 
     CCLOG(@"  self ref count alloc 3: %d", [self retainCount]);
     

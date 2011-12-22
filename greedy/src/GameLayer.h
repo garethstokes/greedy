@@ -11,10 +11,10 @@
 #import "Greedy.h"
 #import "AsteroidField.h"
 #import "AsteroidShooter.h"
+#import "SpriteHelperLoader.h"
 
 @interface GameLayer : CCLayer
 {
-    Greedy *_greedy;
     AsteroidField *_asteroidField;
     NSMutableArray *_shooters;
     
@@ -23,26 +23,28 @@
     CGPoint _lastPosition;
     CGPoint _cameraPosition;
     
+    // debug
     CCLayer* _debugLayer;
     
+    //deathzone
     CCAction *_actionDeath;
     CCSpriteBatchNode *_batchDeath;
     
+    //end point
     CCSprite *_endPoint;
     
+    //time variables
     ccTime _timeleft;
     
+    //accelerometer vars
     float accelX;
     float accelY;
     float accelZ;
-    
     int ACCELORMETER_DIRECTION;
     
     int _height;
     int _width;
 }
-
-@property (nonatomic, retain) Greedy *greedy;
 
 - (void) step:(ccTime)dt;
 - (id) initWithEnvironment:(GameEnvironment *) environment level:(int)l;

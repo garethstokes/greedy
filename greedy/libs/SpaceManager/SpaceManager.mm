@@ -337,6 +337,8 @@ static void removeCollision(cpSpace *space, void *collision, void *inv_list)
 
 -(id) initWithSpace:(cpSpace*)space
 {	
+  NSLog(@"initwithspace SpaceManager.mm");
+  
 	self = [super init];
 	
 	static BOOL initialized = NO;	
@@ -369,7 +371,9 @@ static void removeCollision(cpSpace *space, void *collision, void *inv_list)
 }
 
 -(void) dealloc
-{		
+{
+    NSLog(@"dealloc SpaceManager.mm");
+    
 	if (_space != nil)
 	{
 		//Clear all "unowned" static bodies

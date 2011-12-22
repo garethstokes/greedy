@@ -252,6 +252,9 @@
 		ABCC105213C7471A00157901 /* radio_sweep.png in Resources */ = {isa = PBXBuildFile; fileRef = ABCC105113C7471A00157901 /* radio_sweep.png */; };
 		ABDE5B46143C56140022D63A /* crosshairs-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABDE5B44143C56140022D63A /* crosshairs-hd.png */; };
 		ABDE5B47143C56140022D63A /* crosshairs.png in Resources */ = {isa = PBXBuildFile; fileRef = ABDE5B45143C56140022D63A /* crosshairs.png */; };
+		ABE3614E14A2C20D00A9441E /* gamelayer-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE3614B14A2C20D00A9441E /* gamelayer-hd.png */; };
+		ABE3614F14A2C20D00A9441E /* gamelayer.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE3614C14A2C20D00A9441E /* gamelayer.png */; };
+		ABE3615014A2C20D00A9441E /* gamelayer.pshs in Resources */ = {isa = PBXBuildFile; fileRef = ABE3614D14A2C20D00A9441E /* gamelayer.pshs */; };
 		ABFB27EB1498915800177F9C /* collision_dc_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E71498915800177F9C /* collision_dc_small.mp3 */; };
 		ABFB27EC1498915800177F9C /* engine_loop_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E81498915800177F9C /* engine_loop_small.mp3 */; };
 		ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */; };
@@ -730,6 +733,9 @@
 		ABCC105113C7471A00157901 /* radio_sweep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_sweep.png; sourceTree = "<group>"; };
 		ABDE5B44143C56140022D63A /* crosshairs-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crosshairs-hd.png"; sourceTree = "<group>"; };
 		ABDE5B45143C56140022D63A /* crosshairs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshairs.png; sourceTree = "<group>"; };
+		ABE3614B14A2C20D00A9441E /* gamelayer-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gamelayer-hd.png"; path = "gamelayer/gamelayer-hd.png"; sourceTree = "<group>"; };
+		ABE3614C14A2C20D00A9441E /* gamelayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gamelayer.png; path = gamelayer/gamelayer.png; sourceTree = "<group>"; };
+		ABE3614D14A2C20D00A9441E /* gamelayer.pshs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = gamelayer.pshs; path = gamelayer/gamelayer.pshs; sourceTree = "<group>"; };
 		ABFB27E71498915800177F9C /* collision_dc_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = collision_dc_small.mp3; path = audio/collision_dc_small.mp3; sourceTree = "<group>"; };
 		ABFB27E81498915800177F9C /* engine_loop_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = engine_loop_small.mp3; path = audio/engine_loop_small.mp3; sourceTree = "<group>"; };
 		ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = epic_greedy_death_small.mp3; path = audio/epic_greedy_death_small.mp3; sourceTree = "<group>"; };
@@ -1428,6 +1434,16 @@
 			path = scorecard;
 			sourceTree = "<group>";
 		};
+		ABE3614914A2C1D500A9441E /* gamelayer */ = {
+			isa = PBXGroup;
+			children = (
+				ABE3614B14A2C20D00A9441E /* gamelayer-hd.png */,
+				ABE3614C14A2C20D00A9441E /* gamelayer.png */,
+				ABE3614D14A2C20D00A9441E /* gamelayer.pshs */,
+			);
+			name = gamelayer;
+			sourceTree = "<group>";
+		};
 		ABFB27E5149890C700177F9C /* audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -1570,6 +1586,7 @@
 		E7CE216E1371780600A700EA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				ABE3614914A2C1D500A9441E /* gamelayer */,
 				ABFB27E5149890C700177F9C /* audio */,
 				E705F5ED143C594200ACAA4D /* Default.png */,
 				E705F5EA143C57B800ACAA4D /* Default@2x.png */,
@@ -1825,6 +1842,9 @@
 				ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */,
 				ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */,
 				ABFB27F01498962700177F9C /* greedy_laugh.mp3 in Resources */,
+				ABE3614E14A2C20D00A9441E /* gamelayer-hd.png in Resources */,
+				ABE3614F14A2C20D00A9441E /* gamelayer.png in Resources */,
+				ABE3615014A2C20D00A9441E /* gamelayer.pshs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,11 +14,6 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 + (GameObjectCache *) sharedGameObjectCache
 {
-//  static dispatch_once_t pred;
-//  dispatch_once(&pred, ^{
-//    sharedGameObjectCache_ = [[GameObjectCache alloc] init];
-//  });
-    
     if(!sharedGameObjectCache_)
         sharedGameObjectCache_ = [[GameObjectCache alloc] init];
     
@@ -76,10 +71,22 @@ static GameObjectCache *sharedGameObjectCache_=nil;
     [background_ retain];
 }
 
+-(void) addGreedy:(Greedy*)newGreedy
+{
+    CCLOG(@"GameObjectCache addGreedy");
+    // NSAssert(greedy_ == nil, @"Greedy member has already been set in GameObjectCache object ");
+    
+    if(greedy_ != nil)
+        [greedy_ release];
+    
+    greedy_ = newGreedy;  
+    [greedy_ retain];
+}
+
 -(void) addGreedyView:(GreedyView*)newGreedyView
 {
     CCLOG(@"GameObjectCache addGreedyView");
-    // NSAssert(greedyView_ == nil, @"Background member has already been set in GameObjectCache object ");
+    // NSAssert(greedyView_ == nil, @"GreedyView member has already been set in GameObjectCache object ");
     
     if(greedyView_ != nil)
         [greedyView_ release];
@@ -91,7 +98,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 -(void) addLifeMeter:(LifeMeter*)newLifeMeter
 {
     CCLOG(@"GameObjectCache addLifeMeter");
-    // NSAssert(lifemeter_ == nil, @"Background member has already been set in GameObjectCache object ");
+    // NSAssert(lifemeter_ == nil, @"LifeMeter member has already been set in GameObjectCache object ");
     
     if(lifemeter_ != nil)
         [lifemeter_ release];
@@ -137,6 +144,13 @@ static GameObjectCache *sharedGameObjectCache_=nil;
     return background_;
 }
 
+-(Greedy*) greedy
+{
+    NSAssert(greedy_ != nil, @"greedy member has not been set in GameObjectCache object ");
+    
+    return greedy_;
+}
+
 -(GreedyView*) greedyView
 {
     NSAssert(greedyView_ != nil, @"greedyView member has not been set in GameObjectCache object ");
@@ -175,6 +189,7 @@ static GameObjectCache *sharedGameObjectCache_=nil;
         gameLayer_ = nil;
         background_ = nil;
         lifemeter_ = nil;
+        greedy_ = nil;
 	}
 	
 	return self;
@@ -182,10 +197,19 @@ static GameObjectCache *sharedGameObjectCache_=nil;
 
 - (void)dealloc {
     CCLOG(@"GameObjectCache Dealloc");
+    [greedy_ release];
+    [greedyView_ release];
     [lifemeter_ release];
     [background_ release];
     [gameLayer_ release];
     [gameScene_ release];
+  
+  [spaceManager_ removeCollisionCallbackBetweenType: kGreedyRadarCollisionType otherType: kAsteroidCollisionType];
+  [spaceManager_ removeCollisionCallbackBetweenType: kGreedyRadarlineCollisionType otherType: kAsteroidCollisionType];
+  [spaceManager_ removeCollisionCallbackBetweenType: kAsteroidCollisionType otherType:kGreedyCollisionType];
+  [spaceManager_ removeCollisionCallbackBetweenType:kGreedyCollisionType otherType:kGreedyFinishLineCollisionType];
+  [spaceManager_ removeCollisionCallbackBetweenType:kGreedyCollisionType otherType:kGreedyDeathZoneCollisionType];
+  
     [spaceManager_ release];
     
     [super dealloc];

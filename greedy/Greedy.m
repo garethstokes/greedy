@@ -39,7 +39,7 @@
     
     // set physics
     cpBody *body = shape->body;
-    cpBodySetVelLimit(body, 80);
+    cpBodySetVelLimit(body, 120);
     body->data = self;
     
     _shape = shape;
@@ -94,7 +94,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         if ((collideTime - _lastCollideTime) < 1.5) return YES;
         
         // BAMM SOUND~!!
-        [[SimpleAudioEngine sharedEngine] playEffect:@"collision_dc_small.mp3"];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"collision_dc_small.mp3" pitch:1 pan:1 gain:0.2];
         
         cpVect p = cpArbiterGetPoint(arb, 0);
         CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"AsteroidPuff.plist"];
@@ -103,7 +103,9 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         [puff setDuration:2.0];
         [self addChild:puff];
         
-        float bumpStrength = 0.04; //cpvlength(cpArbiterTotalImpulse(arb)) / 100;
+        float bumpStrength = cpArbiterGetDepth(arb, 0) * -1; //0.1;
+        bumpStrength = bumpStrength * 0.8;
+        bumpStrength = bumpStrength > 0.5 ? 0.5 : bumpStrength;
         
         //reduce the fuel
         if ((bumpStrength >= 0.020) && (_fuel > 0.0))

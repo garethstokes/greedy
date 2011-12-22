@@ -170,7 +170,7 @@
 {
    [[[Explosion alloc] initWithPosition:[self position] inLayer:sharedGameLayer] autorelease];
 
-    [[SimpleAudioEngine sharedEngine] playEffect:@"epic_greedy_death_small.mp3"];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"epic_greedy_death_small.mp3" pitch:1 pan:1 gain:0.2];
     
     [self removeFromParentAndCleanup:NO];
 }

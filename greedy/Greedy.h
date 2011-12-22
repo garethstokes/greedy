@@ -45,6 +45,7 @@ enum {
     float _fuel;
     BOOL  _exploded;
     CGPoint explosionPoint;
+    double _lastCollideTime;
 }
 
 @property (nonatomic) cpShape *shape;

@@ -12,6 +12,7 @@
 #import "GameConfig.h"
 #import "GameScene.h"
 #import "GameObjectCache.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Greedy
 @synthesize shape = _shape;
@@ -64,6 +65,8 @@
   _spriteRadar = [[[Radar alloc] initWithBody:body] autorelease];
   [self addChild:_spriteRadar z:100];
     
+    _lastCollideTime = [NSDate timeIntervalSinceReferenceDate];
+    
     return self;
 }
 
@@ -79,23 +82,28 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
-  if (_exploded) return YES;
-    
-	if (moment == COLLISION_POSTSOLVE)
+    if (_exploded) return YES;
+        
+	if (moment == COLLISION_BEGIN)
 	{
 		NSLog(@"You hit an asteroid!!!");
         
         CP_ARBITER_GET_SHAPES(arb,a,b);
+
+        double collideTime = [NSDate timeIntervalSinceReferenceDate];
+        if ((collideTime - _lastCollideTime) < 1.5) return YES;
         
-        //cpVect p = cpArbiterGetPoint(arb, 0);
+        // BAMM SOUND~!!
+        [[SimpleAudioEngine sharedEngine] playEffect:@"collision_dc_small.mp3"];
         
-        //CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"AsteroidPuff.plist"];
+        cpVect p = cpArbiterGetPoint(arb, 0);
+        CCParticleSystemQuad *puff = [CCParticleSystemQuad particleWithFile:@"AsteroidPuff.plist"];
         
-        //[puff setPosition:p];
-        //[puff setDuration:2.0];
-        //[self addChild:puff];
+        [puff setPosition:p];
+        [puff setDuration:2.0];
+        [self addChild:puff];
         
-        float bumpStrength = 0.032; //cpvlength(cpArbiterTotalImpulse(arb)) / 100;
+        float bumpStrength = 0.04; //cpvlength(cpArbiterTotalImpulse(arb)) / 100;
         
         //reduce the fuel
         if ((bumpStrength >= 0.020) && (_fuel > 0.0))

@@ -88,17 +88,30 @@
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenuLayer scene]]];
 }
 
-- (void) showBars {
+- (void) showBars:(int)score {
+    NSString* full = @"gold_bar_full.png";
+    NSString* empty = @"gold_bar_empty.png";
+    
     CCSprite *sprite;
-    sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
+    
+    NSString* markerKey = [NSString stringWithFormat:@"gold_for_level_%i_%i", _level, 1];
+    int marker = [[SettingsManager sharedSettingsManager] getInt:markerKey withDefault:0];
+    
+    sprite = [[CCSprite alloc] initWithFile:score > marker ? full : empty];
     [sprite setPosition:ccp(204.0, 284.0)];
     [self addChild:sprite];
     [sprite release];
-    sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
+    
+    markerKey = [NSString stringWithFormat:@"gold_for_level_%i_%i", _level, 2];
+    marker = [[SettingsManager sharedSettingsManager] getInt:markerKey withDefault:0];
+    sprite = [[CCSprite alloc] initWithFile:score > marker ? full : empty];
     [sprite setPosition:ccp(230.0, 308.0)];
     [self addChild:sprite];
     [sprite release];
-    sprite = [[CCSprite alloc] initWithFile:@"gold_bar_empty.png"];
+    
+    markerKey = [NSString stringWithFormat:@"gold_for_level_%i_%i", _level, 3];
+    marker = [[SettingsManager sharedSettingsManager] getInt:markerKey withDefault:0];
+    sprite = [[CCSprite alloc] initWithFile:score > marker ? full : empty];
     [sprite setPosition:ccp(256.0, 332.0)];
     [self addChild:sprite];
     [sprite release];
@@ -165,6 +178,7 @@
         [self addChild:sprite];
         [sprite release];
         
+        //[self showHighScore];
     }
     
     return self;
@@ -180,13 +194,13 @@
     
     _timeleft = time;
     
-    [self showBars];
+    [self showBars:score];
     
-    int prevHighScore = [[SettingsManager sharedSettingsManager] getInt:[NSString stringWithFormat:@"HighScoreLevel%d", level] withDefault:0]; 
+    int prevHighScore = [[SettingsManager sharedSettingsManager] getInt:[NSString stringWithFormat:@"high_score_%i", level] withDefault:0]; 
     if(score > prevHighScore)
     {
         [self showHighScore];
-        [[SettingsManager sharedSettingsManager] setValue:[NSString stringWithFormat:@"HighScoreLevel%d", level] newInt:score];
+        [[SettingsManager sharedSettingsManager] setValue:[NSString stringWithFormat:@"high_score_%i", level] newInt:score];
     }
     
     [self showScore];

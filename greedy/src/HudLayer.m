@@ -43,7 +43,7 @@
   
     // help screens
     int level = [[[GameObjectCache sharedGameObjectCache] gameScene] Level];
-    if (level == 1 && [[SettingsManager sharedSettingsManager] getInt:@"HelpScreenShown"] != 1) {
+    if (level == 1) {
         _helpScreenStatus = @"help_screens_tilt";
         [self schedule:@selector(showHelp:) interval:3];
     }
@@ -79,7 +79,6 @@
     {
         [[CCDirector sharedDirector] resume];
         [self unschedule:@selector(showHelp:)];
-        [[SettingsManager sharedSettingsManager] setValue:@"HelpScreenShown" newInt:1];
     }
     
     CCMenuItemImage *tilt = [CCMenuItemImage 

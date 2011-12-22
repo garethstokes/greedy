@@ -93,7 +93,7 @@
         //[puff setDuration:2.0];
         //[self addChild:puff];
         
-        float bumpStrength = 0.020; //cpvlength(cpArbiterTotalImpulse(arb)) / 100;
+        float bumpStrength = 0.032; //cpvlength(cpArbiterTotalImpulse(arb)) / 100;
         
         //reduce the fuel
         if ((bumpStrength >= 0.020) && (_fuel > 0.0))

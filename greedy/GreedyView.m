@@ -20,7 +20,7 @@
 
 -(void) greedyFrameChanged
 {
-    CCLOG(@"Frame Changed!");
+    //CCLOG(@"Frame Changed!");
     CGRect rect = [[spriteGreedy displayedFrame] rectInPixels];
     
     [spriteFlame setPosition:ccp(0, -(rect.size.height / 2.0f) - 8)]; //magic numbers woot!
@@ -87,6 +87,8 @@
 
 - (void) setThrusting:(int)value
 {
+    if (_thrusting == value) return;
+    
     if (value == kGreedyThrustNone)
     {
         NSLog(@"update thrusting: nil");
@@ -128,7 +130,7 @@
     }
     _eatCount++;
     
-    NSLog(@"Inc eat: %d", _eatCount);
+    //NSLog(@"Inc eat: %d", _eatCount);
     
 }
 

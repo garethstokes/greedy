@@ -92,14 +92,14 @@
 {
 	if (moment == COLLISION_BEGIN)
 	{
-		CCLOG(@"You are within radar range... woot!!!");
+		//CCLOG(@"You are within radar range... woot!!!");
     
     [[[GameObjectCache sharedGameObjectCache] greedyView] incrementEating];
 	}
   
   if (moment == COLLISION_SEPARATE)
   {
-    CCLOG(@"You are no longer in radar range... :( !!!");
+    //CCLOG(@"You are no longer in radar range... :( !!!");
     
     [[[GameObjectCache sharedGameObjectCache] greedyView] decrementEating];
   }
@@ -121,7 +121,7 @@
   
   if (moment == COLLISION_BEGIN)
 	{
-    CCLOG(@"Line Meets asteroid begin");
+    //CCLOG(@"Line Meets asteroid begin");
     
     CP_ARBITER_GET_SHAPES(arb, a, b);
     Asteroid * ast = (Asteroid *)(b->data);
@@ -151,7 +151,7 @@
   
   if (moment == COLLISION_PRESOLVE)
 	{
-    CCLOG(@"Line Meets asteroid post solve");
+    //CCLOG(@"Line Meets asteroid post solve");
     CP_ARBITER_GET_SHAPES(arb, a, b);
     int size = cpArbiterGetCount(arb) - 1;
     
@@ -169,7 +169,7 @@
         [[ast oreAnim] addScore:oreScore];
         
         for(int i = 0; i < size+1;i++){
-          CCLOG(@"Asteroid Collision Details: i:%d size:%d point:%f,%f", i, size, cpArbiterGetPoint(arb, i).x, cpArbiterGetPoint(arb, i).y);
+          //CCLOG(@"Asteroid Collision Details: i:%d size:%d point:%f,%f", i, size, cpArbiterGetPoint(arb, i).x, cpArbiterGetPoint(arb, i).y);
           [[ast oreAnim] addPoint:cpArbiterGetPoint(arb, i)];
         }
       }
@@ -178,7 +178,7 @@
   
   if (moment == COLLISION_SEPARATE)
   {
-    CCLOG(@"Line Leaves asteroid end");
+    //CCLOG(@"Line Leaves asteroid end");
     CP_ARBITER_GET_SHAPES(arb, a, b);
     Asteroid * ast = (Asteroid *)(b->data);
     

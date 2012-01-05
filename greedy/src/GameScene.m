@@ -61,7 +61,10 @@
 {
   if(_scorecard != nil) return;
   
-  _scorecard = [[[ScoreCard alloc] initWithScore:score level:1 time:[[self hudLayer] CountDown]] autorelease];
+    GameScene *s = (GameScene *)[[CCDirector sharedDirector] runningScene];
+    int lev = [s Level];
+    
+  _scorecard = [[[ScoreCard alloc] initWithScore:score level:lev time:[[self hudLayer] CountDown]] autorelease];
   
   [self addChild:_scorecard  z:100];
 }

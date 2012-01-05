@@ -86,7 +86,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         
 	if (moment == COLLISION_BEGIN)
 	{
-		NSLog(@"You hit an asteroid!!!");
+		//NSLog(@"You hit an asteroid!!!");
         
         CP_ARBITER_GET_SHAPES(arb,a,b);
 
@@ -111,7 +111,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         if ((bumpStrength >= 0.020) && (_fuel > 0.0))
         {
 #define FUELBUMP 1
-            CCLOG(@"Asteroid Bump %f", bumpStrength);
+            //CCLOG(@"Asteroid Bump %f", bumpStrength);
             _fuel -= (FUELBUMP * bumpStrength);
             if (_fuel < 0.0){
                 cpSpaceAddPostStepCallback(sharedSpace, explodeGreedy, sharedGreedy, self);
@@ -166,9 +166,9 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         cpBodySetAngle(_shape->body, CC_DEGREES_TO_RADIANS(_angle));
         
         //Rotate the Radar
-    [_spriteRadar step:delta];
+        [_spriteRadar step:delta];
         
-    if ([sharedGreedyView isThrusting])
+        if ([sharedGreedyView isThrusting])
         {
             //add force to greedy
             cpVect force = cpvforangle(_shape->body->a);
@@ -201,19 +201,16 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         
         if (_fuel <= 0.0) return;
         
-        NSLog(@"applying thrust...");
-        
-    [sharedGreedyView setThrusting:kGreedyThrustLittle];
+        //NSLog(@"applying thrust...");
+        [sharedGreedyView setThrusting:kGreedyThrustLittle];
     }
 }
 
 - (void) removeThrust
 {
-    NSLog(@"removing thrust...");
+    //NSLog(@"removing thrust...");
     if(!_exploded)
-    [sharedGreedyView setThrusting:kGreedyThrustNone];
-    else {
-    }
+        [sharedGreedyView setThrusting:kGreedyThrustNone];
 }
 
 - (CGPoint) position

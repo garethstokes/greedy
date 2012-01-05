@@ -23,12 +23,21 @@
     CCSprite *btnReplayOn = [CCSprite spriteWithFile:@"btn_replay_on.png"];
     CCSprite *btnReplayOff = [CCSprite spriteWithFile:@"btn_replay_off.png"];
     CCMenuItemSprite * btnReplay = [CCMenuItemSprite itemFromNormalSprite:btnReplayOff selectedSprite:btnReplayOn target:self selector:@selector(restartLevel:)];
+
+    CCMenu *top_menu = [CCMenu menuWithItems:btnChooseLevel, btnReplay, nil];
     
-    CCSprite *btnSkipOn = [CCSprite spriteWithFile:@"btn_skip_on.png"];
-    CCSprite *btnSkipOff = [CCSprite spriteWithFile:@"btn_skip_off.png"];
-    CCMenuItemSprite * btnSkip = [CCMenuItemSprite itemFromNormalSprite:btnSkipOff selectedSprite:btnSkipOn target:self selector:@selector(skipLevel:)];
+    GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
+    int lev = [scene Level];
+    int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level" withDefault:1];
+    if (lev < currentLevel)
+    {
+        CCSprite *btnSkipOn = [CCSprite spriteWithFile:@"btn_skip_on.png"];
+        CCSprite *btnSkipOff = [CCSprite spriteWithFile:@"btn_skip_off.png"];
+        CCMenuItemSprite * btnSkip = [CCMenuItemSprite itemFromNormalSprite:btnSkipOff selectedSprite:btnSkipOn target:self selector:@selector(skipLevel:)];    
+        [top_menu addChild:btnSkip];
+    }
     
-    CCMenu *top_menu = [CCMenu menuWithItems:btnChooseLevel, btnReplay, btnSkip, nil];
+    
     [top_menu  alignItemsHorizontallyWithPadding:32.0];
     top_menu.position = ccp(160,56);
     [self addChild:top_menu];

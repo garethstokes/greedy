@@ -196,6 +196,12 @@
     
     [self showBars:score];
     
+    int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level" withDefault:1];
+    if (level == currentLevel)
+    {
+        [[SettingsManager sharedSettingsManager] setValue:@"current_level" newInt:level +1];
+    }
+    
     int prevHighScore = [[SettingsManager sharedSettingsManager] getInt:[NSString stringWithFormat:@"high_score_%i", level] withDefault:0]; 
     if(score > prevHighScore)
     {

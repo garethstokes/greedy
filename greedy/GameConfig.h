@@ -24,7 +24,7 @@
 //
 // Define here the type of autorotation that you want for your game
 //
-#define GAME_AUTOROTATION kGameAutorotationUIViewController
+#define GAME_AUTOROTATION kGameAutorotationNone
 
 // turns on debug messages and such
 #define kDebugFalse 0

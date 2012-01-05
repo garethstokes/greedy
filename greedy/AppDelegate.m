@@ -124,12 +124,10 @@
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.5];
 	
 	// Run the intro Scene
-	//[[CCDirector sharedDirector] runWithScene: [GameScene scene]];
     if(false)
         [[CCDirector sharedDirector] runWithScene: [TestLayer scene]];
     else
         [[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
-
 }
 
 

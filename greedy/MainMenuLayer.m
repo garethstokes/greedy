@@ -35,31 +35,32 @@
 {
   self = [super init];
   if (self) {
-    CCSprite *background = [CCSprite spriteWithFile:@"mainmenu_bg.png"];
-    [background setPosition:ccp(160, 240)];
-    [self addChild:background];
+      
+    SpriteHelperLoader *loader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"mainmenu"];
     
-    CCSprite *textVoyage = [CCSprite spriteWithFile:@"voyage_text.png"];
-    [textVoyage setPosition:ccp(160, 365 )];
-    [self addChild:textVoyage];    
-    
+    [loader spriteWithUniqueName:@"Default" atPosition:ccp(160,240) inLayer:self];
+
     // ADD MENU ITEMS
-    CCMenuItemImage *menuOption = [CCMenuItemImage itemFromNormalImage:@"options.png" 
-                                                         selectedImage:@"options_on_tap.png"
-                                                                target:self 
-                                                              selector:@selector(menuOptionTapped:)];
-    
-    
-    CCMenuItemImage *menuPlay = [CCMenuItemImage itemFromNormalImage:@"play.png" 
-                                                       selectedImage:@"play_on_tap.png"
-                                                              target:self 
-                                                            selector:@selector(menuPlayTapped:)];
-    
+    CCMenuItemImage *menuOption = [CCMenuItemImage 
+                                   itemFromNormalSprite:[loader spriteWithUniqueName:@"options" atPosition:ccp(0,0) inLayer:nil]
+                                   selectedSprite:[loader spriteWithUniqueName:@"options_on_tap" atPosition:ccp(0,0) inLayer:nil] 
+                                   target:self 
+                                   selector:@selector(menuOptionTapped:)];
+      
+      
+    CCMenuItemImage *menuPlay = [CCMenuItemImage 
+                                 itemFromNormalSprite:[loader spriteWithUniqueName:@"play" atPosition:ccp(0,0) inLayer:nil]
+                                 selectedSprite:[loader spriteWithUniqueName:@"play_on_tap" atPosition:ccp(0,0) inLayer:nil] 
+                                 target:self 
+                                 selector:@selector(menuPlayTapped:)];
+      
     _menuMain = [CCMenu menuWithItems:menuOption, menuPlay, nil];
 
     [_menuMain setPosition:ccp(160,60)];
     [_menuMain alignItemsHorizontallyWithPadding:16];
+
     [self addChild:_menuMain];
+    
   }
   
   return self;

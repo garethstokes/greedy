@@ -265,7 +265,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   NSLog(@"crossed the finish line");
   
   if (moment == COLLISION_BEGIN)
-	{
+  {
     CGPoint p = [_endPoint position];
     [self removeChild:_endPoint cleanup:YES];
     _endPoint = [CCSprite spriteWithFile:@"end_point_ready.png"];
@@ -279,7 +279,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     endPoint.x = 0;
     
     _followGreedy = NO;
-    
+    [sharedGreedy isInvincible]; 
     [sharedGreedy moveManually:ccpAdd(ccp(0,200), endPoint) target:self selector:@selector(showScoreCard:)];
   }
   

@@ -29,7 +29,7 @@
     GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
     int lev = [scene Level];
     int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level" withDefault:1];
-    if (lev < currentLevel)
+    if (lev < currentLevel && lev < 4)
     {
         CCSprite *btnSkipOn = [CCSprite spriteWithFile:@"btn_skip_on.png"];
         CCSprite *btnSkipOff = [CCSprite spriteWithFile:@"btn_skip_off.png"];

@@ -46,6 +46,7 @@ enum {
     BOOL  _exploded;
     CGPoint explosionPoint;
     double _lastCollideTime;
+    bool _invincible;
 }
 
 @property (nonatomic) cpShape *shape;
@@ -62,6 +63,7 @@ enum {
 -(float) score;
 - (void) moveManually:(CGPoint)point target:(id)t selector:(SEL) s;
 -(void) start;
+- (void) isInvincible;
 
 //Collision
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space;

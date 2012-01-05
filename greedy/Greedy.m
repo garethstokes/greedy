@@ -67,6 +67,7 @@
     
     _lastCollideTime = [NSDate timeIntervalSinceReferenceDate];
     
+    _invincible = NO;
     return self;
 }
 
@@ -139,8 +140,14 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
     }
 }
 
+- (void) isInvincible
+{
+    _invincible = YES;
+}
+
 - (void) explode
 {
+    if (_invincible) return;
     if(!_exploded)
     {
     [_spriteRadar stop];

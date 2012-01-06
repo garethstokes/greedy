@@ -104,6 +104,8 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
         [puff setDuration:2.0];
         [self addChild:puff];
         
+        [sharedLifeMeter hit];
+        
         float bumpStrength = cpArbiterGetDepth(arb, 0) * -1; //0.1;
         bumpStrength = bumpStrength * 0.8;
         bumpStrength = bumpStrength > 0.5 ? 0.5 : bumpStrength;

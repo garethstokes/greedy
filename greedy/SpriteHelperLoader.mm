@@ -382,21 +382,21 @@
       cpSpaceRemoveShape(space, shape);
       cpShapeFree(shape);
       
-      if (layer != nil)
+      if(layer != nil)
       {
-          CCMagicSprite* ccMagicSprite = (CCMagicSprite*)body->data;
-          
-          if([ccMagicSprite usesBatchNode])
-          {
-            CCSpriteBatchNode* node = [ccMagicSprite batchNode];
-            [node removeChild:ccMagicSprite cleanup:YES];
-          }
-          else
-          {
-            [layer removeChild:ccMagicSprite cleanup:YES];
-          }
+        CCMagicSprite* ccMagicSprite = (CCMagicSprite*)body->data;
+        
+        if([ccMagicSprite usesBatchNode])
+        {
+          CCSpriteBatchNode* node = [ccMagicSprite batchNode];
+          [node removeChild:ccMagicSprite cleanup:YES];
+        }
+        else
+        {
+          [layer removeChild:ccMagicSprite cleanup:YES];
+        }
       }
-
+      
       cpSpaceRemoveBody(space, body);
       cpBodyFree(body);
       
@@ -460,14 +460,14 @@
 //returns NSMutableArray with NSValue with cpShape pointers
 -(NSArray*) cpBodyFromDictionary:(NSDictionary*)spritePhysic
                 spriteProperties:(NSDictionary*)spriteProp
-                            data:(CCMagicSprite*)CCMagicSprite 
+                            data:(CCMagicSprite*)spriteData
                            world:(cpSpace*)space
 {
 	cpBody *body;
 	
   float mass = [[spritePhysic objectForKey:@"Density"] floatValue];
   
-	CGPoint position = ccp([CCMagicSprite position].x, [CCMagicSprite position].y);//
+	CGPoint position = ccp([spriteData position].x, [spriteData position].y);//
 	
   // NSLog(@"Position %f %f", position.x, position.y);
 	//0 static
@@ -531,7 +531,7 @@
       }
       body->p = position;
       cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
-      body->data = CCMagicSprite;
+      body->data = spriteData;
       
       
 			float radius = (size.width*scale.x - shapeBorderX/2)/2;
@@ -568,13 +568,13 @@
       }
       body->p = position;
       cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
-      body->data = CCMagicSprite;
+      body->data = spriteData;
       
       shape = cpPolyShapeNew(body, vsize, verts, CGPointZero);
       delete verts;
 		}
 		[self setShapePropertiesFromDictionary:spritePhysic shape:shape];
-		shape->data = CCMagicSprite;
+		shape->data = spriteData;
     
     [arrayOfShapes addObject:[NSValue valueWithPointer:shape]];
     cpSpaceAddShape(space, shape);
@@ -592,7 +592,7 @@
       cpSpaceAddBody(space, body);
     }
     body->p = position;
-    body->data = CCMagicSprite;
+    body->data = spriteData;
     cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
     
 		for(NSArray* curFixture in fixtures)
@@ -612,7 +612,7 @@
       cpShape* shape = cpPolyShapeNew(body, size, verts, CGPointZero);
       [self setShapePropertiesFromDictionary:spritePhysic shape:shape];
       
-      shape->data = CCMagicSprite;
+      shape->data = spriteData;
       
       [arrayOfShapes addObject:[NSValue valueWithPointer:shape]];
       cpSpaceAddShape(space, shape);

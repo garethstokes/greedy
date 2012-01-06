@@ -259,7 +259,6 @@
 		ABFB27EC1498915800177F9C /* engine_loop_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E81498915800177F9C /* engine_loop_small.mp3 */; };
 		ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */; };
 		ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27EA1498915800177F9C /* gold_small.mp3 */; };
-		ABFB27F01498962700177F9C /* greedy_laugh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */; };
 		ABFF83D5149EF59700D2E4B0 /* TestLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFF83D4149EF59700D2E4B0 /* TestLayer.m */; };
 		ABFF83DD149EF6A400D2E4B0 /* OreAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFF83DC149EF6A400D2E4B0 /* OreAnimation.m */; };
 		E704A62F13BB447100577C13 /* end_point_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = E704A62E13BB447100577C13 /* end_point_ready.png */; };
@@ -745,7 +744,6 @@
 		ABFB27E81498915800177F9C /* engine_loop_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = engine_loop_small.mp3; path = audio/engine_loop_small.mp3; sourceTree = "<group>"; };
 		ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = epic_greedy_death_small.mp3; path = audio/epic_greedy_death_small.mp3; sourceTree = "<group>"; };
 		ABFB27EA1498915800177F9C /* gold_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gold_small.mp3; path = audio/gold_small.mp3; sourceTree = "<group>"; };
-		ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = greedy_laugh.mp3; path = "../../../../Dropbox/retrolander/choosen sounds/greedy_laugh.mp3"; sourceTree = "<group>"; };
 		ABFF83D3149EF59700D2E4B0 /* TestLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLayer.h; sourceTree = "<group>"; };
 		ABFF83D4149EF59700D2E4B0 /* TestLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLayer.m; sourceTree = "<group>"; };
 		ABFF83DB149EF6A400D2E4B0 /* OreAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OreAnimation.h; sourceTree = "<group>"; };
@@ -1460,7 +1458,6 @@
 				ABFB27E71498915800177F9C /* collision_dc_small.mp3 */,
 				ABFB27E81498915800177F9C /* engine_loop_small.mp3 */,
 				ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */,
-				ABFB27EF1498962600177F9C /* greedy_laugh.mp3 */,
 				ABFB27EA1498915800177F9C /* gold_small.mp3 */,
 			);
 			name = audio;
@@ -1864,7 +1861,6 @@
 				ABFB27EC1498915800177F9C /* engine_loop_small.mp3 in Resources */,
 				ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */,
 				ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */,
-				ABFB27F01498962700177F9C /* greedy_laugh.mp3 in Resources */,
 				ABE3614E14A2C20D00A9441E /* gamelayer-hd.png in Resources */,
 				ABE3614F14A2C20D00A9441E /* gamelayer.png in Resources */,
 				ABE3615014A2C20D00A9441E /* gamelayer.pshs in Resources */,

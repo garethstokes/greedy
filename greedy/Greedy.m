@@ -26,7 +26,7 @@
     
     if(!(self = [super init])) return nil;
     
-  cpShape *shape = [sharedSpaceManager
+    cpShape *shape = [sharedSpaceManager
                       addRectAt:startPos 
                       mass:GREEDYMASS 
                       width:50 
@@ -51,9 +51,9 @@
     
     //init collisions
 	[sharedSpaceManager  addCollisionCallbackBetweenType: kAsteroidCollisionType 
-                                                                                   otherType: kGreedyCollisionType 
-                                                                                      target: self 
-                                                                                    selector: @selector(handleCollisionWithAsteroid:arbiter:space:)];
+                                               otherType: kGreedyCollisionType 
+                                                  target: self 
+                                                selector: @selector(handleCollisionWithAsteroid:arbiter:space:)];
     
     // view
     GreedyView *aview = [[GreedyView alloc] initWithShape:shape];
@@ -62,8 +62,8 @@
     [aview release];
     
     //Radar    
-  _spriteRadar = [[[Radar alloc] initWithBody:body] autorelease];
-  [self addChild:_spriteRadar z:100];
+    _spriteRadar = [[[Radar alloc] initWithBody:body] autorelease];
+    [self addChild:_spriteRadar z:100];
     
     _lastCollideTime = [NSDate timeIntervalSinceReferenceDate];
     
@@ -73,7 +73,7 @@
 
 -(void) start
 {
-  [_spriteRadar start];
+    [_spriteRadar start];
 }
 
 static void explodeGreedy(cpSpace *space, void *obj, void *data)
@@ -84,13 +84,13 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 - (BOOL) handleCollisionWithAsteroid:(CollisionMoment)moment arbiter:(cpArbiter*)arb space:(cpSpace*)space
 {
     if (_exploded) return YES;
-        
+    
 	if (moment == COLLISION_BEGIN)
 	{
 		//NSLog(@"You hit an asteroid!!!");
         
         CP_ARBITER_GET_SHAPES(arb,a,b);
-
+        
         double collideTime = [NSDate timeIntervalSinceReferenceDate];
         if ((collideTime - _lastCollideTime) < 1.5) return YES;
         
@@ -118,7 +118,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
             _fuel -= (FUELBUMP * bumpStrength);
             if (_fuel < 0.0){
                 cpSpaceAddPostStepCallback(sharedSpace, explodeGreedy, sharedGreedy, self);
-              //[self explode];
+                //[self explode];
             }
         }
 	}
@@ -136,7 +136,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
             
             //schedule post solve perhaps?
             cpSpaceAddPostStepCallback(sharedSpace, explodeGreedy, sharedGreedy, self);
-
+            
             //[self explode];
         }
     }
@@ -152,14 +152,19 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
     if (_invincible) return;
     if(!_exploded)
     {
-    [_spriteRadar stop];
+        [_spriteRadar stop];
         
-    [sharedGreedyView explode];
+        [self removeChild:_spriteRadar cleanup:YES];
+        
+        [sharedGreedyView explode];
         
         //[[[GameObjectCache sharedGameObjectCache] spaceManager] removeAndFreeShape:_shape];
+        
         //remove all thrusts
         cpBodyResetForces(_shape->body);
         explosionPoint = _shape->body->p;
+        
+        [sharedSpaceManager removeAndFreeShape:_shape];
         
         [self.parent schedule:@selector(endLevelWithDeath) interval:3.0f];
     }
@@ -199,7 +204,7 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
             }
         }
     } else{
-        cpBodyResetForces(_shape->body);
+        //cpBodyResetForces(_shape->body);
     }
 }
 
@@ -245,25 +250,25 @@ static void explodeGreedy(cpSpace *space, void *obj, void *data)
 
 - (void) moveManually:(CGPoint)point target:(id)t selector:(SEL)s
 {
-  [sharedGreedyView setThrusting:kGreedyThrustNone];
+    [sharedGreedyView setThrusting:kGreedyThrustNone];
     
-  [sharedGreedyView runAction:[CCSequence actions:
-                                                                     [CCMoveBy actionWithDuration:3.0f position:point],
-                                                                     [CCCallFuncN actionWithTarget:t selector:s],
-                                                                     nil ]];
+    [sharedGreedyView runAction:[CCSequence actions:
+                                 [CCMoveBy actionWithDuration:3.0f position:point],
+                                 [CCCallFuncN actionWithTarget:t selector:s],
+                                 nil ]];
 }
 
 -(float) score
 {
-  return _spriteRadar.score;
+    return _spriteRadar.score;
 }
 
 - (void)dealloc
 {
     CCLOG(@"Dealloc Greedy");
-  
+        
     [self removeAllChildrenWithCleanup:YES];
-  
+    
     [super dealloc];
 }
 

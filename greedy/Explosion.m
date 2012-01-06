@@ -81,7 +81,7 @@ PartData sexyParts[] = {
       randPos.x += 15.0 * CCRANDOM_MINUS1_1();
       randPos.y += 15.0 * CCRANDOM_MINUS1_1();
       
-      NSArray * shape = [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:randPos inLayer:inLayer world: sharedSpace];
+      NSArray * shape = [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:randPos inLayer:inLayer world: _space];
       
       [allParts addObject:shape];
     }
@@ -96,6 +96,8 @@ PartData sexyParts[] = {
     
     layer_ = inLayer;
     allParts = [[NSMutableArray arrayWithCapacity:5] retain];
+      
+      _space = sharedSpace;
     
     [self setPosition:position];
     
@@ -104,9 +106,9 @@ PartData sexyParts[] = {
     
     [self addRingOfFire: loader position: position inLayer: inLayer];
     
-    [self addPartsFromList:inLayer loader:loader position:position parts:normalParts size:sizeof(normalParts)];
+    //[self addPartsFromList:inLayer loader:loader position:position parts:normalParts size:sizeof(normalParts)];
     
-    [self addPartsFromList:inLayer loader:loader position:position parts:sexyParts size:sizeof(sexyParts)];
+    //[self addPartsFromList:inLayer loader:loader position:position parts:sexyParts size:sizeof(sexyParts)];
     
     [sharedSpaceManager applyLinearExplosionAt:position radius:15 maxForce:5 layers:LAYER_RADAR group:CP_NO_GROUP];
     
@@ -137,10 +139,8 @@ PartData sexyParts[] = {
   
   //remove any added parts
   for (NSArray *parts in allParts)
-    [SpriteHelperLoader removeChipmunkBody:parts fromSpace:sharedSpace spriteLayer:nil];
-  
-
-  
+    [SpriteHelperLoader removeChipmunkBody:parts fromSpace:_space spriteLayer:nil];
+ 
   [allParts release];
   
   [self removeAllChildrenWithCleanup:YES];

@@ -68,5 +68,12 @@
 			<integer>-300</integer>
 		</dict>
 	</array>
+	<key>Background</key>
+	<dict>
+		<key>layer1</key>
+		<string>bg_stars.png</string>
+		<key>layer2</key>
+		<string>star_burst.png</string>
+	</dict>
 </dict>
 </plist>

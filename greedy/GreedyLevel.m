@@ -71,6 +71,7 @@
 @implementation GreedyLevel
 
 @synthesize number                = _number;
+@synthesize backgroundLayers      = _backgroundLayers;
 @synthesize asteroidFieldHeight   = _asteroidFieldHeight;
 @synthesize asteroidFieldWidth    = _asteroidFieldWidth;
 @synthesize staticAsteroids       = _staticAsteroids;
@@ -97,6 +98,8 @@
     _asteroidFieldWidth = [[asteroidField objectForKey: @"width"] intValue];
     _asteroidFieldHeight = [[asteroidField objectForKey: @"height"] intValue];
     
+    [self setBackgroundLayers: [dictionary valueForKey:@"Background"]];
+
     //Load in Static objects
     NSArray *asteroids = [dictionary valueForKey:@"StaticAsteroids"];
     _staticAsteroids = [NSMutableArray array];

@@ -382,18 +382,21 @@
       cpSpaceRemoveShape(space, shape);
       cpShapeFree(shape);
       
-      CCMagicSprite* ccMagicSprite = (CCMagicSprite*)body->data;
-      
-      if([ccMagicSprite usesBatchNode])
+      if (layer != nil)
       {
-        CCSpriteBatchNode* node = [ccMagicSprite batchNode];
-        [node removeChild:ccMagicSprite cleanup:YES];
+          CCMagicSprite* ccMagicSprite = (CCMagicSprite*)body->data;
+          
+          if([ccMagicSprite usesBatchNode])
+          {
+            CCSpriteBatchNode* node = [ccMagicSprite batchNode];
+            [node removeChild:ccMagicSprite cleanup:YES];
+          }
+          else
+          {
+            [layer removeChild:ccMagicSprite cleanup:YES];
+          }
       }
-      else
-      {
-        [layer removeChild:ccMagicSprite cleanup:YES];
-      }
-      
+
       cpSpaceRemoveBody(space, body);
       cpBodyFree(body);
       

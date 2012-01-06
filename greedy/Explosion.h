@@ -7,6 +7,7 @@
 //
 
 #import "cocos2d.h"
+#import "chipmunk.h"
 
 #define EXPLOSION_START_TIME 1.0f   // speed of explosion in seconds
 #define EXPLOSION_FADE_TIME  2.0f   // duration of fade out and second scale
@@ -19,6 +20,7 @@
   CCAction *animAction;
   NSMutableArray * allParts;
   CCLayer * layer_;
+  cpSpace *_space;
 }
 
 -(id) initWithPosition:(CGPoint)position inLayer:(CCLayer *)inLayer;

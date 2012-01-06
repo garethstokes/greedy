@@ -109,6 +109,7 @@ PartData sexyParts[] = {
     
     [sharedSpaceManager applyLinearExplosionAt:position radius:15 maxForce:5 layers:LAYER_RADAR group:CP_NO_GROUP];
     
+    _space = sharedSpace;
     [loader release];
   }
   
@@ -133,25 +134,9 @@ PartData sexyParts[] = {
 - (void)dealloc{
   CCLOG(@"Dealloc explosion");
   
-  //remove any added parts
-//  for(NSArray *partShape in allParts)
-//  {
-//    cpBody* body = nil;
-//    
-//    for(NSValue* value in partShape)
-//    {
-//      
-//      cpShape* shape = (cpShape*)[value pointerValue];
-//      if(body == nil)
-//       body = shape->body;
-//      
-//      cpSpaceRemoveShape(sharedSpace, shape);
-//      cpShapeFree(shape);
-//    }
-//    
-//    cpSpaceRemoveBody(sharedSpace, body);
-//    cpBodyFree(body);
-//  }
+  for(NSArray *parts in allParts)
+      [SpriteHelperLoader removeChipmunkBody:parts fromSpace:_space spriteLayer:nil];
+    
   [allParts release];
   
   [self removeAllChildrenWithCleanup:YES];

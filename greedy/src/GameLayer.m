@@ -239,7 +239,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
 - (void) stop
 {
   [sharedSpaceManager stop];
-  [self unschedule: @selector(step:)];  
+  [self unschedule: @selector(step:)]; 
 }
 
 - (void) endLevel

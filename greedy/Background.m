@@ -14,12 +14,12 @@
 
 - (id) init
 {
-    // star layer background
-    CCLOG(@"  self ref count alloc 1: %d", [self retainCount]);
-
+  // star layer background
+  CCLOG(@"  self ref count alloc 1: %d", [self retainCount]);
+  
   if(!(self = [super init])) return nil;
-    
-    CCLOG(@"  self ref count alloc 2: %d", [self retainCount]);
+  
+  CCLOG(@"  self ref count alloc 2: %d", [self retainCount]);
   
   //[self addChild:sprite];
   // create a void node, a parent node
@@ -28,9 +28,9 @@
   CCSprite *stars = [CCSprite spriteWithFile:@"bg_stars.png"];
   CCSprite *nebula = [CCSprite spriteWithFile:@"nebula.png"];
   BackgroundAsteroids *background = [[[BackgroundAsteroids alloc] init] autorelease];
-
-    CCLOG(@"  self ref count alloc 3: %d", [self retainCount]);
-    
+  
+  CCLOG(@"  self ref count alloc 3: %d", [self retainCount]);
+  
   // background image is moved at a ratio of 0.4x, 0.5y
   [_parallax addChild:stars z:-1 parallaxRatio:ccp(0.0f,0.05f) positionOffset:ccp(160, 314)];
   [_parallax addChild:nebula z:2 parallaxRatio:ccp(0.0f,0.15f) positionOffset:ccp(160, 450)];
@@ -38,8 +38,8 @@
   
   [self addChild:_parallax z:0];
   
-    CCLOG(@"  self ref count alloc 4: %d", [self retainCount]);
-    
+  CCLOG(@"  self ref count alloc 4: %d", [self retainCount]);
+  
   return self;
 }
 

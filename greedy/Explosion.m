@@ -11,120 +11,152 @@
 #include "GameObjectCache.h"
 
 typedef struct PartData{
-    char*   name;
-    int     percentageChanceOfEmmiting;
+  char*   name;
+  int     percentageChanceOfEmmiting;
 }PartData;
 
 PartData normalParts[] = {
-    {"bolt-hd",    25},
-    {"cog-hd",     25},
-    {"eye-hd",     25},
-    {"key-hd",     25},
-    {"nail-hd",    25},
-    {"nut-hd",     25},
-    {"shell_a-hd", 25},
-    {"shell_b-hd", 25},
-    {"shell_c-hd", 25},
-    {"shell_d-hd", 25},
-    {"spring-hd",  25},
-    {"stem-hd",    25},
-    {"tooth-hd",   25},
-    {"wheel-hd",    25}      
+  {"bolt-hd",    25},
+  {"cog-hd",     25},
+  {"eye-hd",     25},
+  {"key-hd",     25},
+  {"nail-hd",    25},
+  {"nut-hd",     25},
+  {"shell_a-hd", 25},
+  {"shell_b-hd", 25},
+  {"shell_c-hd", 25},
+  {"shell_d-hd", 25},
+  {"spring-hd",  25},
+  {"stem-hd",    25},
+  {"tooth-hd",   25},
+  {"wheel-hd",    25}      
 };
 
 PartData sexyParts[] = {
-    {"bra-hd",          10},
-    {"foamfinger-hd",   10},
-    {"hammer-hd",       10},
-    {"heels-hd",        10},
-    {"rubber_ducky-hd", 10},
-    {"thong-hd",        10}    
+  {"bra-hd",          10},
+  {"foamfinger-hd",   10},
+  {"hammer-hd",       10},
+  {"heels-hd",        10},
+  {"rubber_ducky-hd", 10},
+  {"thong-hd",        10}    
 };
 
 @implementation Explosion
 
 - (void)addRingOfFire:(SpriteHelperLoader *)loader position:(CGPoint)position inLayer:(CCLayer *)inLayer  {
-    animSpr = [loader spriteWithUniqueName:@"ring1" atPosition:ccp(0,0) inLayer:nil];
-    
-    animAction = [loader runAnimationWithUniqueName:@"ringoffire" onSprite:animSpr]; 
-    
-    [self addChild:animSpr];
-    
-    [self setScale:FLAME_SCALE_START];
-    
-    CCSequence *seq = [CCSequence actions:
-                       [CCScaleBy actionWithDuration:EXPLOSION_START_TIME scale:FLAME_SCALE_EXPLODE / FLAME_SCALE_START],
-                       [CCSpawn actions:
-                        [CCScaleBy actionWithDuration:EXPLOSION_FADE_TIME scale:FLAME_SCALE_FADE / FLAME_SCALE_EXPLODE], 
-                        [CCFadeOut actionWithDuration:EXPLOSION_FADE_TIME], 
-                        nil
-                        ],
-                       nil
-                       ];
-    
-    [self runAction:seq];
-    
-    [inLayer addChild:self];
-    
+  animSpr = [loader spriteWithUniqueName:@"ring1" atPosition:ccp(0,0) inLayer:nil];
+  
+  animAction = [loader runAnimationWithUniqueName:@"ringoffire" onSprite:animSpr]; 
+  
+  [self addChild:animSpr];
+  
+  [self setScale:FLAME_SCALE_START];
+  
+  CCSequence *seq = [CCSequence actions:
+                     [CCScaleBy actionWithDuration:EXPLOSION_START_TIME scale:FLAME_SCALE_EXPLODE / FLAME_SCALE_START],
+                     [CCSpawn actions:
+                      [CCScaleBy actionWithDuration:EXPLOSION_FADE_TIME scale:FLAME_SCALE_FADE / FLAME_SCALE_EXPLODE], 
+                      [CCFadeOut actionWithDuration:EXPLOSION_FADE_TIME], 
+                      nil
+                      ],
+                     nil
+                     ];
+  
+  [self runAction:seq];
+  
+  [inLayer addChild:self];
+  
+}
+
+- (void)addPartsFromList:(CCLayer *)inLayer loader:(SpriteHelperLoader *)loader position:(CGPoint)position parts:(PartData[])parts size:(int)size
+{
+  int length = size / sizeof(PartData);
+  for( int i = 0; i < length ; i++)
+  {
+    PartData part = parts[i];
+    if ((arc4random() % 100 + 1) <= part.percentageChanceOfEmmiting)
+    {
+      CGPoint randPos = position;
+      
+      randPos.x += 15.0 * CCRANDOM_MINUS1_1();
+      randPos.y += 15.0 * CCRANDOM_MINUS1_1();
+      
+      NSArray * shape = [loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:randPos inLayer:inLayer world: sharedSpace];
+      
+      [allParts addObject:shape];
+    }
+  }
 }
 
 -(id) initWithPosition:(CGPoint)position inLayer:(CCLayer *)inLayer
 {
-    self = [super init];
+  self = [super init];
+  
+  if(self != nil){
     
-    if(self != nil){
-        
-        [self setPosition:position];
-        
-        //load in the animation
-        SpriteHelperLoader *loader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"explosion"];
-        
-        [self addRingOfFire: loader position: position inLayer: inLayer];
-        
-        int length = sizeof(normalParts) / sizeof(PartData);
-        for( int i = 0; i < length ; i++)
-        {
-            PartData part = normalParts[i];
-            if ((arc4random() %100 + 1) <= part.percentageChanceOfEmmiting)
-            {
-                CGPoint randPos = position;
-                
-                randPos.x += CCRANDOM_0_1() - CCRANDOM_0_1();
-                randPos.y += CCRANDOM_0_1() - CCRANDOM_0_1();
-                
-                //[loader bodyWithUniqueName:[NSString stringWithUTF8String: part.name] atPosition:randPos inLayer:inLayer world: sharedSpace];
-            }
-        }
-        
-        [sharedSpaceManager applyLinearExplosionAt:position radius:10 maxForce:5 layers:LAYER_RADAR group:CP_NO_GROUP];
-        
-        [loader release];
-    }
+    layer_ = inLayer;
+    allParts = [[NSMutableArray arrayWithCapacity:5] retain];
     
-    return self;
+    [self setPosition:position];
+    
+    //load in the animation
+    SpriteHelperLoader *loader = [[SpriteHelperLoader alloc] initWithContentOfFile:@"explosion"];
+    
+    [self addRingOfFire: loader position: position inLayer: inLayer];
+    
+    [self addPartsFromList:inLayer loader:loader position:position parts:normalParts size:sizeof(normalParts)];
+    [self addPartsFromList:inLayer loader:loader position:position parts:sexyParts size:sizeof(sexyParts)];
+    
+    [sharedSpaceManager applyLinearExplosionAt:position radius:15 maxForce:5 layers:LAYER_RADAR group:CP_NO_GROUP];
+    
+    [loader release];
+  }
+  
+  return self;
 }
 
 - (void) setOpacity:(GLubyte)opacity
 {
-    [super setOpacity:opacity];
-    
-    CCNode *c;
+  [super setOpacity:opacity];
+  
+  CCNode *c;
 	CCARRAY_FOREACH(children_, c)
 	{
-        if([c conformsToProtocol:@protocol(CCRGBAProtocol)])
-        {
-            id<CCRGBAProtocol> rgbaC = (id<CCRGBAProtocol>)c;
-            [rgbaC setOpacity:opacity];
-        }
+    if([c conformsToProtocol:@protocol(CCRGBAProtocol)])
+    {
+      id<CCRGBAProtocol> rgbaC = (id<CCRGBAProtocol>)c;
+      [rgbaC setOpacity:opacity];
     }
+  }
 }
 
 - (void)dealloc{
-    CCLOG(@"Dealloc explosion");
-    
-    [self removeAllChildrenWithCleanup:YES];
-    
-    [super dealloc];
+  CCLOG(@"Dealloc explosion");
+  
+  //remove any added parts
+//  for(NSArray *partShape in allParts)
+//  {
+//    cpBody* body = nil;
+//    
+//    for(NSValue* value in partShape)
+//    {
+//      
+//      cpShape* shape = (cpShape*)[value pointerValue];
+//      if(body == nil)
+//       body = shape->body;
+//      
+//      cpSpaceRemoveShape(sharedSpace, shape);
+//      cpShapeFree(shape);
+//    }
+//    
+//    cpSpaceRemoveBody(sharedSpace, body);
+//    cpBodyFree(body);
+//  }
+  [allParts release];
+  
+  [self removeAllChildrenWithCleanup:YES];
+  
+  [super dealloc];
 }
 
 /*

@@ -17,6 +17,8 @@
 @interface Explosion : CCSprite {
   CCSprite *animSpr;
   CCAction *animAction;
+  NSMutableArray * allParts;
+  CCLayer * layer_;
 }
 
 -(id) initWithPosition:(CGPoint)position inLayer:(CCLayer *)inLayer;

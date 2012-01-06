@@ -53,9 +53,9 @@
                                    shape:(cpShape*)shapeDef;
 
 -(NSArray*) cpBodyFromDictionary:(NSDictionary*)spritePhysic
-                       spriteProperties:(NSDictionary*)spriteProp
-                                   data:(CCMagicSprite*)CCMagicSprite 
-                                  world:(cpSpace*)space;
+                spriteProperties:(NSDictionary*)spriteProp
+                            data:(CCMagicSprite*)CCMagicSprite 
+                           world:(cpSpace*)space;
 
 -(void)loadSpriteHelperSceneFile:(NSString*)levelFile 
                      inDirectory:(NSString*)subfolder
@@ -81,7 +81,7 @@
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(id) initWithContentOfFile:(NSString*)sceneFile 
-			 sceneSubfolder:(NSString*)sceneFolder
+             sceneSubfolder:(NSString*)sceneFolder
 {
 	NSAssert(nil!=sceneFile, @"Invalid file given to SceneHelperLoader");
 	
@@ -92,94 +92,94 @@
 	}
 	
 	[self loadSpriteHelperSceneFile:sceneFile 
-                       inDirectory:sceneFolder 
-                      imgSubfolder:@""];
+                      inDirectory:sceneFolder 
+                     imgSubfolder:@""];
 	
 	return self;
 	
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(CCMagicSprite*) spriteWithUniqueName:(NSString*)name 
-                       atPosition:(CGPoint)point 
-                          inLayer:(CCLayer*)layer
+                            atPosition:(CGPoint)point 
+                               inLayer:(CCLayer*)layer
 {
-    NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  
+  if(nil != spriteProperties)
+  {
+    NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
+    CCMagicSprite* spr = [self spriteFromDictionary:texProp];
     
-    if(nil != spriteProperties)
-    {
-        NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
-        CCMagicSprite* spr = [self spriteFromDictionary:texProp];
-        
-        [self setSpriteProperties:spr spriteProperties:texProp position:point];
-        
-        if(nil != layer)
-            [layer addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
-        
-        return spr;
-    }
+    [self setSpriteProperties:spr spriteProperties:texProp position:point];
     
-    return nil;
+    if(nil != layer)
+      [layer addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
+    
+    return spr;
+  }
+  
+  return nil;
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(NSArray*) bodyWithUniqueName:(NSString*)name 
-                   atPosition:(CGPoint)point 
-                      inLayer:(CCLayer*)layer 
-                        world:(cpSpace*)world
+                    atPosition:(CGPoint)point 
+                       inLayer:(CCLayer*)layer 
+                         world:(cpSpace*)world
 {
-    NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  
+  if(nil != spriteProperties)
+  {
+    NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
+    CCMagicSprite* spr = [self spriteFromDictionary:texProp];
+    [self setSpriteProperties:spr spriteProperties:texProp position:point];
     
-    if(nil != spriteProperties)
-    {
-        NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
-        CCMagicSprite* spr = [self spriteFromDictionary:texProp];
-        [self setSpriteProperties:spr spriteProperties:texProp position:point];
-        
-        NSDictionary* phyProp = [spriteProperties objectForKey:@"PhysicProperties"];
-        
-        
-        NSArray* shapes = [self cpBodyFromDictionary:phyProp
-                                 spriteProperties:texProp
-                                             data:spr
-                                            world:world];
-        if(nil != layer)
-            [layer addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
-        
-        return shapes;
-    }
+    NSDictionary* phyProp = [spriteProperties objectForKey:@"PhysicProperties"];
     
+    
+    NSArray* shapes = [self cpBodyFromDictionary:phyProp
+                                spriteProperties:texProp
+                                            data:spr
+                                           world:world];
+    if(nil != layer)
+      [layer addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
+    
+    return shapes;
+  }
+  
 	return nil;
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(CCMagicSprite*) spriteInBatchWithUniqueName:(NSString*)name 
-                              atPosition:(CGPoint)point 
-                                 inLayer:(CCLayer*)layer
+                                   atPosition:(CGPoint)point 
+                                      inLayer:(CCLayer*)layer
 {
-    NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  
+  if(nil != spriteProperties)
+  {
+    NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
+    CCMagicSprite* spr = [self spriteFromDictionary:texProp];
     
-    if(nil != spriteProperties)
+    [self setSpriteProperties:spr spriteProperties:texProp position:point];
+    
+    CCSpriteBatchNode* node = [batchInfo objectForKey:[texProp objectForKey:@"Image"]];
+    if(nil == node)
     {
-        NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
-        CCMagicSprite* spr = [self spriteFromDictionary:texProp];
-        
-        [self setSpriteProperties:spr spriteProperties:texProp position:point];
-        
-        CCSpriteBatchNode* node = [batchInfo objectForKey:[texProp objectForKey:@"Image"]];
-        if(nil == node)
-        {
-            node = [CCSpriteBatchNode batchNodeWithFile:[texProp objectForKey:@"Image"]];
-            if(nil != layer)
-                [layer addChild:node z:batchOrder];
-            
-            [batchInfo setObject:node forKey:[texProp objectForKey:@"Image"]];
-        }
-        
-        if(nil != node)
-            [node addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
-        
-        return spr;
+      node = [CCSpriteBatchNode batchNodeWithFile:[texProp objectForKey:@"Image"]];
+      if(nil != layer)
+        [layer addChild:node z:batchOrder];
+      
+      [batchInfo setObject:node forKey:[texProp objectForKey:@"Image"]];
     }
     
-    return nil;
+    if(nil != node)
+      [node addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
+    
+    return spr;
+  }
+  
+  return nil;
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(NSArray*) bodyInBatchWithUniqueName:(NSString*)name 
@@ -187,38 +187,38 @@
                               inLayer:(CCLayer*)layer 
                                 world:(cpSpace*)world
 {
-    NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  NSDictionary* spriteProperties = [shSprites objectForKey:name];
+  
+  if(nil != spriteProperties)
+  {
+    NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
+    CCMagicSprite* spr = [self spriteFromDictionary:texProp];
+    [self setSpriteProperties:spr spriteProperties:texProp position:point];
     
-    if(nil != spriteProperties)
+    NSDictionary* phyProp = [spriteProperties objectForKey:@"PhysicProperties"];
+    
+    
+    NSArray* shapes = [self cpBodyFromDictionary:phyProp
+                                spriteProperties:texProp
+                                            data:spr
+                                           world:world];
+    
+    CCSpriteBatchNode* node = [batchInfo objectForKey:[texProp objectForKey:@"Image"]];
+    if(nil == node)
     {
-        NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
-        CCMagicSprite* spr = [self spriteFromDictionary:texProp];
-        [self setSpriteProperties:spr spriteProperties:texProp position:point];
-        
-        NSDictionary* phyProp = [spriteProperties objectForKey:@"PhysicProperties"];
-        
-        
-        NSArray* shapes = [self cpBodyFromDictionary:phyProp
-                                    spriteProperties:texProp
-                                                data:spr
-                                               world:world];
-        
-        CCSpriteBatchNode* node = [batchInfo objectForKey:[texProp objectForKey:@"Image"]];
-        if(nil == node)
-        {
-            node = [CCSpriteBatchNode batchNodeWithFile:[texProp objectForKey:@"Image"]];
-            if(nil != layer)
-                [layer addChild:node z:batchOrder];
-            
-            [batchInfo setObject:node forKey:[texProp objectForKey:@"Image"]];
-        }
-        
-        if(nil != node)
-            [node addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
-        
-        return shapes;
+      node = [CCSpriteBatchNode batchNodeWithFile:[texProp objectForKey:@"Image"]];
+      if(nil != layer)
+        [layer addChild:node z:batchOrder];
+      
+      [batchInfo setObject:node forKey:[texProp objectForKey:@"Image"]];
     }
     
+    if(nil != node)
+      [node addChild:spr z:[[texProp objectForKey:@"ZOrder"] intValue]];
+    
+    return shapes;
+  }
+  
 	return nil;
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -227,120 +227,120 @@
                      endNotificationSEL:(SEL)notifSEL
                      endNotificationObj:(id)notifObj
 {
-    if([sprite usesBatchNode])
+  if([sprite usesBatchNode])
+  {
+    NSLog(@"SpriteHelper WARNING: Can't create animation on sprites that uses batch nodes. Please use spriteWithUniqueName or bodyWithUniqueName to create the sprite");
+    return 0;
+  }          
+  
+  NSDictionary* animInfo = [shAnimations objectForKey:animName];
+  
+  if(nil == animInfo)
+    return nil;
+  
+  NSArray* framesNames = [animInfo objectForKey:@"Frames"];
+  
+  bool loop = [[animInfo objectForKey:@"Loop"] boolValue];
+  int repetitions = [[animInfo objectForKey:@"Repetitions"] intValue];
+  float speed = [[animInfo objectForKey:@"Speed"] floatValue];
+  bool startAtLaunch = [[animInfo objectForKey:@"StartAtLaunch"] boolValue];
+  
+  if([framesNames count] == 0)
+    return nil;
+  
+  NSString* frame1Name = [framesNames objectAtIndex:0];
+  NSDictionary* spriteProperties = [shSprites objectForKey:frame1Name];
+  
+  if(nil != spriteProperties)
+  {
+    NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
+    
+    CCTexture2D* tex = [[CCTextureCache sharedTextureCache] addImage:[texProp objectForKey:@"Image"]];
+    [sprite setTexture:tex];
+    
+    CCSpriteFrame* frame1 = [CCSpriteFrame frameWithTexture:[sprite texture] 
+                                                       rect:LHRectFromString([texProp objectForKey:@"Frame"])];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFrame:frame1 
+                                                           name:frame1Name];
+    
+    
+    NSMutableArray *frames = [NSMutableArray array];
+    
+    [frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+                       frame1Name]];
+    
+    
+    for(unsigned int i = 1; i < [framesNames count]; ++i)
     {
-        NSLog(@"SpriteHelper WARNING: Can't create animation on sprites that uses batch nodes. Please use spriteWithUniqueName or bodyWithUniqueName to create the sprite");
-        return 0;
-    }          
-
-    NSDictionary* animInfo = [shAnimations objectForKey:animName];
-    
-    if(nil == animInfo)
-        return nil;
-    
-    NSArray* framesNames = [animInfo objectForKey:@"Frames"];
-    
-    bool loop = [[animInfo objectForKey:@"Loop"] boolValue];
-    int repetitions = [[animInfo objectForKey:@"Repetitions"] intValue];
-    float speed = [[animInfo objectForKey:@"Speed"] floatValue];
-    bool startAtLaunch = [[animInfo objectForKey:@"StartAtLaunch"] boolValue];
-    
-    if([framesNames count] == 0)
-        return nil;
-    
-    NSString* frame1Name = [framesNames objectAtIndex:0];
-    NSDictionary* spriteProperties = [shSprites objectForKey:frame1Name];
-    
-    if(nil != spriteProperties)
-    {
-        NSDictionary* texProp = [spriteProperties objectForKey:@"TextureProperties"];
-        
-        CCTexture2D* tex = [[CCTextureCache sharedTextureCache] addImage:[texProp objectForKey:@"Image"]];
-        [sprite setTexture:tex];
-
-        CCSpriteFrame* frame1 = [CCSpriteFrame frameWithTexture:[sprite texture] 
-                                                           rect:LHRectFromString([texProp objectForKey:@"Frame"])];
-        
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFrame:frame1 
-                                                               name:frame1Name];
-        
-        
-        NSMutableArray *frames = [NSMutableArray array];
-        
-        [frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
-                           frame1Name]];
-        
-        
-        for(unsigned int i = 1; i < [framesNames count]; ++i)
-        {
-            NSString* frameName = [framesNames objectAtIndex:i];
-            NSDictionary* frameSprite = [shSprites objectForKey:frameName];
-            NSDictionary* rectTexProp = [frameSprite objectForKey:@"TextureProperties"];
-            
-            CCSpriteFrame* frame = [CCSpriteFrame frameWithTexture:[sprite texture] 
-                                                              rect:LHRectFromString([rectTexProp objectForKey:@"Frame"])];
-            
-            [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFrame:frame 
-                                                                   name:frameName];
-            
-            
-            [frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
-                               frameName]];            
-        }
-        
-        CCAnimation *anim = [CCAnimation animationWithFrames:frames delay:speed];
-        
-        CCAction* animAct; 
-        
-        if(loop == false)
-        {            
-            if(nil != notifSEL && nil != notifObj)
-            {
-                id notifAct = [CCCallFuncND actionWithTarget:notifObj 
-                                                    selector:notifSEL
-                                                        data:sprite];
-                
-                animAct = [CCSequence actionOne:[CCAnimate actionWithAnimation:anim 
-                                                          restoreOriginalFrame:NO] two:notifAct];
-            }
-            else
-            {
-                animAct = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:anim 
-                                                               restoreOriginalFrame:NO] 
-                                               times:repetitions];       
-            }
-        }
-        else
-            animAct = [CCRepeatForever actionWithAction:
-                       [CCAnimate actionWithAnimation:anim 
-                                 restoreOriginalFrame:NO]];
-        
-        if(startAtLaunch)
-            [sprite runAction:animAct];
-        
-        return animAct;
+      NSString* frameName = [framesNames objectAtIndex:i];
+      NSDictionary* frameSprite = [shSprites objectForKey:frameName];
+      NSDictionary* rectTexProp = [frameSprite objectForKey:@"TextureProperties"];
+      
+      CCSpriteFrame* frame = [CCSpriteFrame frameWithTexture:[sprite texture] 
+                                                        rect:LHRectFromString([rectTexProp objectForKey:@"Frame"])];
+      
+      [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFrame:frame 
+                                                             name:frameName];
+      
+      
+      [frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+                         frameName]];            
     }
     
-    return nil;
+    CCAnimation *anim = [CCAnimation animationWithFrames:frames delay:speed];
+    
+    CCAction* animAct; 
+    
+    if(loop == false)
+    {            
+      if(nil != notifSEL && nil != notifObj)
+      {
+        id notifAct = [CCCallFuncND actionWithTarget:notifObj 
+                                            selector:notifSEL
+                                                data:sprite];
+        
+        animAct = [CCSequence actionOne:[CCAnimate actionWithAnimation:anim 
+                                                  restoreOriginalFrame:NO] two:notifAct];
+      }
+      else
+      {
+        animAct = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:anim 
+                                                       restoreOriginalFrame:NO] 
+                                       times:repetitions];       
+      }
+    }
+    else
+      animAct = [CCRepeatForever actionWithAction:
+                 [CCAnimate actionWithAnimation:anim 
+                           restoreOriginalFrame:NO]];
+    
+    if(startAtLaunch)
+      [sprite runAction:animAct];
+    
+    return animAct;
+  }
+  
+  return nil;
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(CCAction*) runAnimationWithUniqueName:(NSString*)animName
                                onSprite:(CCMagicSprite*)sprite
 {
-    return [self runAnimationWithUniqueName:animName
-                                   onSprite:sprite 
-                         endNotificationSEL:nil
-                         endNotificationObj:nil];
+  return [self runAnimationWithUniqueName:animName
+                                 onSprite:sprite 
+                       endNotificationSEL:nil
+                       endNotificationObj:nil];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 -(CCAction*) runAnimationWithUniqueName:(NSString *)animName 
                                  onBody:(NSArray *)shapesArray;
 {
-    return [self runAnimationWithUniqueName:animName
-                                     onBody:shapesArray
-                         endNotificationSEL:nil
-                         endNotificationObj:nil];
+  return [self runAnimationWithUniqueName:animName
+                                   onBody:shapesArray
+                       endNotificationSEL:nil
+                       endNotificationObj:nil];
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(CCAction*) runAnimationWithUniqueName:(NSString *)animName 
@@ -348,21 +348,21 @@
                      endNotificationSEL:(SEL)notifSEL
                      endNotificationObj:(id)notifObj
 {
-    if(shapesArray == 0)
-        return nil;
-    
-    if([shapesArray count] == 0)
-        return nil;
-    
-    NSValue* val = [shapesArray objectAtIndex:0];
-    if(val == nil)
-        return nil;
-    
-    cpShape* shape = (cpShape*)[val pointerValue];
-    
-    CCMagicSprite* sprite = (CCMagicSprite*)shape->body->data;
-    
-    return [self runAnimationWithUniqueName:animName onSprite:sprite];    
+  if(shapesArray == 0)
+    return nil;
+  
+  if([shapesArray count] == 0)
+    return nil;
+  
+  NSValue* val = [shapesArray objectAtIndex:0];
+  if(val == nil)
+    return nil;
+  
+  cpShape* shape = (cpShape*)[val pointerValue];
+  
+  CCMagicSprite* sprite = (CCMagicSprite*)shape->body->data;
+  
+  return [self runAnimationWithUniqueName:animName onSprite:sprite];    
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -372,33 +372,33 @@
 {	
 	if(nil != shapes && 0 != space)
 	{
-        for(NSValue* value in shapes)
-        {
-            
-            cpShape* shape = (cpShape*)[value pointerValue];
-            
-            cpBody* body = shape->body;
-            
-            cpSpaceRemoveShape(space, shape);
-            cpShapeFree(shape);
-
-            CCMagicSprite* ccMagicSprite = (CCMagicSprite*)body->data;
-            
-            if([ccMagicSprite usesBatchNode])
-            {
-                CCSpriteBatchNode* node = [ccMagicSprite batchNode];
-                [node removeChild:ccMagicSprite cleanup:YES];
-            }
-            else
-            {
-                [layer removeChild:ccMagicSprite cleanup:YES];
-            }
-            
-            cpSpaceRemoveBody(space, body);
-            cpBodyFree(body);
-            
-            return true;
-        }
+    for(NSValue* value in shapes)
+    {
+      
+      cpShape* shape = (cpShape*)[value pointerValue];
+      
+      cpBody* body = shape->body;
+      
+      cpSpaceRemoveShape(space, shape);
+      cpShapeFree(shape);
+      
+      CCMagicSprite* ccMagicSprite = (CCMagicSprite*)body->data;
+      
+      if([ccMagicSprite usesBatchNode])
+      {
+        CCSpriteBatchNode* node = [ccMagicSprite batchNode];
+        [node removeChild:ccMagicSprite cleanup:YES];
+      }
+      else
+      {
+        [layer removeChild:ccMagicSprite cleanup:YES];
+      }
+      
+      cpSpaceRemoveBody(space, body);
+      cpBodyFree(body);
+      
+      return true;
+    }
 	}
 	
 	return false;
@@ -406,26 +406,26 @@
 ////////////////////////////////////////////////////////////////////////////////
 +(CCMagicSprite*) spriteForBody:(NSArray*)shapes
 {
-    if(nil != shapes){
-        for(NSValue* value in shapes){
-            cpShape* shape = (cpShape*)[value pointerValue];
-            return (CCMagicSprite*)shape->data;
-        }
+  if(nil != shapes){
+    for(NSValue* value in shapes){
+      cpShape* shape = (cpShape*)[value pointerValue];
+      return (CCMagicSprite*)shape->data;
     }
-    return nil;
+  }
+  return nil;
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(oneway void) release
 {
 	[shSprites release];
-    [shAnimations release];
-    [batchInfo release];
+  [shAnimations release];
+  [batchInfo release];
 }
 ///////////////////////////PRIVATE METHODS//////////////////////////////////////
 -(CCMagicSprite*) spriteFromDictionary:(NSDictionary*)spriteProp
 {
 	return [CCMagicSprite spriteWithFile:[spriteProp objectForKey:@"Image"] 
-                               rect:LHRectFromString([spriteProp objectForKey:@"Frame"])];
+                                  rect:LHRectFromString([spriteProp objectForKey:@"Frame"])];
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(void) setSpriteProperties:(CCMagicSprite*)CCMagicSprite
@@ -449,24 +449,24 @@
 	shapeDef->e = [[spritePhysic objectForKey:@"Restitution"] floatValue];
 	shapeDef->sensor = [[spritePhysic objectForKey:@"IsSenzor"] boolValue];
 	
-    //	shapeDef->filter.categoryBits = [[spritePhysic objectForKey:@"Category"] intValue];
+  //	shapeDef->filter.categoryBits = [[spritePhysic objectForKey:@"Category"] intValue];
 	shapeDef->layers = [[spritePhysic objectForKey:@"Mask"] intValue];
 	shapeDef->group = [[spritePhysic objectForKey:@"Group"] intValue];	
 }
 ////////////////////////////////////////////////////////////////////////////////
 //returns NSMutableArray with NSValue with cpShape pointers
 -(NSArray*) cpBodyFromDictionary:(NSDictionary*)spritePhysic
-                       spriteProperties:(NSDictionary*)spriteProp
-                                   data:(CCMagicSprite*)CCMagicSprite 
-                                  world:(cpSpace*)space
+                spriteProperties:(NSDictionary*)spriteProp
+                            data:(CCMagicSprite*)CCMagicSprite 
+                           world:(cpSpace*)space
 {
 	cpBody *body;
 	
-    float mass = [[spritePhysic objectForKey:@"Density"] floatValue];
-    
+  float mass = [[spritePhysic objectForKey:@"Density"] floatValue];
+  
 	CGPoint position = ccp([CCMagicSprite position].x, [CCMagicSprite position].y);//
 	
-    // NSLog(@"Position %f %f", position.x, position.y);
+  // NSLog(@"Position %f %f", position.x, position.y);
 	//0 static
 	//1 kinematic
 	//2 dynamic
@@ -475,153 +475,153 @@
 	if(bodyType == 3) //in case the user wants to create a body with a sprite that has type as "NO_PHYSIC"
 		bodyType = 2;
 	
-    NSMutableArray* arrayOfShapes = [[NSMutableArray alloc] init];
-    
+  NSMutableArray* arrayOfShapes = [[NSMutableArray alloc] init];
+  
 	NSArray* fixtures = [spritePhysic objectForKey:@"Fixtures"];
 	CGPoint scale = LHPointFromString([spriteProp objectForKey:@"Scale"]); 
-    CGRect frame = LHRectFromString([spriteProp objectForKey:@"Frame"]);
-    CGSize size = frame.size;
-    
-
-    //not available for Chipmunk
-//    body->SetFixedRotation([[spritePhysic objectForKey:@"IsFixedRot"] boolValue]);
-//    body->SetBullet([[spritePhysic objectForKey:@"IsBullet"] boolValue]);
-//    body->SetSleepingAllowed([[spritePhysic objectForKey:@"CanSleep"] boolValue]);
-    
-    //shape position Offset
-    int shapeOffsetX = [[spritePhysic objectForKey:@"ShapePositionOffsetX"] intValue];
-    int shapeOffsetY = [[spritePhysic objectForKey:@"ShapePositionOffsetY"] intValue];
-    
-    float linearVelocityX = [[spritePhysic objectForKey:@"LinearVelocityX"] floatValue];
-    float linearVelocityY = [[spritePhysic objectForKey:@"LinearVelocityX"] floatValue];
-    
-//    float linearDamping = [[spritePhysic objectForKey:@"LinearDamping"] floatValue]; 
-    float angularVelocity = [[spritePhysic objectForKey:@"AngularVelocity"] floatValue];
-//    float angularDamping = [[spritePhysic objectForKey:@"AngularDamping"] floatValue];     
-    
-    
-    //not available for Chipmunk
-//    body->SetLinearDamping(linearDamping);
-//    body->SetAngularDamping(angularDamping);
-
-    
-    
+  CGRect frame = LHRectFromString([spriteProp objectForKey:@"Frame"]);
+  CGSize size = frame.size;
+  
+  
+  //not available for Chipmunk
+  //    body->SetFixedRotation([[spritePhysic objectForKey:@"IsFixedRot"] boolValue]);
+  //    body->SetBullet([[spritePhysic objectForKey:@"IsBullet"] boolValue]);
+  //    body->SetSleepingAllowed([[spritePhysic objectForKey:@"CanSleep"] boolValue]);
+  
+  //shape position Offset
+  int shapeOffsetX = [[spritePhysic objectForKey:@"ShapePositionOffsetX"] intValue];
+  int shapeOffsetY = [[spritePhysic objectForKey:@"ShapePositionOffsetY"] intValue];
+  
+  float linearVelocityX = [[spritePhysic objectForKey:@"LinearVelocityX"] floatValue];
+  float linearVelocityY = [[spritePhysic objectForKey:@"LinearVelocityX"] floatValue];
+  
+  //    float linearDamping = [[spritePhysic objectForKey:@"LinearDamping"] floatValue]; 
+  float angularVelocity = [[spritePhysic objectForKey:@"AngularVelocity"] floatValue];
+  //    float angularDamping = [[spritePhysic objectForKey:@"AngularDamping"] floatValue];     
+  
+  
+  //not available for Chipmunk
+  //    body->SetLinearDamping(linearDamping);
+  //    body->SetAngularDamping(angularDamping);
+  
+  
+  
 	if(fixtures == nil || [fixtures count] == 0 || [[fixtures objectAtIndex:0] count] == 0)
 	{
 		cpShape *shape;
-        
-        int shapeBorderX = [[spritePhysic objectForKey:@"ShapeBorderW"] intValue];
-        int shapeBorderY = [[spritePhysic objectForKey:@"ShapeBorderH"] intValue];
-
+    
+    int shapeBorderX = [[spritePhysic objectForKey:@"ShapeBorderW"] intValue];
+    int shapeBorderY = [[spritePhysic objectForKey:@"ShapeBorderH"] intValue];
+    
 		if([[spritePhysic objectForKey:@"IsCircle"] boolValue])
 		{
 			float innerDiameter = 0;
 			float outterDiameter =(size.width*scale.x - shapeBorderX/2)/2;
-            
-            if(bodyType == 0)
-            {
-                body = cpBodyNewStatic();
-            }
-            else{
-                body = cpBodyNew(mass, cpMomentForCircle(mass, innerDiameter, outterDiameter, cpvzero));
-                cpSpaceAddBody(space, body);
-            }
-            body->p = position;
-            cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
-            body->data = CCMagicSprite;
-
-            
+      
+      if(bodyType == 0)
+      {
+        body = cpBodyNewStatic();
+      }
+      else{
+        body = cpBodyNew(mass, cpMomentForCircle(mass, innerDiameter, outterDiameter, cpvzero));
+        cpSpaceAddBody(space, body);
+      }
+      body->p = position;
+      cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
+      body->data = CCMagicSprite;
+      
+      
 			float radius = (size.width*scale.x - shapeBorderX/2)/2;
 			shape = cpCircleShapeNew(body, radius, ccp(shapeOffsetX/2, -shapeOffsetY/2));
 		}
 		else
 		{	
-            float width = size.width*scale.x - shapeBorderX/2;
+      float width = size.width*scale.x - shapeBorderX/2;
 			float height = size.height*scale.y - shapeBorderY/2;
-            
-            int vsize = 4;
+      
+      int vsize = 4;
 			CGPoint *verts = new CGPoint[vsize];
 			
-            verts[3].x = ( (-1* size.width + shapeBorderX/2.0f)*scale.x/2.0f +shapeOffsetX/2);
-            verts[3].y = ( (-1* size.height + shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
-            
-            verts[2].x = ( (+ size.width - shapeBorderX/2.0f)*scale.x/2.0f+shapeOffsetX/2);
-            verts[2].y = ( (-1* size.height + shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
-            
-            verts[1].x = ( (+ size.width - shapeBorderX/2.0f)*scale.x/2.0f+shapeOffsetX/2);
-            verts[1].y = ( (+ size.height - shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
-            
-            verts[0].x = ( (-1* size.width + shapeBorderX/2.0f)*scale.x/2.0f+shapeOffsetX/2);
-            verts[0].y = ( (+ size.height - shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
-            
-            if(bodyType == 0)
-            {
-                body = cpBodyNewStatic();
-            }
-            else{
-                
-                body = cpBodyNew(mass, cpMomentForBox(mass, width, height));
-                cpSpaceAddBody(space, body);
-            }
-            body->p = position;
-            cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
-            body->data = CCMagicSprite;
-
-            shape = cpPolyShapeNew(body, vsize, verts, CGPointZero);
-            delete verts;
+      verts[3].x = ( (-1* size.width + shapeBorderX/2.0f)*scale.x/2.0f +shapeOffsetX/2);
+      verts[3].y = ( (-1* size.height + shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
+      
+      verts[2].x = ( (+ size.width - shapeBorderX/2.0f)*scale.x/2.0f+shapeOffsetX/2);
+      verts[2].y = ( (-1* size.height + shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
+      
+      verts[1].x = ( (+ size.width - shapeBorderX/2.0f)*scale.x/2.0f+shapeOffsetX/2);
+      verts[1].y = ( (+ size.height - shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
+      
+      verts[0].x = ( (-1* size.width + shapeBorderX/2.0f)*scale.x/2.0f+shapeOffsetX/2);
+      verts[0].y = ( (+ size.height - shapeBorderY/2.0f)*scale.y/2.0f-shapeOffsetY/2);
+      
+      if(bodyType == 0)
+      {
+        body = cpBodyNewStatic();
+      }
+      else{
+        
+        body = cpBodyNew(mass, cpMomentForBox(mass, width, height));
+        cpSpaceAddBody(space, body);
+      }
+      body->p = position;
+      cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
+      body->data = CCMagicSprite;
+      
+      shape = cpPolyShapeNew(body, vsize, verts, CGPointZero);
+      delete verts;
 		}
 		[self setShapePropertiesFromDictionary:spritePhysic shape:shape];
 		shape->data = CCMagicSprite;
-        
-        [arrayOfShapes addObject:[NSValue valueWithPointer:shape]];
-        cpSpaceAddShape(space, shape);
-    }
+    
+    [arrayOfShapes addObject:[NSValue valueWithPointer:shape]];
+    cpSpaceAddShape(space, shape);
+  }
 	else
 	{
-        float width = size.width*scale.x;
-        float height = size.height*scale.y;
-        
-        if(bodyType == 0){
-            body = cpBodyNewStatic();
-        }
-        else{
-            body = cpBodyNew(mass, cpMomentForBox(mass, width, height));
-            cpSpaceAddBody(space, body);
-        }
-        body->p = position;
-        body->data = CCMagicSprite;
-        cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
-
+    float width = size.width*scale.x;
+    float height = size.height*scale.y;
+    
+    if(bodyType == 0){
+      body = cpBodyNewStatic();
+    }
+    else{
+      body = cpBodyNew(mass, cpMomentForBox(mass, width, height));
+      cpSpaceAddBody(space, body);
+    }
+    body->p = position;
+    body->data = CCMagicSprite;
+    cpBodySetAngle(body, DEGREES_TO_RADIANS(-1*[[spriteProp objectForKey:@"Angle"] floatValue]));
+    
 		for(NSArray* curFixture in fixtures)
 		{
 			int size = (int)[curFixture count];
 			CGPoint *verts = new CGPoint[size];
 			int i = 0;
-            for(int p = [curFixture count] -1; p > -1 ; --p)
+      for(int p = [curFixture count] -1; p > -1 ; --p)
 			{
-                NSString* pointStr = [curFixture objectAtIndex:p];
+        NSString* pointStr = [curFixture objectAtIndex:p];
 				CGPoint point = LHPointFromString(pointStr);
-                verts[i] = ccp(point.x*(scale.x)+shapeOffsetX/2, 
-                               point.y*(scale.y)-shapeOffsetY/2);
+        verts[i] = ccp(point.x*(scale.x)+shapeOffsetX/2, 
+                       point.y*(scale.y)-shapeOffsetY/2);
 				++i;
 			}
-            
-            cpShape* shape = cpPolyShapeNew(body, size, verts, CGPointZero);
-            [self setShapePropertiesFromDictionary:spritePhysic shape:shape];
-            
-            shape->data = CCMagicSprite;
-            
-            [arrayOfShapes addObject:[NSValue valueWithPointer:shape]];
-            cpSpaceAddShape(space, shape);
-            delete verts;
-            
+      
+      cpShape* shape = cpPolyShapeNew(body, size, verts, CGPointZero);
+      [self setShapePropertiesFromDictionary:spritePhysic shape:shape];
+      
+      shape->data = CCMagicSprite;
+      
+      [arrayOfShapes addObject:[NSValue valueWithPointer:shape]];
+      cpSpaceAddShape(space, shape);
+      delete verts;
+      
 		}
 	}
-    
-    body->v = ccp(linearVelocityX, linearVelocityY);
-    body->w = angularVelocity;
-
-    
+  
+  body->v = ccp(linearVelocityX, linearVelocityY);
+  body->w = angularVelocity;
+  
+  
 	return arrayOfShapes;
 	
 }
@@ -631,51 +631,51 @@
                     imgSubfolder:(NSString *)imgFolder
 {
 	NSString *path = [[NSBundle mainBundle] pathForResource:sceneFile 
-                                                     ofType:@"pshs" 
-                                                inDirectory:subfolder]; 
+                                                   ofType:@"pshs" 
+                                              inDirectory:subfolder]; 
 	
 	NSAssert(nil!=path, @"Invalid scene file. Please add the SpriteHelper scene file to Resource folder. Please do not add extension in the given string.");
 	
 	NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
 	
 	bool fileInCorrectFormat =	![[dictionary objectForKey:@"Author"] isEqualToString:@"Bogdan Vladu"] || 
-                                ![[dictionary objectForKey:@"CreatedWith"] isEqualToString:@"SpriteHelper"];
+  ![[dictionary objectForKey:@"CreatedWith"] isEqualToString:@"SpriteHelper"];
 	
 	NSAssert(true !=fileInCorrectFormat, @"This file was not created with SpriteHelper or file is damaged.");
-		
-    batchOrder = 0;
-    batchInfo = [[NSMutableDictionary alloc] init];
-    if(nil != [dictionary objectForKey:@"BatchZOrder"])
-        batchOrder = [[dictionary objectForKey:@"BatchZOrder"] intValue];
-
+  
+  batchOrder = 0;
+  batchInfo = [[NSMutableDictionary alloc] init];
+  if(nil != [dictionary objectForKey:@"BatchZOrder"])
+    batchOrder = [[dictionary objectForKey:@"BatchZOrder"] intValue];
+  
 	////////////////////////LOAD SPRITES////////////////////////////////////////
-    shSprites = [[NSMutableDictionary alloc] init];
-    
-    NSArray* tempArray = [dictionary objectForKey:@"SPRITES_INFO"];
-    //we do this in order to be easier to find a sprite info when we want to 
-    //create a body or a CCMagicSprite
-    for(NSDictionary* curSprite in tempArray)
+  shSprites = [[NSMutableDictionary alloc] init];
+  
+  NSArray* tempArray = [dictionary objectForKey:@"SPRITES_INFO"];
+  //we do this in order to be easier to find a sprite info when we want to 
+  //create a body or a CCMagicSprite
+  for(NSDictionary* curSprite in tempArray)
+  {
+    NSDictionary* sprProp = [curSprite objectForKey:@"TextureProperties"];
+    if(nil != sprProp)
     {
-        NSDictionary* sprProp = [curSprite objectForKey:@"TextureProperties"];
-        if(nil != sprProp)
-        {
-            [shSprites setObject:curSprite 
-                          forKey:[sprProp objectForKey:@"Name"]];
-        }
+      [shSprites setObject:curSprite 
+                    forKey:[sprProp objectForKey:@"Name"]];
     }
+  }
+  
+  shAnimations = [[NSMutableDictionary alloc] init];
+  NSArray* tempAnim = [dictionary objectForKey:@"ANIMATION_INFO"];
+  for(NSDictionary* curAnim in tempAnim)
+  {
+    NSString* name = [curAnim objectForKey:@"UniqueName"];
     
-    shAnimations = [[NSMutableDictionary alloc] init];
-    NSArray* tempAnim = [dictionary objectForKey:@"ANIMATION_INFO"];
-    for(NSDictionary* curAnim in tempAnim)
+    if(nil != name)
     {
-        NSString* name = [curAnim objectForKey:@"UniqueName"];
-        
-        if(nil != name)
-        {
-            [shAnimations setObject:curAnim 
-                             forKey:name];
-        }
+      [shAnimations setObject:curAnim 
+                       forKey:name];
     }
+  }
 }
 ////////////////////////////////////////////////////////////////////////////////
 @end
@@ -684,17 +684,17 @@
 
 -(void) setCallback:(id)target sel:(SEL)sel
 {
-    _target = target;
-    _sel = sel;
+  _target = target;
+  _sel = sel;
 }
 
 -(void) setDisplayFrame:(CCSpriteFrame*)frame;
 {    
-    [super setDisplayFrame:frame];
-    
-    if( (nil != _target) && (nil != _sel)){
-        [_target performSelector:_sel];
-    }
+  [super setDisplayFrame:frame];
+  
+  if( (nil != _target) && (nil != _sel)){
+    [_target performSelector:_sel];
+  }
 }
 
 @end

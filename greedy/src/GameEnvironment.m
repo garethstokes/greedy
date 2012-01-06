@@ -147,7 +147,7 @@
   if( (self=[super init])) {
     
     //allocate our space manager
-    SpaceManagerCocos2d * aManager = [[[SpaceManagerCocos2d alloc] init] retain ];
+    SpaceManagerCocos2d * aManager = [[SpaceManagerCocos2d alloc] init];
     [[GameObjectCache sharedGameObjectCache] addSpaceManager:aManager];
     [aManager setGravity:ccp(0,0)];
     [aManager release];

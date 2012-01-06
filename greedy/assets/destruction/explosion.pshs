@@ -309,7 +309,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -358,7 +358,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -430,7 +430,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -469,7 +469,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -538,7 +538,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -585,7 +585,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -658,7 +658,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -708,7 +708,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -780,7 +780,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -823,7 +823,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -896,7 +896,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -946,7 +946,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1017,7 +1017,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1093,7 +1093,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1179,7 +1179,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1262,7 +1262,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1351,7 +1351,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1408,7 +1408,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1487,7 +1487,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1527,7 +1527,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1598,7 +1598,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1640,7 +1640,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1712,7 +1712,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1763,7 +1763,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1838,7 +1838,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1895,7 +1895,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -1973,7 +1973,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -1997,7 +1997,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -2057,7 +2057,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -2117,7 +2117,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -2195,7 +2195,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -2219,7 +2219,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -2279,7 +2279,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -2339,7 +2339,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -2417,7 +2417,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -2459,7 +2459,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -2532,7 +2532,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -2573,7 +2573,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -2644,7 +2644,7 @@
 				<key>CanSleep</key>
 				<true/>
 				<key>Category</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Density</key>
 				<real>0.20000000298023224</real>
 				<key>Fixtures</key>
@@ -2668,7 +2668,7 @@
 				<key>LinearVelocityY</key>
 				<real>0.0</real>
 				<key>Mask</key>
-				<integer>65535</integer>
+				<integer>4</integer>
 				<key>PhysicType</key>
 				<integer>2</integer>
 				<key>Restitution</key>
@@ -2727,6 +2727,6 @@
 		<integer>32</integer>
 	</dict>
 	<key>Version</key>
-	<string>1.7.2</string>
+	<string>1.7.3</string>
 </dict>
 </plist>

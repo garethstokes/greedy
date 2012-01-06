@@ -92,6 +92,7 @@ enum nodeTags
     [self addChild:menu];
     
     [[CCDirector sharedDirector] pause];
+    [sharedGameLayer unschedule:@selector(step:)];
   }
   
   return self;
@@ -99,20 +100,21 @@ enum nodeTags
 
 - (void)menuCloseTapped:(id)sender {
   [self.parent removeChild:self cleanup:YES];
+  [sharedGameLayer schedule:@selector(step:)];
   [[CCDirector sharedDirector] resume];
+  
 }
 
 - (void)menuChooseLevel:(id)sender {
   [[CCDirector sharedDirector] replaceScene:[ChooseLevelLayer scene]];
+  [sharedGameLayer schedule:@selector(step:)];
   [[CCDirector sharedDirector] resume];
 }
 
 - (void)menuReplay:(id)sender {
-  
   GameScene *scene = (GameScene *)[[CCDirector sharedDirector] runningScene];
   int lev = [scene Level];
   [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:lev]];
-  
   [[CCDirector sharedDirector] resume];
 }
 

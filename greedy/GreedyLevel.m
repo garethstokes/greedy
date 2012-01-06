@@ -78,6 +78,7 @@
 @synthesize environment           = _environment;
 @synthesize startPosition         = _startPosition;
 @synthesize finishPosition        = _finishPosition;
+@synthesize fuel = _fuel;
 @synthesize shooters;
 
 - (id)init
@@ -135,6 +136,9 @@
     
     NSDictionary *endPosition = [dictionary valueForKey: @"EndPosition"];
     _finishPosition = CGPointMake([[endPosition objectForKey: @"x"] floatValue],[[endPosition objectForKey: @"y"] floatValue]);
+  
+    _fuel = [[dictionary valueForKey:@"Fuel"] intValue];
+    CCLOG(@"fuel: %i", _fuel);
 }
 
 - (void)dealloc {

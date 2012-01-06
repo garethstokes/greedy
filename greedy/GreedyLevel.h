@@ -51,11 +51,14 @@
   
   CGPoint _startPosition;
   CGPoint _finishPosition;
+  
+  int _fuel;
 }
 
 @property int number;
 @property int asteroidFieldHeight;
 @property int asteroidFieldWidth;
+@property int fuel;
 
 @property (nonatomic, retain) NSMutableArray *staticAsteroids;
 @property (nonatomic, retain) NSMutableArray *shooters;

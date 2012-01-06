@@ -66,7 +66,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   [_endPoint setPosition:ccpAdd([sharedGreedy position], [level finishPosition])];
   [self addChild:_endPoint z:-1];   
   
-  [self createFinishLine: environment];
+  [self createFinishLine: environment at:[level finishPosition]];
 }
 
 - (id) initWithEnvironment:(GameEnvironment *) environment level:(int)l
@@ -110,6 +110,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
     
     // greedy!
     Greedy *_greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition]];
+    [_greedy setFuel:[level fuel]];
     [self addChild:_greedy];
     [[GameObjectCache sharedGameObjectCache] addGreedy:_greedy];
     [_greedy release];
@@ -139,9 +140,12 @@ ccpAngleBetween(CGPoint a, CGPoint b)
   return self;
 }
 
-- (void) createFinishLine: (GameEnvironment *) environment  {
+- (void) createFinishLine: (GameEnvironment *) environment at:(CGPoint)p {
   // add event when greedy crosses the finish line. 
-  cpShape *finishlineshape = [sharedSpaceManager addSegmentAt:ccpAdd([sharedGreedy position], ccp(0, 1600)) fromLocalAnchor:ccp(-150, 0) toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
+  cpShape *finishlineshape = [sharedSpaceManager 
+                              addSegmentAt:ccpAdd([sharedGreedy position], p) 
+                              fromLocalAnchor:ccp(-150, 0) 
+                              toLocalAnchor:ccp(150, 0) mass:1 radius:2]; 
   finishlineshape->group = 0;
   finishlineshape->layers = LAYER_FINISHLINE;
   finishlineshape->collision_type = kGreedyFinishLineCollisionType;

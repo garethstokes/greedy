@@ -104,9 +104,8 @@ PartData sexyParts[] = {
     
     [self addRingOfFire: loader position: position inLayer: inLayer];
     
-    [self addPartsFromList:inLayer loader:loader position:position parts:normalParts size:sizeof(normalParts)];
-    
-    [self addPartsFromList:inLayer loader:loader position:position parts:sexyParts size:sizeof(sexyParts)];
+    //[self addPartsFromList:inLayer loader:loader position:position parts:normalParts size:sizeof(normalParts)];
+    //[self addPartsFromList:inLayer loader:loader position:position parts:sexyParts size:sizeof(sexyParts)];
     
     [sharedSpaceManager applyLinearExplosionAt:position radius:15 maxForce:5 layers:LAYER_RADAR group:CP_NO_GROUP];
     

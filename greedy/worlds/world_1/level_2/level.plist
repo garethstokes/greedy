@@ -71,5 +71,7 @@
 			<integer>45</integer>
 		</dict>
 	</array>
+	<key>Fuel</key>
+	<integer>10</integer>
 </dict>
 </plist>

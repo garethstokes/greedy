@@ -11,11 +11,16 @@
 
 @implementation LifeMeter
 
-- (id) initLifeMeter
+- (id) initLifeMeter:(SpriteHelperLoader *) loader
 {
     CCLOG(@"LifeMeter: initLifeMeter");
     
     if(!(self = [super init])) return nil;
+    
+    //Load crashGlow
+    _spriteGlow = [loader spriteWithUniqueName:@"hud_life_hit" atPosition:ccp(0,0) inLayer:nil];
+    [_spriteGlow setOpacity:0.0];
+    [self addChild:_spriteGlow z:-1];
     
     // load the sprite sheet
     _lifeMeterBatchNode = [[[CCSpriteBatchNode alloc] initWithFile:@"oranges.png" capacity:11] autorelease];
@@ -47,6 +52,11 @@
     
     //Return the object
     return self;
+}
+
+- (void) hit
+{
+    [_spriteGlow runAction:[CCSequence actions:[CCFadeTo actionWithDuration:0.2 opacity:255.0], [CCFadeTo actionWithDuration:0.5 opacity:0.0], nil]];
 }
 
 - (void) setLifeLevel:(int) level

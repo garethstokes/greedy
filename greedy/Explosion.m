@@ -105,6 +105,7 @@ PartData sexyParts[] = {
     [self addRingOfFire: loader position: position inLayer: inLayer];
     
     [self addPartsFromList:inLayer loader:loader position:position parts:normalParts size:sizeof(normalParts)];
+    
     [self addPartsFromList:inLayer loader:loader position:position parts:sexyParts size:sizeof(sexyParts)];
     
     [sharedSpaceManager applyLinearExplosionAt:position radius:15 maxForce:5 layers:LAYER_RADAR group:CP_NO_GROUP];
@@ -134,24 +135,11 @@ PartData sexyParts[] = {
   CCLOG(@"Dealloc explosion");
   
   //remove any added parts
-//  for(NSArray *partShape in allParts)
-//  {
-//    cpBody* body = nil;
-//    
-//    for(NSValue* value in partShape)
-//    {
-//      
-//      cpShape* shape = (cpShape*)[value pointerValue];
-//      if(body == nil)
-//       body = shape->body;
-//      
-//      cpSpaceRemoveShape(sharedSpace, shape);
-//      cpShapeFree(shape);
-//    }
-//    
-//    cpSpaceRemoveBody(sharedSpace, body);
-//    cpBodyFree(body);
-//  }
+  for (NSArray *parts in allParts)
+    [SpriteHelperLoader removeChipmunkBody:parts fromSpace:sharedSpace spriteLayer:nil];
+  
+
+  
   [allParts release];
   
   [self removeAllChildrenWithCleanup:YES];

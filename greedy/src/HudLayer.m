@@ -62,7 +62,6 @@
     //create life meter
     [self createLifeMeter: size];
     
-    
     //create clock
     _countdown = 99;
     [self createCountdownLabel];
@@ -70,6 +69,7 @@
     
     return self;
 }
+
 
 - (void) showHelp:(id)sender
 {
@@ -137,7 +137,7 @@
 - (void) createLifeMeter: (CGSize) size  {
     
     //Create Life Meter art work
-    _lifeMeter = [[LifeMeter alloc] initLifeMeter];
+    _lifeMeter = [[LifeMeter alloc] initLifeMeter: _loader];
     CCLOG(@"LM retainCount:%d", [_lifeMeter retainCount]);
     _lifeMeter.position = ccp(size.width /2, 25);
     [_lifeMeter setLifeLevel:10];
@@ -145,7 +145,7 @@
     [[GameObjectCache sharedGameObjectCache] addLifeMeter:_lifeMeter];
     CCLOG(@"LM retainCount:%d", [_lifeMeter retainCount]);
     
-    [self addChild:_lifeMeter];
+    [self addChild:_lifeMeter z:1];
     
     [_lifeMeter release];
     CCLOG(@"LM retainCount:%d", [_lifeMeter retainCount]);

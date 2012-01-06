@@ -7,14 +7,18 @@
 //
 
 #import "cocos2d.h"
+#import "SpriteHelperLoader.h"
 
 @interface LifeMeter : CCSprite {
-  CCSprite * _lifeBars;
-  
-  CCSpriteBatchNode *_lifeMeterBatchNode;
+    CCSprite * _lifeBars;
+    
+    CCSprite * _spriteGlow;
+    
+    CCSpriteBatchNode *_lifeMeterBatchNode;
 }
 
-- (id) initLifeMeter;
+- (id) initLifeMeter:(SpriteHelperLoader *) loader;
 - (void) setLifeLevel:(int) level;
+- (void) hit;
 
 @end

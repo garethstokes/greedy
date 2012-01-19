@@ -7,7 +7,7 @@
 		<key>width</key>
 		<integer>350</integer>
 		<key>height</key>
-		<integer>1300</integer>
+		<integer>300</integer>
 	</dict>
 	<key>StaticAsteroids</key>
 	<array>
@@ -86,5 +86,7 @@
 		<key>layer2</key>
 		<string>star_burst.png</string>
 	</dict>
+	<key>Fuel</key>
+	<integer>15</integer>
 </dict>
 </plist>

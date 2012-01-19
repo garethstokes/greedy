@@ -102,7 +102,7 @@ cpBodyFree(cpBody *body)
 {
 	if(body){
 		cpBodyDestroy(body);
-		cpfree(body);
+		//cpfree(body);
 	}
 }
 

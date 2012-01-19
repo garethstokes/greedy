@@ -66,6 +66,14 @@
 			<key>y</key>
 			<integer>150</integer>
 		</dict>
+		<dict>
+			<key>size</key>
+			<integer>100</integer>
+			<key>x</key>
+			<integer>200</integer>
+			<key>y</key>
+			<integer>370</integer>
+		</dict>
 	</array>
 	<key>Fuel</key>
 	<integer>10</integer>

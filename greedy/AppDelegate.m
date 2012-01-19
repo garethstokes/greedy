@@ -118,8 +118,7 @@
     
     //preload all sounds
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"epic_greedy_death_small.mp3"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"gold_small.mp3"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"greedy_laugh.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"gold_collect_2.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"collision_dc_small.mp3"];
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.5];
 	

@@ -140,10 +140,11 @@
         
         [[ast oreAnim] addScore:oreScore];
         
-        if((arc4random() % 100) <= 10)
-          [[SimpleAudioEngine sharedEngine] playEffect:@"greedy_laugh.mp3" pitch:1 pan:1 gain:0.2];
-        else
-          [[SimpleAudioEngine sharedEngine] playEffect:@"gold_small.mp3" pitch:1 pan:1 gain:0.2];
+        // remove the greedy laugh sound
+          //if((arc4random() % 100) <= 10)
+        //  [[SimpleAudioEngine sharedEngine] playEffect:@"greedy_laugh.mp3" pitch:1 pan:1 gain:0.2];
+        //else
+          [[SimpleAudioEngine sharedEngine] playEffect:@"gold_collect_2.mp3" pitch:1 pan:1 gain:0.2];
         
       }
     }

@@ -71,7 +71,12 @@
 			<integer>45</integer>
 		</dict>
 	</array>
-	<key>Fuel</key>
-	<integer>10</integer>
+	<key>Background</key>
+	<dict>
+		<key>layer1</key>
+		<string>bg_stars.png</string>
+		<key>layer2</key>
+		<string>nebula.png</string>
+	</dict>
 </dict>
 </plist>

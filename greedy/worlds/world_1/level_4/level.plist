@@ -15,7 +15,15 @@
 			<key>size</key>
 			<integer>100</integer>
 			<key>x</key>
+			<integer>200</integer>
+			<key>y</key>
 			<integer>-100</integer>
+		</dict>
+		<dict>
+			<key>size</key>
+			<integer>100</integer>
+			<key>x</key>
+			<integer>-200</integer>
 			<key>y</key>
 			<integer>-750</integer>
 		</dict>
@@ -41,7 +49,7 @@
 		<key>x</key>
 		<integer>0</integer>
 		<key>y</key>
-		<integer>-1400</integer>
+		<integer>-810</integer>
 	</dict>
 	<key>Environment</key>
 	<dict>
@@ -68,26 +76,12 @@
 		<key>y</key>
 		<integer>4000</integer>
 	</dict>
-	<key>AsteroidShooters</key>
-	<array>
-		<dict>
-			<key>x</key>
-			<integer>180</integer>
-			<key>y</key>
-			<integer>-1000</integer>
-			<key>rotation</key>
-			<integer>45</integer>
-		</dict>
-		<dict>
-			<key>x</key>
-			<integer>180</integer>
-			<key>y</key>
-			<integer>-250</integer>
-			<key>rotation</key>
-			<integer>90</integer>
-		</dict>
-	</array>
-	<key>Fuel</key>
-	<integer>15</integer>
+	<key>Background</key>
+	<dict>
+		<key>layer1</key>
+		<string>bg_stars.png</string>
+		<key>layer2</key>
+		<string>star_burst.png</string>
+	</dict>
 </dict>
 </plist>

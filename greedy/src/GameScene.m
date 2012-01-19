@@ -33,10 +33,6 @@
   GameEnvironment * envy = [[[GameEnvironment alloc] init] autorelease];
   CCLOG(@"Environment Retain Count: %d", [envy retainCount]);
   
-  // star layer background
-  [[GameObjectCache sharedGameObjectCache] addBackground:[[[Background alloc] init] autorelease]];
-  [scene addChild:[[GameObjectCache sharedGameObjectCache] background] z:0];
-  
   //Game Layer
   [[GameObjectCache sharedGameObjectCache] addGameLayer:[[[GameLayer alloc] initWithEnvironment:envy level:level] autorelease]];
   [scene addChild:[[GameObjectCache sharedGameObjectCache] gameLayer] z:10];

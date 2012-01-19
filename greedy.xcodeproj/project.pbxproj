@@ -255,10 +255,12 @@
 		ABE3614E14A2C20D00A9441E /* gamelayer-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE3614B14A2C20D00A9441E /* gamelayer-hd.png */; };
 		ABE3614F14A2C20D00A9441E /* gamelayer.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE3614C14A2C20D00A9441E /* gamelayer.png */; };
 		ABE3615014A2C20D00A9441E /* gamelayer.pshs in Resources */ = {isa = PBXBuildFile; fileRef = ABE3614D14A2C20D00A9441E /* gamelayer.pshs */; };
+		ABF8D6B514B6BC9D0055B298 /* gold_collect_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABF8D6B414B6BC9D0055B298 /* gold_collect_2.mp3 */; };
+		ABF8D6B814B6D17C0055B298 /* star_burst-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF8D6B614B6D17C0055B298 /* star_burst-hd.png */; };
+		ABF8D6B914B6D17C0055B298 /* star_burst.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF8D6B714B6D17C0055B298 /* star_burst.png */; };
 		ABFB27EB1498915800177F9C /* collision_dc_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E71498915800177F9C /* collision_dc_small.mp3 */; };
 		ABFB27EC1498915800177F9C /* engine_loop_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E81498915800177F9C /* engine_loop_small.mp3 */; };
 		ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */; };
-		ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABFB27EA1498915800177F9C /* gold_small.mp3 */; };
 		ABFF83D5149EF59700D2E4B0 /* TestLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFF83D4149EF59700D2E4B0 /* TestLayer.m */; };
 		ABFF83DD149EF6A400D2E4B0 /* OreAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFF83DC149EF6A400D2E4B0 /* OreAnimation.m */; };
 		E704A62F13BB447100577C13 /* end_point_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = E704A62E13BB447100577C13 /* end_point_ready.png */; };
@@ -740,10 +742,12 @@
 		ABE3614B14A2C20D00A9441E /* gamelayer-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gamelayer-hd.png"; path = "gamelayer/gamelayer-hd.png"; sourceTree = "<group>"; };
 		ABE3614C14A2C20D00A9441E /* gamelayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gamelayer.png; path = gamelayer/gamelayer.png; sourceTree = "<group>"; };
 		ABE3614D14A2C20D00A9441E /* gamelayer.pshs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = gamelayer.pshs; path = gamelayer/gamelayer.pshs; sourceTree = "<group>"; };
+		ABF8D6B414B6BC9D0055B298 /* gold_collect_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gold_collect_2.mp3; sourceTree = "<group>"; };
+		ABF8D6B614B6D17C0055B298 /* star_burst-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_burst-hd.png"; sourceTree = "<group>"; };
+		ABF8D6B714B6D17C0055B298 /* star_burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_burst.png; sourceTree = "<group>"; };
 		ABFB27E71498915800177F9C /* collision_dc_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = collision_dc_small.mp3; path = audio/collision_dc_small.mp3; sourceTree = "<group>"; };
 		ABFB27E81498915800177F9C /* engine_loop_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = engine_loop_small.mp3; path = audio/engine_loop_small.mp3; sourceTree = "<group>"; };
 		ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = epic_greedy_death_small.mp3; path = audio/epic_greedy_death_small.mp3; sourceTree = "<group>"; };
-		ABFB27EA1498915800177F9C /* gold_small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gold_small.mp3; path = audio/gold_small.mp3; sourceTree = "<group>"; };
 		ABFF83D3149EF59700D2E4B0 /* TestLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLayer.h; sourceTree = "<group>"; };
 		ABFF83D4149EF59700D2E4B0 /* TestLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLayer.m; sourceTree = "<group>"; };
 		ABFF83DB149EF6A400D2E4B0 /* OreAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OreAnimation.h; sourceTree = "<group>"; };
@@ -1455,10 +1459,10 @@
 		ABFB27E5149890C700177F9C /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				ABF8D6B414B6BC9D0055B298 /* gold_collect_2.mp3 */,
 				ABFB27E71498915800177F9C /* collision_dc_small.mp3 */,
 				ABFB27E81498915800177F9C /* engine_loop_small.mp3 */,
 				ABFB27E91498915800177F9C /* epic_greedy_death_small.mp3 */,
-				ABFB27EA1498915800177F9C /* gold_small.mp3 */,
 			);
 			name = audio;
 			sourceTree = "<group>";
@@ -1582,6 +1586,8 @@
 		E7B6D5DA137684ED0092DDA6 /* backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				ABF8D6B614B6D17C0055B298 /* star_burst-hd.png */,
+				ABF8D6B714B6D17C0055B298 /* star_burst.png */,
 				AB52EAE8140A8B63007E263B /* bg_stars-hd.png */,
 				E7B6D5DB137684ED0092DDA6 /* bg_stars.png */,
 				AB52EAEA140A8B92007E263B /* nebula-hd.png */,
@@ -1860,7 +1866,6 @@
 				ABFB27EB1498915800177F9C /* collision_dc_small.mp3 in Resources */,
 				ABFB27EC1498915800177F9C /* engine_loop_small.mp3 in Resources */,
 				ABFB27ED1498915800177F9C /* epic_greedy_death_small.mp3 in Resources */,
-				ABFB27EE1498915800177F9C /* gold_small.mp3 in Resources */,
 				ABE3614E14A2C20D00A9441E /* gamelayer-hd.png in Resources */,
 				ABE3614F14A2C20D00A9441E /* gamelayer.png in Resources */,
 				ABE3615014A2C20D00A9441E /* gamelayer.pshs in Resources */,
@@ -1869,6 +1874,9 @@
 				E7D8E7F814B5B8660076E9EC /* mainmenu.pshs in Resources */,
 				E7D8E7FB14B5C1550076E9EC /* oranges-hd.png in Resources */,
 				E7D8E7FC14B5C1550076E9EC /* oranges.png in Resources */,
+				ABF8D6B514B6BC9D0055B298 /* gold_collect_2.mp3 in Resources */,
+				ABF8D6B814B6D17C0055B298 /* star_burst-hd.png in Resources */,
+				ABF8D6B914B6D17C0055B298 /* star_burst.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,6 @@
   CCParallaxNode *_parallax;  
 }
 
-- (id) init;
+- (id) initWithLayers:(NSArray *)layers;
 
 @end

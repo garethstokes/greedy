@@ -57,6 +57,6 @@
 - (void) stop;
 - (void) endLevel;
 - (void) endLevelWithDeath;
-- (void) createFinishLine: (GameEnvironment *) environment at:(CGPoint)p;
+- (void) createFinishLine: (GameEnvironment *) environment;
 
 @end

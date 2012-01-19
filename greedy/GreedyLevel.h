@@ -16,8 +16,8 @@
 @end
 
 @interface StaticAsteroidsConfig : NSObject {
-  int _size;
-  CGPoint _position;
+    int _size;
+    CGPoint _position;
 }
 
 @property int size;
@@ -38,24 +38,27 @@
 @end
 
 @interface GreedyLevel : NSObject{
-  int _number;
-  
-  int _asteroidFieldHeight;
-  int _asteroidFieldWidth;
-  
-  NSMutableArray *_staticAsteroids;
-  
-  CGPoint _greedyPosition;
-  
-  EnvironmentConfig *_environment;
-  
-  CGPoint _startPosition;
-  CGPoint _finishPosition;
-  
-  int _fuel;
+    int _number;
+    
+    NSArray *_backgroundLayers;
+    
+    int _asteroidFieldHeight;
+    int _asteroidFieldWidth;
+    
+    NSMutableArray *_staticAsteroids;
+    
+    CGPoint _greedyPosition;
+    
+    EnvironmentConfig *_environment;
+    
+    CGPoint _startPosition;
+    CGPoint _finishPosition;
 }
 
 @property int number;
+
+@property (nonatomic, retain) NSArray *backgroundLayers;
+
 @property int asteroidFieldHeight;
 @property int asteroidFieldWidth;
 @property int fuel;

@@ -313,6 +313,8 @@
 		E76A26C31377F0E600B24780 /* Balsamic.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A26C21377F0E600B24780 /* Balsamic.m */; };
 		E76AE4B313766A6A00A94EDA /* ConvexHull.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B213766A6A00A94EDA /* ConvexHull.m */; };
 		E76AE4B71376757100A94EDA /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B61376757100A94EDA /* Asteroid.m */; };
+		E772EB9214D94A4500AE84D9 /* flaming_nebula-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9014D94A4500AE84D9 /* flaming_nebula-hd.png */; };
+		E772EB9314D94A4500AE84D9 /* flaming_nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9114D94A4500AE84D9 /* flaming_nebula.png */; };
 		E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DB137684ED0092DDA6 /* bg_stars.png */; };
 		E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DC137684ED0092DDA6 /* nebula.png */; };
 		E7B6D5E11376852D0092DDA6 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6D5E01376852D0092DDA6 /* Background.m */; };
@@ -825,6 +827,8 @@
 		E76AE4B213766A6A00A94EDA /* ConvexHull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConvexHull.m; path = src/ConvexHull.m; sourceTree = "<group>"; };
 		E76AE4B51376757000A94EDA /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		E76AE4B61376757100A94EDA /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
+		E772EB9014D94A4500AE84D9 /* flaming_nebula-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flaming_nebula-hd.png"; sourceTree = "<group>"; };
+		E772EB9114D94A4500AE84D9 /* flaming_nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flaming_nebula.png; sourceTree = "<group>"; };
 		E7979519137501CB005D0310 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = src/protocols/GameObject.h; sourceTree = "<group>"; };
 		E7B6D5DB137684ED0092DDA6 /* bg_stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_stars.png; sourceTree = "<group>"; };
 		E7B6D5DC137684ED0092DDA6 /* nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nebula.png; sourceTree = "<group>"; };
@@ -1586,6 +1590,8 @@
 		E7B6D5DA137684ED0092DDA6 /* backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				E772EB9014D94A4500AE84D9 /* flaming_nebula-hd.png */,
+				E772EB9114D94A4500AE84D9 /* flaming_nebula.png */,
 				ABF8D6B614B6D17C0055B298 /* star_burst-hd.png */,
 				ABF8D6B714B6D17C0055B298 /* star_burst.png */,
 				AB52EAE8140A8B63007E263B /* bg_stars-hd.png */,
@@ -1877,6 +1883,8 @@
 				ABF8D6B514B6BC9D0055B298 /* gold_collect_2.mp3 in Resources */,
 				ABF8D6B814B6D17C0055B298 /* star_burst-hd.png in Resources */,
 				ABF8D6B914B6D17C0055B298 /* star_burst.png in Resources */,
+				E772EB9214D94A4500AE84D9 /* flaming_nebula-hd.png in Resources */,
+				E772EB9314D94A4500AE84D9 /* flaming_nebula.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

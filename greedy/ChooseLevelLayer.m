@@ -33,6 +33,7 @@
 {
     int currentLevel = [[SettingsManager sharedSettingsManager] getInt:@"current_level" withDefault:1];
     if (tag > currentLevel) return;
+    NSLog(@"tag: %d", tag);
     
     for( int j = 0; j<3; j++)
     {

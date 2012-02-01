@@ -319,6 +319,8 @@
 		E772EB9A14D9523400AE84D9 /* hippy_space_spiral.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9614D9523400AE84D9 /* hippy_space_spiral.png */; };
 		E772EB9B14D9523400AE84D9 /* space_confetti-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9714D9523400AE84D9 /* space_confetti-hd.png */; };
 		E772EB9C14D9523400AE84D9 /* space_confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9814D9523400AE84D9 /* space_confetti.png */; };
+		E77CC2E514D9599B00F9C286 /* crosshair_field.png in Resources */ = {isa = PBXBuildFile; fileRef = E77CC2E414D9599B00F9C286 /* crosshair_field.png */; };
+		E77CC2E814D959A100F9C286 /* crosshair_field-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E77CC2E714D959A100F9C286 /* crosshair_field-hd.png */; };
 		E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DB137684ED0092DDA6 /* bg_stars.png */; };
 		E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DC137684ED0092DDA6 /* nebula.png */; };
 		E7B6D5E11376852D0092DDA6 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6D5E01376852D0092DDA6 /* Background.m */; };
@@ -837,6 +839,8 @@
 		E772EB9614D9523400AE84D9 /* hippy_space_spiral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hippy_space_spiral.png; sourceTree = "<group>"; };
 		E772EB9714D9523400AE84D9 /* space_confetti-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "space_confetti-hd.png"; sourceTree = "<group>"; };
 		E772EB9814D9523400AE84D9 /* space_confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space_confetti.png; sourceTree = "<group>"; };
+		E77CC2E414D9599B00F9C286 /* crosshair_field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair_field.png; sourceTree = "<group>"; };
+		E77CC2E714D959A100F9C286 /* crosshair_field-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crosshair_field-hd.png"; sourceTree = "<group>"; };
 		E7979519137501CB005D0310 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = src/protocols/GameObject.h; sourceTree = "<group>"; };
 		E7B6D5DB137684ED0092DDA6 /* bg_stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_stars.png; sourceTree = "<group>"; };
 		E7B6D5DC137684ED0092DDA6 /* nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nebula.png; sourceTree = "<group>"; };
@@ -1598,6 +1602,8 @@
 		E7B6D5DA137684ED0092DDA6 /* backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				E77CC2E714D959A100F9C286 /* crosshair_field-hd.png */,
+				E77CC2E414D9599B00F9C286 /* crosshair_field.png */,
 				E772EB9514D9523400AE84D9 /* hippy_space_spiral-hd.png */,
 				E772EB9614D9523400AE84D9 /* hippy_space_spiral.png */,
 				E772EB9714D9523400AE84D9 /* space_confetti-hd.png */,
@@ -1901,6 +1907,8 @@
 				E772EB9A14D9523400AE84D9 /* hippy_space_spiral.png in Resources */,
 				E772EB9B14D9523400AE84D9 /* space_confetti-hd.png in Resources */,
 				E772EB9C14D9523400AE84D9 /* space_confetti.png in Resources */,
+				E77CC2E514D9599B00F9C286 /* crosshair_field.png in Resources */,
+				E77CC2E814D959A100F9C286 /* crosshair_field-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

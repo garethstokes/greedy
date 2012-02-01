@@ -119,6 +119,6 @@
 		<string>flaming_nebula.png</string>
 	</dict>
 	<key>Fuel</key>
-	<integer>15</integer>
+	<integer>9</integer>
 </dict>
 </plist>

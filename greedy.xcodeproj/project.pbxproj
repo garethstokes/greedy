@@ -315,6 +315,10 @@
 		E76AE4B71376757100A94EDA /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = E76AE4B61376757100A94EDA /* Asteroid.m */; };
 		E772EB9214D94A4500AE84D9 /* flaming_nebula-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9014D94A4500AE84D9 /* flaming_nebula-hd.png */; };
 		E772EB9314D94A4500AE84D9 /* flaming_nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9114D94A4500AE84D9 /* flaming_nebula.png */; };
+		E772EB9914D9523400AE84D9 /* hippy_space_spiral-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9514D9523400AE84D9 /* hippy_space_spiral-hd.png */; };
+		E772EB9A14D9523400AE84D9 /* hippy_space_spiral.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9614D9523400AE84D9 /* hippy_space_spiral.png */; };
+		E772EB9B14D9523400AE84D9 /* space_confetti-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9714D9523400AE84D9 /* space_confetti-hd.png */; };
+		E772EB9C14D9523400AE84D9 /* space_confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = E772EB9814D9523400AE84D9 /* space_confetti.png */; };
 		E7B6D5DD137684ED0092DDA6 /* bg_stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DB137684ED0092DDA6 /* bg_stars.png */; };
 		E7B6D5DE137684ED0092DDA6 /* nebula.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B6D5DC137684ED0092DDA6 /* nebula.png */; };
 		E7B6D5E11376852D0092DDA6 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6D5E01376852D0092DDA6 /* Background.m */; };
@@ -829,6 +833,10 @@
 		E76AE4B61376757100A94EDA /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
 		E772EB9014D94A4500AE84D9 /* flaming_nebula-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flaming_nebula-hd.png"; sourceTree = "<group>"; };
 		E772EB9114D94A4500AE84D9 /* flaming_nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flaming_nebula.png; sourceTree = "<group>"; };
+		E772EB9514D9523400AE84D9 /* hippy_space_spiral-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hippy_space_spiral-hd.png"; sourceTree = "<group>"; };
+		E772EB9614D9523400AE84D9 /* hippy_space_spiral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hippy_space_spiral.png; sourceTree = "<group>"; };
+		E772EB9714D9523400AE84D9 /* space_confetti-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "space_confetti-hd.png"; sourceTree = "<group>"; };
+		E772EB9814D9523400AE84D9 /* space_confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space_confetti.png; sourceTree = "<group>"; };
 		E7979519137501CB005D0310 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = src/protocols/GameObject.h; sourceTree = "<group>"; };
 		E7B6D5DB137684ED0092DDA6 /* bg_stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_stars.png; sourceTree = "<group>"; };
 		E7B6D5DC137684ED0092DDA6 /* nebula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nebula.png; sourceTree = "<group>"; };
@@ -1590,6 +1598,10 @@
 		E7B6D5DA137684ED0092DDA6 /* backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				E772EB9514D9523400AE84D9 /* hippy_space_spiral-hd.png */,
+				E772EB9614D9523400AE84D9 /* hippy_space_spiral.png */,
+				E772EB9714D9523400AE84D9 /* space_confetti-hd.png */,
+				E772EB9814D9523400AE84D9 /* space_confetti.png */,
 				E772EB9014D94A4500AE84D9 /* flaming_nebula-hd.png */,
 				E772EB9114D94A4500AE84D9 /* flaming_nebula.png */,
 				ABF8D6B614B6D17C0055B298 /* star_burst-hd.png */,
@@ -1885,6 +1897,10 @@
 				ABF8D6B914B6D17C0055B298 /* star_burst.png in Resources */,
 				E772EB9214D94A4500AE84D9 /* flaming_nebula-hd.png in Resources */,
 				E772EB9314D94A4500AE84D9 /* flaming_nebula.png in Resources */,
+				E772EB9914D9523400AE84D9 /* hippy_space_spiral-hd.png in Resources */,
+				E772EB9A14D9523400AE84D9 /* hippy_space_spiral.png in Resources */,
+				E772EB9B14D9523400AE84D9 /* space_confetti-hd.png in Resources */,
+				E772EB9C14D9523400AE84D9 /* space_confetti.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

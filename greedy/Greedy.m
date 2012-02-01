@@ -20,7 +20,7 @@
 @synthesize fuel = _fuel;
 
 
-- (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos
+- (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos fuel:(int)fuel
 {
     CCLOG(@" Greedy: initWith");
     
@@ -44,7 +44,7 @@
     
     _shape = shape;
     
-    _fuel = 10;
+    _fuel = (fuel == 0) ? 10 : fuel;
     
     _exploded = NO;
     

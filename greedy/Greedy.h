@@ -53,7 +53,7 @@ enum {
 @property (nonatomic) float score;
 @property (nonatomic, assign) float fuel;
 
-- (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos;
+- (id) initWith:(GameEnvironment *)environment startPos:(cpVect)startPos fuel:(int) fuel;
 - (void) prestep:(ccTime) delta;
 - (void) applyThrust;
 - (void) removeThrust;

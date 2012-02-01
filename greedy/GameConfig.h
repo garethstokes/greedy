@@ -102,6 +102,6 @@
 #define kOutOfBoundsCollisionType         7
 #define kGreedyDeathZoneCollisionType     8
 
-#define MAX_LEVEL 4
+#define MAX_LEVEL 12
 
 #endif // __GAME_CONFIG_H

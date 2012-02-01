@@ -113,7 +113,7 @@ ccpAngleBetween(CGPoint a, CGPoint b)
         }
         
         // greedy!
-        Greedy *_greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition]];
+        Greedy *_greedy = [[Greedy alloc] initWith:environment startPos:[level greedyPosition] fuel:[level fuel]];
         [self addChild:_greedy];
         [[GameObjectCache sharedGameObjectCache] addGreedy:_greedy];
         [_greedy release];

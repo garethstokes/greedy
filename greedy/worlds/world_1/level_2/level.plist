@@ -78,5 +78,7 @@
 		<key>layer2</key>
 		<string>nebula.png</string>
 	</dict>
+	<key>Fuel</key>
+	<integer>10</integer>
 </dict>
 </plist>

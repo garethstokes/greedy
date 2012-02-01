@@ -87,6 +87,6 @@
 		<string>star_burst.png</string>
 	</dict>
 	<key>Fuel</key>
-	<integer>20</integer>
+	<integer>15</integer>
 </dict>
 </plist>
